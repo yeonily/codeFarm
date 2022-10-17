@@ -1,2 +1,0 @@
-# codeFarm
-jsp-project
