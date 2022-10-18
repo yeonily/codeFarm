@@ -8,12 +8,12 @@
    
    <typeAliases>
       <typeAlias type="com.farmer.app.member.vo.MemberVO" alias="memberVO"/>
-      <typeAlias type="com.farmer.app.member.vo.MemberDTO" alias="memberDTO"/>
       <typeAlias type="com.farmer.app.alba.vo.AlbaVO" alias="albaVO"/>
       <typeAlias type="com.farmer.app.memberAlba.vo.MemberAlbaVO" alias="memberAlbaVO"/>
       <typeAlias type="com.farmer.app.program.vo.ProgramVO" alias="programVO"/>
       <typeAlias type="com.farmer.app.memberProgram.vo.MemberProgramVO" alias="memberProgramVO"/>
       <typeAlias type="com.farmer.app.community.vo.CommunityVO" alias="communityVO"/>
+      <typeAlias type="com.farmer.app.community.vo.CommunityDTO" alias="communityDTO"/>
       <typeAlias type="com.farmer.app.cropsInfo.vo.CropsInfoVO" alias="cropsInfoVO"/>
       <typeAlias type="com.farmer.app.localSpeciality.vo.LocalSpecialityVO" alias="localSpecialityVO"/>
       <typeAlias type="com.farmer.app.mentor.vo.MentorVO" alias="mentorVO"/>
@@ -33,7 +33,7 @@
             <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name="url" value="jdbc:mysql://localhost:3306/farmer"/>
             <property name="username" value="root"/>
-            <property name="password" value="xorhks97@"/>
+            <property name="password" value="1234"/>
          </dataSource>
       </environment>
    </environments>
