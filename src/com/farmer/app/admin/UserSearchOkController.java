@@ -12,7 +12,7 @@ import com.farmer.app.Result;
 public class UserSearchOkController implements Execute {
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		
 		return null;
 	}
 }
