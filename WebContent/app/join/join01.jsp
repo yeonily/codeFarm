@@ -205,7 +205,7 @@
         </div>
     
         <div class="lgr_agree">
-            <a class="agree" href="javascript:fn_agreeAction();">동의합니다.</a>
+            <a class="agree" href="${pageContext.request.contextPath}/join/join02.me}">동의합니다.</a>
             <!-- 필수약관 전체선택 시 아래 주소로 넘어가야함 -->
             <!-- <a class="agreeMove" href="http://127.0.0.1:5500/join_page/join02.html"></a> -->
         </div>
