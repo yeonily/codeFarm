@@ -397,8 +397,9 @@ button {
     
 }
 
+button.alba_write_btn { background: #464d77; }
 
-
+div.d-day { display: inline;}
 
 
 
