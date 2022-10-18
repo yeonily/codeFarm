@@ -8,6 +8,7 @@
    
    <typeAliases>
       <typeAlias type="com.farmer.app.member.vo.MemberVO" alias="memberVO"/>
+      <typeAlias type="com.farmer.app.member.vo.MemberDTO" alias="memberDTO"/>
       <typeAlias type="com.farmer.app.alba.vo.AlbaVO" alias="albaVO"/>
       <typeAlias type="com.farmer.app.memberAlba.vo.MemberAlbaVO" alias="memberAlbaVO"/>
       <typeAlias type="com.farmer.app.program.vo.ProgramVO" alias="programVO"/>
@@ -20,6 +21,7 @@
       <typeAlias type="com.farmer.app.reply.vo.ReplyVO" alias="replyVO"/>
       <typeAlias type="com.farmer.app.communityFile.vo.CommunityFileVO" alias="CommunityFileVO"/>
       <typeAlias type="com.farmer.app.noticeFile.vo.NoticeFileVO" alias="noticeFileVO"/>
+
       <!-- <typeAlias type="com.farmer.app.board.vo.BoardDTO" alias="boardDTO"/> -->
    </typeAliases>
       
@@ -50,6 +52,7 @@
       <mapper resource="com/farmer/mybatis/mapper/ReplyMapper.xml"/>
       <mapper resource="com/farmer/mybatis/mapper/CommunityFileMapper.xml"/>
       <mapper resource="com/farmer/mybatis/mapper/NoticeFileMapper.xml"/>
+      <mapper resource="com/farmer/mybatis/mapper/MyPageMapper.xml"/>
    </mappers>
    
 </configuration>
