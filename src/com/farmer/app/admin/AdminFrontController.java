@@ -31,8 +31,9 @@ public class AdminFrontController extends HttpServlet {
 	    
 	    if(target.equals("/admin/admin.ad")) {//관리자 페이지로 이동
 	    	
-	    }else if(target.equals("/admin/User.ad")) { //관리자페이지안에서 사용자관리 페이지로 이동
-			
+	       }else if(target.equals("/admin/User.ad")) { //관리자페이지안에서 사용자관리 페이지로 이동
+	    	   result = new UserOkController().execute(req, resp);
+	    	   
 		   }else if(target.equals("/admin/UserSearchOk.ad")) { //사용자 정보 검색하기(SELECT)
 			   
 		   }else if(target.equals("/admin/UserOk.ad")) { //사용자 정보 불러오기(SELECT)
