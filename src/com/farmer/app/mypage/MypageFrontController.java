@@ -29,18 +29,27 @@ public class MypageFrontController extends HttpServlet {
 	    String target = requestURI.substring(contextPath.length());
 	    Result result = null;
 	    
-	      if(target.equals("/mypage/mypage.my")) {//마이페이지로 이동
+	      if(target.equals("/mypage/mypageOk.my")) {//마이페이지로 이동
+	    	  result = new Result();
+	    	  new MyPageOkController().execute(req, resp);
+	    	  System.out.println(result.isRedirect());
+	    	  result.setPath("/app/myPage/myProfile.jsp");
 
 	      }else if(target.equals("/mypage/Update.my")) { //마이페이지에서 수정페이지로 이동
-	    	   
+	    	  result = new Result();
+			  result.setPath("/app/myPage/updatePage.jsp");
+			  
 	       }else if(target.equals("/mypage/UpdateOk.my")) { //마이페이지에서 수정하기(UPDATE)
 	    	   
 	       }else if(target.equals("/mypage/Delete.my")) { //마이페이지에서 탈퇴페이지로 이동
-	    	   
+	    	   result = new Result();
+	    	   result.setPath("/app/myPage/deletePage.jsp");
+				  
 	       }else if(target.equals("/mypage/DeleteOk.my")) { //마이페이지에서 탈퇴하기(DELETE)
 	    	   
 	       }else if(target.equals("/mypage/Write.my")) { //마이페이지에서 내가 쓴 글 페이지로 이동
-	    	   
+	    	   result = new Result();
+			   result.setPath("/app/myPage/myWriting.jsp");
 	       }else if(target.equals("/mypage/WriteOk.my")) { //마이페이지에서 내가 쓴 글 리스트 보여주기(SELECT)
 	    	   
 	       }else if(target.equals("/mypage/Apply.my")) { //마이페이지에서 내가 신청한 프로그램/알바 페이지로 이동
