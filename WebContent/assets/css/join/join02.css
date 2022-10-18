@@ -494,6 +494,7 @@ input.phoneNum {
     border: none;
     padding: 0 15px;
     height: 40px;
+    width: 100%;
 }
 div.phoneSize {
     display: inline-block;

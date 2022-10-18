@@ -34,6 +34,10 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     font-size: inherit;
 }
 
+a.a_tag{
+	text-decoration: none;
+}
+
 .wrap{
     width: 100%;
     position: relative;
@@ -187,6 +191,20 @@ p{
     font-size: 15px;
     font-family: 'ONE-Mobile-Regular';
 }
+
+.sort_btn_farmer{
+    width: 140px;
+    height: 35px;
+    display: inline-block;
+    line-height: 30px;
+    border-radius: 5px;
+    background: #464d77;
+    color: #fff;
+    padding: 0 10px;
+    font-size: 15px;
+    font-family: 'ONE-Mobile-Regular';
+}
+
 
 .programBtn span{
     color: #003668;
