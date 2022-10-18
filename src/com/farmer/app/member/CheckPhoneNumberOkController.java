@@ -13,14 +13,15 @@ import com.farmer.app.Execute;
 import com.farmer.app.Result;
 import com.farmer.app.member.dao.MemberDAO;
 
-public class CheckIdOkController implements Execute {
+public class CheckPhoneNumberOkController implements Execute {
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			String memberId = req.getParameter("memberId");
+		
+		String memberPhoneNumber = req.getParameter("memberPhoneNumber");
 			PrintWriter out = resp.getWriter();
 			JSONObject jsonObject = new JSONObject();
 			
-			jsonObject.put("result", new MemberDAO().checkId(memberId));
+			jsonObject.put("result", new MemberDAO().checkPhoneNumber(memberPhoneNumber));
 			out.print(jsonObject.toJSONString());
 			out.close();
 		return null;

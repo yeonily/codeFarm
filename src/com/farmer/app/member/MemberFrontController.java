@@ -30,10 +30,24 @@ public class MemberFrontController extends HttpServlet {
 	    Result result = null;
 	    
 	      if(target.equals("/member/checkIdOk.me")) {//아이디중복검사 실행(SELECT)
+	          new CheckIdOkController().execute(req, resp);
 	          
+	       }else if(target.equals("/member/checkEmailOk.me")) {//이메일중복검사 실행(SELECT)
+	    	   new CheckEmailOkController().execute(req, resp);
+	    	   
+	       }else if(target.equals("/member/checkPhoneNumberOk.me")) {//핸드폰번호중복검 실행(SELECT)
+	    	   new CheckPhoneNumberOkController().execute(req, resp);
+	    	   
 	       }else if(target.equals("/member/join.me")) {//회원가입페이지 이동
+	    	   	result = new Result();
+				result.setPath("/app/join/join01.jsp");
 	          
-	       }else if(target.equals("/member/joinOk.me")) {//회원가입 실행(INSERT)
+	       }else if(target.equals("/member/join02.me")) {
+	    	   result = new Result();
+				result.setPath("/app/join/join02.jsp");
+	       }
+	       
+	       else if(target.equals("/member/joinOk.me")) {//회원가입 실행(INSERT)
 	          
 	       }else if(target.equals("/member/login.me")) {//로그인페이지 이동
 	          
