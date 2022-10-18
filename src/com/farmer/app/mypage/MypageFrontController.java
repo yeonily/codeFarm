@@ -30,11 +30,10 @@ public class MypageFrontController extends HttpServlet {
 	    Result result = null;
 	    
 	      if(target.equals("/mypage/mypageOk.my")) {//마이페이지로 이동
-	    	  result = new Result();
-	    	  new MyPageOkController().execute(req, resp);
-	    	  System.out.println(result.isRedirect());
+	    	  
+	    	  result = new MyPageOkController().execute(req, resp);
 	    	  result.setPath("/app/myPage/myProfile.jsp");
-
+	    	 
 	      }else if(target.equals("/mypage/Update.my")) { //마이페이지에서 수정페이지로 이동
 	    	  result = new Result();
 			  result.setPath("/app/myPage/updatePage.jsp");
