@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,10 +30,10 @@
                                         <div class="lgr_snb">
                                             <ul class="lgr_ul">
                                                 <li class="nowMenu">
-                                                    <span class="checkText">농촌 체험 프로그램</span>
+                                                    <a class=a_tag href="${pageContext.request.contextPath}/program/applyListOk.pg"><span class="checkText">농촌 체험 프로그램</span></a>
                                                 </li>
                                                 <li>
-                                                    <span class="secondMenu">농촌 아르바이트</span>
+                                                    <a class=a_tag href="${pageContext.request.contextPath}/alba/applyListOk.ab"><span class="secondMenu">농촌 아르바이트</span></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -47,308 +49,51 @@
                 <div class="sub_content">
                     <div class="container">
                         <div class="inner">
-                            <link href="/young/css/custom/custom.css" media="all" rel="stylesheet" type="text/css">
                             <div class="board_wrap">
                                 <div class="board_cont">
                                     <form id="listForm" name="listForm">
                                         <div class="sub01_con inner clearfix">
                                             <div>
-                                                
                                                 <div class="sort_list">
                                                     <button type="button" class="sort_btn" data-id="viewCnt">조회순</button>
                                                     <button type="button" class="sort_btn" data-id="asc">가장최근등록일순</button>
                                                     <button type="button" class="sort_btn" data-id="applEdDt">가장최근마감일순</button>
+                                                	<c:if test="${membergrade eq program.getMembergrade()}">
+                                                    <button type="button" class="sort_btn_farmer" data-id="register">글 등록</button>
+                                                    </c:if>
                                                 </div>
                                             </div>
                                             <div class="k_result inner clearfix">
                                                 <p class="count">
-                                                    총  
-                                                <span>5866</span>
-                                                     건 (진행중 
-                                                <span>247</span>
-                                                     건) 
+                                                    총 <span><c:out value="${totalCount}"/></span>건 (진행중 
+                                                	<span>247</span>건) 
                                                 </p>
                                                 <br>
                                                 <ul style="margin: 0px">
+                                                		<c:if test="${programs != null and fn:length(programs) > 0}">
+                                                			<c:forEach var="program" items="${programs}">
                                                     <li>
                                                         
                                                             <div class="info">
-                                                                <p class="local">
-                                                                        전국</p>
+                                                                <p class="local"><c:out value="${program.getProgramLocation()}"/></p>
                                                                 <!-- 진행사항 -->
-                                                                    <p class="progress">											
-                                                                        진행중</p>
+                                                                <p class="progress">진행중</p>
                                                                 <!-- 지원금액 -->
-                                                                </div>
+                                                            </div>
                                                             <div class="title">
-                                                                <p>22년 농산업 체험 프로그램</p>
+                                                                <p><c:out value="${program.getProgramName()}"/></p>
                                                             </div>
                                                             <div class="num">
                                                                 <p class="prd">
-                                                                    <span class="endstatus">D-1</span> &nbsp; | &nbsp; 2022-10-01</p>
-                                                                <p class="hits"><img src="https://www.rda.go.kr/young/images/site/sub/common_ico_view.png"> 31</p>
+                                                                    <span class="endstatus">D-1</span> &nbsp; | &nbsp; <c:out value="${program.getProgramApplyEndDate()}"/></p>
+                                                                <p class="hits"><img src="https://www.rda.go.kr/young/images/site/sub/common_ico_view.png"> <c:out value="${program.getProgramViewCount()}"/></p>
                                                             </div>
                                                             <div class="file">
                                                             </div>
                                                         
                                                     </li>
-                                                    <li>
-                                                        
-                                                            <div class="info">
-                                                                <p class="local">
-                                                                        충청남도</p>
-                                                            
-                                                                <!-- 진행사항 -->
-                                                                    <p class="progress">											
-                                                                        진행중</p>
-                                                                <!-- 지원금액 -->
-                                                             
-                                                                </div>
-                                                            <div class="title">
-                                                                <p>2022년 귀산촌 아카데미</p>
-                                                            </div>
-                                                            <div class="num">
-                                                                <p class="prd">
-                                                                    <span class="endstatus">당일마감</span>
-                                                                            </p>
-                                                                <p class="hits"><img src="https://www.rda.go.kr/young/images/site/sub/common_ico_view.png"> 73</p>
-                                                            </div>
-                                                            <div class="file">
-                                                                </div>
-                                                        
-                                                    </li>
-                                                    <li>
-                                                       
-                                                            <div class="info">
-                                                                <p class="local">
-                                                                        전라북도</p>
-                                                        
-                                                                <!-- 진행사항 -->
-                                                                    <p class="progress">											
-                                                                        진행중</p>
-                                                                <!-- 지원금액 -->
-                                                                </div>
-                                                            <div class="title">
-                                                                <p>딸기농장 수확 알바</p>
-                                                            </div>
-                                                            <div class="num">
-                                                                <p class="prd">
-                                                                    <span class="endstatus">D-7</span> &nbsp; | &nbsp; 2022-10-07</p>
-                                                                <p class="hits"><img src="https://www.rda.go.kr/young/images/site/sub/common_ico_view.png"> 21</p>
-                                                            </div>
-                                                            <div class="file">
-                                                                </div>
-                                                        
-                                                    </li>
-                                                    <li>
-                                                       
-                                                            <div class="info">
-                                                                <p class="local">
-                                                                        강원도</p>
-                                                              
-                                                                <!-- 진행사항 -->
-                                                                    <p class="progress">											
-                                                                        진행중</p>
-                                                                <!-- 지원금액 -->
-                                                                </div>
-                                                            <div class="title">
-                                                                <p>영월 감자채굴 체험학습</p>
-                                                            </div>
-                                                            <div class="num">
-                                                                <p class="prd">
-                                                                    <span class="endstatus">D-42</span> &nbsp; | &nbsp; 2022-11-11</p>
-                                                                <p class="hits"><img src="https://www.rda.go.kr/young/images/site/sub/common_ico_view.png"> 183</p>
-                                                            </div>
-                                                            
-                                                        
-                                                    </li>
-                                                    <li>
-                                                        
-                                                            <div class="info">
-                                                                <p class="local">
-                                                                        전라남도</p>
-                                                             
-                                                                <!-- 진행사항 -->
-                                                                    <p class="progress">											
-                                                                        진행중</p>
-                                                                <!-- 지원금액 -->
-                                                              
-                                                                </div>
-                                                            <div class="title">
-                                                                <p>대나무 자르기 보조 아르바이트</p>
-                                                            </div>
-                                                            <div class="num">
-                                                                <p class="prd">
-                                                                    <span class="endstatus">당일마감</span>
-                                                                            </p>
-                                                                <p class="hits"><img src="https://www.rda.go.kr/young/images/site/sub/common_ico_view.png"> 742</p>
-                                                            </div>
-                                                            <div class="file">
-                                                                </div>
-                                                        
-                                                    </li>
-                                                    <li>
-                                                       
-                                                            <div class="info">
-                                                                <p class="local">
-                                                                        경상남도</p>
-                                                                
-                                                                <!-- 진행사항 -->
-                                                                    <p class="progress">											
-                                                                        진행중</p>
-                                                                <!-- 지원금액 -->
-                                                                </div>
-                                                            <div class="title">
-                                                                <p>창원 감따기 체험학습</p>
-                                                            </div>
-                                                            <div class="num">
-                                                                <p class="prd">
-                                                                    <span class="endstatus">D-92</span> &nbsp; | &nbsp; 2022-12</p>
-                                                                <p class="hits"><img src="https://www.rda.go.kr/young/images/site/sub/common_ico_view.png"> 70</p>
-                                                            </div>
-                                                            
-                                                        
-                                                    </li>
-                                                    <li>
-                                                        
-                                                        <div class="info">
-                                                            <p class="local">
-                                                                    경기도</p>
-                                                            
-                                                            <!-- 진행사항 -->
-                                                                <p class="progress">											
-                                                                    진행중</p>
-                                                            <!-- 지원금액 -->
-                                                            </div>
-                                                        <div class="title">
-                                                            <p>나만의 미니 텃밭 체험학습</p>
-                                                        </div>
-                                                        <div class="num">
-                                                            <p class="prd">
-                                                                <span class="endstatus">D-1</span> &nbsp; | &nbsp; 2022-10-01</p>
-                                                            <p class="hits"><img src="https://www.rda.go.kr/young/images/site/sub/common_ico_view.png"> 31</p>
-                                                        </div>
-                                                        <div class="file">
-                                                        </div>
-                                                    
-                                                </li>
-                                                <li>
-                                                    
-                                                        <div class="info">
-                                                            <p class="local">
-                                                                    충청남도</p>
-                                                           
-                                                            <!-- 진행사항 -->
-                                                                <p class="progress">											
-                                                                    진행중</p>
-                                                            <!-- 지원금액 -->
-                                                         
-                                                            </div>
-                                                        <div class="title">
-                                                            <p>고추 이랑 만들기 및 모종심기 아르바이트</p>
-                                                        </div>
-                                                        <div class="num">
-                                                            <p class="prd">
-                                                                <span class="endstatus">당일마감</span>
-                                                                        </p>
-                                                            <p class="hits"><img src="https://www.rda.go.kr/young/images/site/sub/common_ico_view.png"> 73</p>
-                                                        </div>
-                                                        <div class="file">
-                                                            </div>
-                                                    
-                                                </li>
-                                                <li>
-                                                   
-                                                        <div class="info">
-                                                            <p class="local">
-                                                                    충청북도</p>
-                                                            
-                                                            <!-- 진행사항 -->
-                                                                <p class="progress">											
-                                                                    진행중</p>
-                                                            <!-- 지원금액 -->
-                                                            </div>
-                                                        <div class="title">
-                                                            <p>영동 호두따기 아르바이트(식비 지원)</p>
-                                                        </div>
-                                                        <div class="num">
-                                                            <p class="prd">
-                                                                <span class="endstatus">D-7</span> &nbsp; | &nbsp; 2022-10-07</p>
-                                                            <p class="hits"><img src="https://www.rda.go.kr/young/images/site/sub/common_ico_view.png"> 21</p>
-                                                        </div>
-                                                        <div class="file">
-                                                            </div>
-                                                    
-                                                </li>
-                                                <li>
-                                                   
-                                                        <div class="info">
-                                                            <p class="local">
-                                                                    강원도</p>
-                                                           
-                                                            <!-- 진행사항 -->
-                                                                <p class="progress">											
-                                                                    진행중</p>
-                                                            <!-- 지원금액 -->
-                                                            </div>
-                                                        <div class="title">
-                                                            <p>영월 감자채굴 체험학습</p>
-                                                        </div>
-                                                        <div class="num">
-                                                            <p class="prd">
-                                                                <span class="endstatus">D-42</span> &nbsp; | &nbsp; 2022-11-11</p>
-                                                            <p class="hits"><img src="https://www.rda.go.kr/young/images/site/sub/common_ico_view.png"> 183</p>
-                                                        </div>
-                                                        
-                                                    
-                                                </li>
-                                                <li>
-                                                       
-                                                    <div class="info">
-                                                        <p class="local">
-                                                                강원도</p>
-                                                       
-                                                        <!-- 진행사항 -->
-                                                            <p class="progress">											
-                                                                진행중</p>
-                                                        <!-- 지원금액 -->
-                                                        </div>
-                                                    <div class="title">
-                                                        <p>영월 감자채굴 체험학습</p>
-                                                    </div>
-                                                    <div class="num">
-                                                        <p class="prd">
-                                                            <span class="endstatus">D-42</span> &nbsp; | &nbsp; 2022-11-11</p>
-                                                        <p class="hits"><img src="https://www.rda.go.kr/young/images/site/sub/common_ico_view.png"> 183</p>
-                                                    </div>
-                                                    
-                                                
-                                            </li>
-                                            <li>
-                                                
-                                                    <div class="info">
-                                                        <p class="local">
-                                                                전라남도</p>
-                                                        
-                                                        <!-- 진행사항 -->
-                                                            <p class="progress">											
-                                                                진행중</p>
-                                                        <!-- 지원금액 -->
-                                                      
-                                                        </div>
-                                                    <div class="title">
-                                                        <p>대나무 자르기 보조 아르바이트</p>
-                                                    </div>
-                                                    <div class="num">
-                                                        <p class="prd">
-                                                            <span class="endstatus">당일마감</span>
-                                                                    </p>
-                                                        <p class="hits"><img src="https://www.rda.go.kr/young/images/site/sub/common_ico_view.png"> 742</p>
-                                                    </div>
-                                                    <div class="file">
-                                                        </div>
-                                                
-                                            </li>
+                                                			</c:forEach>
+                                                		</c:if>
                                                 </ul>
                                             </div>
                                            
@@ -356,20 +101,26 @@
                                        <!-- 페이징 -->
                                         <div id="page" style="margin-bottom : 30px">
                                             <div class="page_nation">
-                                            <a class="page-num arrow pprev" href="#"></a>
-                                            <a class="page-num arrow prev" href="#"></a>
-                                            <a class="page-num active" href="#">1</a>
-                                            <a class="page-num" href="#">2</a>
-                                            <a class="page-num" href="#">3</a>
-                                            <a class="page-num" href="#">4</a>
-                                            <a class="page-num" href="#">5</a>
-                                            <a class="page-num" href="#">6</a>
-                                            <a class="page-num" href="#">7</a>
-                                            <a class="page-num" href="#">8</a>
-                                            <a class="page-num" href="#">9</a>
-                                            <a class="page-num" href="#">10</a>
-                                            <a class="page-num arrow next" href="#"></a>
-                                            <a class="page-num arrow nnext" href="#"></a>
+                                            	<c:if test="${prev}">
+			                                            <a class="page-num arrow pprev" href="${pageContext.request.contextPath}/program/applyListOk.pg?page=1"></a>
+			                                            <a class="page-num arrow prev" href="${pageContext.request.contextPath}/program/applyListOk.pg?page=${startPage - 1}"></a>
+			                                    </c:if>
+	                                            <c:forEach var="i" begin="${startPage}" end="${endPage}">
+	                                            <c:choose>
+															<c:when test="${not (i eq page)}">
+			                                            		<a class="page-num " href="${pageContext.request.contextPath}/program/applyListOk.pg?page=${i}">
+			                                            		<c:out value="${i}"/></a>
+															</c:when>
+															<c:otherwise>
+			                                            		<a class="page-num active" href="${pageContext.request.contextPath}/program/applyListOk.pg?page=${i}">
+			                                            		<c:out value="${i}"/></a>
+															</c:otherwise>
+														</c:choose>
+	                                            </c:forEach>
+	                                            <c:if test="${next}">
+			                                            <a class="page-num arrow next" href="${pageContext.request.contextPath}/program/applyListOk.pg?page=${endPage + 1}"></a>
+			                                            <a class="page-num arrow nnext" href="${pageContext.request.contextPath}/program/applyListOk.pg?page=${realEndPage}"></a>
+			                                    </c:if>
                                             </div>
                                         </div>
                                     </form>
