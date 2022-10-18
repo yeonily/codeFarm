@@ -30,10 +30,12 @@ public class ProgramFrontController extends HttpServlet {
 	    Result result = null;
 	    
 	      if(target.equals("/program/apply01.pg")) {//프로그램 신청상세페이지 1로 이동
+	    	  result = new Result();
+	    	  result.setPath("/app/program/programDetailPage_1.jsp");
 	          
 	       }
 	      else if(target.equals("/program/applyListOk.pg")) {//프로그램 목록페이지 들어갔을 때, DB에서 프로그램 전체목록 가져오기(SELECT)
-		   		
+	          result = new ApplyListOkController().execute(req, resp);
 	       }
 	      else if(target.equals("/program/viewCountOk.pg")) {//프로그램 목록페이지 조회순 정렬
 	    	  
@@ -51,7 +53,8 @@ public class ProgramFrontController extends HttpServlet {
 	    	  
 	      }
 	      else if(target.equals("/program/programWrite.pg")) { //프로그램 등록페이지로 이동
-	    	  
+	    	  result = new Result();
+	          result.setPath("/app/program/programRegister.jsp");
 	      }
 	      else if(target.equals("/program/programWriteOk.pg")) { //프로그램 등록하기(INSERT)
 	    	  
