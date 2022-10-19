@@ -8,7 +8,5 @@
 	</insert>
 	
 	<!-- 게시글 전체 조회 -->
-	<select id="selectAll" parameterType="communityDTO">
-		
-	</select>
+	
 </mapper>

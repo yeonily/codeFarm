@@ -154,6 +154,14 @@
 
 </body>
 <!-- 차트 -->
+<script>let memberNumber = ${member.getMemberNumber()};</script>
+<script>let memberId = ${member.getMemberId()};</script>
+<script>let memberEmail = ${member.getMemberEmail()};</script>
+<script>let memberPhoneNumber = ${member.getMemberPhoneNumber()};</script>
+<script>let memberName = ${member.getMemberName()};</script>
+<script>let memberGrade = ${member.getMemberGrade()};</script>
+<script>let memberLocation = ${member.getMemberLocation()};</script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
      <script src="${pageContext.request.contextPath}/assets/js/admin/chartAPI.js"></script>
+<script>${pageContext.request.contextPath}/assets/js/admin/user.js</script>
 <html>
