@@ -26,19 +26,18 @@ public class WriteOkController implements Execute {
 		CommunityFileVO communityFileVO = new CommunityFileVO();
 		CommunityFileDAO communityFileDAO = new CommunityFileDAO();
 		Result result = new Result();
+		int currentSequence = 0;
 //		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber"); // Session 로그인 번호
 		
 //		--------------------------------------------------------------------------------------------
 //		* 파일 기본 세팅 *
-		String uploadPath = req.getSession().getServletContext().getRealPath("/") + "upload/";
-		System.out.println(uploadPath);
-		
+		String uploadPath = req.getSession().getServletContext().getRealPath("/") + "upload/community/";
 		int fileSize = 1024 * 1024 * 5; // 파일의 사이즈 제한은 5mb		
-		int currentSequence = 0;
+		
 //		request 객체, 업로드 할 경로, 파일의 크기, 인코딩 방식, 이름변경정책
 		MultipartRequest multipartRequest = new MultipartRequest(req, uploadPath, fileSize, "UTF-8", new DefaultFileRenamePolicy());		
 //		화면에서 구현된 input 타입이 file인 태그 전부 가져옴
-		
+				
 //		--------------------------------------------------------------------------------------------
 		
 		communityVO.setCommunityTitle(multipartRequest.getParameter("nttSj"));

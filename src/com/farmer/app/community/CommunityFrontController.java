@@ -34,7 +34,8 @@ public class CommunityFrontController extends HttpServlet {
 		} else if (target.equals("/community/searchOk.cm")) {// 소통공간 검색 실행(SELECT)
 
 		} else if (target.equals("/community/detailOk.cm")) {// 소통공간 상세내용 보여주기(SELECT)
-
+			result = new DetailOkController().execute(req, resp);
+			
 		} else if (target.equals("/community/writeOk.cm")) {// 소통공간 글 작성(INSERT)
 			result = new WriteOkController().execute(req, resp);
 			

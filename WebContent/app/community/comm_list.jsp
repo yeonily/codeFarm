@@ -41,7 +41,7 @@
                                         <span>멘토 홍보 게시판</span>
                                     </a>
                                 </li>
-                                <li class="nowMenu"><a href="/young/board/board08.do" class="active">
+                                <li class="nowMenu"><a href="${pageContent.request.contetPath}/community/listOk.cm" class="active">
                                         <span>소통공간</span>
                                     </a>
                                 </li>
@@ -106,9 +106,9 @@
 							<tr>
 								<td><c:out value="${board.getCommunityNumber()}" /></td>
 								<td>
-									<%-- <a href='${pageContext.request.contextPath}/board/detailOk.bo?boardNumber=${board.getBoardNumber()}'> --%>
+									<a href='${pageContext.request.contextPath}/community/detailOk.cm?boardNumber=${board.getCommunityNumber()}'>
 										<c:out value="${board.getCommunityTitle()}" />
-									<!-- </a> -->
+									</a>
 								</td>
 								<td>첨부파일</td>
 								<td><c:out value="${board.getMemberId()}" /></td>
@@ -126,40 +126,33 @@
 		</tbody>
     </table>
     <div class="te_right mt25">
-        <a href="" onclick="doCreate();" class="btntype01 advice_btn">등록</a>
+        <a href="${pageContext.request.contextPath}/community/write.cm" class="btntype01 advice_btn">등록</a>
     </div>
-    <!-- 페이징 -->
-                <div id="page" class="page_height">
+			<!-- 페이징 -->
+			<div id="page" class="page_height">
 				<div class="page_nation">
-					<%-- <c:if test="${prev}">
-						<a href="${pageContext.request.contextPath}/board/listOk.bo?page=${startPage - 1}">&lt;</a>
+					<c:if test="${prev}">
+						<!-- 이전 페이지(1칸) -->
+						<a class="page-num arrow pprev" href="${pageContext.request.contextPath}/community/listOk.cm?page=1"></a>
+						<a class="page-num arrow prev" href="${pageContext.request.contextPath}/community/listOk.cm?page=${startPage - 1}">&lt;</a>
 					</c:if>
 					<c:forEach var="i" begin="${startPage}" end="${endPage}">
 						<c:choose>
 							<c:when test="${not (i eq page)}">
-								<a href="${pageContext.request.contextPath}/board/listOk.bo?page=${i}">
-									<c:out value="${i}" />&nbsp;&nbsp;
-								</a>
+								<a class="page-num" href="${pageContext.request.contextPath}/community/listOk.cm?page=${i}"><c:out value="${i}" /></a>
 							</c:when>
 							<c:otherwise>
-								<c:out value="${i}" />&nbsp;&nbsp;
+								<a class="page-num active" href="${pageContext.request.contextPath}/community/listOk.cm?page=${i}"><c:out value="${i}" /></a>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
 					<c:if test="${next}">
-						<a href="${pageContext.request.contextPath}/board/listOk.bo?page=${endPage + 1}">&gt;</a>
-					</c:if> --%>
-					<a class="page-num arrow pprev" href="#"></a> <a
-						class="page-num arrow prev" href="#"></a> <a
-						class="page-num active" href="#">1</a> <a class="page-num"
-						href="#">2</a> <a class="page-num" href="#">3</a> <a
-						class="page-num" href="#">4</a> <a class="page-num" href="#">5</a>
-					<a class="page-num" href="#">6</a> <a class="page-num" href="#">7</a>
-					<a class="page-num" href="#">8</a> <a class="page-num" href="#">9</a>
-					<a class="page-num" href="#">10</a> <a class="page-num arrow next" href="#"></a> <a class="page-num arrow nnext" href="#"></a>
+						<a class="page-num arrow next" href="${pageContext.request.contextPath}/community/listOk.cm?page=${endPage + 1}">&gt;</a>
+						<a class="page-num arrow nnext" href="${pageContext.request.contextPath}/community/listOk.cm?page=${realEndPage}"></a>
+					</c:if>
 				</div>
 			</div>
-</div>
+		</div>
 </div>
 <jsp:include page="${pageContext.request.contextPath}/app/fix/footer.jsp"/>
 </body>

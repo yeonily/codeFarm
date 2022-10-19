@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,101 +54,98 @@
         </div>
     </div>
     <!-- subheader -->
-    <div class="contentfullwrap">
-        <div class="contentwrap">
-            <div class="base_boardwrap">
-                <div class="printboard">
-                    <div class="base_boardview">
-                        <table width="100%;">
-                            <colgroup>
-                                <col width="100%;">
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th class="title">
-                                        청년! 3박4일 예천에 한번 살아볼까요?</th>
-                                </tr>
-                                <tr class="datatext">
-                                    <td class="datatext">
-                                        <div class="datatext_l">등록일 : <span>2022.09.30</span></div>
-                                        <ul class="datatext_r">
-                                            <li>아이디 : 이경철</li>
-                                            <li>조회수 : 11</li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                                </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="textarea">
-                                        <br>
-                                        경상북도 예천군에서 도시청년 3박4일 무료 살아보기를 진행 합니다. ^^ 
-    <br>
-    <br>□ 행 사 명 : ‘도시청년 예천에 퐁당’
-    <br>□ 기 간 : 2022. 10. 11.(화) ~ 10. 14.(금) / 3박4일
-    <br>□ 모집기간 : 2022. 9. 26.(월) ~ 10. 9.(일) (조기마감될 수 있습니다) 
-    <br>□ 참 가 비 : 숙박비(전통한옥체험관), 식대(예천맛집), 체험비 전액 무료/어메니티/기념품 제공
-    <br>□ 시 상 : 마지막날 팜파티와 예천 살이 의견을 발표하고 시상합니다. 푸짐한 시상 선물! 
-    <br>                 지역 정착 프로그램 안내 및 청년마을 입주 상담도 진행하여! 로컬크리에이터의 꿈의 기회도! 
-    <br>□ 장 소 : 금당실 한옥체험관 및 예천군 일원
-    <br>□ 참가인원 : 20명 (20세~35세 예천관외 청년)
-    <br>
-    <br>행사 링크 : https://blog.naver.com/yecheonnvp/222885332339</td>
-                                </tr>
-                                <tr class="file">
-                                    <td class="tblpd01">
-                                        <div id="fileList"><a href="javascript:void(0)" onclick="javascript:FL.vtexDownloadFile(&quot;FILE_000000000088177&quot;,&quot;1&quot;,&quot;FL&quot;)">123.jpg [204155 byte]</a><br></div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        
-                        <div class="te_right mt25">
-                            <button type="button" class="iron-iconized iron-action return" onclick="doList();"><span class="val">목록</span></button>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-        <div id="commentArea" class="comment_area"><!-- 기초데이터 설정 -->
+	<div class="contentfullwrap">
+		<div class="contentwrap">
+			<div class="base_boardwrap">
+				<div class="printboard">
+					<div class="base_boardview">
+						<table width="100%;">
+							<colgroup>
+								<col width="100%;">
+							</colgroup>
+							<thead>
+								<tr>
+									<th class="title">${board.getCommunityTitle()}</th>
+								</tr>
+								<tr class="datatext">
+									<td class="datatext">
+										<div class="datatext_l">
+											등록일 : <span>${board.getCommunityDate()}</span>
+										</div>
+										<ul class="datatext_r">
+											<li>아이디 : ${board.getMemberId()}</li>
+											<li>조회수 : ${board.getCommunityViewCount()}</li>
+										</ul>
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="textarea">${board.getCommunityContent()}</td>
+								</tr>
+								<tr class="file">
+									<td class="tblpd01">
+										<div id="fileList">
+											<c:choose>
+												<c:when test="${files != null and fn:length(files) > 0 }"> <!-- 게시글에 첨부파일이 존재할 때 -->
+													<c:forEach var="file" items="${files}"> <!-- 파일이 여러 개일 수도 있으니 -->
+														<a href="${pageContext.request.contextPath}/communityFile/download.cmFile?communityFileName=${file.getCommunityFileName()}&communityFileRealname=${file.getCommunityFileRealname()}">${file.getCommunityFileRealname()}</a><br>
+													</c:forEach>
+												</c:when>
+												<c:otherwise> <!-- 게시글에 첨부파일이 존재하지 않을 때 -->
+													<a>첨부파일이 없습니다.</a></br>
+												</c:otherwise>
+											</c:choose>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
 
-           <!-- 댓글 내용 시작 -->
-		    <ul class="comment_box">
-		        <li class="comment_text01"><font color="black">댓글등록</font></li>
-		        <li>
-		            <ul class="comment_inputBox">
-                        <form method="post" action="#" name="replyForm">
-			                <li class="common_textarea">
-			                    <textarea class="comm_textarea" title="댓글입력" name="replyContent" placeholder="비속어를 사용하지 말아주세요."></textarea>
-			                </li>
-			                <li class="common_btnBox">
-			                    <button type="button" class="comm_btn" onclick="send()">등록</button>
-			                </li>
-		                </form>
-		            </ul>
-		            <li class="comment_text02 showLength">0/1000byte</li>
-		        </li>
-		    </ul>
-		    <!-- 댓글 내용 종료 -->
-		    
-		    <!-- 댓글 리스트 -->
-            <!-- 댓글 수 -->
-    		<div class="reply">
-            	<!-- <div class="reply-count">댓글 <span class="re-count">10</span>개</div> -->
-				<form action="#" id="replyList" name="reModifyForm">
-				</form>
-    		</div>
-    
-    
-    
-    </div>
-            </div>
-        </div>
-<jsp:include page="${pageContext.request.contextPath}/app/fix/footer.jsp"/>
+						<div class="te_right mt25">
+							<button type="button" class="iron-iconized iron-action return"
+								onclick="location.href = '${pageContext.request.contextPath}/community/listOk.cm'">
+								<span class="val">목록</span>
+							</button>
+						</div>
 
+					</div>
+				</div>
+			</div>
+			<div id="commentArea" class="comment_area">
+				<!-- 기초데이터 설정 -->
+
+				<!-- 댓글 내용 시작 -->
+				<ul class="comment_box">
+					<li class="comment_text01"><font color="black">댓글등록</font></li>
+					<li>
+						<ul class="comment_inputBox">
+							<form method="post" action="#" name="replyForm">
+								<li class="common_textarea"><textarea class="comm_textarea"
+										title="댓글입력" name="replyContent"
+										placeholder="비속어를 사용하지 말아주세요."></textarea></li>
+								<li class="common_btnBox">
+									<button type="button" class="comm_btn" onclick="send()">등록</button>
+								</li>
+							</form>
+						</ul>
+					<li class="comment_text02 showLength">0/1000byte</li>
+					</li>
+				</ul>
+				<!-- 댓글 내용 종료 -->
+
+				<!-- 댓글 리스트 -->
+				<!-- 댓글 수 -->
+				<div class="reply">
+					<!-- <div class="reply-count">댓글 <span class="re-count">10</span>개</div> -->
+					<form action="#" id="replyList" name="reModifyForm"></form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<jsp:include page="${pageContext.request.contextPath}/app/fix/footer.jsp"/>
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/community/reply.js"></script>
-
 
 </html>

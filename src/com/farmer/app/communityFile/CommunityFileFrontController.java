@@ -30,12 +30,9 @@ public class CommunityFileFrontController extends HttpServlet {
 	    Result result = null;
 	    
 	      if(target.equals("/communityFile/download.cmFile")) {	//다운로드 받기(다운로드 controller 필요)
-	          
+	    	  result = new DownloadController().execute(req, resp);
 	       }
-	      
-
-
-	
+	      	
 	    if(result != null) {
 	         if(result.isRedirect()) {
 	            resp.sendRedirect(result.getPath());

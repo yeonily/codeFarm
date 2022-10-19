@@ -33,6 +33,16 @@ public class CommunityDAO {
 		return sqlSession.selectList("Community.selectAll", pageMap);
 	}
 	
+	/* 게시글 상세보기 */
+	public CommunityDTO select(int communityNumber) {
+		return sqlSession.selectOne("Community.select", communityNumber);
+	}
+	
+	/* 게시글 조회수 증가 */
+	public void updateViewCount(int communityNumber) {
+		sqlSession.update("Community.updateViewCount", communityNumber);
+	}
+	
 	/* 가장 최신 게시글 번호 */
 	public int selectCurrentSequence() {
 		return sqlSession.selectOne("Community.selectCurrentSequence");
