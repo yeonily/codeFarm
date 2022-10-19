@@ -9,17 +9,19 @@ import com.farmer.app.member.vo.MemberVO;
 import com.farmer.mybatis.config.MyBatisConfig;
 
 public class AdminDAO {
-	SqlSessionFactory sqlSessionFactory = MyBatisConfig.getSqlsessionFactory();
+		SqlSessionFactory sqlSessionFactory = MyBatisConfig.getSqlsessionFactory();
 	   SqlSession sqlSession;
-	   
+
 	   public AdminDAO() {
-		   sqlSession = sqlSessionFactory.openSession(true);
 		   System.out.println("AdminDAO1 들어옴");
+		   sqlSession = sqlSessionFactory.openSession(true);
 	   }
 	   
-	   public List<MemberVO> userSelectAll(MemberVO memberVO) {
+	   
+	   public List<MemberVO> userSelectAll() {
 		   System.out.println("AdminDAO2 들어옴");
-		   return sqlSession.selectList("Admin.userSelectAll", memberVO);
+		   return sqlSession.selectList("Admin.userSelectAll");
+		   	   
 	   }
 }
 

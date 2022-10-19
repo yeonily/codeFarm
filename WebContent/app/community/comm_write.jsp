@@ -32,7 +32,7 @@
 									<li><a href="/young/board/board07.do" class="active">
 											<span>멘토 홍보 게시판</span>
 									</a></li>
-									<li class="nowMenu"><a href="/young/board/board08.do"
+									<li class="nowMenu"><a href="community/listOk.cm"
 										class="active"> <span>소통공간</span>
 									</a></li>
 								</ul>
@@ -54,7 +54,7 @@
 			<div class="base_boardwrap">
 				<div class="printboard">
 					<div class="base_boardwrite02">
-						<form action="${pageContext.request.contextPath}/community/writeOk.cm" name="writeForm" method="post">
+						<form action="${pageContext.request.contextPath}/community/writeOk.cm" name="writeForm" method="post" enctype="multipart/form-data">
 							<table class="brdTline02 tblspace01">
 								<colgroup>
 									<col width="20%">
@@ -80,8 +80,7 @@
 										<th>첨부파일</th>
 										<td>
 											<div class="fileInfo">
-												<input type="file" id="egovComFileUploader" title="첨부파일"
-													name="file_0">
+												<input type="file" id="egovComFileUploader" title="첨부파일" name="file_0">
 											</div>
 											<div id="egovComFileList"></div> <span class="attchtext">
 												첨부파일은 총 1개까지 가능합니다.</span>
