@@ -22,6 +22,12 @@
     })
     
 
+	/*-------------------------------------------------------------- */
+	/*일반인 농장주 구분 검사*/
+
+	
+
+
     /* -------------------------------------------------------------- */
 	/* 비밀번호 일치하는 지 검사 */
     $(function(){
@@ -132,20 +138,20 @@
 
         var target = document.getElementById("userInfo02");
 
-        if(e.value == "busan") var list = busan;
-        if(e.value == "daegu") var list = daegu;
-        if(e.value == "incheon") var list = incheon;
-        if(e.value == "daejeon") var list = daejeon;
-        if(e.value == "ulsan") var list = ulsan;
-        if(e.value == "sejong") var list = sejong;
-        if(e.value == "gangwon") var list = gangwon;
-        if(e.value == "gyeonggi") var list = gyeonggi;
-        if(e.value == "chungcheongbuk-do") var list = chungcheongbuk;
-        if(e.value == "chungcheongdam-do") var list = chungcheongdam;
-        if(e.value == "Jeollabuk-do") var list = Jeollabuk;
-        if(e.value == "Jeollanam-do") var list = Jeollanam;
-        if(e.value == "Gyeongsangbuk-do") var list = Gyeongsangbuk;
-        if(e.value == "Gyeongsangnam-do") var list = Gyeongsangnam;
+        if(e.value == "부산") var list = busan;
+        if(e.value == "대구") var list = daegu;
+        if(e.value == "인천") var list = incheon;
+        if(e.value == "대전") var list = daejeon;
+        if(e.value == "울산") var list = ulsan;
+        if(e.value == "세종") var list = sejong;
+        if(e.value == "경기") var list = gyeonggi;
+        if(e.value == "강원") var list = gangwon;
+        if(e.value == "충북") var list = chungcheongbuk;
+        if(e.value == "충남") var list = chungcheongdam;
+        if(e.value == "전북") var list = Jeollabuk;
+        if(e.value == "전남") var list = Jeollanam;
+        if(e.value == "경북") var list = Gyeongsangbuk;
+        if(e.value == "경남") var list = Gyeongsangnam;
 
         target.options.length = 0;
 
@@ -156,3 +162,7 @@
             target.appendChild(opt);
         }
     }
+
+	function send(){
+		detailForm.submit();
+	}

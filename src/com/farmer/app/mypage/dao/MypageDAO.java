@@ -18,7 +18,10 @@ public class MypageDAO {
 	   }
 	   
 	   public MemberVO selectMyPage(int memberNumber){
-		   System.out.println("DAO 들어옴");
 		   return sqlSession.selectOne("MyPage.selectMyPage", memberNumber);
+	   }
+	   
+	   public void updateMyPage(MemberVO memberVO){
+		   
 	   }
 }

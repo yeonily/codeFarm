@@ -25,15 +25,40 @@ public class MyPageOkController implements Execute {
 		String memberName = memberVO.getMemberName();
 		String memberLocation = memberVO.getMemberLocation();
 		int memberGrade = memberVO.getMemberGrade();
+		String memberType;
+		String mentorType;
 		
-		System.out.println(memberName);
-		System.out.println(memberLocation);
-		System.out.println(memberGrade);
+//		가입 형태 검사
+		if(memberGrade < 0) {
+			memberType = "농장주";
+			req.setAttribute("memberType", memberType);
+		}else if(memberGrade == 0) {
+			memberType = "관리자";
+			req.setAttribute("memberType", memberType);
+		}else if(memberGrade == 1) {
+			memberType = "일반 사용자";
+			req.setAttribute("memberType", memberType);
+		}else {
+			memberType = "비정상 가입자";
+			req.setAttribute("memberType", memberType);
+		}
+
+//		멘토링 검사
+		if(memberGrade != -1) {
+			mentorType = "X";
+			req.setAttribute("mentorType", mentorType);
+		}else {
+			if(memberVO == null) {
+				mentorType = "X";
+				req.setAttribute("mentorType", mentorType);
+			}else{
+				mentorType = "멘토";
+				req.setAttribute("mentorType", mentorType);
+			}
+		}
 		
 		req.setAttribute("memberName", memberName);
-		req.setAttribute("memberLocation", memberLocation);
-		req.setAttribute("memberGrade", memberGrade);
-		
+		req.setAttribute("memberLocation", memberLocation);		
 		
 		return result;
 	}

@@ -313,6 +313,27 @@ input#password, input#passwordCheck {
     font-size: 17px;
 }
 
+/* 아이디 input 설정 */
+input#id {
+	width: 100%;
+    border: 1px solid #e8e8e8;
+    padding: 0 10px;
+    height: 40px;
+    line-height: 40px;
+    box-sizing: border-box; /* input 사이즈 기준으로 padding을 무시하고 width 100% 적용 */
+    font-size: 17px;
+}
+/* 이름 input 설정 */
+input#name {
+	width: 100%;
+    border: 1px solid #e8e8e8;
+    padding: 0 10px;
+    height: 40px;
+    line-height: 40px;
+    box-sizing: border-box; /* input 사이즈 기준으로 padding을 무시하고 width 100% 적용 */
+    font-size: 17px;
+}
+
 /* Tooltip(말풍선) 문자 */
 div.tooltip_pw, div.tooltip_pwCh {
     position: relative;

@@ -6,4 +6,8 @@
 		from tbl_member mb join tbl_mentor mt
 		on mb.member_phone_number = mt.mentor_phone_number and mb.member_number = #{memberNumber}
 	</select>
+	
+	<update id="updateMyPage" parameterType="memberVO">
+	
+	</update>
 </mapper>

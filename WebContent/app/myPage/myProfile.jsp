@@ -48,9 +48,9 @@
                                     <img id="userFileImg" src="https://www.rda.go.kr/young/images/site/login/my_ico_01.png">
                                         </div>
                                 <div class="user_i">
-                                    <p>안녕하세요,<span><c:out value="${memberName}"/></span>님</p> <!-- (이후) 로그인한 회원의 이름으로 출력 필요 -->
+                                    <p>안녕하세요,<span>${memberName}</span>님</p> <!-- (이후) 로그인한 회원의 이름으로 출력 필요 -->
                                     <ul>
-                                        <li><a href="${pageContext.request.contextPath}/app">로그아웃</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/mypage/LogOut.my">로그아웃</a></li>
                                         <li><a href="${pageContext.request.contextPath}/mypage/Update.my">정보수정</a></li>
                                         <li><a href="${pageContext.request.contextPath}/mypage/Delete.my">회원탈퇴</a></li>
                                     </ul>
@@ -61,19 +61,19 @@
                                     <li>
                                         <p class="join">가입 형태</p> <!-- (이후) 로그인한 회원의 가입형태로 출력 필요 -->
                                         <p>
-                                            <span style="margin:0"><c:out value=""/></span>
+                                            <span style="margin:0">${memberType}</span>
                                         </p>
                                     </li>
                                     <li>
                                         <p class="local">지역</p> <!-- (이후) 로그인한 회원이 입력한 지역 출력 필요 -->
                                         <p>
-                                            <span><c:out value="${memberLocation}"/></span>
+                                            <span>${memberLocation}</span>
                                         </p>
                                     </li>
                                     <li>
                                         <p class="crop">멘토링</p> <!-- (이후) 가입할 때 선택한 농작물 출력 필요 -->
                                         <p>
-                                            <span></span>
+                                            <span>${mentorType}</span>
                                         </p>
                                     </li>
                                 </ul>

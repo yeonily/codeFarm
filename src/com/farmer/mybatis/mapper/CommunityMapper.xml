@@ -9,16 +9,5 @@
 	
 
 	
-	<!-- 게시글 전체 개수 확인 -->
-	<select id="selectCnt" resultType="_int">
-		select count(community_number) from tbl_community;
-	</select>
-	
-	<!-- 가장 최신 게시글 번호 -->
-	<select id="selectCurrentSequence" resultType="_int">
-		select last_insert_id()
-	</select>
-=======
-	
 
 </mapper>
