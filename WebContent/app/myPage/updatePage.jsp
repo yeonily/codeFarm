@@ -41,9 +41,8 @@
         <div class="sub_content">
             <div class="container">
                 <div class="inner">
-                    <form id="detailForm" name="detailForm" action="/young/user/modify.do" method="post"
-                        enctype="multipart/form-data" autocomplete="off"><input id="useYn" name="useYn" type="hidden"
-                            value="Y"><input id="telNo" name="telNo" type="hidden" value="">
+                    <form id="detailForm" name="detailForm" action="${pageContext.request.contextPath}/mypage/UpdateOk.my" method="post">
+                        <input id="useYn" name="useYn" type="hidden" value="Y"><input id="telNo" name="telNo" type="hidden" value="">
                         <!-- 수정할 정보 입력 테이블 -->
                         <table class="detail_table">
                             <tbody>
@@ -68,7 +67,7 @@
                                 </tr>
                                 <tr>
                                     <th><label for="userId">아이디</label></th>
-                                    <td class="userId_reuslt">여기에 로그인 한 회원의 아이디</td>
+                                    <td class="userId_reuslt"><input type="text" id="id" name="id" placeholder="아이디를 입력해주세요"></td>
                                     <th><label for="passwordCheck">변경할 비밀번호 확인</label></th>
                                     <td>
                                         <div class="tooltip_pwCh">
@@ -82,7 +81,7 @@
                                 <tr>
                                     <!-- 이메일 -->
                                     <th><label for="userNm">이름(실명)</label></th>
-                                    <td>여기에 사용자 이름</td>
+                                    <td><input type="text" id="name" name ="name" placeholder="이름을 입력해주세요"></td>
 
                                     <!-- 일반 회원으로 가입했을 시 일반회원 -->
                                     <th>휴대폰 번호</th>
@@ -105,7 +104,7 @@
                                     <th><label for="email">EMAIL</label></th>
                                     <td>
                                         <div class="email" rowspan="2">
-                                            <input type="text" class="email" value="" data-path="email"> <!-- (이후) 로그인한 유저의 이메일을 적어놔야함 -->
+                                            <input type="text" class="email" name="email" value="" data-path="email"> <!-- (이후) 로그인한 유저의 이메일을 적어놔야함 -->
                                             <span class="hipen">@</span>
                                             <!-- 이메일 주소 선택 드롭박스 -->
                                             <select class="domain" data-path="email">
@@ -126,20 +125,20 @@
                                         <select id="userInfo01" name="userInfo01" class="area1" onchange="clickCityChange(this)">
                                             <!-- 도 -->
                                             <option>-선택-</option>
-                                            <option value="busan">부산광역시</option>
-                                            <option value="daegu">대구광역시</option>
-                                            <option value="incheon">인천광역시</option>
-                                            <option value="daejeon">대전광역시</option>
-                                            <option value="ulsan">울산광역시</option>
-                                            <option value="sejong">세종특별자치시</option>
-                                            <option value="gyeonggi">경기도</option>
-                                            <option value="gangwon">강원도</option>
-                                            <option value="chungcheongbuk-do">충정북도</option>
-                                            <option value="chungcheongdam-do">충청남도</option>
-                                            <option value="Jeollabuk-do">전라북도</option>
-                                            <option value="Jeollanam-do">전라남도</option>
-                                            <option value="Gyeongsangbuk-do">경상북도</option>
-                                            <option value="Gyeongsangnam-do">경상남도</option>
+                                            <option value="부산">부산광역시</option>
+                                            <option value="대구">대구광역시</option>
+                                            <option value="인천">인천광역시</option>
+                                            <option value="대전">대전광역시</option>
+                                            <option value="울산">울산광역시</option>
+                                            <option value="세종">세종특별자치시</option>
+                                            <option value="경기">경기도</option>
+                                            <option value="강원">강원도</option>
+                                            <option value="충북">충정북도</option>
+                                            <option value="충남">충청남도</option>
+                                            <option value="전북">전라북도</option>
+                                            <option value="전남">전라남도</option>
+                                            <option value="경북">경상북도</option>
+                                            <option value="경남">경상남도</option>
                                         </select>
                                         <!-- 시, 읍 -->
                                         <select id="userInfo02" name="userInfo02" class="area2"> <!-- 도 선택에 따라 시, 읍 출력해야함 -->
@@ -153,7 +152,7 @@
                         </table>
                         <div class="btn"> <!-- (이후) 버튼 클릭시 DB 연동 등 작업 필요 -->
                             <button type="button" class="cancelBtn"><p><img id = "cancelImg" src="${pageContext.request.contextPath}/assets/images/updatePage/cancelImage.png">취소</p></button>
-                            <button type="button" class="updateBtn"><p><img id = "updateImg" src="${pageContext.request.contextPath}/assets/images/updatePage/writeImage.png">수정</p></button>
+                            <button type="button" class="updateBtn"><p><img id = "updateImg" src="${pageContext.request.contextPath}/assets/images/updatePage/writeImage.png" onclick="send()">수정</p></button>
                         </div>
                     </form>
                 </div>
