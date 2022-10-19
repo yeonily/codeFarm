@@ -19,17 +19,17 @@ public class AlbaDAO {
 
 //	전체 아르바이트 목록 출력
 	public List<AlbaVO> selectRegistration(Map<String, Integer> pageMap) {
-		return sqlSession.selectList("Alba.selectRegistration", pageMap);
+		return sqlSession.selectList("alba.selectRegistration", pageMap);
 	}
 	
 //	전체 아르바이트 개수 조회
 	public int selectCount() {
-		return sqlSession.selectOne("Alba.selectCount");
+		return sqlSession.selectOne("alba.selectCount");
 	}
 	
 //	진행중인 아르바이트 개수 조회
 	public int selectProcess(String today) {
-		return sqlSession.selectOne("Alba.selectProcess", today);
+		return sqlSession.selectOne("alba.selectProcess", today);
 	}
 	
 	

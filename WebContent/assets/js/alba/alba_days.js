@@ -15,22 +15,20 @@ $(document).ready(function(){
 		let dDay = dDaysCount($(this));
 		let count = countDates($applyStartDay);
 		
+		
 		/* 비교 후 맞는 문구 삽입 */
 		if (dDay > 0) {
 			$countDay.html("D-" + dDay);
 			/* 현재 시간이 신청 시작 날짜보다 이를 때 */
 			if (count > 0) {
-			$progress.html("진행 예정");
+				$progress.html("예정");
 			}
-			
 		} else if (dDay == 0) {
 			$countDay.html("D-day");
 			$progress.html("오늘마감");
-			
 		} else {
 			$countDay.html("마감");
 			$progress.html("마감");
-			
 		}
 	});
 });

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="Alba">
+<mapper namespace="alba">
 	<!--아르바이트 리스트를 최근 등록 순으로 정렬-->
 	<select id="selectRegistration" parameterType="map" resultType="albaVo">
 		select alba_number, alba_name, alba_location, alba_apply_start_date, alba_apply_end_date, alba_date, alba_view_count
@@ -14,6 +14,6 @@
 	
 	<!-- 진행 중인 아르바이트 개수 -->
 	<select id="selectProcess" parameterType="string" resultType="_int">
-		select count(alba_number)  from tbl_alba where alba_apply_start_date &lt; #{today} and alba_apply_end_date &gt; #{today}
+		select count(alba_number)  from tbl_alba where #{today} BETWEEN alba_apply_start_date AND alba_apply_end_date;
 	</select>
 </mapper>

@@ -5,17 +5,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>프로그램 신청 페이지</title>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/alba/albaApply.css" />
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/fix/page.css" />
+	<meta charset="UTF-8">
+	<title>프로그램 신청 페이지</title>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/alba/albaApply.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/fix/page.css" />
+	<style type="text/css">
+		div.end {
+			position: absolute;
+			width:100%;
+			height: 100%;
+  			background-color: rgba(0,0,0, 0.4);
+    		border-radius: 10px;
+		    top: 0;
+		    left: 0;
+		}
+	</style>
 </head>
 <body>
 	<!--헤더 넣는쪽-->
-	<jsp:include
-		page="${pageContext.request.contextPath}/app/fix/header.jsp" />
+	<jsp:include page="${pageContext.request.contextPath}/app/fix/header.jsp" />
 	<!-- 바디 -->
 	<div class="wrap">
 		<div class="main">
@@ -63,7 +71,7 @@
 											</div>
 											<div class="k_result inner clearfix">
 												<p class="count">
-													총 <span><c:out value="${total}" /></span>건 (진행중 <span class="pCount"><c:out value="${processCount}" /></span>건)
+													총 <span><c:out value="${total}" /></span>건 (진행중 <span class="pCount"><c:out value="${processCount}"/></span>건)
 												</p>
 												<br>
 												<ul style="margin: 0px">
@@ -98,6 +106,7 @@
 																		</p>
 																	</div>
 																	<div class="file"></div>
+																	
 																</li>
 															</c:forEach>
 														</c:when>
@@ -109,28 +118,28 @@
 										<!-- 페이징 -->
 										<div id="page" style="margin-bottom: 30px">
 											<div class="page_nation">
-												<a class="page-num arrow pprev" href="#"></a>
 												<c:if test="${prev}">
+													<a href="${pageContext.request.contextPath}/alba/applyListOk.ab?page=1" class="page-num arrow pprev"></a>
 													<a href="${pageContext.request.contextPath}/alba/applyListOk.ab?page=${startPage - 1}" class="page-num arrow prev" ></a>
 												</c:if>
 												<c:forEach var="i" begin="${startPage}" end="${endPage}">
 													<c:choose>
 														<c:when test="${not (i eq page)}">
 															<a href="${pageContext.request.contextPath}/alba/applyListOk.ab?page=${i}" class="page-num" >
-																<c:out value="${i}"/>&nbsp;&nbsp;
+																<c:out value="${i}"/>
 															</a>
 														</c:when>
 														<c:otherwise>
 															<a href="${pageContext.request.contextPath}/alba/applyListOk.ab?page=${i}" class="page-num active" >
-																<c:out value="${i}"/>&nbsp;&nbsp;
+																<c:out value="${i}"/>
 															</a>
 														</c:otherwise>
 													</c:choose>
 												</c:forEach>
 												<c:if test="${next}">
-													<a href="${pageContext.request.contextPath}/alba/applyListOk.ab?page=${endPage + 1}" class="page-num arrow next">&gt;</a>
+													<a href="${pageContext.request.contextPath}/alba/applyListOk.ab?page=${endPage + 1}" class="page-num arrow next"></a>
+													<a href="${pageContext.request.contextPath}/alba/applyListOk.ab?page=${realEndPage}" class="page-num arrow nnext"></a>
 												</c:if>
-												<a class="page-num arrow nnext" href="#"></a>
 											</div>
 										</div>
 									</form>
@@ -143,9 +152,8 @@
 		</div>
 	</div>
 	</div>
-	<jsp:include
-		page="${pageContext.request.contextPath}/app/fix/footer.jsp" />
+	<jsp:include page="${pageContext.request.contextPath}/app/fix/footer.jsp" />
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/alba/albe_days.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/assets/js/alba/alba_days.js"></script> --%>
 </html>
