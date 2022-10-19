@@ -22,7 +22,6 @@ public class AlbaFrontController extends HttpServlet {
 		doProcess(req, resp);
 	}
 
-
 	protected void doProcess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String requestURI = req.getRequestURI();
 		String contextPath = req.getContextPath();
@@ -34,7 +33,6 @@ public class AlbaFrontController extends HttpServlet {
 		}
 		else if(target.equals("/alba/applyListOk.ab")) {//알바 목록페이지 들어갔을 때, DB에서 알바 전체목록 가져오기(SELECT)
 			result = new ApplyListOkController().execute(req, resp);
-
 		}
 		else if(target.equals("/alba/viewCountOk.ab")) {//알바 목록페이지 조회순 정렬
 
@@ -58,14 +56,14 @@ public class AlbaFrontController extends HttpServlet {
 
 		}
 
-
-		if(result != null) {
-			if(result.isRedirect()) {
-				resp.sendRedirect(result.getPath());
-			}else {
-				RequestDispatcher dispatcher = req.getRequestDispatcher(result.getPath());
-				dispatcher.forward(req, resp);
-			}
-		}
+	    if(result != null) {
+	         if(result.isRedirect()) {
+	            resp.sendRedirect(result.getPath());
+	         }else {
+	            RequestDispatcher dispatcher = req.getRequestDispatcher(result.getPath());
+	            dispatcher.forward(req, resp);
+	         }
+	    }
+		
 	}
 }
