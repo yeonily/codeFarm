@@ -8,6 +8,9 @@
    
    <typeAliases>
       <typeAlias type="com.farmer.app.member.vo.MemberVO" alias="memberVO"/>
+
+     <!--  <typeAlias type="com.farmer.app.member.vo.MemberDTO" alias="memberDTO"/> -->
+
       <typeAlias type="com.farmer.app.alba.vo.AlbaVO" alias="albaVO"/>
       <typeAlias type="com.farmer.app.memberAlba.vo.MemberAlbaVO" alias="memberAlbaVO"/>
       <typeAlias type="com.farmer.app.program.vo.ProgramVO" alias="programVO"/>
@@ -53,6 +56,6 @@
       <mapper resource="com/farmer/mybatis/mapper/CommunityFileMapper.xml"/>
       <mapper resource="com/farmer/mybatis/mapper/NoticeFileMapper.xml"/>
       <mapper resource="com/farmer/mybatis/mapper/MyPageMapper.xml"/>
+      <mapper resource="com/farmer/mybatis/mapper/AdminMapper.xml"/>
    </mappers>
-   
 </configuration>
