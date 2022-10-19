@@ -9,12 +9,11 @@
 <title>프로그램 신청 페이지</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/program/programApply.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/fix/page.css"/>
-    
+
 </head>
 <body>
     <jsp:include page="${pageContext.request.contextPath}/app/fix/header.jsp"/>
     <!-- 바디 -->
-</div>
     <div class="wrap">
         <div class="main">
             <div class="sub_wrap">
@@ -66,14 +65,14 @@
                                             <div class="k_result inner clearfix">
                                                 <p class="count">
                                                     총 <span><c:out value="${totalCount}"/></span>건 (진행중 
-                                                	<span>247</span>건) 
+                                                	<span class="pCount"><c:out value="${processCount}" /></span>건) 
                                                 </p>
                                                 <br>
                                                 <ul style="margin: 0px">
                                                 		<c:if test="${programs != null and fn:length(programs) > 0}">
                                                 			<c:forEach var="program" items="${programs}">
-                                                    <li>
-                                                        
+                                                			
+                                                    <li class="program" onclick="location.href='${pageContext.request.contextPath}/program/apply01Ok.pg?programNumber=${program.getProgramNumber()}'">
                                                             <div class="info">
                                                                 <p class="local"><c:out value="${program.getProgramLocation()}"/></p>
                                                                 <!-- 진행사항 -->
@@ -85,8 +84,12 @@
                                                             </div>
                                                             <div class="num">
                                                                 <p class="prd">
-                                                                    <span class="endstatus">D-1</span> &nbsp; | &nbsp; <c:out value="${program.getProgramApplyEndDate()}"/></p>
-                                                                <p class="hits"><img src="https://www.rda.go.kr/young/images/site/sub/common_ico_view.png"> <c:out value="${program.getProgramViewCount()}"/></p>
+                                                                    <span class="endstatus"></span> &nbsp; | &nbsp; 
+                                                                    <span class="end-day"><c:out value="${program.getProgramApplyEndDate()}"/></span>
+                                                                    <span style="display: none;"><c:out value="${program.getProgramApplyStartDate()}" /></span>
+                                                                </p>
+                                                                <p class="hits"><img src="https://www.rda.go.kr/young/images/site/sub/common_ico_view.png"> 
+                                                                <c:out value="${program.getProgramViewCount()}"/></p>
                                                             </div>
                                                             <div class="file">
                                                             </div>
@@ -132,9 +135,8 @@
                 </div>
             </div>
         </div>
-    </div>
     <jsp:include page="${pageContext.request.contextPath}/app/fix/footer.jsp"/>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-
+<script src="${pageContext.request.contextPath}/assets/js/program/program_day.js"></script>
 </html>

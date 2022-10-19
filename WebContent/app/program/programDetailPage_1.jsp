@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +11,6 @@
 </head>
 <body>
   <jsp:include page="${pageContext.request.contextPath}/app/fix/header.jsp"/>
- 
     <div class="wrap">
         <div class="sub_title">
             <div class="container">
@@ -20,8 +21,12 @@
                                 <div class="top" style="display: inline-block">프로그램 신청</div>
                                 <div class="lgr_snb">
                                     <ul class="lgr_ul">
-                                        <li class="nowMenu"><span class="checkText">농촌 체험 프로그램</span></li>
-                                        <li class="secondMenu"><span>농촌 아르바이트</span></li>
+                                     <li class="nowMenu">
+                                         <a class=a_tag href="${pageContext.request.contextPath}/program/applyListOk.pg"><span class="checkText">농촌 체험 프로그램</span></a>
+                                     </li>
+                                     <li>
+                                         <a class=a_tag href="${pageContext.request.contextPath}/alba/applyListOk.ab"><span class="secondMenu">농촌 아르바이트</span></a>
+                                     </li>
                                     </ul>
                                 </div>
                             </nav>
@@ -91,55 +96,53 @@
             </div>
         </div>
         <div class="sub_guide">
-            <form action="">
-                <h3 class="view_tit">프로그램 상세 페이지</h3>
-                <div class="view_main">
-                    <img src="https://www.kofpi.or.kr/repository/thumimg/temp4970371408956360760004.jpg" alt="">
-                    <div class="detail_info">
-                        <div class="info_apply">
-                            <a href="" class="apply_on">
-                                <span>프로그램 신청</span>
-                            </a>
-                        </div>
-                        <table class="info_table">
-                            <colgroup>
-                                <col style="width: 145px;">
-                                <col>
-                            </colgroup>
-                            <tbody>
-                                <tr>
-                                    <td><span class="list_icon">지역</span></td>
-                                    <td><span>충남 영동</span></td>
-                                </tr>
-                                <tr>
-                                    <td><span class="list_icon">교육 기간</span></td>
-                                    <td><span>2022-10-09 ~ 2022-10-09</span></td>
-                                </tr>
-                                <tr>
-                                    <td><span class="list_icon">교육 시간</span></td>
-                                    <td><span>13:00~17:00</span></td>
-                                </tr>
-                                <tr>
-                                    <td><span class="list_icon">수강료</span></td>
-                                    <td><span>무료</span></td>
-                                </tr>
-                                <tr>
-                                    <td><span class="list_icon">신청 기간</span></td>
-                                    <td><span>2022-09-29 09:00 ~ 2022-10-09 18:00</span></td>
-                                </tr>
-                                <tr>
-                                    <td><span class="list_icon">모집 인원 수</span></td>
-                                    <td><span>20명</span></td>
-                                </tr>
-                                <tr>
-                                    <td><span class="list_icon">문의 전화</span></td>
-                                    <td><span>1600-1234</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </form>
+           <h3 class="view_tit">프로그램 상세 페이지</h3>
+           <div class="view_main">
+               <img src="${pageContext.request.contextPath}/assets/images/${program.getProgramImage()}" alt="">
+               <div class="detail_info">
+                   <div class="info_apply">
+                       <a href="${pageContext.request.contextPath}/program/apply02.pg" class="apply_on">
+                           <span>프로그램 신청</span>
+                       </a>
+                   </div>
+                   <table class="info_table">
+                       <colgroup>
+                           <col style="width: 145px;">
+                           <col>
+                       </colgroup>
+                       <tbody>
+                           <tr>
+                               <td><span class="list_icon">지역</span></td>
+                               <td><span>${program.programLocation}</span></td>
+                           </tr>
+                           <tr>
+                               <td><span class="list_icon">교육 기간</span></td>
+                               <td><span>${program.getProgramStartDate()} ~ ${program.getProgramEndDate()}</span></td>
+                           </tr>
+                           <tr>
+                               <td><span class="list_icon">교육 시간</span></td>
+                               <td><span>${program.getProgramStartTime()} ~ ${program.getProgramEndTime()}</span></td>
+                           </tr>
+                           <tr>
+                               <td><span class="list_icon">수강료</span></td>
+                               <td><span>${program.getProgramFee()}원</span></td>
+                           </tr>
+                           <tr>
+                               <td><span class="list_icon">신청 기간</span></td>
+                               <td><span>${program.getProgramApplyStartDate()} ~ ${program.getProgramApplyEndDate()}</span></td>
+                           </tr>
+                           <tr>
+                               <td><span class="list_icon">모집 인원 수</span></td>
+                               <td><span>${program.getProgramRecruitedCount()}명/${program.getProgramRecruitedTotalCount()}명</span></td>
+                           </tr>
+                           <tr>
+                               <td><span class="list_icon">문의 전화</span></td>
+                               <td><span>${program.getProgramPhoneNumber()}</span></td>
+                           </tr>
+                       </tbody>
+                   </table>
+               </div>
+           </div>
         </div>
     </div>
   <jsp:include page="${pageContext.request.contextPath}/app/fix/footer.jsp"/>

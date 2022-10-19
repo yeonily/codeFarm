@@ -54,6 +54,7 @@ nav.snb{
 .lgr_snb{
     display: inline-block;
     margin-left: 100px;
+    width: 255px;
 }
 
 ul.lgr_ul{
@@ -63,7 +64,9 @@ ul.lgr_ul{
 .sub_wrap .sub_title ul li{
     list-style: none;
     font-size: 0.882rem;
+    float: left;
 }
+
 li.nowMenu{
     float: left;
     color: #333;
@@ -317,3 +320,7 @@ td span.list_icon::before{
     color: #333;
     font-weight: 600;
 }
+a.a_tag{
+	text-decoration: none;
+}
+
