@@ -1,6 +1,9 @@
 package com.farmer.app.program;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 import javax.servlet.ServletException;
@@ -17,6 +20,8 @@ public class ApplyListOkController implements Execute {
 		HashMap<String, Integer> pageMap = new HashMap<String, Integer>();
 		ProgramDAO programDAO = new ProgramDAO();
 		Result result = new Result();
+		
+//		페이지
 		String temp = req.getParameter("page");//현재 페이지
 		int page = temp == null ? 1 : Integer.parseInt(temp);//디폴트는 1페이지
 		
@@ -38,6 +43,13 @@ public class ApplyListOkController implements Execute {
 		pageMap.put("startRow", startRow);
 		pageMap.put("rowCount", rowCount);
 		
+        // 현재 날짜/시간
+        Date today = Calendar.getInstance().getTime();
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+        // 포맷팅 적용
+        String fToday = f.format(today);
+        
+        req.setAttribute("processCount", programDAO.selectProcess(fToday));
 		req.setAttribute("programs", programDAO.selectAll(pageMap));
 		req.setAttribute("totalCount", total);
 		req.setAttribute("page", page);

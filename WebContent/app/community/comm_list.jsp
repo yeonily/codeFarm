@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -82,7 +84,7 @@
     </form>
 
     <span class="list-count">총
-        <span>246</span>건
+        <span><c:out value="${total }"/></span>건
     </span>
 
     <table>
@@ -98,46 +100,65 @@
         </thead>
         <!-- ↓ 데이터 출력 -->
         <tbody>
-            <tr>
-                <td class="number">2</td>
-                <td class="title"><a href="">청년! 3박4일 예천에 한번 살아볼까요? (0) </a> </td>
-                <td class="file"><img src="${pageContext.request.contextPath}/assets/images/common/fileImage.png" alt=""></td>
-                <td class="registrant">이**</td>
-                <td class="regist-date">2022-09-30</td>
-                <td class="viewcount">11</td>
-            </tr>
-            <tr>
-                <td class="number">1</td>
-                <td class="title"><a href="">570만원 전액 국비지원 (0)</a> </td>
-                <td class="file">-</td>
-                <td class="registrant">김**</td>
-                <td class="regist-date">2022-09-20</td>
-                <td class="viewcount">21</td>
-            </tr>
-        </tbody>
+				<c:choose>
+					<c:when test="${boards != null and fn:length(boards) > 0}">
+						<c:forEach var="board" items="${boards}">
+							<tr>
+								<td><c:out value="${board.getCommunityNumber()}" /></td>
+								<td>
+									<%-- <a href='${pageContext.request.contextPath}/board/detailOk.bo?boardNumber=${board.getBoardNumber()}'> --%>
+										<c:out value="${board.getCommunityTitle()}" />
+									<!-- </a> -->
+								</td>
+								<td>첨부파일</td>
+								<td><c:out value="${board.getMemberId()}" /></td>
+								<td><c:out value="${board.getCommunityDate()}" /></td>
+								<td><c:out value="${board.getCommunityViewCount()}" /></td>
+							</tr>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<tr>
+							<td colspan="5" align="center">등록된 게시물이 없습니다.</td>
+						</tr>
+					</c:otherwise>
+				</c:choose>
+		</tbody>
     </table>
     <div class="te_right mt25">
         <a href="" onclick="doCreate();" class="btntype01 advice_btn">등록</a>
     </div>
     <!-- 페이징 -->
                 <div id="page" class="page_height">
-                    <div class="page_nation">
-                       <a class="page-num arrow pprev" href="#"></a>
-                       <a class="page-num arrow prev" href="#"></a>
-                       <a class="page-num active" href="#">1</a>
-                       <a class="page-num" href="#">2</a>
-                       <a class="page-num" href="#">3</a>
-                       <a class="page-num" href="#">4</a>
-                       <a class="page-num" href="#">5</a>
-                       <a class="page-num" href="#">6</a>
-                       <a class="page-num" href="#">7</a>
-                       <a class="page-num" href="#">8</a>
-                       <a class="page-num" href="#">9</a>
-                       <a class="page-num" href="#">10</a>
-                       <a class="page-num arrow next" href="#"></a>
-                       <a class="page-num arrow nnext" href="#"></a>
-                    </div>
-                </div>
+				<div class="page_nation">
+					<%-- <c:if test="${prev}">
+						<a href="${pageContext.request.contextPath}/board/listOk.bo?page=${startPage - 1}">&lt;</a>
+					</c:if>
+					<c:forEach var="i" begin="${startPage}" end="${endPage}">
+						<c:choose>
+							<c:when test="${not (i eq page)}">
+								<a href="${pageContext.request.contextPath}/board/listOk.bo?page=${i}">
+									<c:out value="${i}" />&nbsp;&nbsp;
+								</a>
+							</c:when>
+							<c:otherwise>
+								<c:out value="${i}" />&nbsp;&nbsp;
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					<c:if test="${next}">
+						<a href="${pageContext.request.contextPath}/board/listOk.bo?page=${endPage + 1}">&gt;</a>
+					</c:if> --%>
+					<a class="page-num arrow pprev" href="#"></a> <a
+						class="page-num arrow prev" href="#"></a> <a
+						class="page-num active" href="#">1</a> <a class="page-num"
+						href="#">2</a> <a class="page-num" href="#">3</a> <a
+						class="page-num" href="#">4</a> <a class="page-num" href="#">5</a>
+					<a class="page-num" href="#">6</a> <a class="page-num" href="#">7</a>
+					<a class="page-num" href="#">8</a> <a class="page-num" href="#">9</a>
+					<a class="page-num" href="#">10</a> <a class="page-num arrow next" href="#"></a> <a class="page-num arrow nnext" href="#"></a>
+				</div>
+			</div>
 </div>
 </div>
 <jsp:include page="${pageContext.request.contextPath}/app/fix/footer.jsp"/>

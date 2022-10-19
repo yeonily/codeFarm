@@ -1,8 +1,12 @@
 package com.farmer.app.community.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import com.farmer.app.community.vo.CommunityDTO;
 import com.farmer.app.community.vo.CommunityVO;
 import com.farmer.mybatis.config.MyBatisConfig;
 
@@ -17,5 +21,20 @@ public class CommunityDAO {
 	/* 게시글 작성 */
 	public void write(CommunityVO communityVO) {
 		sqlSession.insert("Community.write", communityVO);
+	}
+	
+	/* 게시글 전체 개수 */
+	public int selectCnt() {
+		return sqlSession.selectOne("Community.selectCnt");
+	}
+	
+	/* 게시글 전체 목록 */
+	public List<CommunityDTO> selectAll(Map<String, Integer> pageMap) {
+		return sqlSession.selectList("Community.selectAll", pageMap);
+	}
+	
+	/* 가장 최신 게시글 번호 */
+	public int selectCurrentSequence() {
+		return sqlSession.selectOne("Community.selectCurrentSequence");
 	}
 }
