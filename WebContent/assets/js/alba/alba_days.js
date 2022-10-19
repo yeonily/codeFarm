@@ -29,9 +29,20 @@ $(document).ready(function(){
 		} else {
 			$countDay.html("마감");
 			$progress.html("마감");
+			$(this).parents("li.alba").css("backgroundColor","#ededed");
+			$(this).parents("li.alba").css("filter","grayscale(1)");
+			$(this).parents("li.alba").css("opacity",".6");
 		}
 	});
 });
+
+/* 신청이 마감된 아르바이트는 디테일 페이지에서 프로그램 신청 버튼 없애기 */
+if (countDates($("#startDate")) > 0) {
+	$("a").remove("#alba_apply");
+	
+} else if (dDaysCount($("#endDate")) < 0) {
+	$("a").remove("#alba_apply");
+}
 
 /* 디데이 계산 함수 */
 function dDaysCount(endDay){
@@ -44,7 +55,7 @@ function dDaysCount(endDay){
 	return result;
 }
 
-/* 현재시간 - 신청 시작 날자 */
+/* 현재시간 - 신청 시작 날짜 */
 function countDates(startDay){
 	let today = new Date(); //현재 날짜 가져오기
 	let start = new Date(startDay.html()).getTime(); //시작날짜
@@ -54,4 +65,3 @@ function countDates(startDay){
 	
 	return result;
 }
-

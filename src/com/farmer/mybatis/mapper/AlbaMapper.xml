@@ -16,4 +16,28 @@
 	<select id="selectProcess" parameterType="string" resultType="_int">
 		select count(alba_number)  from tbl_alba where #{today} BETWEEN alba_apply_start_date AND alba_apply_end_date;
 	</select>
+	
+	<!-- 조회수 -->
+	<update id="updateViewCount" parameterType="_int">
+		update tbl_alba 
+		set alba_view_count = alba_view_count + 1 
+		where alba_number = #{albaNumber} 
+	</update>
+	
+	<!-- 클릭한 글 내용 조회 -->
+	<select id="select" parameterType="_int" resultType="albaVO">
+		select alba_number, alba_name, alba_location, alba_start_date, alba_end_date, 
+		alba_start_time, alba_end_time, alba_fee, alba_apply_start_date, alba_apply_end_date, 
+		alba_date, alba_recruited_count, alba_recruited_total_count, alba_view_count, 
+		alba_phone_number, alba_image, member_number
+		from tbl_alba where alba_number = ${albaNumber}
+	</select>
+	
+	<insert id="insertAlba" parameterType="albaVO">
+		insert into tbl_alba
+		(alba_name, alba_location, alba_start_date, alba_end_date, alba_start_time, alba_end_time, alba_fee, 
+		alba_apply_start_date, alba_apply_end_date, alba_recruited_total_count, alba_phone_number, alba_image, member_number)
+		values(#{albaName}, #{albaLocation}, #{albaStartDate}, #{albaEndDate}, #{albaStartTime}, #{albaEndTime}, #{albaFee}, 
+		#{albaApplyStartDate}, #{albaApplyEndDate}, #{albaRecruitedTotalCount}, #{albaPhoneNumber}, #{albaImage}, #{memberNumber})
+	</insert>
 </mapper>
