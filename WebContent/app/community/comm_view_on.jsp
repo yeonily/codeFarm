@@ -38,7 +38,7 @@
                                         <span>멘토 홍보 게시판</span>
                                     </a>
                                 </li>
-                                <li class="nowMenu"><a href="/young/board/board08.do" class="active">
+                                <li class="nowMenu"><a href="${pageContent.request.contetPath}/community/listOk.cm" class="active">
                                         <span>소통공간</span>
                                     </a>
                                 </li>
@@ -145,7 +145,12 @@
 	</div>
 	<jsp:include page="${pageContext.request.contextPath}/app/fix/footer.jsp"/>
 </body>
+<script>
+	let communityNumber = "${board.getCommunityNumber()}";
+	let memberNumber = "${board.getMemberNumber()}";
+	let memberId = "${board.getMemberId()}";
+</script>
+
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/community/reply.js"></script>
-
 </html>

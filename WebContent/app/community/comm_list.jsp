@@ -106,7 +106,7 @@
 							<tr>
 								<td><c:out value="${board.getCommunityNumber()}" /></td>
 								<td>
-									<a href='${pageContext.request.contextPath}/community/detailOk.cm?boardNumber=${board.getCommunityNumber()}'>
+									<a href='${pageContext.request.contextPath}/community/detailOk.cm?communityNumber=${board.getCommunityNumber()}'>
 										<c:out value="${board.getCommunityTitle()}" />
 									</a>
 								</td>

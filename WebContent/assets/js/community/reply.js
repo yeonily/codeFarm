@@ -16,56 +16,80 @@ if ($(this).val().length > 1000){
     });
 
 /* 댓글 목록 출력 */
-showList();
+show();
 
-function showList(){
-	let text="";
+function show() {
+	$.ajax({
+		url: "/reply/listOk.re",
+		type: "get",
+		data: {communityNumber: communityNumber},
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: showList
+	});
+}
+
+function showList(replyList){
+		if(replyList.length > 0) {
+		let text="";
 	
-	text+= `<div id="reply">`;
-	
-	/* *****여기서부터 */
-	text+= `<div class="re-list">`;
-	
-	text+= `<div class="re-top">`;
-	text+= `<span class="re-writer">사용자 ID</span>`;
-	/* 게시글의 작성자와 댓글의 작성자가 일치할 때 */
-		text+= `<span class="re-b-writer">게시글 작성자</span>`;
-		
-	text+= `<span class="re-date">2022-10-15 22:45 날짜</span>`;
-	/* 내가 작성한 댓글일 때만 */
-		text+= `<span class="re-btn-group">`;
-		text+= `<a href="javascript:void(0);" class="re-modify-ready re-btn">수정</a>`;
-		text+= `<a href="javascript:void(0);" class="re-delete">삭제</a>`;
-		text+= `<a href="javascript:void(0);" class="re-modify re-btn">저장</a>`;
-		text+= `<a href="javascript:void(0);" class="re-cancel">취소</a>`;
-		text+= `</span>`;
-	
-	text+= `</div>`;
-	text+= `<div class="re-content">`;
-	text+= `<pre>댓글 내용 적는 칸</pre>`;
-	text+= `</div>`;
-	
-	text+= `</div>`;
-	/* *****여기까지 댓글 출력부분 */
-	
-	text+= `</div>`;
-	
-	
-	$("#replyList").html(text);
+		replyList.forEach(reply => {
+			text += `<div id="reply">`;
+				text+= `<div class="re-list">`;
+				text+= `<div class="re-top">`;
+					text+= `<span class="re-writer">`+ reply.memberId +`</span>`;
+					text+= `<span class="re-b-writer">게시글 작성자</span>`;
+					text+= `<span class="re-date">`+ reply.replyDate +`</span>`;
+					text+= `<span class="re-btn-group">`;
+						text+= `<a href="` + reply.replyNumber + `" class="re-modify-ready re-btn">수정</a>`;
+						text+= `<a href="` + reply.replyNumber + `" class="re-delete">삭제</a>`;
+						text+= `<a href="` + reply.replyNumber + `" class="re-modify re-btn">저장</a>`;
+						text+= `<a href="` + reply.replyNumber + `" class="re-cancel">취소</a>`;
+					text+= `</span>`;
+				text+= `</div>`;
+				text+= `<div class="re-content">`;
+					text+= `<pre>` + reply.replyContent + `</pre>`;
+				text+= `</div>`;
+			text+= `</div>`;			
+			
+			$("#replyList").html(text); /* 위에서 작성된 내용들 최종적으로 삽입 */
+		});
+	}
 }
 
 /* 댓글 작성 등록 */
 function send(){
 	let replyContent = replyForm.replyContent.value;
 
-	if(!replyContent){
+	if(!replyContent){ /* 유효성 검사 */
 		alert("댓글 내용을 작성해주세요.");
 		return;
 	}
+	
+	$.ajax({ /* 작성을 다 한 후에는 show를 콜백함수로 호출하여 다시 댓글목록 조회 */
+		url: "/reply/writeOk.re",
+		type: "get",
+		data: {replyContent: replyContent, communityNumber: communityNumber, memberNumber: memberNumber},
+		contentType: "application/json; charset=utf-8",
+		success: function(){show();}
+	});
 }
 
+
+/* 댓글 삭제 */
+$("#replyList").on("click", ".re-delete", function(e){
+	e.preventDefault();
+	$.ajax({ /* 작성을 다 한 후에는 show를 콜백함수로 호출하여 다시 댓글목록 조회 */
+		url: "/reply/deleteOk.re",
+		type: "get",
+		success: function(){show();}
+	});
+});
+
+
 /* 댓글 수정 */
-$("#replyList").on("click", ".re-modify-ready", function(){
+$("#replyList").on("click", ".re-modify-ready", function(e){
+	e.preventDefault();
 	const buttonWrap = $(this).parent();
 	const buttons = buttonWrap.children();
 	const content = buttonWrap.parent().next().children();
@@ -75,24 +99,27 @@ $("#replyList").on("click", ".re-modify-ready", function(){
 	buttons.eq(2).show();
 	buttons.eq(3).show();
 	
-	content.replaceWith("<textarea>댓글 내용 적는 칸</textarea>")
-});
-
-/* 댓글 삭제 */
-$("#replyList").on("click", ".re-delete", function(){
-	console.log("댓글 삭제");
-
+	content.replaceWith("<textarea>" + content.text() + "</textarea>");
 });
 
 /* 댓글 수정 저장 */
-$("#replyList").on("click", ".re-modify", function(){
-	console.log("댓글 수정 완료");
+$("#replyList").on("click", ".re-modify", function(e){
+	e.preventDefault();
+	const buttonWrap = $(this).parent();
+	const buttons = buttonWrap.children();
+	const content = buttonWrap.parent().next().children().val();
 	
+	$.ajax({
+		url: "/reply/modifyOk.re",
+		data: {replyContent: content, replyNumber: $(this).attr("href")},
+		success: function(){show();}
+	});
 });
 
 
 /* 댓글 수정 취소 */
-$("#replyList").on("click", ".re-cancel", function(){
+$("#replyList").on("click", ".re-cancel", function(e){
+	e.preventDefault();
 	const buttonWrap = $(this).parent();
 	const buttons = buttonWrap.children();
 	const content = buttonWrap.parent().next().children();
@@ -102,5 +129,5 @@ $("#replyList").on("click", ".re-cancel", function(){
 	buttons.eq(2).hide();
 	buttons.eq(3).hide();
 	
-	content.replaceWith("<pre>댓글 내용 적는 칸</pre>")
+	content.replaceWith("<pre>" + content.text() + "</pre>")
 });

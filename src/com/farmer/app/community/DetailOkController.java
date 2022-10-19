@@ -22,11 +22,11 @@ public class DetailOkController implements Execute {
 		CommunityFileDAO communityFileDAO = new CommunityFileDAO();
 		Result result = new Result();
 		
-		int boardNumber = Integer.valueOf(req.getParameter("boardNumber"));
+		int communityNumber = Integer.valueOf(req.getParameter("communityNumber"));
 
-		req.setAttribute("board", communityDAO.select(boardNumber));
-		req.setAttribute("files", communityFileDAO.select(boardNumber)); // 해당 글번호의 첨부파일 정보
-		communityDAO.updateViewCount(boardNumber);
+		req.setAttribute("board", communityDAO.select(communityNumber));
+		req.setAttribute("files", communityFileDAO.select(communityNumber)); // 해당 글번호의 첨부파일 정보
+		communityDAO.updateViewCount(communityNumber);
 		
 //		System.out.println(communityFileDAO.select(boardNumber).size() == 0);
 		
