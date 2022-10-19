@@ -29,10 +29,14 @@ public class AdminFrontController extends HttpServlet {
 	    String target = requestURI.substring(contextPath.length());
 	    Result result = null;
 	    
+	    System.out.println("AdminFrontController 들어옴0");
+	    
 	    if(target.equals("/admin/admin.ad")) {//관리자 페이지로 이동
+	    	System.out.println("AdminFrontController 들어옴1");
 	    	
 	       }else if(target.equals("/admin/User.ad")) { //관리자페이지안에서 사용자관리 페이지로 이동
 	    	   result = new UserOkController().execute(req, resp);
+	    	   System.out.println("AdminFrontController 들어옴2");
 	    	   
 		   }else if(target.equals("/admin/UserSearchOk.ad")) { //사용자 정보 검색하기(SELECT)
 			   
