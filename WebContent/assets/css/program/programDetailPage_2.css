@@ -54,6 +54,7 @@ nav.snb{
 .lgr_snb{
     display: inline-block;
     margin-left: 100px;
+    width: 255px;
 }
 
 ul.lgr_ul{
@@ -313,4 +314,8 @@ table td{
 .checkText{
     color: #333;
     font-weight: 600;
+}
+
+a.a_tag{
+	text-decoration: none;
 }

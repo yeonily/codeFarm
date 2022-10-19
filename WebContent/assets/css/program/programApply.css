@@ -411,7 +411,14 @@ dl, ul, ol, menu, li {
     display: inline-block;
     margin-bottom: 40px;
     box-sizing: border-box;
+    cursor: pointer;
 }
+
+.sub01_con .k_result li:hover {
+    border: 2px solid #7fb069;
+    box-shadow: 5px 5px 8px #d8e7d2;
+}
+
 .sub01_con .k_result li:nth-child(even) {
     float: right;
 }

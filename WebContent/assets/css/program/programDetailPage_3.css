@@ -54,6 +54,7 @@ nav.snb{
 .lgr_snb{
     display: inline-block;
     margin-left: 100px;
+    width: 255px;
 }
 
 ul.lgr_ul{
