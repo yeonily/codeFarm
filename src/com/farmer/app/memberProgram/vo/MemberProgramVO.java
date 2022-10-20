@@ -10,11 +10,18 @@ public class MemberProgramVO {
 	private String memberEmail;
 	private String memberReason;
 	private String ApplyDate;
+	private int programNumber;
 	private int memberNumber;
 	
 	public MemberProgramVO() {;}
 
+	public int getProgramNumber() {
+		return programNumber;
+	}
 
+	public void setProgramNumber(int programNumber) {
+		this.programNumber = programNumber;
+	}
 
 	public int getProgramApplyNumber() {
 		return programApplyNumber;
@@ -96,20 +103,16 @@ public class MemberProgramVO {
 		this.memberNumber = memberNumber;
 	}
 
-
-
 	@Override
 	public String toString() {
 		return "MemberProgramVO [programApplyNumber=" + programApplyNumber + ", memberName=" + memberName
 				+ ", memberGender=" + memberGender + ", memberBirth=" + memberBirth + ", memberPhoneNumber="
 				+ memberPhoneNumber + ", memberAddress=" + memberAddress + ", memberEmail=" + memberEmail
-				+ ", memberReason=" + memberReason + ", ApplyDate=" + ApplyDate + ", memberNumber=" + memberNumber
-				+ "]";
+				+ ", memberReason=" + memberReason + ", ApplyDate=" + ApplyDate + ", programNumber=" + programNumber
+				+ ", memberNumber=" + memberNumber + "]";
 	}
 
 
-
-	
 }
 
 

@@ -2,12 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MyPage">
 	<select id="selectMyPage" parameterType="_int" resultType="memberVO">
-		select member_name,member_grade,member_location
+		select member_name,member_grade,member_location,member_id,member_phone_number
 		from tbl_member mb join tbl_mentor mt
-		on mb.member_phone_number = mt.mentor_phone_number and mb.member_number = #{memberNumber}
+		on mb.member_number = mt.member_number
+		where mb.member_number = #{memberNumber}
 	</select>
 	
 	<update id="updateMyPage" parameterType="memberVO">
-	
+		update tbl_member
+		set member_grade = #{memberGrade} , member_password = #{memberPassword} , member_phone_number = #{memberPhoneNumber} , member_email = #{memberEmail} , member_location = #{memberLocation}
+		where member_number = #{memberNumber}
 	</update>
+	
 </mapper>

@@ -53,16 +53,16 @@
         </div>
     </div><!-- =========================================================================================================================================== -->
     <div class="join_content">
-        <form action="" name="detailForm">
+        <form method="post" action="${pageContext.request.contextPath}/member/joinOk.me" name="detailForm">
             <table class="detail_table">
                 <tbody><tr>
                     <th><p class="farmlist">구분</p></th>
                     <td>
 						<label class="grade">
-						   <input type="radio" name="memberGrade" id="default_grade" value="user"/> 일반인
+						   <input type="radio" name="memberGrade" id="default_grade" value="1"/> 일반인
 						</label>
 						<label class="grade">
-						   <input type="radio" name="memberGrade" value="farmer"/> 농장주
+						   <input type="radio" name="memberGrade" value="-1"/> 농장주
 						</label>
                         <span class="error_next_box u_black" id="farmer_user" style="visibility: hidden;" aria-live="assertive">농장주만 아르바이트, 체험 프로그램 혹은 멘토 홍보글을 등록할 수 있습니다.</span>
 						
@@ -70,7 +70,8 @@
                     <th class="lgr_border_th">비밀번호
                         <p class="lgr_strong">*</p>
                     </th>
-                    <td><input id="password" name="memberPassword" class="w_full" placeholder="비밀번호는 대/소문자, 숫자, 특수문자 조합 10글자입니다." type="password" value=""><span class="form_error" data-path="password" id="passwordMsg"></span></td>
+                    <td><input id="password" name="memberPassword" class="w_full" placeholder="비밀번호는 대/소문자, 숫자, 특수문자 조합 10글자입니다." type="password" value="">
+                    <span class="form_error" data-path="password" id="passwordMsg"></span></td>
                 </tr>
                 <tr id="lgr_usernm">
                     <th><label for="telNo">아이디</label>
@@ -94,6 +95,7 @@
                     <p class="lgr_strong">*</p></th>
                     <td>
                     	<input id="userNm" name="memberName" type="text" placeholder="이름을 입력해주세요."><span class="form_error"></span>
+                   <span class="error_next_box" id="nameMsg"></span>
                     </td>
                     <th class="lgr_border_th">휴대폰 인증
                         <p class="lgr_strong">*</p>
@@ -104,7 +106,7 @@
                             <div class="phoneSize"> 
                                 <label class="phone">
                                 
-                                    <input type="ph" name="memberPhoneNumber" class="phoneNum" value="" placeholder="휴대폰 번호(-제외)를 입력해주세요.">
+                                    <input type="text" name="memberPhoneNumber" class="phoneNum" value="" placeholder="휴대폰 번호(-제외)를 입력해주세요.">
                             </div>    
                                 <div class="fixedBtnSize">
                                     <button type="button" class="btn_phoneNum" onclick="codeSend()">인증번호 받기</button>
@@ -150,7 +152,7 @@
      <span class="error_next_box" id="emailMsg"></span>
                     </td>
                     <th class="lgr_border_th">지역</th>
-                    <td><select id="userInfo01" name="memberLocation01" class="area1" onchange="clickCityChange(this)">
+                    <td><select id="userInfo01" name="memberLocation" class="area1" onchange="clickCityChange(this)">
                         <option value="">-선택-</option>
                         <option value="busan">부산광역시</option>
                         <option value="daegu">대구광역시</option>

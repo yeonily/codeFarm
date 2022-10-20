@@ -49,7 +49,7 @@
 
 
     /* -------------------------------------------------------------- */
-    /* 다른번호 인증 클릭시 */
+    /* 휴대폰 번호 다른번호 인증 클릭시 */
     $(".changePhone").click(function() {
         /* 기존에 있던 요소는 숨기기 */
         $(".changePhone").hide();
@@ -62,27 +62,17 @@
 
     /* 변경할 휴대폰 번호 입력 후 "인증번호 발송" 버튼 클릭시 */
     $(".sendNumber").click(function() {
-	
-		/* 번호 입력 안했을 경우 */
-        if(isNaN(parseInt(detailForm.inputPhone.value))){
-            detailForm.inputPhone.focus();
-            return;
-        }
-
-        /* 기존 요소 숨김 */
-        $(".sendNumber").hide();
-        $(".inputPhone").hide();
-        
-        /* 인증번호 입력하는 창 나옴 */
-        $(".inputCertiNum").show();
-        $(".submitBtn").show();
-    });
-
-
-
+		/*인증번호 발송 input태그, 버튼 숨기기*/
+		$(".inputPhone").hide();
+		$(".sendNumber").hide();
+		
+		/*인증번호 입력 input태그, 버튼 보이기*/
+		$(".inputCertiNum").show();
+		$(".submitBtn").show();
+	});
 
     /* -------------------------------------------------------------- */
-    /* 주요생산품목 "직적입력" 선택시 input 보이게 하기 */
+    /* 주요생산품목 "직접입력" 선택시 input 보이게 하기 */
     $("#selectUserInfo03").change(function() {
         if(this.value == -1) { /* 사용자 선택이 직접입력인 경우 */
             $("#inputItem").show();
@@ -112,9 +102,9 @@
 
     /* -------------------------------------------------------------- */
     /* 취소버튼 클릭시 마이페이지로 이동 */
-    $(".cancelBtn").on("click", function() {
-        location.href="/app/myPage/myProfile.jsp";
-    })
+    /*$(".cancelBtn").on("click", function() {
+      
+    })*/
 
 
     /* -------------------------------------------------------------- */
@@ -163,6 +153,56 @@
         }
     }
 
+/*사용자가 입력한 전화번호*/
+let $inputPhoneNumber;
+
+/*사용자가 인증번호 입력칸에 입력한 값*/
+let $smsCheckNumber;
+
+/*coolSMS에서 보낸 인증번호*/
+let $smsNumber;
+
+/*인증번호 일치 여부 flag 값*/
+let $isCheck = false;
+
+/*인증번호 발송 누를 시*/
+function sendSMS(){
+	   $inputPhoneNumber = $(".inputPhone").val();
+	   console.log($inputPhoneNumber);
+	   $.ajax({
+		   url : "/mypage/send.my",
+		   type : "post",
+		   data: {inputPhoneNumber: $inputPhoneNumber},
+		   success : function (result) {
+			$smsNumber = result;
+			}
+	   })
+   }
+
+/*인증번호 체크*/
+function checkSMS(){
+	$smsCheckNumber = $("#myNumber").val();
+	console.log($smsNumber); 
+	console.log($smsCheckNumber);
+	if($smsCheckNumber == $smsNumber){
+		console.log("인증번호 일치!")
+		 $('#smsEqual').css('visibility', '');
+		 $('#smsNotEqual').css('visibility', 'hidden');
+		 $isCheck = true;
+	}else{
+		console.log("인증번호가 틀렸습니다")
+		 $('#smsEqual').css('visibility', 'hidden');
+		 $('#smsNotEqual').css('visibility', '');
+		 $("#myNumber").focus();
+		 $isCheck = true;
+	}
+}
+
+/*완료 버튼 누를 시*/
 	function send(){
+		if($isCheck = true){
 		detailForm.submit();
+		}else{
+		  alert('비밀번호 일치 여부와 휴대폰번호 인증해주세요.');
+		}
 	}

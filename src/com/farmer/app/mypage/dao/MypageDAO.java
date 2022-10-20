@@ -22,6 +22,6 @@ public class MypageDAO {
 	   }
 	   
 	   public void updateMyPage(MemberVO memberVO){
-		   
+		   sqlSession.update("MyPage.updateMyPage", memberVO);
 	   }
 }

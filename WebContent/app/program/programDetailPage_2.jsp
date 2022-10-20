@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,11 +23,11 @@
                                 <div class="lgr_snb">
                                     <ul class="lgr_ul">
                                         <li class="nowMenu">
-                                         <a class=a_tag href="${pageContext.request.contextPath}/program/applyListOk.pg"><span class="checkText">농촌 체험 프로그램</span></a>
+                                         <a class="a_tag" href="${pageContext.request.contextPath}/program/applyListOk.pg"><span class="checkText">농촌 체험 프로그램</span></a>
                                      </li>
                                      <li>
-                                         <a class=a_tag href="${pageContext.request.contextPath}/alba/applyListOk.ab"><span class="secondMenu">농촌 아르바이트</span></a>
-                                     </li>
+                                         <a class="a_tag" href="${pageContext.request.contextPath}/alba/applyListOk.ab"><span class="secondMenu">농촌 아르바이트</span></a>
+                                     </li>	
                                     </ul>
                                 </div>
                             </nav>
@@ -95,37 +97,37 @@
             </div>
         </div>
         <div class="sub_guide">
-            <form id="apply_form">
+            <form id="apply_form" action="${pageContext.request.contextPath}/memberProgram/applyOK.mp" name="applyForm" method="post" >
                 <h3 class="view_tit">프로그램 신청내역서</h3>
                 <table>
                     <tbody>
                         <tr>
                             <th><label>이름 <p class="red_star">*</p></label></th>
-                            <td><input type="text" id="userName" placeholder="이름을 입력해주세요"></td>
+                            <td><input type="text" id="userName" name="userName" placeholder="이름을 입력해주세요"></td>
                             <th><label>성별</label></th>
-                            <td><input type="text" id="userName" placeholder="남/여"></td>
+                            <td><input type="text" id="userName" name="userGender" placeholder="남/여"></td>
                         </tr>
                         <tr>
                             <th><label>생년월일 <p class="red_star">*</p></label></th>
-                            <td><input type="date" id="userName" placeholder="2000-01-01"></td>
+                            <td><input type="date" id="userName" name="userBirth" placeholder="2000-01-01"></td>
                             <th><label>핸드폰 번호 <p class="red_star">*</p></label></th>
-                            <td><input type="tel" id="userName" placeholder="010-1234-5678"></td>
+                            <td><input type="tel" id="userName" name="userPhone" ></td>
                         </tr>
                         <tr>
                             <th><label>주소</label></th>
-                            <td><input type="text" id="userName"></td>
+                            <td><input type="text" id="userName" name="userAddress"></td>
                             <th><label>이메일 <p class="red_star">*</p></label></th>
-                            <td><input type="email" id="userName"></td>
+                            <td><input type="email" id="userName" name="userEmail"></td>
                         </tr>
                         <tr>
                             <th>프로그램 신청 동기</th>
-                            <td colspan="3"><input type="text" id="userName"style="height: 100px;"></td>
+                            <td colspan="3"><input type="text" id="userName" name="userReason" style="height: 100px;"></td>
                         </tr>
                     </tbody>
                 </table>
                 <div class="btns">
-                    <button id="btn_cancel">취소</button>
-                    <button id="btn_apply">등록</button>
+                    <button id="btn_cancel" type="button" onclick="location.href='${pageContext.request.contextPath}/program/apply01Ok.pg?programNumber=${param.programNumber}'">취소</button>
+                    <button id="btn_apply" type="button" onclick="send()">등록</button>
                 </div>
             </form>
         </div>
@@ -134,5 +136,31 @@
 <jsp:include page="${pageContext.request.contextPath}/app/fix/footer.jsp"/>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script>
+   function send(){
+      if(!applyForm.userName){
+         alert("이름을 작성해주세요.");
+         return;
+      }
+      
+      if(!applyForm.userBirth){
+         alert("생년월일을 작성해주세요.");
+         return;
+      }
+      
+      if(!applyForm.userPhone){
+         alert("핸드폰 번호을 작성해주세요.");
+         return;
+      }
+      
+      if(!applyForm.userEmail){
+         alert("이메일을 작성해주세요.");
+         return;
+      }
+      
+      applyForm.submit();
+   }
 
+  
+</script>
 </html>

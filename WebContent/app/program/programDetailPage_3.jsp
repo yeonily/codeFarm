@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,10 +23,10 @@
                                 <div class="lgr_snb">
                                     <ul class="lgr_ul">
                                        <li class="nowMenu">
-                                         <a class=a_tag href="${pageContext.request.contextPath}/program/applyListOk.pg"><span class="checkText">농촌 체험 프로그램</span></a>
+                                         <a class="a_tag" href="${pageContext.request.contextPath}/program/applyListOk.pg"><span class="checkText">농촌 체험 프로그램</span></a>
                                      </li>
                                      <li>
-                                         <a class=a_tag href="${pageContext.request.contextPath}/alba/applyListOk.ab"><span class="secondMenu">농촌 아르바이트</span></a>
+                                         <a class="a_tag" href="${pageContext.request.contextPath}/alba/applyListOk.ab"><span class="secondMenu">농촌 아르바이트</span></a>
                                      </li>
                                     </ul>
                                 </div>
@@ -99,8 +101,9 @@
                 <span>
                     <img src="https://image.samsungsds.com/resource/kr/images/icon/ico_check.png?queryString=20220128013538" alt="">
                 </span>
-                <p class="h2">신청이 완료되었습니다</h2>
-                <p class="txt">관리자 승인 이후 확정됩니다.&nbsp; 자세한 내용은 마이페이지를 참조해주세요</h2>
+                <p class="h2">신청이 완료되었습니다</p>
+                <p class="txt">관리자 승인 이후 확정됩니다.&nbsp; 자세한 내용은 마이페이지를 참조해주세요</p>
+                <p class="txt returnlist"><a class="txt a_return" href="${pageContext.request.contextPath}/program/applyListOk.pg">목록으로 돌아가기</a></p>
            </div>
         </div>
     </div>

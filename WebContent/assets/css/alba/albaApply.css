@@ -88,10 +88,8 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     display: inline-block;
     margin-left: 60px;
 }
-.nowMenu span{
-    color: rgb(0,0,0,.5);
-}
-li.nowMenu:after {
+
+li .checkText:after {
     content: '/';
     margin: 0 1.176rem;
     color: rgb(0,0,0,.5);
@@ -102,10 +100,6 @@ li.nowMenu:after {
 }
 .lgr_ul li{
     list-style: none;
-}
-.checkText{
-    color: #333;
-    font-weight: 600;
 }
 
 .title_right_box{
@@ -382,7 +376,14 @@ dl, ul, ol, menu, li {
     display: inline-block;
     margin-bottom: 40px;
     box-sizing: border-box;
+    cursor: pointer;
 }
+
+.sub01_con .k_result li:hover {
+    border: 2px solid #7fb069;
+    box-shadow: 5px 5px 8px #d8e7d2;
+}
+
 .sub01_con .k_result li:nth-child(even) {
     float: right;
 }
@@ -401,5 +402,18 @@ button.alba_write_btn { background: #464d77; }
 
 div.d-day { display: inline;}
 
+a.a_tag {
+    text-decoration: none;
+}
 
+span.secondMenu {
+    color: #333;
+    font-weight: 600;
+    font-size: 15px;
+}
 
+span.checkText {
+    float: right;
+    color: rgb(0,0,0,.5);
+    font-size: 0.941rem;
+}

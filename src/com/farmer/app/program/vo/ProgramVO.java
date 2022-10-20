@@ -17,7 +17,6 @@ public class ProgramVO {
 	private int programViewCount;
 	private String programPhoneNumber;
 	private String programImage;
-	private int programApplyNumber;
 	private int memberNumber;
 	
 	public ProgramVO() {;}
@@ -160,14 +159,6 @@ public class ProgramVO {
 		this.programImage = programImage;
 	}
 
-	public int getProgramApplyNumber() {
-		return programApplyNumber;
-	}
-
-	public void setProgramApplyNumber(int programApplyNumber) {
-		this.programApplyNumber = programApplyNumber;
-	}
-
 	@Override
 	public String toString() {
 		return "ProgramVO [programNumber=" + programNumber + ", programName=" + programName + ", programLocation="
@@ -177,8 +168,7 @@ public class ProgramVO {
 				+ programApplyEndDate + ", programDate=" + programDate + ", programRecruitedCount="
 				+ programRecruitedCount + ", programRecruitedTotalCount=" + programRecruitedTotalCount
 				+ ", programViewCount=" + programViewCount + ", programPhoneNumber=" + programPhoneNumber
-				+ ", programImage=" + programImage + ", programApplyNumber=" + programApplyNumber + ", memberNumber="
-				+ memberNumber + "]";
+				+ ", programImage=" + programImage + ", memberNumber=" + memberNumber + "]";
 	}
 
 

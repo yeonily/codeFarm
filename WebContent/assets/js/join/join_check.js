@@ -42,8 +42,25 @@ $("input[name='memberId']").on("blur",function(){
 	checkId($(this).val());
 });
 
+// 이름 입력 검사
+function checkName(memberName){
+	if(!memberName){
+		$("#nameMsg").text("이름을 입력해주세요.");
+		$("#nameMsg").css("color", "red");
+		return;
+	}
+	if(memberName){
+		$("#nameMsg").text("");
+		return;
+	}
+}
 
-// 이메일 중복 검사
+$("input[name='memberName']").on("blur",function(){
+	checkName($(this).val());
+});
+
+
+// 이메일 입력 검사
 
 function checkEmail(memberEmail){
 	if(!memberEmail){
@@ -51,37 +68,31 @@ function checkEmail(memberEmail){
 		$("#emailMsg").css("color", "red");
 		return;
 	}
-	
-function selectBox(e){
-	const value = e.value;
-	
-	document.getElementById('emailSelect').innerText=value;
-	
-	console.log(value);
-}
-	
-	
-	$.ajax({
-		url: contextPath + "/member/checkEmailOk.me",
-		type : "get",
-		data : {memberEmail:memberEmail, value: value},
-		dataType : "json",
-		contentType :"application/json; charset=utf-8",
-		success : function(data){
-			if(!data.result){
-	alert(target);
-				$("#emailMsg").text("사용가능한 이메일입니다.");
-				$("#emailMsg").css("color", "blue");
-			}else{
-				$("#emailMsg").text("중복된 이메일입니다.");
-				$("#emailMsg").css("color", "red");
-			}
-		}
-	});
+	if(memberEmail){
+		$("#emailMsg").text("");
+		return;
+	}
 }
 
 $("input[name='memberEmail']").on("blur",function(){
 	checkEmail($(this).val());
+});
+
+// 비밀번호 입력 검사
+function checkPassword(memberPassword){
+	if(!memberPassword){
+		$("#passwordMsg").text("비밀번호를 입력해주세요.");
+		$("#passwordMsg").css("color", "red");
+		return;
+	}
+	if(memberPassword){
+		$("#passwordMsg").text("");
+		return;
+	}
+}
+
+$("input[name='memberPassword']").on("blur",function(){
+	checkPassword($(this).val());
 });
 
 // 핸드폰번호 유효성 검사
@@ -140,16 +151,6 @@ function checkPhoneNumber(memberPhoneNumber){
 		$("#phoneNumberMsg").css("color", "red");
 		return;
 	}
-	/*if(memberPhoneNumber.contains("-")){
-		$("#phoneNumberMsg").text("하이픈을 빼고 입력해주세요.");
-		$("#phoneNumberMsg").css("color", "red");	
-		return;		
-	}*/
-	
-/*	$('input:contains("-").text("하이폰을 빼고 입력해주세요.")');
-	$('input:contains("-").css("color","red")');*/
-	
-	
 	
 	$.ajax({
 		url: contextPath + "/member/checkPhoneNumberOk.me",
@@ -194,8 +195,8 @@ $("input[name='memberPhoneNumber']").on("blur",function(){
 
     // 휴대폰 인증번호 보내기
     function codeSend(){
-        if(isNaN(parseInt(detailForm.phone.value))){
-            detailForm.phone.focus();
+        if(isNaN(parseInt(detailForm.memberPhoneNumber.value))){
+            detailForm.memberPhoneNumber.focus();
             return;
         }
 
@@ -267,7 +268,7 @@ $("input[name='memberPhoneNumber']").on("blur",function(){
              return;
          }
         
-         if(detailForm.memberPassword.value.length < 4 || detailForm.memberPassword.value.length > 20){
+         if(detailForm.memberPassword.value.length < 10 || detailForm.memberPassword.value.length > 20){
              alert("비밀번호를 확인해주세요.");
              return;
          }
