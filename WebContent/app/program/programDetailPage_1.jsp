@@ -22,10 +22,10 @@
                                 <div class="lgr_snb">
                                     <ul class="lgr_ul">
                                      <li class="nowMenu">
-                                         <a class=a_tag href="${pageContext.request.contextPath}/program/applyListOk.pg"><span class="checkText">농촌 체험 프로그램</span></a>
+                                         <a class="a_tag" href="${pageContext.request.contextPath}/program/applyListOk.pg"><span class="checkText">농촌 체험 프로그램</span></a>
                                      </li>
                                      <li>
-                                         <a class=a_tag href="${pageContext.request.contextPath}/alba/applyListOk.ab"><span class="secondMenu">농촌 아르바이트</span></a>
+                                         <a class="a_tag" href="${pageContext.request.contextPath}/alba/applyListOk.ab"><span class="secondMenu">농촌 아르바이트</span></a>
                                      </li>
                                     </ul>
                                 </div>
@@ -101,8 +101,11 @@
                <img src="${pageContext.request.contextPath}/assets/images/${program.getProgramImage()}" alt="">
                <div class="detail_info">
                    <div class="info_apply">
-                       <a href="${pageContext.request.contextPath}/program/apply02.pg" class="apply_on">
+                       <a href="${pageContext.request.contextPath}/program/apply02.pg?programNumber=${program.getProgramNumber()}" class="apply_on" id="program_apply">
                            <span>프로그램 신청</span>
+                       </a>
+                       <a href="${pageContext.request.contextPath}/program/applyListOk.pg" class="apply_on list" >
+                           <span>목록</span>
                        </a>
                    </div>
                    <table class="info_table">
@@ -125,15 +128,15 @@
                            </tr>
                            <tr>
                                <td><span class="list_icon">수강료</span></td>
-                               <td><span>${program.getProgramFee()}원</span></td>
+                               <td><span>${program.getProgramFee()} 원</span></td>
                            </tr>
                            <tr>
                                <td><span class="list_icon">신청 기간</span></td>
-                               <td><span>${program.getProgramApplyStartDate()} ~ ${program.getProgramApplyEndDate()}</span></td>
+                               <td><span class="startDay">${program.getProgramApplyStartDate()}</span> ~ <span class="endDay">${program.getProgramApplyEndDate()}</span></td>
                            </tr>
                            <tr>
-                               <td><span class="list_icon">모집 인원 수</span></td>
-                               <td><span>${program.getProgramRecruitedCount()}명/${program.getProgramRecruitedTotalCount()}명</span></td>
+                               <td><span class="list_icon">모집 인원</span></td>
+                               <td><span>${count} / ${program.getProgramRecruitedTotalCount()}명</span></td>
                            </tr>
                            <tr>
                                <td><span class="list_icon">문의 전화</span></td>
@@ -148,5 +151,5 @@
   <jsp:include page="${pageContext.request.contextPath}/app/fix/footer.jsp"/>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-
+<script src="${pageContext.request.contextPath}/assets/js/program/program_day.js"></script>
 </html>

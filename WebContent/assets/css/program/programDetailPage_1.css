@@ -257,11 +257,14 @@ p.desc strong{
 
 a.apply_on{
     display: inline-block;
-    background-color: #999999;
     width: 150px;
     height: 35px;
     border-radius: 22px;
     background-color: #0073e2;
+    text-decoration: none;
+}
+a.list{
+    background-color: #464d77;
     text-decoration: none;
 }
 .info_apply a span{
