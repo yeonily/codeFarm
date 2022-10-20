@@ -30,34 +30,36 @@ public class MemberFrontController extends HttpServlet {
 	    Result result = null;
 	    
 	      if(target.equals("/member/checkIdOk.me")) {//아이디중복검사 실행(SELECT)
-	          new CheckIdOkController().execute(req, resp);
-	          
-	       }else if(target.equals("/member/checkEmailOk.me")) {//이메일중복검사 실행(SELECT)
-	    	   new CheckEmailOkController().execute(req, resp);
-	    	   
+	          	new CheckIdOkController().execute(req, resp);
+	      	    	   
 	       }else if(target.equals("/member/checkPhoneNumberOk.me")) {//핸드폰번호중복검 실행(SELECT)
-	    	   new CheckPhoneNumberOkController().execute(req, resp);
+	    	   	new CheckPhoneNumberOkController().execute(req, resp);
 	    	   
-	       }else if(target.equals("/member/join.me")) {//회원가입페이지 이동
+	       }else if(target.equals("/member/join01.me")) {//회원가입페이지 이동
 	    	   	result = new Result();
 				result.setPath("/app/join/join01.jsp");
 	          
-	       }else if(target.equals("/member/join02.me")) {
-	    	   result = new Result();
+	       }else if(target.equals("/member/join02.me")) {//회원가입페이지 2번째로 이동
+	    	   	result = new Result();
 				result.setPath("/app/join/join02.jsp");
-	       }
 	       
-	       else if(target.equals("/member/joinOk.me")) {//회원가입 실행(INSERT)
-	          
+	       }else if(target.equals("/member/joinOk.me")) {//회원가입 실행(INSERT)
+	    	   result = new JoinOkController().execute(req, resp);
+	    	   
 	       }else if(target.equals("/member/login.me")) {//로그인페이지 이동
+	    	   result = new LoginController().execute(req, resp);
 	          
 	       }else if(target.equals("/member/loginOk.me")) {//로그인 실행(SELECT)
+	    	   result = new LoginOkController().execute(req, resp);
 	          
 	       }else if(target.equals("/member/findIdOk.me")) {//아이디 찾기 실행(SELECT)
+	    	   result = new FindIdOkController().execute(req, resp);
 	    	   
 	       }else if(target.equals("/member/findPwOk.me")) {//비밀번호 찾기 실행(UPDATE)
+	    	   result = new FindPwOkController().execute(req, resp);
 	   		
 	       }else if(target.equals("/member/logout.me")) {//로그아웃 (controller 필요)
+	    	   result = new LogoutController().execute(req, resp);
 	   
 	       }
 			   

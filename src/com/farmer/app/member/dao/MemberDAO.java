@@ -3,6 +3,7 @@ package com.farmer.app.member.dao;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import com.farmer.app.member.vo.MemberVO;
 import com.farmer.mybatis.config.MyBatisConfig;
 
 public class MemberDAO {
@@ -17,12 +18,16 @@ public class MemberDAO {
 		   return (Integer)sqlSession.selectOne("Member.checkId", memberId)==1;
 	   }
 	   
-	   public boolean checkEmail(String memberEmail) {
-		   return (Integer)sqlSession.selectOne("Member.checkEmail", memberEmail)==1;
-	   }
-	   
 	   public boolean checkPhoneNumber(String memberPhoneNumber) {
 		   return (Integer)sqlSession.selectOne("Member.checkPhoneNumber", memberPhoneNumber)==1;
+	   }
+	   
+	   public void join(MemberVO memberVO) {
+		   sqlSession.insert("Member.join", memberVO);
+	   }
+	   
+	   public int login(MemberVO memberVO) {
+		   return sqlSession.selectOne("Member.login", memberVO);
 	   }
 	   
 	   
