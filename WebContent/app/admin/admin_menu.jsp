@@ -11,7 +11,7 @@
 
       <!-- 세로 메뉴바 -->
       <nav>
-         <div id="team-logo"><a href="">너와농부싶어</a></div>
+         <div id="team-logo"><a href="${pageContext.request.contextPath}/admin/admin.ad">너와농부싶어</a></div>
 
          <div id='side-menu'>
             <div class="side-menu-contents">
@@ -21,7 +21,7 @@
             <ul>
                <li class='active sub-menu'><a href='#'><span>사용자</span><span class="toggleBtn2">+</span></a>
                   <ul>
-                     <li><a href=''><span>사용자 관리</span></a></li>
+                     <li><a href='${pageContext.request.contextPath}/admin/User.ad'><span>사용자 관리</span></a></li>
                   </ul>
                </li>
 
@@ -29,14 +29,14 @@
                   <ul>
                      <li class='sub-menu'><a href='#' class="toggleBtn"><span>농촌 체험 프로그램</span></a>
                         <ul>
-                           <li><a href=''><span>프로그램 지원자 관리</span></a></li>
-                           <li><a href=''><span>체험 프로그램 글 관리</span></a></li>
+                           <li><a href='${pageContext.request.contextPath}/admin/ProgramApplyMember.ad'><span>프로그램 지원자 관리</span></a></li>
+                           <li><a href='${pageContext.request.contextPath}/admin/ProgramList.ad'><span>체험 프로그램 글 관리</span></a></li>
                         </ul>
                      </li>
                      <li class='sub-menu'><a href='#' class="toggleBtn"><span>농촌 아르바이트</span></a>
                         <ul>
-                           <li><a href=''><span>아르바이트 지원자 관리</span></a></li>
-                           <li><a href=''><span>아르바이트 공고 글 관리</span></a></li>
+                           <li><a href='${pageContext.request.contextPath}/admin/AlbaApplyMember.ad'><span>아르바이트 지원자 관리</span></a></li>
+                           <li><a href='${pageContext.request.contextPath}/admin/AlbaList.ad'><span>아르바이트 공고 글 관리</span></a></li>
                         </ul>
                      </li>
                   </ul>
@@ -46,18 +46,18 @@
                   <ul>
                      <li class='sub-menu'><a href='#' class="toggleBtn"><span>공지</span></a>
                         <ul>
-                           <li><a href=''><span>공지 관리</span></a></li>
-                           <li class='last-menu'><a href=''><span>공지 글 작성</span></a></li>
+                           <li><a href='${pageContext.request.contextPath}/admin/NoticeList.ad'><span>공지 관리</span></a></li>
+                           <li class='last-menu'><a href='${pageContext.request.contextPath}/admin/NoticeWrite.ad'><span>공지 글 작성</span></a></li>
                         </ul>
                      </li>
-                     <li><a href=''><span>멘토 홍보</span></a></li>
-                     <li><a href=''><span>소통공간</span></a></li>
+                     <li><a href='${pageContext.request.contextPath}/admin/Mentor.ad'><span>멘토 홍보</span></a></li>
+                     <li><a href='${pageContext.request.contextPath}/admin/Community.ad'><span>소통공간</span></a></li>
                   </ul>
                </li>
 
                <li class='active sub-menu'><a href='#'><span>댓글</span><span class="toggleBtn2">+</span></a>
                   <ul>
-                     <li><a href=''><span>댓글 관리</span></a></li>
+                     <li><a href='${pageContext.request.contextPath}/admin/Reply.ad'><span>댓글 관리</span></a></li>
                   </ul>
                </li>
             </ul>
