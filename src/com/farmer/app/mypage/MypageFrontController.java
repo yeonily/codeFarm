@@ -41,17 +41,18 @@ public class MypageFrontController extends HttpServlet {
 	    	  result = new Result();
 			  result.setPath("/app/myPage/updatePage.jsp");
 			  
-	       }else if(target.equals("/mypage/UpdateOk.my")) { //마이페이지에서 수정하기(UPDATE)
-	    	   
+	       }else if(target.equals("/mypage/send.my")) {
+	    	   result = new SendOkController().execute(req,resp);
+	       }
+	      else if(target.equals("/mypage/UpdateOk.my")) { //마이페이지에서 수정하기(UPDATE)
 	    	  result = new UpdateOkController().execute(req, resp);
 	    	  result.setPath("/app/myPage/myProfile.jsp");
-	    	   
 	       }else if(target.equals("/mypage/Delete.my")) { //마이페이지에서 탈퇴페이지로 이동
 	    	  result = new Result();
 	    	  result.setPath("/app/myPage/deletePage.jsp");
 				  
 	       }else if(target.equals("/mypage/DeleteOk.my")) { //마이페이지에서 탈퇴하기(DELETE)
-	    	   
+	    	   result = new DeleteOkController().execute(req, resp);
 	       }else if(target.equals("/mypage/Write.my")) { //마이페이지에서 내가 쓴 글 페이지로 이동
 	    	  result = new Result();
 			  result.setPath("/app/myPage/myWriting.jsp");
