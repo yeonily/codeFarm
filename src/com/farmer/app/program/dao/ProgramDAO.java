@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import com.farmer.app.memberProgram.vo.MemberProgramVO;
 import com.farmer.app.program.vo.ProgramVO;
 import com.farmer.mybatis.config.MyBatisConfig;
 
@@ -41,4 +42,14 @@ public class ProgramDAO {
 		public void updateViewCount(int programNumber) {
 			sqlSession.update("program.updateViewCount", programNumber);
 		}
+		
+//		프로그램 글 등록
+	   public void insert(ProgramVO programVO) {
+		   sqlSession.insert("program.insert", programVO);
+	   }
+	   
+//	   신청인원 카운팅
+	   public int countPeople(int programNumber) {
+		   return sqlSession.selectOne("program.countPeople", programNumber);
+	   }
 }

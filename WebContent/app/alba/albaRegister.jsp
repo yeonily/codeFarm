@@ -28,8 +28,8 @@
             </div>
         </div>
     <!-- 바디 -->
- <div id="write">
-            <form action="" name="albaForm" method="post">
+ 	<div id="write">
+            <form action="${pageContext.request.contextPath}/alba/albaWriteOk.ab" name="albaForm" method="post">
                <table>
                   <colgroup>
                      <col width="20%;">

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +13,13 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets//css/login/layer_popup.css">
 </head>
 
-<body>
+<body>	
+		<c:if test="${not empty param.login}">
+			<script>
+				alert("아이디 또는 비밀번호를 다시 확인해주세요.");
+			</script>
+		</c:if>
+
   <jsp:include page="${pageContext.request.contextPath}/app/fix/header.jsp"/>
  
     <section class="login" id="site_main">
@@ -46,27 +53,28 @@
                     <div id="lgr_toptext_sub">비밀번호는 대소문자를 구분합니다. 확인 후 입력해주세요.</div>
                 </div>
             </div>
+    	<form method="post" action="${pageContext.request.contextPath}/member/loginOk.me" name="loginForm">
             <div class="login_input" id="lgr_login_idinput">
                 <input type="text" id="inputId" onkeydown="if(event.keycode==13){fn_loginAction();}"
-                    placeholder="아이디를 입력해주세요." autocomplete="off">
+                    placeholder="아이디를 입력해주세요." autocomplete="off" name="memberId" value="${empty memberId ? '' : memberId}"/>
                 <img id="lgr_idimg1" src="https://www.rda.go.kr/young/images/site/login/login02_1.png">
                 <img id="lgr_idimg1" src="https://www.rda.go.kr/young/images/site/login/login02_2.png">
             </div>
             <div class="login_input" id="lgr_login_pwinput">
-                <input type="password" id="inputPw" placeholder="비밀번호를 입력해주세요." autocomplete="off">
+                <input type="password" id="inputPw" placeholder="비밀번호를 입력해주세요." autocomplete="off" name="memberPassword">
                 <img id="lgr_pwimg1" src="https://www.rda.go.kr/young/images/site/login/login03_1.png">
                 <img id="lgr_pwimg2" src="https://www.rda.go.kr/young/images/site/login/login03_2.png">
 
             </div>
             <div id="lgr_idrem_wrap">
 
-                <input id="lgr_check" type="checkbox">
+                <input id="lgr_check" type="checkbox" name="saveId" value="saveId">
                 <div id="lgr_idrem">
                     <label for="lgr_check">아이디 저장</label>
                 </div>
             </div>
             <div class="login_btn">
-                <a class="button" href="">로그인</a>
+                <a class="button" onclick="send()" href="javascript:void(0);">로그인</a>
             </div>
             <div class="user_btn">
                 <ul style="padding-left: 20px; padding-right: 20px;">
@@ -84,6 +92,7 @@
                     </li>
                 </ul>
             </div>
+      </form>
         </div>
     </section>
 
@@ -277,5 +286,6 @@
 <script src="${pageContext.request.contextPath}/assets/js/common/header.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/login/layer_popup.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/login/password.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/login/login_check.js"></script>
 
 </html>

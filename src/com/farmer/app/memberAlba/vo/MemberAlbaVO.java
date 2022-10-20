@@ -10,6 +10,7 @@ public class MemberAlbaVO {
 	private String memberEmail;
 	private String memberReason;
 	private String ApplyDate;
+	private int albaNumber;
 	private int memberNumber;
 	
 	public MemberAlbaVO() {;}
@@ -86,6 +87,14 @@ public class MemberAlbaVO {
 		ApplyDate = applyDate;
 	}
 
+	public int getAlbaNumber() {
+		return albaNumber;
+	}
+
+	public void setAlbaNumber(int albaNumber) {
+		this.albaNumber = albaNumber;
+	}
+
 	public int getMemberNumber() {
 		return memberNumber;
 	}
@@ -99,10 +108,9 @@ public class MemberAlbaVO {
 		return "MemberAlbaVO [albaApplyNumber=" + albaApplyNumber + ", memberName=" + memberName + ", memberGender="
 				+ memberGender + ", memberBirth=" + memberBirth + ", memberPhoneNumber=" + memberPhoneNumber
 				+ ", memberAddress=" + memberAddress + ", memberEmail=" + memberEmail + ", memberReason=" + memberReason
-				+ ", ApplyDate=" + ApplyDate + ", memberNumber=" + memberNumber + "]";
+				+ ", ApplyDate=" + ApplyDate + ", albaNumber=" + albaNumber + ", memberNumber=" + memberNumber + "]";
 	}
 
-	
 }
 
 

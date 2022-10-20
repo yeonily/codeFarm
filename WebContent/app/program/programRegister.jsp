@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +31,7 @@
         </div>
     <!-- 바디 -->
          <div id="write">
-            <form action="${pageContext.request.contextPath}/program/applyListOk.pg" name="programForm" method="post">
+            <form action="${pageContext.request.contextPath}/program/programWriteOk.pg" name="programForm" method="post"> <!-- enctype="multipart/form-data" -->
                <table>
                   <colgroup>
                      <col width="20%;">
@@ -80,7 +81,7 @@
                               <input type="radio" name="money" value="notFree"/> 유료
                            </label>
                            <div class="tuition-div">
-                              <input type="text" name="money_input" class="infoInput" placeholder="수강료를 입력하세요." onkeyup="autoComma(this)">
+                              <input type="text" name="money_input" class="infoInput" placeholder="수강료를 입력하세요." onkeyup="autoComma(this)" value="0">
                               <span class="write-txt">원</span>
                            </div>
                         </td>
