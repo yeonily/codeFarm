@@ -1,10 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Admin">
-	<select id="userSelectAll" resultType="memberVO">
+
+<!-- 사용자관리 유저목록 띄우기(알바, 프로그램 신청 수 생략함) -->
+	<select id="userSelectAll" parameterType="map" resultType="memberVO">
 		select member_number, member_id, member_email, member_phone_number, member_name, member_grade, member_location
 		from tbl_member
+		order by member_number desc limit #{startRow}, #{rowCount}
+	</select>
+<!-- 사용자관리 db에 있는 유저 수 count -->
+	<select id="selectCount" resultType="_int">
+		select count(member_number) from tbl_member
+	</select>
+	
+<!-- 사용자관리 탈퇴버튼 클릭 시 db데이터 삭제 -->
+	<delete id="delete" parameterType="_int">
+		delete from tbl_member
+		where member_number = #{memberNumber}
+	</delete>
+	
+<!-- 사용자관리 검색 부분(보류) -->
+
+<!-- 프로그램 지원자 관리 목록띄우기-->
+	<select id="programSelectAll">
+		select p1.apply_date, p1.member_id, tp.program_number, tp.program_name
+		 from (select tmp.member_number, tmp.apply_date, tm.member_id from tbl_member_program tmp join tbl_member tm 
+		 on tmp.member_number = tm.member_number) p1 join tbl_program tp
+		 on p1.member_number = tp.member_number
+	</select> 
+
+<!-- 프로그램관리 지원자 Id로 유저 수 count -->
+	<select id="selectIdCount" resultType="_int">
+		select count(member_id) from tbl_member
 	</select>
 
-
+	
 </mapper>

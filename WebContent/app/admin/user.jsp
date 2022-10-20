@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,10 +70,10 @@
                         </span>
                         <span class="s-f-input">
                             <span class="search-input">
-                                <input type="text" name="programSearch" placeholder="검색어를 입력하세요">
+                                <input type="text" name="userSearch" placeholder="검색어를 입력하세요">
                             </span>
                         </span>
-                        <button type="button" class="">
+                        <button type="button" onclick="userSearch()">
                             <img src="${pageContext.request.contextPath}/assets/images/common/search.png">
                         </button>
                     </div>
@@ -83,7 +85,7 @@
             <div class="p-contents contents-bottom">
 
                 <span class="list-count">총
-                    <span>2476</span>건
+                    <span><c:out value="${total}"/></span>건
                 </span>
 
                 <table>
@@ -95,12 +97,32 @@
                         <th class="name">이름</th>
                         <th class="birth">구분</th>
                         <th class="address">주소</th>
-                        <th class="program-count">체험</th>
-                        <th class="part-count">알바</th>
+                        <th class="program-count"></th>
+                        <th class="part-count"></th> 
                         <th class="delete"></th>
                     </tr>
                     <!-- ↓ 데이터 출력 -->
-                    <tr>
+                   <tbody>
+                    <c:choose>
+                    	<c:when test="${userList != null and fn:length(userList) > 0}">
+                    		<c:forEach var="member" items="${userList}">
+                   				 <tr>
+	                    			<td><c:out value="${member.getMemberNumber()}"/></td>
+	                    			<td><c:out value="${member.getMemberId()}"/></td>
+	                    			<td><c:out value="${member.getMemberEmail()}"/></td>
+	                    			<td><c:out value="${member.getMemberPhoneNumber()}"/></td>
+	                    			<td><c:out value="${member.getMemberName()}"/></td>
+	                    			<td><c:out value="${member.getMemberGrade()}"/></td>
+	                    			<td><c:out value="${member.getMemberLocation()}"/></td>
+	                    			<td></td>
+	                    			<td></td>
+	                    			<td class="delete"><input type="button" value="탈퇴" onClick="outCheck(this); location.href = '${pageContext.request.contextPath}/admin/UserDeleteOk.ad?memberNumber=${member.getMemberNumber()}';"></td>
+                    			</tr>
+                    		</c:forEach>
+                    	</c:when>
+                   </c:choose>
+                  </tbody>
+                  <!--   <tr>
                         <td>1</td>
                         <td>나랑농부할래</td>
                         <td>java123@gmail.com</td>
@@ -112,6 +134,7 @@
                         <td>5</td>
                         <td class="delete"><input type="button" value="탈퇴" onClick="outCheck()"></td>
                     </tr>
+                   
                     <tr>
                         <td>13534</td>
                         <td>알콩달콩심자</td>
@@ -123,26 +146,34 @@
                         <td>2</td>
                         <td>5</td>
                         <td class="delete"><input type="button" value="탈퇴" onClick="outCheck()"></td>
-                    </tr>
+                    </tr> -->
                 </table>
 
                 <!-- 페이징 -->
                 <div id="page">
                     <div class="page_nation">
-                        <a class="arrow pprev" href="#"></a>
-                        <a class="arrow prev" href="#"></a>
-                        <a href="#" class="active">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
-                        <a href="#">5</a>
-                        <a href="#">6</a>
-                        <a href="#">7</a>
-                        <a href="#">8</a>
-                        <a href="#">9</a>
-                        <a href="#">10</a>
-                        <a class="arrow next" href="#"></a>
-                        <a class="arrow nnext" href="#"></a>
+                    		<c:if test="${prev}">
+		                        <a class="page-num arrow pprev" href="${pageContext.request.contextPath}/admin/User.ad?page=1"></a>
+		                        <a class="page-num arrow prev" href="${pageContext.request.contextPath}/admin/User.ad?page=${startPage -1}"></a>
+		                    </c:if>
+                        <c:forEach var="i" begin="${startPage}" end="${endPage}" >
+                         <c:choose>
+                        	<c:when test="${not (i eq page)}">
+		                        <a href="${pageContext.request.contextPath}/admin/User.ad?page=${i}" class="page-num">
+		                        <c:out value="${i}"/>
+		                        </a>
+                        	</c:when>
+                        	<c:otherwise> 
+                        		<a href="${pageContext.request.contextPath}/admin/User.ad?page=${i}" class="active">
+		                       	 <c:out value="${i}"/>
+		                        </a>
+                        	</c:otherwise>
+                        	</c:choose>
+                        </c:forEach>
+		                	   <c:if test="${next}">
+		                        <a class="page-num arrow next" href="${pageContext.request.contextPath}/admin/User.ad?page=${endPage +1}"></a>
+		                        <a class="page-num arrow nnext" href="${pageContext.request.contextPath}/admin/User.ad?page=${realEndPage}"></a>
+		                        </c:if>
                     </div>
                 </div>
 
@@ -154,14 +185,14 @@
 
 </body>
 <!-- 차트 -->
-<script>let memberNumber = ${member.getMemberNumber()};</script>
+<!-- <script>let memberNumber = ${member.getMemberNumber()};</script>
 <script>let memberId = ${member.getMemberId()};</script>
 <script>let memberEmail = ${member.getMemberEmail()};</script>
 <script>let memberPhoneNumber = ${member.getMemberPhoneNumber()};</script>
 <script>let memberName = ${member.getMemberName()};</script>
 <script>let memberGrade = ${member.getMemberGrade()};</script>
-<script>let memberLocation = ${member.getMemberLocation()};</script>
+<script>let memberLocation = ${member.getMemberLocation()};</script> -->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
      <script src="${pageContext.request.contextPath}/assets/js/admin/chartAPI.js"></script>
-<script>${pageContext.request.contextPath}/assets/js/admin/user.js</script>
-<html>
+<script src="${pageContext.request.contextPath}/assets/js/admin/user.js"></script>
+</html>
