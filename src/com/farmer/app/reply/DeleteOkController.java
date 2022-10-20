@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.farmer.app.Execute;
 import com.farmer.app.Result;
 
-public class DetailOkController implements Execute {
+public class DeleteOkController implements Execute {
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

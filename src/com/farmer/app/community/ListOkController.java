@@ -25,10 +25,7 @@ public class ListOkController implements Execute {
 		
 		int page = temp == null ? 1 : Integer.parseInt(temp);
 		int total = communityDAO.selectCnt();
-//		한 페이지에 출력되는 게시글의 개수
-		int rowCount = 10;
-//		한 페이지에서 나오는 페이지 버튼의 개수
-		int pageCount = 10;
+		int rowCount = 10, pageCount = 10;
 		int startRow = (page - 1) * rowCount;
 		
 		int endPage = (int)(Math.ceil(page / (double)pageCount) * pageCount);
@@ -47,10 +44,9 @@ public class ListOkController implements Execute {
 		req.setAttribute("page", page);
 		req.setAttribute("startPage", startPage);
 		req.setAttribute("endPage", endPage);
+		req.setAttribute("realEndPage", realEndPage);
 		req.setAttribute("prev", prev);
 		req.setAttribute("next", next);
-		
-		System.out.println(communityDAO.selectAll(pageMap));
 		
 		result.setPath("/app/community/comm_list.jsp");
 		
