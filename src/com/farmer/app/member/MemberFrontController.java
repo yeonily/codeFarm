@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.farmer.app.Result;
+import com.farmer.app.mypage.SendOkController;
 
 public class MemberFrontController extends HttpServlet {
 	
@@ -46,6 +47,9 @@ public class MemberFrontController extends HttpServlet {
 	       }else if(target.equals("/member/joinOk.me")) {//회원가입 실행(INSERT)
 	    	   result = new JoinOkController().execute(req, resp);
 	    	   
+	       }else if(target.equals("/member/send.me")) {//휴대폰 인증(COOLSMS)
+	    	   result = new SmsOkController().execute(req,resp);
+	    	   
 	       }else if(target.equals("/member/login.me")) {//로그인페이지 이동
 	    	   result = new LoginController().execute(req, resp);
 	          
@@ -54,6 +58,7 @@ public class MemberFrontController extends HttpServlet {
 	          
 	       }else if(target.equals("/member/findIdOk.me")) {//아이디 찾기 실행(SELECT)
 	    	   result = new FindIdOkController().execute(req, resp);
+	    	   System.out.println("fc들어옴");
 	    	   
 	       }else if(target.equals("/member/findPwOk.me")) {//비밀번호 찾기 실행(UPDATE)
 	    	   result = new FindPwOkController().execute(req, resp);

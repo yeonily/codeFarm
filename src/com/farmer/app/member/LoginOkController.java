@@ -66,7 +66,7 @@ public class LoginOkController implements Execute {
 			}
 			
 			result.setRedirect(true);
-			result.setPath(req.getContextPath()+"main/index.html"); // 임시 메인페이지 주
+			result.setPath(req.getContextPath()+"/app/main"); // 임시 메인페이지 주
 			
 		} catch (Exception e) {
 			// 로그인 실패
