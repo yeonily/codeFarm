@@ -32,7 +32,7 @@
 									<li><a href="/young/board/board07.do" class="active">
 											<span>멘토 홍보 게시판</span>
 									</a></li>
-									<li class="nowMenu"><a href="/community/listOk.cm"
+									<li class="nowMenu"><a href="community/listOk.cm"
 										class="active"> <span>소통공간</span>
 									</a></li>
 								</ul>

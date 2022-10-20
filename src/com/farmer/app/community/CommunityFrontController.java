@@ -46,8 +46,7 @@ public class CommunityFrontController extends HttpServlet {
 		} else if (target.equals("/community/deleteOk.cm")) {// 소통공간 글 삭제(DELETE)
 
 		} else if (target.equals("/community/update.cm")) {// 소통공간 글 수정 페이지로 이동(controller 필요)
-			
-			
+
 		} else if (target.equals("/community/updateOk.cm")) {// 소통공간 글 수정(UPDATE)
 
 		}
