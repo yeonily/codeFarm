@@ -20,8 +20,12 @@
                                 <div class="top" style="display: inline-block">아르바이트 신청</div>
                                 <div class="lgr_snb" style="display: inline-block; margin-left: 20px;">
                                     <ul class="lgr_ul">
-                                        <li class="nowMenu"><span>농촌 체험 프로그램</span></li>
-                                        <li class="secondMenu"><span class="checkText">농촌 아르바이트</span></li>
+										<li>
+											<a class=a_tag href="${pageContext.request.contextPath}/program/applyListOk.pg"><span class="checkText">농촌 체험 프로그램</span></a>
+										</li>
+										<li class="nowMenu">
+											<a class=a_tag href="${pageContext.request.contextPath}/alba/applyListOk.ab"><span class="secondMenu">농촌 아르바이트</span></a>
+										</li>
                                     </ul>
                                 </div>
                             </nav>

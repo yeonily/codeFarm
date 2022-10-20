@@ -6,8 +6,4 @@
 		insert into tbl_community (community_title, community_content, member_number)
 		values(#{communityTitle}, #{communityContent}, #{memberNumber})
 	</insert>
-	
-
-	
-
 </mapper>
