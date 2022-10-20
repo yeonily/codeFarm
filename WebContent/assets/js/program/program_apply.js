@@ -4,6 +4,8 @@
 
 let progressCount = 0;
 let $endDay = $("span.end-day"); //신청 종료 날짜
+let $endDayremove = $("span.endDay"); //apply01에서 사용
+let $startDayremove = $("span.startDay"); //apply01에서 사용
 
 $(document).ready(function(){
 	
@@ -62,4 +64,39 @@ function countDates(startDay){
 	
 	return result;
 }
+
+/* 신청이 마감된 프로그램 디테일 페이지에서 프로그램 신청 버튼 없애기 */
+if (dDaysCount($endDayremove) < 0) {
+	$("a").remove("#program_apply");
+}
+/* 신청 예정 프로그램 디테일 페이지에서 프로그램 신청 버튼 없애기*/
+if (countDates($startDayremove) > 0) {
+	$("a").remove("#program_apply");
+}
+
+
+function viewOrder(){
+		$.ajax({
+		url: "/reply/listOk.re",
+		type: "get", 
+		contextType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: showList
+		
+	});
+}
+
+function recentOrder(){
+		$.ajax({
+		url: "/reply/listOk.re",
+		type: "get", 
+		data: {boardNumber: boardNumber}, 
+		contextType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: showList
+		
+	});
+}
+
+
 

@@ -29,10 +29,10 @@
                                         <div class="lgr_snb">
                                             <ul class="lgr_ul">
                                                 <li class="nowMenu">
-                                                    <a class=a_tag href="${pageContext.request.contextPath}/program/applyListOk.pg"><span class="checkText">농촌 체험 프로그램</span></a>
+                                                    <a class="a_tag" href="${pageContext.request.contextPath}/program/applyListOk.pg"><span class="checkText">농촌 체험 프로그램</span></a>
                                                 </li>
                                                 <li>
-                                                    <a class=a_tag href="${pageContext.request.contextPath}/alba/applyListOk.ab"><span class="secondMenu">농촌 아르바이트</span></a>
+                                                    <a class="a_tag" href="${pageContext.request.contextPath}/alba/applyListOk.ab"><span class="secondMenu">농촌 아르바이트</span></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -54,11 +54,12 @@
                                         <div class="sub01_con inner clearfix">
                                             <div>
                                                 <div class="sort_list">
-                                                    <button type="button" class="sort_btn" data-id="viewCnt">조회순</button>
-                                                    <button type="button" class="sort_btn" data-id="asc">가장최근등록일순</button>
-                                                    <button type="button" class="sort_btn" data-id="applEdDt">가장최근마감일순</button>
+                                                    <button type="button" class="sort_btn" data-id="viewCnt" onclick="javascript:viewOrder();">조회순</button>
+                                                    <button type="button" class="sort_btn" data-id="asc" onclick="location.href='${pageContext.request.contextPath}/program/applyListOk.pg'">가장최근등록일순</button>
+                                                    <button type="button" class="sort_btn" data-id="applEdDt" onclick="javascript:recentOrder();">가장최근마감일순</button>
                                                 	<c:if test="${membergrade eq program.getMembergrade()}">
-                                                    <button type="button" class="sort_btn_farmer" data-id="register">글 등록</button>
+                                                    <button type="button" class="sort_btn_farmer" data-id="register" onclick="location.href='${pageContext.request.contextPath}/program/programWrite.pg'">
+                                                    	글 등록</button>
                                                     </c:if>
                                                 </div>
                                             </div>
@@ -138,5 +139,5 @@
     <jsp:include page="${pageContext.request.contextPath}/app/fix/footer.jsp"/>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/program/program_day.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/program/program_apply.js"></script>
 </html>

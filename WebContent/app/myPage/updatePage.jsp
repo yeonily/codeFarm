@@ -67,7 +67,7 @@
                                 </tr>
                                 <tr>
                                     <th><label for="userId">아이디</label></th>
-                                    <td class="userId_reuslt"><input type="text" id="id" name="id" placeholder="아이디를 입력해주세요"></td>
+                                    <td class="userId_reuslt">${memberId}</td>
                                     <th><label for="passwordCheck">변경할 비밀번호 확인</label></th>
                                     <td>
                                         <div class="tooltip_pwCh">
@@ -81,21 +81,24 @@
                                 <tr>
                                     <!-- 이메일 -->
                                     <th><label for="userNm">이름(실명)</label></th>
-                                    <td><input type="text" id="name" name ="name" placeholder="이름을 입력해주세요"></td>
+                                    <td>${memberName}</td>
 
                                     <!-- 일반 회원으로 가입했을 시 일반회원 -->
                                     <th>휴대폰 번호</th>
                                     <td>
                                         <div class="test1">
-                                            <span class="printPhone">010-0000-0000</span>
+                                            <span class="printPhone">${memberPhoneNumber}</span>
                                             <input type="button" value="다른번호 인증" class="changePhone">
                                             <!-- (이후) 사용자가 다른번호 인증 버튼을 눌렀을 때 인증번호 발송 버튼으로 변경 -->
                                             <input type="text" class="inputPhone" name="inputPhone" placeholder="휴대폰 번호를 입력해주세요" hidden>
-                                            <input type="button" value="인증번호 발송" class="sendNumber" hidden>
+                                            <input type="button" value="인증번호 발송" class="sendNumber" onclick="sendSMS()" hidden >
 
                                             <!-- (이후) 사용자가 휴대폰 번호까지 기입을 하고 인증번호 발송을 눌렀을 때 인증번호를 입력할 수 있는 input 만들기 -->
-                                            <input type="text" class="inputCertiNum" placeholder="인증번호를 입력해주세요" hidden>
-                                            <input type="button" value="확인" class="submitBtn" hidden>
+                                            <input type="text" class="inputCertiNum" id="myNumber" placeholder="인증번호를 입력해주세요" hidden >
+                                            <input type="button" value="확인" class="submitBtn" onclick="checkSMS()"  hidden>
+                                            <!--일치 여부에 따라 문구 출력-->
+                                            <span class="error_next_box green" id="smsEqual" style="visibility: hidden;" aria-live="assertive">인증번호가 일치합니다.</span>
+											<span class="error_next_box" id="smsNotEqual" style="visibility: hidden;" aria-live="assertive">인증번호가 일치하지 않습니다.</span>
                                         </div>
                                     </td> <!-- 이후 사용자가 가입시 선택한 사항에 따라 출력 -->
                                 </tr>
@@ -104,16 +107,16 @@
                                     <th><label for="email">EMAIL</label></th>
                                     <td>
                                         <div class="email" rowspan="2">
-                                            <input type="text" class="email" name="email" value="" data-path="email"> <!-- (이후) 로그인한 유저의 이메일을 적어놔야함 -->
+                                            <input type="text" class="email" name="email1" value="" data-path="email"> <!-- (이후) 로그인한 유저의 이메일을 적어놔야함 -->
                                             <span class="hipen">@</span>
                                             <!-- 이메일 주소 선택 드롭박스 -->
-                                            <select class="domain" data-path="email">
+                                            <select class="domain" data-path="email" name = "email2">
                                                 <option value="">--선택--</option>
-                                                <option value="naver">naver.com</option>
-                                                <option value="gmail">gmail.com</option>
-                                                <option value="nate">nate.com</option>
-                                                <option value="yahoo">yahoo.co.kr</option>
-                                                <option value="daum">daum.net</option>
+                                                <option value="naver.com">naver.com</option>
+                                                <option value="gmail.com">gmail.com</option>
+                                                <option value="nate.com">nate.com</option>
+                                                <option value="yahoo.co.kr">yahoo.co.kr</option>
+                                                <option value="daum.net">daum.net</option>
                                             </select>
                                             <input type="text" class="etc" value="" data-path="email" hidden> <!-- (이후) 직접입력 선택시 input 박스 생겨야함 -->
                                         </div>
@@ -151,7 +154,7 @@
                             </tbody>
                         </table>
                         <div class="btn"> <!-- (이후) 버튼 클릭시 DB 연동 등 작업 필요 -->
-                            <button type="button" class="cancelBtn"><p><img id = "cancelImg" src="${pageContext.request.contextPath}/assets/images/updatePage/cancelImage.png">취소</p></button>
+                            <button type="button" class="cancelBtn"><p><img id = "cancelImg" src="${pageContext.request.contextPath}/assets/images/updatePage/cancelImage.png" onclick="location.href = '${pageContext.request.contextPath}/mypage/mypageOk.my'">취소</p></button>
                             <button type="button" class="updateBtn"><p><img id = "updateImg" src="${pageContext.request.contextPath}/assets/images/updatePage/writeImage.png" onclick="send()">수정</p></button>
                         </div>
                     </form>
