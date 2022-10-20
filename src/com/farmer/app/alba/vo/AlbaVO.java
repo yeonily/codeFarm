@@ -17,7 +17,6 @@ public class AlbaVO {
 	private int albaViewCount;
 	private String albaPhoneNumber;
 	private String albaImage;
-	private int albaApplyNumber;
 	private int memberNumber;
 	
 	
@@ -161,14 +160,6 @@ public class AlbaVO {
 		this.albaImage = albaImage;
 	}
 
-	public int getAlbaApplyNumber() {
-		return albaApplyNumber;
-	}
-
-	public void setAlbaApplyNumber(int albaApplyNumber) {
-		this.albaApplyNumber = albaApplyNumber;
-	}
-
 	@Override
 	public String toString() {
 		return "AlbaVO [albaNumber=" + albaNumber + ", albaName=" + albaName + ", albaLocation=" + albaLocation
@@ -177,7 +168,7 @@ public class AlbaVO {
 				+ albaApplyStartDate + ", albaApplyEndDate=" + albaApplyEndDate + ", albaDate=" + albaDate
 				+ ", albaRecruitedCount=" + albaRecruitedCount + ", albaRecruitedTotalCount=" + albaRecruitedTotalCount
 				+ ", albaViewCount=" + albaViewCount + ", albaPhoneNumber=" + albaPhoneNumber + ", albaImage="
-				+ albaImage + ", albaApplyNumber=" + albaApplyNumber + ", memberNumber=" + memberNumber + "]";
+				+ albaImage + ", albaApplyNumber=" + ", memberNumber=" + memberNumber + "]";
 	}
 
 

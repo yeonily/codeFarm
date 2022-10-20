@@ -43,6 +43,13 @@ body {
 nav.snb{
     display: block;
 }
+
+div.lgr_snb {
+    display: inline-block;
+    margin-left: 20px;
+    width: 255px;
+}
+
 .snb .top{
     letter-spacing: -0.05em;
     line-height: normal;
@@ -273,4 +280,16 @@ p.desc strong{
 }
 .nowMenu span{
     color: rgb(0,0,0,.5);
+}
+
+span.secondMenu {
+    color: #333;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+span.checkText {
+    float: left;
+    color: rgb(0,0,0,.5);
+    font-size: 0.941rem;
 }

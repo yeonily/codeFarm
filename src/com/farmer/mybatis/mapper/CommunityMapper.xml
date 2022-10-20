@@ -6,6 +6,7 @@
 		insert into tbl_community (community_title, community_content, member_number)
 		values(#{communityTitle}, #{communityContent}, #{memberNumber})
 	</insert>
+
 	
 	<!-- 게시글 전체 조회(페이징까지) -->
 	<select id="selectAll" parameterType="map" resultType="communityDTO">
@@ -40,4 +41,6 @@
 		where community_number = #{communityNumber}; 
 	</update>
 	
+
+
 </mapper>
