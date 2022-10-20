@@ -20,7 +20,7 @@
                                 <div class="top" style="display: inline-block">프로그램 신청</div>
                                 <div class="lgr_snb">
                                     <ul class="lgr_ul">
-                                     <li class="nowMenu">
+                                        <li class="nowMenu">
                                          <a class=a_tag href="${pageContext.request.contextPath}/program/applyListOk.pg"><span class="checkText">농촌 체험 프로그램</span></a>
                                      </li>
                                      <li>
