@@ -10,20 +10,20 @@ import com.farmer.app.Execute;
 import com.farmer.app.Result;
 import com.farmer.app.admin.dao.AdminDAO;
 
-public class AlbaListDeleteOkController implements Execute {
+public class ReplyDeleteOkController implements Execute {
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		AdminDAO adminDAO = new AdminDAO();
 		Result result = new Result();
-		int albaNumber = Integer.valueOf(req.getParameter("albaNumber"));
+		int replyNumber = Integer.valueOf(req.getParameter("replyNumber"));
 		
 		
 		
-		adminDAO.deleteAlba(albaNumber);
+		adminDAO.deleteReply(replyNumber);
 		
 		result.setRedirect(true);
-		result.setPath(req.getContextPath() + "/admin/AlbaListOk.ad");
+		result.setPath(req.getContextPath() + "/admin/ReplyOk.ad");
 		return result;
 	}
 }

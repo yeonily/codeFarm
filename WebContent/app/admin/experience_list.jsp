@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    	<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    	<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -88,7 +90,7 @@
             <div class="p-contents contents-bottom">
 
                 <span class="list-count">총
-                    <span>2476</span>건
+                    <span><c:out value="${total}"/></span>건
                 </span>
 
                 <table>
@@ -104,7 +106,23 @@
                     </tr>
                     <!-- ↓ 데이터 출력 -->
                     <tbody class="tbody">
-                        <tr>
+                      <c:choose>
+                    	<c:when test="${userList != null and fn:length(userList) > 0}">
+                    		<c:forEach var="programList" items="${userList}">
+                   				 <tr>
+	                    			<td><c:out value="${programList.getProgramNumber()}"/></td>
+	                    			<td><c:out value="${programList.getProgramName()}"/></td>
+	                    			<td><c:out value="${programList.getProgramLocation()}"/></td>
+	                    			<td><c:out value="${programList.getProgramApplyStartDate()}"/></td>
+	                    			<td><c:out value="${programList.getProgramApplyEndDate()}"/></td>
+	                    			<td><c:out value="${programList.getProgramRecruitedTotalCount()}"/>/<c:out value="${programList.getProgramRecruitedCount()}"/></td>
+	                    			<td><c:out value="${programList.getProgramDate()}"/></td>
+	                    			<td class="delete"><input type="button" value="삭제" onclick="deleteCheck(this); location.href = '${pageContext.request.contextPath}/admin/ProgramListDeleteOk.ad?programNumber=${programList.getProgramNumber()}';"></td>
+                    			</tr>
+                    		</c:forEach>
+                    	</c:when>
+                   </c:choose>
+                      <!--   <tr>
                             <td>12432</td>
                             <td class="title" onclick="location.href='#'">비료뿌리기</td>
                             <td>서울</td>
@@ -137,27 +155,35 @@
                             <td>2022-10-03 10:00</td>
                             <td class="delete"><input type="button" name="delete" value="삭제" onclick="deleteCheck()">
                             </td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
 
                 <!-- 페이징 -->
                 <div id="page">
                     <div class="page_nation">
-                        <a class="arrow pprev" href="#"></a>
-                        <a class="arrow prev" href="#"></a>
-                        <a href="#" class="active">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
-                        <a href="#">5</a>
-                        <a href="#">6</a>
-                        <a href="#">7</a>
-                        <a href="#">8</a>
-                        <a href="#">9</a>
-                        <a href="#">10</a>
-                        <a class="arrow next" href="#"></a>
-                        <a class="arrow nnext" href="#"></a>
+                    		<c:if test="${prev}">
+		                        <a class="page-num arrow pprev" href="${pageContext.request.contextPath}/admin/ProgramListOk.ad?page=1"></a>
+		                        <a class="page-num arrow prev" href="${pageContext.request.contextPath}/admin/ProgramListOk.ad?page=${startPage -1}"></a>
+		                    </c:if>
+                        <c:forEach var="i" begin="${startPage}" end="${endPage}" >
+                         <c:choose>
+                        	<c:when test="${not (i eq page)}">
+		                        <a href="${pageContext.request.contextPath}/admin/ProgramListOk.ad?page=${i}" class="page-num">
+		                        <c:out value="${i}"/>
+		                        </a>
+                        	</c:when>
+                        	<c:otherwise> 
+                        		<a href="${pageContext.request.contextPath}/admin/ProgramListOk.ad?page=${i}" class="active">
+		                       	 <c:out value="${i}"/>
+		                        </a>
+                        	</c:otherwise>
+                        	</c:choose>
+                        </c:forEach>
+		                	   <c:if test="${next}">
+		                        <a class="page-num arrow next" href="${pageContext.request.contextPath}/admin/ProgramListOk.ad?page=${endPage +1}"></a>
+		                        <a class="page-num arrow nnext" href="${pageContext.request.contextPath}/admin/ProgramListOk.ad?page=${realEndPage}"></a>
+		                        </c:if>
                     </div>
                 </div>
 
@@ -171,4 +197,5 @@
 <!-- 차트 -->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/admin/chartAPI_contents.js"></script>
-<html>
+<script src="${pageContext.request.contextPath}/assets/js/admin/programList.js"></script>    
+</html>

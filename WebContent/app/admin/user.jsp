@@ -44,7 +44,7 @@
                         <div class="counts">
                             <!-- 오늘 종료 되는 프로그램 수 -->
                             <div class="count-title">총 회원수</div>
-                            <span class="count">2</span>
+                            <span class="count"><c:out value="${total}"/></span>
                         </div>
                     </div>
                 </div>
@@ -193,6 +193,6 @@
 <script>let memberGrade = ${member.getMemberGrade()};</script>
 <script>let memberLocation = ${member.getMemberLocation()};</script> -->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-     <script src="${pageContext.request.contextPath}/assets/js/admin/chartAPI.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/admin/chartAPI.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/admin/user.js"></script>
 </html>
