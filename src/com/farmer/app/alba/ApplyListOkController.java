@@ -1,6 +1,7 @@
 package com.farmer.app.alba;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,6 +14,9 @@ import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import com.farmer.app.Execute;
 import com.farmer.app.Result;
@@ -35,6 +39,8 @@ public class ApplyListOkController implements Execute {
 //		한 페이지에서 나오는 페이지 버튼의 개수
 		int pageCount = 10;
 		int startRow = (page - 1) * rowCount;
+		int sort = 0;
+		
 		
 		int endPage = (int)(Math.ceil(page / (double)pageCount) * pageCount); //단위에서 마지막 페이지
 		int startPage = endPage - (pageCount - 1); //단위에서 첫번째 페이지
@@ -47,15 +53,14 @@ public class ApplyListOkController implements Execute {
 		pageMap.put("startRow", startRow);
 		pageMap.put("rowCount", rowCount);	
 		
-
+		
         // 현재 날짜/시간
         Date today = Calendar.getInstance().getTime();
         SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
         // 포맷팅 적용
         String fToday = f.format(today);
 		
-//		최근 등록일 순으로 정렬
-		req.setAttribute("albaLists", albaDAO.selectRegistration(pageMap));
+        req.setAttribute("albaLists", albaDAO.selectRegistration(pageMap));
 		req.setAttribute("processCount", albaDAO.selectProcess(fToday));
 		req.setAttribute("total", total);
 		req.setAttribute("page", page);

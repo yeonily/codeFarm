@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -92,7 +93,7 @@
 		</div>
 		<div class="sub_guide">
 			<form action="">
-				<h3 class="view_tit">아르바이트 상세 페이지</h3>
+				<h3 class="view_tit">${alba.getAlbaName()}</h3>
 				<div class="view_main">
 					<img
 						src="${pageContext.request.contextPath}/assets/images/alba_Apply/alba_banner.png"
@@ -129,7 +130,9 @@
 								</tr>
 								<tr>
 									<td><span class="list_icon">아르바이트 시간</span></td>
-									<td><span><c:out value="${alba.getAlbaStartTime()} ~ ${alba.getAlbaEndTime()}" /></span></td>
+									<td><span>
+										${fn:substring(alba.getAlbaStartTime(), 0, 5)} ~ ${fn:substring(alba.getAlbaEndTime(), 0, 5)}
+									</span></td>
 								</tr>
 								<tr>
 									<td><span class="list_icon">시급</span></td>
@@ -143,7 +146,10 @@
 								</tr>
 								<tr>
 									<td><span class="list_icon">모집 인원</span></td>
-									<td><span>${alba.getAlbaRecruitedCount()} / ${alba.getAlbaRecruitedTotalCount()} 명</span></td>
+									<td>
+										<span id="countPerson">${countPerson}</span> / 
+										<span id="countTotal">${alba.getAlbaRecruitedTotalCount()}</span> 명
+									</td>
 								</tr>
 								<tr>
 									<td><span class="list_icon">문의 전화</span></td>

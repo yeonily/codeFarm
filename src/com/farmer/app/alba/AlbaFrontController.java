@@ -35,20 +35,20 @@ public class AlbaFrontController extends HttpServlet {
 			result = new ApplyListOkController().execute(req, resp);
 		}
 		else if(target.equals("/alba/viewCountOk.ab")) {//알바 목록페이지 조회순 정렬
-
+			result = new ViewCountOkController().execute(req, resp);
+		
 		}
 		else if(target.equals("/alba/registerOk.ab")) {//알바 목록페이지 가장최근등록일순 정렬
+			result = new RegisterOkController().execute(req, resp);
 
 		}
 		else if(target.equals("/alba/deadlineOk.ab")) {//알바목록 최근 마감일로 정렬
+			result = new DeadlineOkController().execute(req, resp);
 
 		}
 		else if(target.equals("/alba/apply02.ab")) {//알바 신청상세페이지2로 이동
 	    	  result = new Result();
 	          result.setPath("/app/alba/albaDetailPage_2.jsp");
-
-		}
-		else if(target.equals("/alba/applyCancel.ab")) {//알바 신청상세페이지2에서 취소 , 알바목록페이지로 이동
 
 		}
 		else if(target.equals("/alba/albaWrite.ab")) { //알바 등록페이지로 이동
@@ -60,6 +60,10 @@ public class AlbaFrontController extends HttpServlet {
 	    	  result = new AlbaWriteOkController().execute(req, resp);
 
 		}
+		else if(target.equals("/program/apply03.pg")) {//프로그램 신청상세페이지3로 이동
+	    	  result = new Result();
+	    	  result.setPath("/app/alba/albaDetailPage_3.jsp");
+	    }
 
 	    if(result != null) {
 	         if(result.isRedirect()) {

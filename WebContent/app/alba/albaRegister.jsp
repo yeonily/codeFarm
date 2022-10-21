@@ -46,7 +46,7 @@
                      <tr>
                         <th>지역</th>
                         <td>
-                           <input type="text" name="address" class="infoInput" placeholder="주소를 입력하세요.">
+                           <input type="text" name="address" class="infoInput" placeholder="지역을 입력하세요.">
                         </td>
                      </tr>
                      <tr>
