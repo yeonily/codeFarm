@@ -1,5 +1,6 @@
 package com.farmer.app.program;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Enumeration;
 
@@ -14,7 +15,8 @@ import com.farmer.app.program.vo.ProgramVO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-public class ProgramWriteOkController implements Execute {
+public class UpdateOkController implements Execute {
+
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
@@ -23,6 +25,23 @@ public class ProgramWriteOkController implements Execute {
 		ProgramVO programVO = new ProgramVO();
 		Result result = new Result();
 		
+		
+		int programNumber = Integer.valueOf(req.getParameter("programNumber"));
+		
+		//파일 삭제
+		programVO = programDAO.select(programNumber);
+		String imageName = programVO.getProgramImage();
+		
+		String fpath = req.getSession().getServletContext().getRealPath("/") + "upload/program/" + imageName;
+
+		File fileObj = new File(fpath); 
+
+		if( fileObj.exists() ) {
+		    fileObj.delete();             
+		}
+		
+		
+		//파일 첨부
 		String uploadPath = req.getSession().getServletContext().getRealPath("/") + "upload/program/";
 		int fileSize = 1024 * 1024 * 5; //5mb
 		
@@ -40,8 +59,6 @@ public class ProgramWriteOkController implements Execute {
 	    	if(fileOriginalName == null) {continue;}
 	    }
 		
-		
-//		int programNumber = (Integer)req.getSession().getAttribute("programNumber");
 //		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber");
 		String title = mr.getParameter("pro_title");
 		String address = mr.getParameter("address");
@@ -57,7 +74,6 @@ public class ProgramWriteOkController implements Execute {
 		
 		money = (money != null ? money : "0");
 		
-		programVO.setProgramNumber(1);
 		programVO.setProgramName(title);
 		programVO.setProgramLocation(address);
 		programVO.setProgramStartDate(startProgramDate);
@@ -73,11 +89,12 @@ public class ProgramWriteOkController implements Execute {
 		programVO.setMemberNumber(1);
 		
 		
-		programDAO.insert(programVO);
-		result.setPath("/program/applyListOk.pg");
+		programDAO.update(programVO);
 		  
-		return result;
+	    result.setPath("/program/applyListOk.pg");
+	      
+	    return result;
+		
 	}
+
 }
-
-

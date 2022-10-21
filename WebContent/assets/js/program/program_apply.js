@@ -74,29 +74,12 @@ if (countDates($startDayremove) > 0) {
 	$("a").remove("#program_apply");
 }
 
+/* 인원 모집이 다 되면 신청 버튼 안 보이기 */
+let $countTotal = Number($("#countTotal").html()); // 총 모집 인원
+let $countPerson = Number($("#countPerson").html()); // 현재 모집된 인원
 
-function viewOrder(){
-		$.ajax({
-		url: "/reply/listOk.re",
-		type: "get", 
-		contextType: "application/json; charset=utf-8",
-		dataType: "json",
-		success: showList
-		
-	});
+if ($countTotal == $countPerson) {
+	$("a").remove("#program_apply");
 }
-
-function recentOrder(){
-		$.ajax({
-		url: "/reply/listOk.re",
-		type: "get", 
-		data: {boardNumber: boardNumber}, 
-		contextType: "application/json; charset=utf-8",
-		dataType: "json",
-		success: showList
-		
-	});
-}
-
 
 

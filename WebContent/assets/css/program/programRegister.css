@@ -218,3 +218,11 @@ div.btns-group .submit {
     letter-spacing: 2px;
 }
 div.btns-group .submit:hover { background: #4bb94587; }
+
+#file-content{
+	display:inline-block;
+}
+
+#deleteBtn{
+	width:2%;
+}
