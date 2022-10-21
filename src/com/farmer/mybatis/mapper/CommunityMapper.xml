@@ -21,6 +21,12 @@
 		select count(community_number) from tbl_community
 	</select>
 	
+	<!-- 게시글 검색 결과 전체 개수 확인 -->
+	<select id="searchCnt" parameterType="string" resultType="_int">
+		select count(community_title) from tbl_community
+		where community_title like #{searchText}
+	</select>
+	
 	<!-- 게시글 상세정보 -->
 	<select id="select" parameterType="_int" resultType="communityDTO">
 		select tc.community_number, tc.community_title, tc.community_date, tm.member_id, tc.community_view_count, tc.community_content
@@ -28,6 +34,23 @@
 		on tc.member_number = tm.member_number
 		where tc.community_number = #{communityNumber}
 	</select>
+	
+	<!-- 게시글 검색(제목) -->
+	<select id="searchTitle" parameterType="map" resultType="communityDTO">
+		select tc.community_number, tc.community_title, tm.member_id, tc.community_date, tc.community_view_count
+		from tbl_community tc left join tbl_member tm
+		on tc.member_number = tm.member_number
+		where tc.community_title like #{searchText}
+		order by tc.community_number desc limit #{startRow}, #{rowCount}
+	</select>
+	
+	<!-- 게시글 검색(내용) -->
+	
+	
+	<!-- 게시글 검색(제목+내용) -->
+	
+	
+	<!-- 게시글 검색(작성자) -->
 	
 	<!-- 가장 최신 게시글 번호 -->
 	<select id="selectCurrentSequence" resultType="_int">
@@ -39,8 +62,6 @@
 		update tbl_community
 		set community_view_count = community_view_count+1
 		where community_number = #{communityNumber}; 
-	</update>
-	
-
+	</update>	
 
 </mapper>
