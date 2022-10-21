@@ -96,9 +96,9 @@
             </div>
         </div>
         <div class="sub_guide">
-           <h3 class="view_tit">프로그램 상세 페이지</h3>
+           <h3 class="view_tit">${program.programName}</h3>
            <div class="view_main">
-               <img src="${pageContext.request.contextPath}/assets/images/${program.getProgramImage()}" alt="">
+               <img src="${pageContext.request.contextPath}/upload/program/${program.getProgramImage()}" alt="">
                <div class="detail_info">
                    <div class="info_apply">
                        <a href="${pageContext.request.contextPath}/program/apply02.pg?programNumber=${program.getProgramNumber()}" class="apply_on" id="program_apply">
@@ -124,7 +124,7 @@
                            </tr>
                            <tr>
                                <td><span class="list_icon">교육 시간</span></td>
-                               <td><span>${program.getProgramStartTime()} ~ ${program.getProgramEndTime()}</span></td>
+                               <td><span>${fn:substring(program.getProgramStartTime(), 0, 5)} ~ ${fn:substring(program.getProgramEndTime(), 0, 5)}</span></td>
                            </tr>
                            <tr>
                                <td><span class="list_icon">수강료</span></td>
@@ -136,7 +136,7 @@
                            </tr>
                            <tr>
                                <td><span class="list_icon">모집 인원</span></td>
-                               <td><span>${count} / ${program.getProgramRecruitedTotalCount()}명</span></td>
+                               <td><span id="countPerson">${count}</span> / <span id="countTotal">${program.getProgramRecruitedTotalCount()}</span>명</td>
                            </tr>
                            <tr>
                                <td><span class="list_icon">문의 전화</span></td>
@@ -144,6 +144,10 @@
                            </tr>
                        </tbody>
                    </table>
+                  		 <div class="btns">
+                  		 	<input type="button" class="btn" value="수정" onclick="location.href = '${pageContext.request.contextPath}/program/update.pg?programNumber=${program.getProgramNumber()}'"/>
+                  		 	<input type="button" class="btn" value="삭제" onclick="javascript:alert();"/>
+                         </div>
                </div>
            </div>
         </div>
@@ -151,5 +155,20 @@
   <jsp:include page="${pageContext.request.contextPath}/app/fix/footer.jsp"/>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/program/program_day.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/program/program_apply.js"></script>
+<script>
+/* 삭제 알람 */
+function alert(){
+
+        var result = confirm("정말 삭제하시겠습니까?");
+
+        if(result) {
+           //yes
+            location.href = '/program/deleteOk.pg?programNumber=${param.programNumber}';
+        } else {
+            //no
+        }
+
+}
+</script>
 </html>

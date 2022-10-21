@@ -31,7 +31,7 @@
         </div>
     <!-- 바디 -->
          <div id="write">
-            <form action="${pageContext.request.contextPath}/program/programWriteOk.pg" name="programForm" method="post" enctype="multipart/form-data">
+            <form action="${pageContext.request.contextPath}/program/updateOk.pg?programNumber=${program.getProgramNumber()}" name="programForm" method="post" enctype="multipart/form-data">
                <table>
                   <colgroup>
                      <col width="20%;">
@@ -41,7 +41,7 @@
                      <tr>
                         <th>제목</th>
                         <td>
-                           <input type="text" name="pro_title" class="program_title" placeholder="제목을 입력하세요">
+                           <input type="text" name="pro_title" class="program_title" placeholder="제목을 입력하세요" value="${program.getProgramName()}">
                         </td>
                      </tr>
                      <tr>
@@ -49,11 +49,11 @@
                         <td>
                            <div class="range-title">
                               <div>시작일</div>
-                              <input type="date" name="s_startDate">
+                              <input type="date" name="s_startDate" value="${program.getProgramStartDate()}">
                            </div>
                            <div class="range-title">
                               <div>종료일</div>
-                              <input type="date" name="s_endDate">
+                              <input type="date" name="s_endDate" value="${program.getProgramEndDate()}">
                            </div>
                         </td>
                      </tr>
@@ -62,11 +62,11 @@
                         <td>
                            <div class="range-title">
                               <div>시작 시간</div>
-                              <input type="time" name="s_startTime">
+                              <input type="time" name="s_startTime" value="${program.getProgramStartTime()}">
                            </div>
                            <div class="range-title">
                               <div>종료 시간</div>
-                              <input type="time" name="s_endTime">
+                              <input type="time" name="s_endTime" value="${program.getProgramEndTime()}">
                            </div>
                         </td>
                      </tr>
@@ -77,10 +77,10 @@
                               <input type="radio" name="money" id="tuition_default" value="free"/> 무료
                            </label>
                            <label>
-                              <input type="radio" name="money" value="notFree"/> 유료
+                              <input type="radio" name="money" id="tuition" value="notFree"/> 유료
                            </label>
                            <div class="tuition-div">
-                              <input type="text" name="money_input" class="infoInput" placeholder="수강료를 입력하세요." onkeyup="autoComma(this)" value="0">
+                              <input type="text" name="money_input" class="infoInput" placeholder="수강료를 입력하세요." onkeyup="autoComma(this)" value="${program.getProgramFee()}">
                               <span class="write-txt">원</span>
                            </div>
                         </td>
@@ -90,46 +90,46 @@
                         <td>
                            <div class="range-title">
                               <div>시작일</div>
-                              <input type="date" name="r_startDate">
+                              <input type="date" name="r_startDate" value="${program.getProgramApplyStartDate()}">
                            </div>
                            <div class="range-title">
                               <div>종료일</div>
-                              <input type="date" name="r_endDate">
+                              <input type="date" name="r_endDate" value="${program.getProgramApplyEndDate()}">
                            </div>
                         </td>
                      </tr>
                      <tr>
                         <th>모집 인원</th>
                         <td>
-                           <input type="text" name="persons" class="infoInput" placeholder="모집인원을 입력하세요.">
+                           <input type="text" name="persons" class="infoInput" placeholder="모집인원을 입력하세요." value="${program.getProgramRecruitedTotalCount()}">
                            <span class="write-txt">명</span>
                         </td>
                      </tr>
                      <tr>
                         <th>지역</th>
                         <td>
-                           <input type="text" name="address" class="infoInput" placeholder="지역을 입력하세요.">
+                           <input type="text" name="address" class="infoInput" placeholder="지역을 입력하세요."  value="${program.getProgramLocation()}">
                         </td>
                      </tr>
                      <tr>
                         <th>전화번호</th>
                         <td>
-                           <input type="text" name="phone" class="infoInput" placeholder="전화번호를 입력하세요.">
+                           <input type="text" name="phone" class="infoInput" placeholder="전화번호를 입력하세요."  value="${program.getProgramPhoneNumber()}">
                         </td>
                      </tr>
                      <tr>
                         <th>첨부파일</th>
                         <td>
                            <div class="file">
-                              <input type="file" name="file" class="fileName" onchange="fileUpload()">
+                              <input type="file" name="file" class="fileName" onchange="fileUpload()" value="${program.getProgramImage()}">
                            </div>
-                           <div id="file-content"></div><img id="deleteBtn" style="display: none;" alt="첨부 삭제" src="${pageContext.request.contextPath}/assets/images/login/close.png" onclick="cancelFile()">
+                            <div id="file-content"></div><img id="deleteBtn" style="display: none;" alt="첨부 삭제" src="${pageContext.request.contextPath}/assets/images/login/close.png" onclick="cancelFile()">
                            <span class="file-limit"> 첨부파일은 총 1개까지 가능합니다.</span>
                         </td>
                      </tr>
                   </tbody>
                </table>
-               <div class="btns-group">
+               <div class="btns-group"> 
                   <input type="button" onclick="saveCheck()" class="g-btn list" value="취소">
                   <input type="button" onclick="save()" class="g-btn submit" value="등록">
                </div>
@@ -139,5 +139,5 @@
       <jsp:include page="${pageContext.request.contextPath}/app/fix/footer.jsp"/>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/program/program_register.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/program/program_update.js"></script>
 </html>

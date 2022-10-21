@@ -48,7 +48,7 @@
    
    <!-- 모집 인원 카운팅 -->
    <select id="countPeople" parameterType="_int" resultType="_int">
-   		select count(program_number) from tbl_member_program where program_number = #{programNumber};
+   		select count(program_number) from tbl_member_program where program_number = #{programNumber}
    </select>
 
 	<!-- 조회순정렬 -->
@@ -68,5 +68,21 @@
 	  FROM tbl_program 
 	  order by program_apply_end_date desc limit #{startRow}, #{rowCount}
 	</select>
+	
+	<!-- 프로그램 글 삭제 -->
+	<delete id="delete" parameterType="_int"> 
+		delete from tbl_program where program_number = #{programNumber} 
+	</delete>
+	
+	<!-- 프로그램 글 수정 -->
+	<update id="update" parameterType="programVO">
+		update tbl_program
+		set program_name = #{programName}, program_location = #{programLocation}, program_start_date=#{programStartDate}, program_end_date=#{programEndDate}, 
+		program_fee=#{programFee}, program_apply_start_date=#{programApplyStartDate}, program_apply_end_date=#{programApplyEndDate},
+		program_recruited_count=#{programRecruitedCount}, program_recruited_total_count=#{programRecruitedTotalCount}, 
+		program_phone_number=#{programPhoneNumber}, program_image=#{programImage}
+		where program_number = #{programNumber}
+	</update>
+	
 	
 </mapper>

@@ -19,14 +19,26 @@ public class ApplyOkController implements Execute {
 		MemberProgramVO memberProgramVO = new MemberProgramVO();
 		Result result = new Result();
 		
-		memberProgramVO.setMemberNumber((Integer)req.getSession().getAttribute("memberNumber"));
-		memberProgramVO.setMemberName(req.getParameter("userName"));
-		memberProgramVO.setMemberGender(req.getParameter("userGender"));
-		memberProgramVO.setMemberBirth(req.getParameter("userBirth"));
-		memberProgramVO.setMemberPhoneNumber(req.getParameter("userPhone"));
-		memberProgramVO.setMemberAddress(req.getParameter("userAddress"));
-		memberProgramVO.setMemberEmail(req.getParameter("userEmail"));
-		memberProgramVO.setMemberReason(req.getParameter("userReason"));
+//		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber");
+		String memberName = req.getParameter("userName");
+		String memberGender = req.getParameter("userGender");
+		String memberBirth = req.getParameter("userBirth");
+		String memberPhoneNumber = req.getParameter("userPhone");
+		String memberAddress = req.getParameter("userAddress");
+		String memberEmail = req.getParameter("userEmail");
+		String memberReason = req.getParameter("userReason");
+		int programNumber = Integer.valueOf(req.getParameter("programNumber"));
+		
+//		memberProgramVO.setMemberNumber(memberNumber);
+		memberProgramVO.setMemberNumber(1);
+		memberProgramVO.setMemberName(memberName);
+		memberProgramVO.setMemberGender(memberGender);
+		memberProgramVO.setMemberBirth(memberBirth);
+		memberProgramVO.setMemberPhoneNumber(memberPhoneNumber);
+		memberProgramVO.setMemberAddress(memberAddress);
+		memberProgramVO.setMemberEmail(memberEmail);
+		memberProgramVO.setMemberReason(memberReason);
+		memberProgramVO.setProgramNumber(programNumber);
 		
 		memberProgramDAO.insert(memberProgramVO);
 	    

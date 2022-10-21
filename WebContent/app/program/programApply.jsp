@@ -140,4 +140,71 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/program/program_apply.js"></script>
+<script>
+/* 조회순 정렬 */
+/* function viewOrder(){
+		$.ajax({
+		url: "/program/listOk.re",
+		type: "get", 
+		contextType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: showList
+		
+	});
+}
+
+function showByViewCnt(){
+	$.ajax({
+		url: "${pageContext.request.contextPath}/alba/viewCountOk.ab",
+		dataType: "json",
+		success: function(albaLists){
+			console.log("들어옴?");
+			let text = "";
+			let pageText = "";
+			
+			albaLists.forEach(alba => {
+				text += `<li class="alba" onclick="location.href='${pageContext.request.contextPath}/alba/apply01.ab?albaNumber=` + alba.albaNumber + `'">`;
+				text += `<div class="info">`;
+				text += `<p class="local"> ` + alba.albaLocation + `</p>`;
+				text += `<p class="progress">진행중</p>`;
+				text += `</div>`;
+				text += `<div class="title">`;
+				text += `<p> ` + alba.albaName + `</p>`;
+				text += `</div>`;
+				text += `<div class="num">`;
+				text += `<p class="prd">`;
+				text += `<span class="endstatus"></span> &nbsp;| &nbsp;`;
+				text += `<span class="end-day">` + alba.albaApplyEndDate + `</span>`;
+				text += `<span style="display: none;">` + alba.albaApplyStartDate + `</span>`;
+				text += `</p>`;
+				text += `<p class="hits">`;
+				text += `<img src="https://www.rda.go.kr/young/images/site/sub/common_ico_view.png">`;
+				text += `<span style="display: none;">` + alba.albaViewCount + `</span>`;
+				text += `</p>`;
+				text += `</div>`;
+				text += `</div>`;
+				text += `</li>`;
+			
+			});
+	
+			$("#albaListsAllUl").html(text);
+		},
+		error : function(request, status, error) {
+		}
+	});
+}
+
+/* 최근마감일순 정렬 */
+function recentOrder(){
+		$.ajax({
+		url: "/reply/listOk.re",
+		type: "get", 
+		data: {boardNumber: boardNumber}, 
+		contextType: "application/json; charset=utf-8",
+		dataType: "json",
+		success: showList
+		
+	});
+} */
+</script>
 </html>
