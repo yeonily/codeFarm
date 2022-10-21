@@ -18,8 +18,12 @@ public class Apply01OkController implements Execute {
 		AlbaDAO albaDAO = new AlbaDAO();
 		Result result = new Result();
 		int albaNumber = Integer.valueOf(req.getParameter("albaNumber"));
+		int countPerson = albaDAO.countApplyPerson(albaNumber);
 
+		countPerson = countPerson > 0 ? countPerson : 0;
+		
 		req.setAttribute("alba", albaDAO.select(albaNumber));
+		req.setAttribute("countPerson", countPerson);
 		albaDAO.updateViewCount(albaNumber);
 		
   	  	result.setPath("/app/alba/albaDetailPage_1.jsp");

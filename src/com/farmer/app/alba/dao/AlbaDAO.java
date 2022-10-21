@@ -18,9 +18,19 @@ public class AlbaDAO {
 		sqlSession = sqlSessionFactory.openSession(true);
 	}
 
-//	전체 아르바이트 목록 출력
+//	전체 아르바이트 목록 최근 등록일 순으로 출력
 	public List<AlbaVO> selectRegistration(Map<String, Integer> pageMap) {
 		return sqlSession.selectList("alba.selectRegistration", pageMap);
+	}
+	
+//	전체 아르바이트 목록 조회 순으로 출력
+	public List<AlbaVO> selectViewCnt(Map<String, Integer> pageMap) {
+		return sqlSession.selectList("alba.selectViewCnt", pageMap);
+	}
+	
+//	전체 아르바이트 목록 최근 마감일 순으로 출력
+	public List<AlbaVO> selectEndDay(Map<String, Integer> pageMap) {
+		return sqlSession.selectList("alba.selectEndDay", pageMap);
 	}
 	
 //	전체 아르바이트 개수 조회
@@ -47,4 +57,10 @@ public class AlbaDAO {
 	public void insertAlba(AlbaVO albaVO){
 		sqlSession.insert("alba.insertAlba", albaVO);
 	}
+	
+//	공고글 현 모집된 인원 조회
+	public int countApplyPerson(int albaNumber) {
+		return sqlSession.selectOne("alba.countApplyPerson", albaNumber);
+	}
+	
 }

@@ -44,7 +44,7 @@ function saveCheck(){
 
 // 저장 버튼 눌렀을 때 모든 값이 입력되어 있는지 검사
 function save(){
-	/*if(!albaForm.alba_title.value) {
+	if(!albaForm.alba_title.value) {
 		albaForm.alba_title.focus();
 		return;
     }
@@ -98,7 +98,12 @@ function save(){
 	if(!albaForm.phone.value) {
 		albaForm.phone.focus();
 		return;
-	}*/
+	}
+	
+	if(!albaForm.file.value) {
+		alert("파일을 등록해주세요.");
+		return;
+	}
 	
 	alert("글이 정상적으로 등록되었습니다.");
 	albaForm.submit();

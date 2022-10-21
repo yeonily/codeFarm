@@ -53,9 +53,9 @@
 											<div>
 
 												<div class="sort_list">
-													<button type="button" class="sort_btn" data-id="viewCnt">조회순</button>
-													<button type="button" class="sort_btn" data-id="asc">가장최근등록일순</button>
-													<button type="button" class="sort_btn" data-id="applEdDt">가장최근마감일순</button>
+													<button type="button" class="sort_btn" data-id="viewCnt" onclick="showByViewCnt()">조회순</button>
+													<button type="button" class="sort_btn" data-id="applyWrite">가장최근등록일순</button>
+													<button type="button" class="sort_btn" data-id="applyEnd" onclick="showByDeadline()">가장최근마감일순</button>
 													<button type="button" class="sort_btn alba_write_btn" data-id="writeBtn" onclick="location.href='${pageContext.request.contextPath}/alba/albaWrite.ab'">
 														글 등록</button>
 												</div>
@@ -65,8 +65,8 @@
 													총 <span><c:out value="${total}" /></span>건 (진행중 <span class="pCount"><c:out value="${processCount}"/></span>건)
 												</p>
 												<br>
-												<ul style="margin: 0px">
-													<c:choose>
+												<ul style="margin: 0px" id="albaListsAllUl">
+										<c:choose>
 														<c:when test="${albaLists != null and fn:length(albaLists) > 0}">
 															<c:forEach var="alba" items="${albaLists}">
 																<li class="alba" onclick="location.href='${pageContext.request.contextPath}/alba/apply01.ab?albaNumber=${alba.getAlbaNumber()}'">
@@ -146,4 +146,117 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/alba/alba_days.js"></script>
+<script>
+function showByViewCnt(){
+	$.ajax({
+		url: "${pageContext.request.contextPath}/alba/viewCountOk.ab",
+		dataType: "json",
+		success: function(albaLists){
+			console.log("들어옴?");
+			let text = "";
+			let pageText = "";
+			
+			albaLists.forEach(alba => {
+				text += `<li class="alba" onclick="location.href='${pageContext.request.contextPath}/alba/apply01.ab?albaNumber=` + alba.albaNumber + `'">`;
+				text += `<div class="info">`;
+				text += `<p class="local"> ` + alba.albaLocation + `</p>`;
+				text += `<p class="progress">진행중</p>`;
+				text += `</div>`;
+				text += `<div class="title">`;
+				text += `<p> ` + alba.albaName + `</p>`;
+				text += `</div>`;
+				text += `<div class="num">`;
+				text += `<p class="prd">`;
+				text += `<span class="endstatus"></span> &nbsp;| &nbsp;`;
+				text += `<span class="end-day">` + alba.albaApplyEndDate + `</span>`;
+				text += `<span style="display: none;">` + alba.albaApplyStartDate + `</span>`;
+				text += `</p>`;
+				text += `<p class="hits">`;
+				text += `<img src="https://www.rda.go.kr/young/images/site/sub/common_ico_view.png">`;
+				text += `<span>` + alba.albaViewCount + `</span>`;
+				text += `</p>`;
+				text += `</div>`;
+				text += `</div>`;
+				text += `</li>`;
+				
+				/* pageText+= `<div class="page_nation">`;
+				<c:if test="${prev}">
+				pageText+= `<a href="${pageContext.request.contextPath}/alba/viewCountOk.ab?page=1" class="page-num arrow pprev"></a>`;
+				pageText+= `<a href="${pageContext.request.contextPath}/alba/viewCountOk.ab?page=` + (startPage - 1) + `" class="page-num arrow prev" ></a>`;
+				</c:if>
+				<c:forEach var="i" begin="${startPage}" end="${endPage}">
+				<c:choose>
+				<c:when test="${not (i eq page)}">
+				pageText+= `<a href="${pageContext.request.contextPath}/alba/viewCountOk.ab?page=`+ i +`" class="page-num" >`;
+				pageText+= <c:out value="${i}"/>;
+				pageText+= `</a>`;
+				</c:when>
+				<c:otherwise>
+				pageText+= `<a href="${pageContext.request.contextPath}/alba/viewCountOk.ab?page=`+ i +`" class="page-num active" >`;
+				<c:out value="${i}"/>
+				pageText+= `</a>`;
+				</c:otherwise>
+				</c:choose>
+				</c:forEach>
+				<c:if test="${next}">
+				pageText+= `<a href="${pageContext.request.contextPath}/alba/viewCountOk.ab?page=` + (endPage + 1) + `" class="page-num arrow next"></a>`;
+				pageText+= `<a href="${pageContext.request.contextPath}/alba/viewCountOk.ab?page=` + (endPage + 1) + `" class="page-num arrow nnext"></a>`;
+				</c:if>
+				pageText+= `</div>`; */
+				
+			});
+	
+			$("#albaListsAllUl").html(text);
+			/* $("#page").html(pageText); */
+		},
+		error : function(request, status, error) {
+			console.log("왜 안돼 ㅜㅜ? 	1");
+			console.log(request);
+			console.log(status);
+			console.log(error);
+		}
+	});
+}
+function showByDeadline(){
+	$.ajax({
+		url: "${pageContext.request.contextPath}/alba/deadlineOk.ab",
+		dataType: "json",
+		success: function(albaLists){
+			console.log("들어옴?");
+			let text = "";
+			
+			albaLists.forEach(alba => {
+				text += `<li class="alba" onclick="location.href='${pageContext.request.contextPath}/alba/apply01.ab?albaNumber=` + alba.albaNumber + `'">`;
+				text += `<div class="info">`;
+				text += `<p class="local"> ` + alba.albaLocation + `</p>`;
+				text += `<p class="progress">진행중</p>`;
+				text += `</div>`;
+				text += `<div class="title">`;
+				text += `<p> ` + alba.albaName + `</p>`;
+				text += `</div>`;
+				text += `<div class="num">`;
+				text += `<p class="prd">`;
+				text += `<span class="endstatus"></span> &nbsp;| &nbsp;`;
+				text += `<span class="end-day">` + alba.albaApplyEndDate + `</span>`;
+				text += `<span style="display: none;">` + alba.albaApplyStartDate + `</span>`;
+				text += `</p>`;
+				text += `<p class="hits">`;
+				text += `<img src="https://www.rda.go.kr/young/images/site/sub/common_ico_view.png">`;
+				text += `<span>` + alba.albaViewCount + `</span>`;
+				text += `</p>`;
+				text += `</div>`;
+				text += `</div>`;
+				text += `</li>`;
+				
+			});
+	
+			$("#albaListsAllUl").html(text);
+			},
+			error : function(request, status, error) {
+			console.log("왜 안돼 ㅜㅜ? 2");
+		}
+	});
+}
+</script>
+<%-- <script src="${pageContext.request.contextPath}/assets/js/alba/sort.js"></script> --%>
 </html>

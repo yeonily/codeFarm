@@ -7,6 +7,18 @@
 		from tbl_alba order by alba_date desc limit #{startRow}, #{rowCount}
 	</select>
 
+	<!--아르바이트 리스트를 조회 순으로 정렬-->
+	<select id="selectViewCnt" parameterType="map" resultType="albaVo">
+		select alba_number, alba_name, alba_location, alba_apply_start_date, alba_apply_end_date, alba_date, alba_view_count
+		from tbl_alba order by alba_view_count desc limit #{startRow}, #{rowCount}
+	</select>
+	
+	<!--아르바이트 리스트를 최근 마감일 순으로 정렬-->
+	<select id="selectEndDay" parameterType="map" resultType="albaVo">
+		select alba_number, alba_name, alba_location, alba_apply_start_date, alba_apply_end_date, alba_date, alba_view_count
+		from tbl_alba order by alba_apply_end_date desc limit #{startRow}, #{rowCount}
+	</select>
+	
 	<!-- 아르바이트 전체 개수 -->
 	<select id="selectCount" resultType="_int">
 		select count(alba_number) from tbl_alba
@@ -33,6 +45,7 @@
 		from tbl_alba where alba_number = ${albaNumber}
 	</select>
 	
+	<!-- 알바 공고 글 농장주가 작성 -->
 	<insert id="insertAlba" parameterType="albaVO">
 		insert into tbl_alba
 		(alba_name, alba_location, alba_start_date, alba_end_date, alba_start_time, alba_end_time, alba_fee, 
@@ -40,4 +53,14 @@
 		values(#{albaName}, #{albaLocation}, #{albaStartDate}, #{albaEndDate}, #{albaStartTime}, #{albaEndTime}, #{albaFee}, 
 		#{albaApplyStartDate}, #{albaApplyEndDate}, #{albaRecruitedTotalCount}, #{albaPhoneNumber}, #{albaImage}, #{memberNumber})
 	</insert>
+	
+	<!-- 각 공고글 현 모집된 인원 조회 -->
+	<select id="countApplyPerson" parameterType="_int" resultType="_int">
+		select count(alba_number)  from tbl_member_alba where alba_number = 
+		<if test="albaNumber != null">
+	    	#{albaNumber}
+	    </if>
+	</select>
+	
+	
 </mapper>

@@ -4,16 +4,20 @@
 
 let progressCount = 0;
 let $endDay = $("span.end-day"); //신청 종료 날짜
+let $countTotal = Number($("#countTotal").html()); // 총 모집 인원
+let $countPerson = Number($("#countPerson").html()); // 현재 모집된 인원
 
 $(document).ready(function(){
 	
 	$endDay.each(function(){
+		
+		console.log($endDay.html());
 		let $countDay = $(this).prev(); //디데이
 		let $applyStartDay = $(this).next(); //디데이
 		let $progress = $(this).parents("li").find("p.progress"); // 진행상황
 		
 		let dDay = dDaysCount($(this));
-		let count = countDates($applyStartDay);
+		let count = dDaysCount($applyStartDay);
 		
 		
 		/* 비교 후 맞는 문구 삽입 */
@@ -41,6 +45,12 @@ if (countDates($("#startDate")) > 0) {
 	$("a").remove("#alba_apply");
 	
 } else if (dDaysCount($("#endDate")) < 0) {
+	$("a").remove("#alba_apply");
+	
+}
+
+/* 신청인원이 다 차면 신청 버튼 없애기 */
+if ($countTotal = $countPerson) {
 	$("a").remove("#alba_apply");
 }
 

@@ -95,7 +95,7 @@
             </div>
         </div>
         <div class="sub_guide">
-            <form id="apply_form">
+            <form id="apply_form" action="${pageContext.request.contextPath}/memberAlba/applyOK.mp" name="applyForm" method="post">
                 <h3 class="view_tit">아르바이트 신청내역서</h3>
                 <table>
                     <tbody>
@@ -124,8 +124,8 @@
                     </tbody>
                 </table>
                 <div class="btns">
-                    <button id="btn_cancel" class="checkText">취소</button>
-                    <button id="btn_apply" class="checkText">등록</button>
+                    <button id="btn_cancel" type="button" class="checkText" onclick="location.href='${pageContext.request.contextPath}/alba/apply01.ab?albaNumber=${param.albaNumber}'">취소</button>
+                    <button id="btn_apply" type="button" class="checkText" onclick="send()">등록</button>
                 </div>
             </form>
         </div>
@@ -135,5 +135,6 @@
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/albaApply.js"></script>
 <jsp:include page="${pageContext.request.contextPath}/app/fix/footer.jsp"/>
 </html>
