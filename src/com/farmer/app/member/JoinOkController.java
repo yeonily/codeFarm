@@ -26,7 +26,9 @@ public class JoinOkController implements Execute {
 		String memberEmail = req.getParameter("memberEmail")+"@"+req.getParameter("emailDomain");
 		String memberPhoneNumber = req.getParameter("memberPhoneNumber");
 		String memberName = req.getParameter("memberName");
-		String memberLocation = req.getParameter("memberLocation");
+		String location1 = req.getParameter("userInfo01");
+		String location2 = req.getParameter("userInfo02");
+		String memberLocation = location1 + " " +location2;
 		int memberGrade = Integer.valueOf(req.getParameter("memberGrade"));
 		
 
@@ -41,18 +43,11 @@ public class JoinOkController implements Execute {
 		memberVO.setMemberLocation(memberLocation);
 		memberVO.setMemberGrade(memberGrade);
 		
-		System.out.println(memberId);
-		System.out.println(memberPassword);
-		System.out.println(memberEmail);
-		System.out.println(memberPhoneNumber);
-		System.out.println(memberName);
-		System.out.println(memberLocation);
-		System.out.println(memberGrade);
 		
 		memberDAO.join(memberVO);
 		
 		result.setRedirect(true);
-//		result.setPath(req.getContextPath()+ "(메인페이지경로)");
+		result.setPath(req.getContextPath()+ "/app/main");
 		
 		return result;
 	}

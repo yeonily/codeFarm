@@ -37,7 +37,7 @@ $('input[name="money"]').change(function(){
 
 // 저장 버튼 눌렀을 때 모든 값이 입력되어 있는지 검사
 function save(){
-	/*if(!programForm.pro_title.value) {
+	if(!programForm.pro_title.value) {
 		programForm.pro_title.focus();
 		return;
     }
@@ -90,7 +90,12 @@ function save(){
 	if(!programForm.phone.value) {
 		programForm.phone.focus();
 		return;
-	}*/
+	}
+	
+	if(!programForm.file.value) {
+		alert("파일을 등록해주세요");
+		return;
+	}
 	
 	alert("글이 정상적으로 등록되었습니다.")
 	programForm.submit();
@@ -103,4 +108,29 @@ function saveCheck(){
     list = '/program/applyListOk.pg';
 
     if(flag) location.href = list;
+}
+
+//첨부파일 파일명 보이기
+function fileUpload(){
+	var fileValue = $(".fileName").val().split("\\");
+	var fileName = fileValue[fileValue.length-1]; // 파일명
+	$("#file-content").html(fileName);
+	
+}
+
+//삭제 버튼
+$('input[type="file"]').on("change",function(){
+	if($("#file-content").html() == ""){
+		$("#deleteBtn").hide();
+	}else{
+		$("#deleteBtn").show();
+	}
+});
+
+//첨부파일 업로드 취소
+function cancelFile(){
+	$("input[type='file']").val("");
+	$("#file-content").html("");
+	console.log($("input[type='file']").val(""));
+	$("#deleteBtn").hide();
 }

@@ -22,6 +22,11 @@
       <typeAlias type="com.farmer.app.reply.vo.ReplyDTO" alias="replyDTO"/>
       <typeAlias type="com.farmer.app.communityFile.vo.CommunityFileVO" alias="CommunityFileVO"/>
       <typeAlias type="com.farmer.app.noticeFile.vo.NoticeFileVO" alias="noticeFileVO"/>
+      <typeAlias type="com.farmer.app.admin.vo.AdminProgramVO" alias="adminProgramVO"/>
+      <typeAlias type="com.farmer.app.admin.vo.AdminAlbaVO" alias="adminAlbaVO"/>
+      <typeAlias type="com.farmer.app.admin.vo.AdminMentorVO" alias="adminMentorVO"/>
+      <typeAlias type="com.farmer.app.admin.vo.AdminCommunityVO" alias="adminCommunityVO"/>
+      <typeAlias type="com.farmer.app.admin.vo.AdminReplyVO" alias="adminReplyVO"/>
       <!-- <typeAlias type="com.farmer.app.board.vo.BoardDTO" alias="boardDTO"/> -->
    </typeAliases>
       

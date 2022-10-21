@@ -8,11 +8,22 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.farmer.app.Execute;
 import com.farmer.app.Result;
+import com.farmer.app.admin.dao.AdminDAO;
 
 public class AlbaListDeleteOkController implements Execute {
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		return null;
+		AdminDAO adminDAO = new AdminDAO();
+		Result result = new Result();
+		int albaNumber = Integer.valueOf(req.getParameter("albaNumber"));
+		
+		
+		
+		adminDAO.deleteAlba(albaNumber);
+		
+		result.setRedirect(true);
+		result.setPath(req.getContextPath() + "/admin/AlbaListOk.ad");
+		return result;
 	}
 }

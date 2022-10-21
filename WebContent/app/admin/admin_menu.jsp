@@ -29,14 +29,14 @@
                   <ul>
                      <li class='sub-menu'><a href='#' class="toggleBtn"><span>농촌 체험 프로그램</span></a>
                         <ul>
-                           <li><a href='${pageContext.request.contextPath}/admin/ProgramApplyMember.ad'><span>프로그램 지원자 관리</span></a></li>
-                           <li><a href='${pageContext.request.contextPath}/admin/ProgramList.ad'><span>체험 프로그램 글 관리</span></a></li>
+                           <li><a href='${pageContext.request.contextPath}/admin/ProgramApplyMemberOk.ad'><span>프로그램 지원자 관리</span></a></li>
+                           <li><a href='${pageContext.request.contextPath}/admin/ProgramListOk.ad'><span>체험 프로그램 글 관리</span></a></li>
                         </ul>
                      </li>
                      <li class='sub-menu'><a href='#' class="toggleBtn"><span>농촌 아르바이트</span></a>
                         <ul>
-                           <li><a href='${pageContext.request.contextPath}/admin/AlbaApplyMember.ad'><span>아르바이트 지원자 관리</span></a></li>
-                           <li><a href='${pageContext.request.contextPath}/admin/AlbaList.ad'><span>아르바이트 공고 글 관리</span></a></li>
+                           <li><a href='${pageContext.request.contextPath}/admin/AlbaApplyMemberOk.ad'><span>아르바이트 지원자 관리</span></a></li>
+                           <li><a href='${pageContext.request.contextPath}/admin/AlbaListOk.ad'><span>아르바이트 공고 글 관리</span></a></li>
                         </ul>
                      </li>
                   </ul>
@@ -50,14 +50,14 @@
                            <li class='last-menu'><a href='${pageContext.request.contextPath}/admin/NoticeWrite.ad'><span>공지 글 작성</span></a></li>
                         </ul>
                      </li>
-                     <li><a href='${pageContext.request.contextPath}/admin/Mentor.ad'><span>멘토 홍보</span></a></li>
-                     <li><a href='${pageContext.request.contextPath}/admin/Community.ad'><span>소통공간</span></a></li>
+                     <li><a href='${pageContext.request.contextPath}/admin/MentorOk.ad'><span>멘토 홍보</span></a></li>
+                     <li><a href='${pageContext.request.contextPath}/admin/CommunityOk.ad'><span>소통공간</span></a></li>
                   </ul>
                </li>
 
                <li class='active sub-menu'><a href='#'><span>댓글</span><span class="toggleBtn2">+</span></a>
                   <ul>
-                     <li><a href='${pageContext.request.contextPath}/admin/Reply.ad'><span>댓글 관리</span></a></li>
+                     <li><a href='${pageContext.request.contextPath}/admin/ReplyOk.ad'><span>댓글 관리</span></a></li>
                   </ul>
                </li>
             </ul>

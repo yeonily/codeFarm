@@ -31,7 +31,7 @@
         </div>
     <!-- 바디 -->
          <div id="write">
-            <form action="${pageContext.request.contextPath}/program/programWriteOk.pg" name="programForm" method="post"> <!-- enctype="multipart/form-data" -->
+            <form action="${pageContext.request.contextPath}/program/programWriteOk.pg" name="programForm" method="post" enctype="multipart/form-data">
                <table>
                   <colgroup>
                      <col width="20%;">
@@ -41,8 +41,7 @@
                      <tr>
                         <th>제목</th>
                         <td>
-                           <input type="text" name="pro_title" class="program_title" placeholder="제목을 입력하세요"
-                              autocomplete="off">
+                           <input type="text" name="pro_title" class="program_title" placeholder="제목을 입력하세요">
                         </td>
                      </tr>
                      <tr>
@@ -109,7 +108,7 @@
                      <tr>
                         <th>지역</th>
                         <td>
-                           <input type="text" name="address" class="infoInput" placeholder="주소를 입력하세요.">
+                           <input type="text" name="address" class="infoInput" placeholder="지역을 입력하세요.">
                         </td>
                      </tr>
                      <tr>
@@ -122,9 +121,9 @@
                         <th>첨부파일</th>
                         <td>
                            <div class="file">
-                              <input type="file" name="file">
+                              <input type="file" name="file" class="fileName" onchange="fileUpload()">
                            </div>
-                           <div id="file-content"></div>
+                           <div id="file-content"></div><img id="deleteBtn" style="display: none;" alt="첨부 삭제" src="${pageContext.request.contextPath}/assets/images/login/close.png" onclick="cancelFile()">
                            <span class="file-limit"> 첨부파일은 총 1개까지 가능합니다.</span>
                         </td>
                      </tr>
@@ -140,5 +139,5 @@
       <jsp:include page="${pageContext.request.contextPath}/app/fix/footer.jsp"/>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/program/program.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/program/program_register.js"></script>
 </html>

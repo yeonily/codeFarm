@@ -109,7 +109,7 @@
                                     <input type="text" name="memberPhoneNumber" class="phoneNum" value="" placeholder="휴대폰 번호(-제외)를 입력해주세요.">
                             </div>    
                                 <div class="fixedBtnSize">
-                                    <button type="button" class="btn_phoneNum" onclick="codeSend()">인증번호 받기</button>
+                                    <button type="button" class="btn_phoneNum" onclick="sendSms()">인증번호 받기</button>
                                 </div>
                         
                             </div>
@@ -118,9 +118,9 @@
                              </label>
                            <div class="fixedPsize">  
                            
-                            <input type="text" class="phoneconfirm" name="phoneCode" placeholder="인증번호를 입력해주세요.">
+                            <input type="text" id = "phoneCode" class="phoneconfirm" name="phoneCode" placeholder="인증번호를 입력해주세요.">
                             <div class="fixedBtnSize">
-                                <button type="button" class=" btn_confirmNum code_check_btn" onclick="codeCheck()">확인</button>
+                                <button type="button" class=" btn_confirmNum code_check_btn" onclick="checkSms()">확인</button>
                             </div>
                         </div>
                          <span class="error_next_box" id="phoneNumberMsg" ></span>
@@ -136,7 +136,7 @@
                         <div class="email">
                             <input type="text" class="id" value="" data-path="email" name="memberEmail" >
     <span class="hipen">@</span>
-    <select class="domain" data-path="email" name="emailDomain" id="emailSelect" onchange="selectBox();">
+    <select class="domain" data-path="email" name="emailDomain" id="emailSelect">
         <option value="" selected="">--선택--</option>
         <option value="naver.com">naver.com</option>
         <option value="gmail.com">gmail.com</option>
@@ -152,24 +152,24 @@
      <span class="error_next_box" id="emailMsg"></span>
                     </td>
                     <th class="lgr_border_th">지역</th>
-                    <td><select id="userInfo01" name="memberLocation" class="area1" onchange="clickCityChange(this)">
+                    <td><select id="userInfo01" name="userInfo01" class="area1" onchange="clickCityChange(this)">
                         <option value="">-선택-</option>
-                        <option value="busan">부산광역시</option>
-                        <option value="daegu">대구광역시</option>
-                        <option value="incheon">인천광역시</option>
-                        <option value="daejeon">대전광역시</option>
-                        <option value="ulsan">울산광역시</option>
-                        <option value="sejong">세종특별자치시</option>
-                        <option value="gyeonggi">경기도</option>
-                        <option value="gangwon">강원도</option>
-                        <option value="chungcheongbuk-do">충정북도</option>
-                        <option value="chungcheongdam-do">충청남도</option>
-                        <option value="Jeollabuk-do">전라북도</option>
-                        <option value="Jeollanam-do">전라남도</option>
-                        <option value="Gyeongsangbuk-do">경상북도</option>
-                        <option value="Gyeongsangnam-do">경상남도</option>
+                        <option value="부산광역시">부산광역시</option>
+                        <option value="대구광역시">대구광역시</option>
+                        <option value="인천광역시">인천광역시</option>
+                        <option value="대전광역시">대전광역시</option>
+                        <option value="울산광역시">울산광역시</option>
+                        <option value="세종특별자치시">세종특별자치시</option>
+                        <option value="경기도">경기도</option>
+                        <option value="강원도">강원도</option>
+                        <option value="충정북도">충정북도</option>
+                        <option value="충청남도">충청남도</option>
+                        <option value="전라북도">전라북도</option>
+                        <option value="전라남도">전라남도</option>
+                        <option value="경상북도">경상북도</option>
+                        <option value="경상남도">경상남도</option>
                     </select>
-                    <select id="userInfo02" name="memberLocation02" class="area2">
+                    <select id="userInfo02" name="userInfo02" class="area2">
                         <option value="">-선택-</option>
                     </select>
                     </td>

@@ -44,24 +44,21 @@ public class AdminFrontController extends HttpServlet {
 		   }else if(target.equals("/admin/UserDeleteOk.ad")) { //사용자 정보 삭제(DELETE)
 			   result = new UserDeleteOkController().execute(req, resp);
 			   
-		   }else if(target.equals("/admin/ProgramApplyMember.ad")) { //프로그램 지원자 관리페이지로 이동
-			   result = new Result();
-			   result.setPath("/app/admin/experience_participant.jsp");
-			   
+		   
 		   }else if(target.equals("/admin/ProgramApplyMemberSearchOk.ad")) { //프로그램 지원자 검색(SELECT)
 			   
 		   }else if(target.equals("/admin/ProgramApplyMemberOk.ad")) { //프로그램 지원자 정보리스트(SELECT)
 			   result = new ProgramApplyMemberOkController().execute(req, resp);
 			   
-		   }else if(target.equals("/admin/ProgramList.ad")) { //프로그램 글 관리 페이지로 이동
-			   result = new Result();
-			   result.setPath("/app/admin/experience_list.jsp");
 			   
 		   }else if(target.equals("/admin/ProgramListOk.ad")) { //프로그램 글 목록들 보여주기(SELECT)
+			   result = new ProgramListOkController().execute(req, resp);
+			   
 			   
 		   }else if(target.equals("/admin/ProgramListSearchOk.ad")) { //프로그램 글 검색(SELECT)
 			   
 		   }else if(target.equals("/admin/ProgramListDeleteOk.ad")) { //프로그램 글 삭제(DELETE)
+			   result = new ProgramListDeleteOkController().execute(req, resp);
 			   
 		   }else if(target.equals("/admin/AlbaApplyMember.ad")) { //알바 지원자 관리페이지로 이동
 			   result = new Result();
@@ -70,16 +67,22 @@ public class AdminFrontController extends HttpServlet {
 		   }else if(target.equals("/admin/AlbaApplyMemberSearchOk.ad")) { //알바 지원자 검색(SELECT)
 			   
 		   }else if(target.equals("/admin/AlbaApplyMemberOk.ad")) { //알바 지원자 정보리스트(SELECT)
+			   result = new AlbaApplyMemberOkController().execute(req, resp);
+			   
 			   
 		   }else if(target.equals("/admin/AlbaList.ad")) { //알바 글 관리 페이지로 이동
 			   result = new Result();
 			   result.setPath("/app/admin/alba_list.jsp");
 			   
 		   }else if(target.equals("/admin/AlbaListOk.ad")) { //알바 글 목록들 보여주기(SELECT)
+			   result = new AlbaListOkController().execute(req, resp);
+			   
 			   
 		   }else if(target.equals("/admin/AlbaListSearchOk.ad")) { //알바 글 검색(SELECT)
 			   
 		   }else if(target.equals("/admin/AlbaListDeleteOk.ad")) { //알바 글 삭제(DELETE)
+			   result = new AlbaListDeleteOkController().execute(req, resp);
+			   
 			   
 		   }else if(target.equals("/admin/NoticeList.ad")) { //공지 관리 페이지로 이동
 			   result = new Result();
@@ -101,24 +104,23 @@ public class AdminFrontController extends HttpServlet {
 			   
 		   }else if(target.equals("/admin/NoticeWriteOk.ad")) { //공지사항 글 작성(INSERT)
 			   
-		   }else if(target.equals("/admin/Mentor.ad")) { //멘토 관리 페이지로 이동
-			   result = new Result();
-			   result.setPath("/app/admin/mentor.jsp");
 			   
 		   }else if(target.equals("/admin/MentorOk.ad")) { //멘토 전체정보 불러오기(SELECT)
+			   result = new MentorOkController().execute(req, resp);
+			   
 			   
 		   }else if(target.equals("/admin/MentorDeleteOk.ad")) { //멘토 정보 삭제(DELETE)
-			  
+			   result = new MentorDeleteOkController().execute(req, resp);
+			   
 		   }else if(target.equals("/admin/MentorSearchOk.ad")) { //멘토 정보 검색(SELECT)
 			   
-		   }else if(target.equals("/admin/Community.ad")) { //소통공간 관리 페이지로 이동
-			   result = new Result();
-			   result.setPath("/app/admin/board.jsp");
 			   
 		   }else if(target.equals("/admin/CommunityOk.ad")) { //소통공간 글 전체정보 불러오기(SELECT)
+			   result = new CommunityOkController().execute(req, resp);
+			   
 			   
 		   }else if(target.equals("/admin/CommunityDeleteOk.ad")) { //소통공간 글 정보 삭제(DELETE)
-			   
+			   result = new CommunityDeleteOkController().execute(req, resp);
 		   }else if(target.equals("/admin/CommunitySearchOk.ad")) { //소통공간 정보 검색(SELECT)
 			   
 		   }else if(target.equals("/admin/Reply.ad")) { //댓글 관리 페이지로 이동
@@ -126,8 +128,10 @@ public class AdminFrontController extends HttpServlet {
 			   result.setPath("/app/admin/reply.jsp");
 			   
 		   }else if(target.equals("/admin/ReplyOk.ad")) { //댓글 글 전체정보 불러오기(SELECT)
+			   result = new ReplyOkController().execute(req, resp);
 			   
 		   }else if(target.equals("/admin/adminReplyDeleteOk.ad")) { //댓글 글 정보 삭제(DELETE)
+			   result = new ReplyDeleteOkController().execute(req, resp);
 			   
 		   }else if(target.equals("/admin/adminReplySearchOk.ad")) { //댓글 정보 검색(SELECT)
 			   

@@ -18,20 +18,20 @@
 
         var target = document.getElementById("userInfo02");
 
-        if(e.value == "busan") var list = busan;
-        if(e.value == "daegu") var list = daegu;
-        if(e.value == "incheon") var list = incheon;
-        if(e.value == "daejeon") var list = daejeon;
-        if(e.value == "ulsan") var list = ulsan;
-        if(e.value == "sejong") var list = sejong;
-        if(e.value == "gangwon") var list = gangwon;
-        if(e.value == "gyeonggi") var list = gyeonggi;
-        if(e.value == "chungcheongbuk-do") var list = chungcheongbuk;
-        if(e.value == "chungcheongdam-do") var list = chungcheongdam;
-        if(e.value == "Jeollabuk-do") var list = Jeollabuk;
-        if(e.value == "Jeollanam-do") var list = Jeollanam;
-        if(e.value == "Gyeongsangbuk-do") var list = Gyeongsangbuk;
-        if(e.value == "Gyeongsangnam-do") var list = Gyeongsangnam;
+        if(e.value == "부산광역시") var list = busan;
+        if(e.value == "대구광역시") var list = daegu;
+        if(e.value == "인천광역시") var list = incheon;
+        if(e.value == "대전광역시") var list = daejeon;
+        if(e.value == "울산광역시") var list = ulsan;
+        if(e.value == "세종특별자치시") var list = sejong;
+        if(e.value == "강원도") var list = gangwon;
+        if(e.value == "경기도") var list = gyeonggi;
+        if(e.value == "충정북도") var list = chungcheongbuk;
+        if(e.value == "충청남도") var list = chungcheongdam;
+        if(e.value == "전라북도") var list = Jeollabuk;
+        if(e.value == "전라남도") var list = Jeollanam;
+        if(e.value == "경상북도") var list = Gyeongsangbuk;
+        if(e.value == "경상남도") var list = Gyeongsangnam;
 
         target.options.length = 0;
 
@@ -40,5 +40,6 @@
             opt.value = list[x];
             opt.innerHTML = list[x];
             target.appendChild(opt);
-        }
+        }	
+	console.log(opt.innerHTML);
     } 

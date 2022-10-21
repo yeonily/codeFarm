@@ -6,7 +6,6 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import com.farmer.app.memberProgram.vo.MemberProgramVO;
 import com.farmer.app.program.vo.ProgramVO;
 import com.farmer.mybatis.config.MyBatisConfig;
 
@@ -52,4 +51,14 @@ public class ProgramDAO {
 	   public int countPeople(int programNumber) {
 		   return sqlSession.selectOne("program.countPeople", programNumber);
 	   }
+	   
+//		프로그램 글 삭제
+		public void delete(int boardNumber) {
+			sqlSession.delete("program.delete", boardNumber);
+		}
+		
+//		프로그램 글 수정
+		public void update(ProgramVO programVO) {
+			sqlSession.update("program.update", programVO);
+		}
 }

@@ -16,7 +16,7 @@ let code_pw_check = false;
     }
 
     /* 휴대폰번호 인증버튼 클릭시 */
-    $(".btn_phone_id").click(function () {
+  /*  $(".btn_phone_id").click(function () {
         
         if(!findIdForm.findId_name.value){
             findIdForm.findId_name.focus();
@@ -26,11 +26,11 @@ let code_pw_check = false;
         if(!findIdForm.findId_phone.value){
             findIdForm.findId_phone.focus();
             return;
-        }
+        }*/
 
-        $(".p_con_inner").css("display", "block");
+       /* $(".p_con_inner").css("display", "block");
         code_id_check = true;
-    });
+    });*/
 
     // 이이디 찾기 핸드폰 인증 후 확인 버튼
     $(".id_next_step").click(function () {
