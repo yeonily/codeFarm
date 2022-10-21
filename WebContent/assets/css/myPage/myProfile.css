@@ -338,7 +338,7 @@ div.sub_content div.inner {
 div.myProgram, div.myPost {
     margin-top: 20px;
     border: 1px solid #ccc;
-    height: 300px;
+    height: 220px;
 }
 .myProgramList div a,
 .myPost div a {
@@ -355,10 +355,13 @@ div.myProgram, div.myPost {
 
 .myProgramList div {
     padding: 30px;
+    height: 50px;
 }
 
 /* 게시글 작성내역 리스트를 출력할 곳 설정 */
 .myPostList { /* 리스트는 이후 DB에서 조회가 되지 않을 경우 none 처리 */
-    padding: 130px;
+    padding: 98px;
     text-align: center;
+
 }
+

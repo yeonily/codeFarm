@@ -49,17 +49,19 @@ public class MypageFrontController extends HttpServlet {
 	    	  result.setPath("/app/myPage/myProfile.jsp");
 	       }else if(target.equals("/mypage/Delete.my")) { //마이페이지에서 탈퇴페이지로 이동
 	    	  result = new Result();
-	    	  result.setPath("/app/myPage/deletePage.jsp");
+	    	  result.setPath("/app/myPage/deletePage.jsp");	
 				  
 	       }else if(target.equals("/mypage/DeleteOk.my")) { //마이페이지에서 탈퇴하기(DELETE)
 	    	   result = new DeleteOkController().execute(req, resp);
+	    	   
 	       }else if(target.equals("/mypage/Write.my")) { //마이페이지에서 내가 쓴 글 페이지로 이동
 	    	  result = new Result();
 			  result.setPath("/app/myPage/myWriting.jsp");
 	       }else if(target.equals("/mypage/WriteOk.my")) { //마이페이지에서 내가 쓴 글 리스트 보여주기(SELECT)
 	    	   
 	       }else if(target.equals("/mypage/Apply.my")) { //마이페이지에서 내가 신청한 프로그램/알바 페이지로 이동
-	    	   
+	    	   result = new Result();
+	    	   result.setPath("/app/myPage/myProgramApply.jsp");
 	       }else if(target.equals("/mypage/AlbaOk.my")) { //마이페이지에서 내가 신청한 알바 리스트 보여주기(SELECT)
 	    	   
 	       }else if(target.equals("/mypage/ProgramOk.my")) { //마이페이지에서 내가 신청한 프로그램 리스트 보여주기(SELECT)

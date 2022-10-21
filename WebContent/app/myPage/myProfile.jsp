@@ -67,13 +67,13 @@
                                     <li>
                                         <p class="local">지역</p> <!-- (이후) 로그인한 회원이 입력한 지역 출력 필요 -->
                                         <p>
-                                            <span>${memberLocation}</span>
+                                            <span style="margin:0">${memberLocation}</span>
                                         </p>
                                     </li>
                                     <li>
                                         <p class="crop">멘토링</p> <!-- (이후) 가입할 때 선택한 농작물 출력 필요 -->
                                         <p>
-                                            <span>${mentorType}</span>
+                                            <span style="margin:0">${mentorType}</span>
                                         </p>
                                     </li>
                                 </ul>
@@ -84,25 +84,19 @@
                         <div class="supp_info">
                             <div class="myProgramMore">
                                 <h4>프로그램/알바 내역</h4>
-                                <a href="${pageContext.request.contextPath}/app/myPage/myProgramApply.jsp" class="mre">더보기</a>
+                                <a href="${pageContext.request.contextPath}/mypage/Apply.my" class="mre">더보기</a>
                                 <div class="myProgram">
                                     <ul class="myProgramList"> <!-- (이후) 신청 프로그램 여부에 따라 리스트 출력 필요 -->
                                         <div>
                                             <a href="#"><li>
-                                                <p>[충청남도 천안]천안에서 함께 하는 주말농장 체험 프로그램(09.12~09.18 모집중!)</p>
-                                                <span>2022-09-12</span>
+                                                <p>${programName}</p>
+                                                <span>${programStartDate}</span>
                                             </li></a>
                                         </div>
-                                        <div>
+                                        <div style ="border-top : 0.118rem dashed #ccc">
                                             <a href="#"><li>
-                                                <p>[세종특별시]세종회관에서 다함께 즐길 수 있는 캠페인!</p>
-                                                <span>2022-09-12</span>
-                                            </li></a>
-                                        </div>
-                                        <div>
-                                            <a href="#"><li>
-                                                <p>[세종특별시]세종회관에서 다함께 즐길 수 있는 캠페인!</p>
-                                                <span>2022-09-12</span>
+                                                <p>${albaName}</p>
+                                                <span>${albaStartDate}</span>
                                             </li></a>
                                         </div>
                                     </ul>
@@ -113,9 +107,10 @@
                                 <a href="${pageContext.request.contextPath}/mypage/Write.my" class="mre">더보기</a>
                                 <div class="myPost">
                                     <ul class="myPostList"> <!-- (이후) 신청 게시글 작성 여부에 따라 리스트 출력 필요 -->
-                                        <div>
+                                        <div class="myNoticeList">
                                             작성하신 글을 찾을 수 없습니다.
                                         </div>
+                                        
                                     </ul>
                                 </div>
                             </div>

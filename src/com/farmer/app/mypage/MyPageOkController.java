@@ -10,22 +10,44 @@ import javax.servlet.http.HttpSession;
 
 import com.farmer.app.Execute;
 import com.farmer.app.Result;
+import com.farmer.app.alba.vo.AlbaVO;
 import com.farmer.app.member.vo.MemberVO;
 import com.farmer.app.mypage.dao.MypageDAO;
+import com.farmer.app.program.vo.ProgramVO;
 
 public class MyPageOkController implements Execute {
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		MypageDAO mypageDAO = new MypageDAO();
 		MemberVO memberVO = new MemberVO();
+		ProgramVO programVO = new ProgramVO();
+		AlbaVO albaVO = new AlbaVO();
 		Result result = new Result();
 		HttpSession session = req.getSession();
 		
-//		임시로 세션 설정, memberNumber 1로 설정
-		session.setAttribute("memberNumber", 1);
+		
+//		임시로 세션 설정, memberNumber 2로 설정
+		session.setAttribute("memberNumber", 2);
 		int memberNumber = (Integer)session.getAttribute("memberNumber");
 		
 		memberVO = mypageDAO.selectMyPage(memberNumber);
+		
+//		내가 신청한 알바,프로그램 신청 최신순 1개 가져오기
+		albaVO = mypageDAO.selectThreeAlba(memberNumber);
+		programVO = mypageDAO.selectThreeProgram(memberNumber);
+		
+		String albaName = albaVO.getAlbaName();
+		String albaStartDate = albaVO.getAlbaStartDate();
+		
+		String programName = programVO.getProgramName();
+		String programStartDate = programVO.getProgramStartDate();
+		
+		req.setAttribute("albaName", albaName);
+		req.setAttribute("albaStartDate", albaStartDate);
+		req.setAttribute("programName", programName);
+		req.setAttribute("programStartDate", programStartDate);	
+		
+		System.out.println(albaStartDate);
 		
 		String memberId = memberVO.getMemberId();
 		String memberPassword = memberVO.getMemberPassword();

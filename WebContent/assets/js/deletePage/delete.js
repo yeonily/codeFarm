@@ -20,7 +20,7 @@ $(".checkBox span a").click(function() {
 
 
 /* -------------------------------------------------------------- */
-/* 비밀번호 입력하지 않고 수정 버튼 클릭시 말풍선 출력 */
+/* 비밀번호 입력하지 않고 탈퇴 버튼 클릭시 말풍선 출력 */
 $("#submitBtn").click(function() {
 	$(".tooltiptext").finish();
 	if ($(".passwordInput").val().length == 0) {
@@ -30,3 +30,18 @@ $("#submitBtn").click(function() {
 		$(".tooltiptext").fadeOut(600);
 	}
 });
+
+function deleteMember(){
+	alert("1");
+	let $inputPassword = $("#deletePassword").val();
+	console.log($inputPassword);	
+	$.ajax({
+		url : "/mypage/DeleteOk.my",
+		type : "post",
+		data: {inputPassword: $inputPassword},
+		success : function (result) {
+			alert('회원탈퇴 처리 되었습니다');
+			location.href = "${pageContext.request.contextPath}/app/main/index.jsp"
+		}
+	})
+}
