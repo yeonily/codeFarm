@@ -14,4 +14,23 @@
 		where member_number = #{memberNumber}
 	</update>
 	
+	<delete id="deleteMember" parameterType="String">
+		delete from tbl_member
+		where member_password = #{memberpassword}
+	</delete>
+	
+	<select id="selectThreePrograms" parameterType="_int" resultType="programVO">
+		select program_name,program_start_date from tbl_program tp join tbl_member_program tmp
+		on tp.program_number = tmp.program_number
+		where tmp.member_number = #{memberNumber}
+		order by tp.program_start_date
+		limit 1
+	</select>
+	<select id="selectThreeAlbas" parameterType="_int" resultType="albaVO">
+		select alba_name,alba_start_date from tbl_alba ta join tbl_member_alba tma
+		on ta.alba_number = tma.alba_number
+		where tma.member_number = #{memberNumber}
+		order by ta.alba_start_date
+		limit 1
+	</select>
 </mapper>

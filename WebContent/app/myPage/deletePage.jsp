@@ -42,7 +42,7 @@
         <div class="sub_content">
             <div class="container">
                 <div class="inner">
-                    <form action="" class="dropUserForm">
+                    <form action="${pageContext.request.contextPath}" class="dropUserForm">
                         <!-- 회원 탈퇴 안내 부분 -->
                         <div class="title">
                             <h2>회원탈퇴 안내</h2>
@@ -63,7 +63,7 @@
                         <div class="passwordCheck">
                             <div id="passwordCheckText">비밀번호 입력</div>
                             <div class="passwordInputDiv">
-                             <input type="password" class="passwordInput" placeholder="현재 비밀번호를 입력해주세요">
+                             <input type="password" class="passwordInput" name="password" id="deletePassword" placeholder="현재 비밀번호를 입력해주세요">
                              <span class="tooltiptext">비밀번호를 확인해주세요</span>
                             </div>
                         </div>
@@ -88,7 +88,7 @@
                         <!-- 버튼 -->
                         <div class="btn">
                             <input type="button" value="취소" id="cancelBtn" onclick="back()">
-                            <input type="button" value="탈퇴" id="submitBtn">
+                            <input type="button" value="탈퇴" id="submitBtn" onclick="deleteMember()">
                         </div>
                     </form>
                 </div>

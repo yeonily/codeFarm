@@ -110,7 +110,7 @@ public class MemberVO {
 		return "MemberVO [memberNumber=" + memberNumber + ", memberId=" + memberId + ", memberPassword="
 
 				+ memberPassword + ", memberEmail=" + memberEmail + ", memeberPhoneNumber=" + memberPhoneNumber
-=======
+				
 				+ memberPassword + ", memberEmail=" + memberEmail + ", memberPhoneNumber=" + memberPhoneNumber
 
 				+ ", memberName=" + memberName + ", memberLocation=" + memberLocation + ", memberJoinDate="
