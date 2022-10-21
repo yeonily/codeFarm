@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
+   		<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,7 +64,7 @@
             <!-- 프로그램 리스트 출력 틀 -->
             <div class="p-contents contents-bottom">
                 <span class="list-count">총
-                    <span>2476</span>건
+                    <span><c:out value="${total}"/></span>건
                 </span>
 
                 <table class="board">
@@ -78,7 +80,26 @@
                         <th class="delete"></th>
                     </tr>
                     <!-- ↓ 데이터 출력 -->
-                    <tr>
+                     <tbody class="tbody">
+                    <c:choose>
+                    	<c:when test="${userList != null and fn:length(userList) > 0}">
+                    		<c:forEach var="communityList" items="${userList}">
+                   				 <tr>
+	                    			<td><c:out value="${communityList.getCommunityNumber()}"/></td>
+	                    			<td><c:out value="${communityList.getCommunityTitle()}"/></td>
+	                    			<td><c:out value="${communityList.getCommunityContent()}"/></td>
+	                    			<td><c:out value="${communityList.getMemberId()}"/></td>
+	                    			<td><img src="${pageContext.request.contextPath}/assets/images/common/fileImage.png"></td>
+	                    			<td><c:out value="${communityList.getCommunityDate()}"/></td>
+	                    			<td><c:out value="${communityList.getCommunityViewCount()}"/></td>
+	                    			<td></td>
+	                    			<td class="delete"><input type="button" value="삭제" onclick="deleteCheck(this); location.href = '${pageContext.request.contextPath}/admin/CommunityDeleteOk.ad?communityNumber=${communityList.getCommunityNumber()}';"></td>
+                    			</tr>
+                    		</c:forEach>
+                    	</c:when>
+                   </c:choose>
+                    
+                    <%-- <tr>
                         <td>12432</td>
                         <td class="title" onclick="location.href='#'">
                             ● [ 농산물상자 & 파렛트 ] 저렴히 판매합니다..●</td>
@@ -89,30 +110,39 @@
                         <td>86</td>
                         <td>0</td>
                         <td class="delete"><input type="button" value="삭제" onclick="deleteListCheck()"></td>
-                    </tr>
+                    </tr> --%>
                 </table>
 
                 <!-- 페이징 -->
                 <div id="page">
                     <div class="page_nation">
-                        <a class="arrow pprev" href="#"></a>
-                        <a class="arrow prev" href="#"></a>
-                        <a href="#" class="active">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
-                        <a href="#">5</a>
-                        <a href="#">6</a>
-                        <a href="#">7</a>
-                        <a href="#">8</a>
-                        <a href="#">9</a>
-                        <a href="#">10</a>
-                        <a class="arrow next" href="#"></a>
-                        <a class="arrow nnext" href="#"></a>
+                    		<c:if test="${prev}">
+		                        <a class="page-num arrow pprev" href="${pageContext.request.contextPath}/admin/CommunityOk.ad?page=1"></a>
+		                        <a class="page-num arrow prev" href="${pageContext.request.contextPath}/admin/CommunityOk.ad?page=${startPage -1}"></a>
+		                    </c:if>
+                        <c:forEach var="i" begin="${startPage}" end="${endPage}" >
+                         <c:choose>
+                        	<c:when test="${not (i eq page)}">
+		                        <a href="${pageContext.request.contextPath}/admin/CommunityOk.ad?page=${i}" class="page-num">
+		                        <c:out value="${i}"/>
+		                        </a>
+                        	</c:when>
+                        	<c:otherwise> 
+                        		<a href="${pageContext.request.contextPath}/admin/CommunityOk.ad?page=${i}" class="active">
+		                       	 <c:out value="${i}"/>
+		                        </a>
+                        	</c:otherwise>
+                        	</c:choose>
+                        </c:forEach>
+		                	   <c:if test="${next}">
+		                        <a class="page-num arrow next" href="${pageContext.request.contextPath}/admin/CommunityOk.ad?page=${endPage +1}"></a>
+		                        <a class="page-num arrow nnext" href="${pageContext.request.contextPath}/admin/CommunityOk.ad?page=${realEndPage}"></a>
+		                        </c:if>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
-<html>
+<script src="${pageContext.request.contextPath}/assets/js/admin/community.js"></script>
+</html>

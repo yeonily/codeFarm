@@ -15,9 +15,8 @@ public class ProgramApplyMemberOkController implements Execute {
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HashMap<String, Integer> pageMap = new HashMap<String, Integer>();
-		AdminDAO adminDAO = new AdminDAO();
 		Result result = new Result();
-		
+		AdminDAO adminDAO = new AdminDAO();
 //		사용자한테 현재 몇페이지인지 받아야 한다 처음 page에는 null이기 때문에  temp에 사용자가 누른 페이지로 해주고
 //		만약 page에 null이면 1페이지 보여주고 사용자가 입력하면 해당 페이지로 갈 수 있게 해준다. 즉 사용자가 요청한 페이지로 갈 수 있다 (default : 1page)
 		String temp =  req.getParameter("page");
@@ -35,8 +34,7 @@ public class ProgramApplyMemberOkController implements Execute {
 //		단위에서 마지막 페이지(1~10)
 		int endPage = (int) (Math.ceil(page /(double)pageCount) * pageCount);
 		int startPage = endPage - (pageCount - 1);
-		int realEndPage = (int)Math.ceil(total/(double)pageCount);
-		
+		int realEndPage = (int) Math.ceil(total/(double)pageCount);
 		
 		
 		
@@ -47,7 +45,6 @@ public class ProgramApplyMemberOkController implements Execute {
 		pageMap.put("startRow", startRow);
 		pageMap.put("rowCount", rowCount);
 		
-		
 		req.setAttribute("userList", adminDAO.programSelectAll(pageMap));
 		req.setAttribute("total", total);
 		req.setAttribute("page", page);
@@ -56,7 +53,6 @@ public class ProgramApplyMemberOkController implements Execute {
 		req.setAttribute("prev", prev);
 		req.setAttribute("next", next);
 		req.setAttribute("realEndPage", realEndPage);
-		
 		
 		result.setPath("/app/admin/experience_participant.jsp");
 		

@@ -39,9 +39,9 @@
                     <div class="title">Today</div>
                     <div id="counts-group">
                         <div class="counts">
-                            <!-- 오늘 추가 되는 프로그램 수 -->
+                            <!-- 오늘 추가 되는 프로그램 지원자 수 -->
                             <div class="count-title">지원자</div>
-                            <span class="count">1</span>
+                            <span class="count"><c:out value="${total}"/></span>
                         </div>
                     </div>
                 </div>
@@ -98,9 +98,9 @@
                     		<c:forEach var="program" items="${userList}">
                    				 <tr>
 	                    			<td><c:out value="${program.getProgramNumber()}"/></td>
-	                    			<td><c:out value="${member.getMemberId()}"/></td>
+	                    			<td><c:out value="${program.getMemberId()}"/></td>
 	                    			<td><c:out value="${program.getProgramName()}"/></td>
-	                    			<td><c:out value="${memberprogram.getApplyDate()}"/></td>
+	                    			<td><c:out value="${program.getApplyDate()}"/></td>
                     			</tr>
                     		</c:forEach>
                     	</c:when>
@@ -119,26 +119,26 @@
                <div id="page">
                     <div class="page_nation">
                     		<c:if test="${prev}">
-		                        <a class="page-num arrow pprev" href="${pageContext.request.contextPath}/admin/User.ad?page=1"></a>
-		                        <a class="page-num arrow prev" href="${pageContext.request.contextPath}/admin/User.ad?page=${startPage -1}"></a>
+		                        <a class="page-num arrow pprev" href="${pageContext.request.contextPath}/admin/ProgramApplyMemberOk.ad?page=1"></a>
+		                        <a class="page-num arrow prev" href="${pageContext.request.contextPath}/admin/ProgramApplyMemberOk.ad?page=${startPage -1}"></a>
 		                    </c:if>
                         <c:forEach var="i" begin="${startPage}" end="${endPage}" >
                          <c:choose>
                         	<c:when test="${not (i eq page)}">
-		                        <a href="${pageContext.request.contextPath}/admin/User.ad?page=${i}" class="page-num">
+		                        <a href="${pageContext.request.contextPath}/admin/ProgramApplyMemberOk.ad?page=${i}" class="page-num">
 		                        <c:out value="${i}"/>
 		                        </a>
                         	</c:when>
                         	<c:otherwise> 
-                        		<a href="${pageContext.request.contextPath}/admin/User.ad?page=${i}" class="active">
+                        		<a href="${pageContext.request.contextPath}/admin/ProgramApplyMemberOk.ad?page=${i}" class="active">
 		                       	 <c:out value="${i}"/>
 		                        </a>
                         	</c:otherwise>
                         	</c:choose>
                         </c:forEach>
 		                	   <c:if test="${next}">
-		                        <a class="page-num arrow next" href="${pageContext.request.contextPath}/admin/User.ad?page=${endPage +1}"></a>
-		                        <a class="page-num arrow nnext" href="${pageContext.request.contextPath}/admin/User.ad?page=${realEndPage}"></a>
+		                        <a class="page-num arrow next" href="${pageContext.request.contextPath}/admin/ProgramApplyMemberOk.ad?page=${endPage +1}"></a>
+		                        <a class="page-num arrow nnext" href="${pageContext.request.contextPath}/admin/ProgramApplyMemberOk.ad?page=${realEndPage}"></a>
 		                        </c:if>
                     </div>
                 </div>
@@ -153,5 +153,5 @@
 <!-- 차트 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/js/admin/chartAPI_stick.js"></script>
-<html>
+<script src="${pageContext.request.contextPath}/assets/js/admin/chartAPI_stick.js"></script>
+</html>

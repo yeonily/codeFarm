@@ -21,18 +21,134 @@
 	
 <!-- 사용자관리 검색 부분(보류) -->
 
-<!-- 프로그램 지원자 관리 목록띄우기-->
-	<select id="programSelectAll">
-		select p1.apply_date, p1.member_id, tp.program_number, tp.program_name
-		 from (select tmp.member_number, tmp.apply_date, tm.member_id from tbl_member_program tmp join tbl_member tm 
-		 on tmp.member_number = tm.member_number) p1 join tbl_program tp
-		 on p1.member_number = tp.member_number
-	</select> 
-
+<!-- 프로그램 지원자 정보리스트(SELECT) -->
+	<select id="programSelectAll" resultType="adminProgramVO">
+		<!-- select program_number, program_name, program_date, tm.member_id
+		from tbl_program tp join tbl_member tm
+		on tp.member_number = tm.member_number -->
+		select p1.apply_date, p1.member_id, tp.program_number, tp.program_name  from
+		(select tmp.member_number, tmp.apply_date, tm.member_id from tbl_member_program tmp join tbl_member tm 
+		on tmp.member_number = tm.member_number) p1 join tbl_program tp
+		on p1.member_number = tp.member_number
+		order by program_number desc limit #{startRow}, #{rowCount}
+	</select>
+	
+	
 <!-- 프로그램관리 지원자 Id로 유저 수 count -->
 	<select id="selectIdCount" resultType="_int">
-		select count(member_id) from tbl_member
+		select count(p1.member_id) from
+		(select tmp.member_number, tmp.apply_date, tm.member_id from tbl_member_program tmp join tbl_member tm 
+		on tmp.member_number = tm.member_number) p1 join tbl_program tp
+		on p1.member_number = tp.member_number
+	</select>
+	
+	
+<!-- 농촌 프로그램 글 관리 목록 리스트 조회 -->
+	<select id="programListAll" resultType="programVO">
+		select program_number, program_name, program_location, program_apply_start_date, program_apply_end_date, 
+		program_recruited_count, program_recruited_total_count, program_date  
+		from tbl_program
+		order by program_number desc limit #{startRow}, #{rowCount}
+	</select>
+	
+<!-- 농촌 프로그램 수 -->
+	<select id="selectProgramCount" resultType="_int">
+		select count(program_number) from tbl_program
 	</select>
 
+<!-- 농촌 프로그램 글 삭제버튼 클릭 시 db데이터 삭제 -->
+	<delete id="deleteProgram" parameterType="_int">
+		delete from tbl_program
+		where program_number = #{programNumber}
+	</delete>
+	
+<!-- 알바 지원자 목록 리스트 -->
+	<select id="albaUserSelectAll" resultType="adminAlbaVO">
+		select a1.apply_date, a1.member_id, ta.alba_number, ta.alba_name  from
+		(select tma.member_number, tma.apply_date, tm.member_id from tbl_member_alba tma join tbl_member tm 
+		on tma.member_number = tm.member_number) a1 join tbl_alba ta
+		on a1.member_number = ta.member_number
+		order by alba_number desc limit #{startRow}, #{rowCount}
+	</select>
+	
+<!-- 알바 지원자 Id로 유저 수 count -->
+	<select id="selectIdCounta" resultType="_int">
+		select count(a1.member_id)  from
+		(select tma.member_number, tma.apply_date, tm.member_id from tbl_member_alba tma join tbl_member tm 
+		on tma.member_number = tm.member_number) a1 join tbl_alba ta
+		on a1.member_number = ta.member_number
+	</select>
+	
+<!-- 알바 글관리 글 목록 수 -->
+	<select id="albaListAll" resultType="albaVO">
+		select alba_number, alba_name, alba_location, alba_apply_start_date, alba_apply_end_date, 
+		alba_recruited_count, alba_recruited_total_count, alba_date  
+		from tbl_alba
+		order by alba_number desc limit #{startRow}, #{rowCount}
+	</select>
+	
+<!-- 농촌 알바 수 -->
+	<select id="selectAlbaCount" resultType="_int">
+		select count(alba_number) from tbl_alba
+	</select>
+	
+<!-- 농촌 알바 글 삭제버튼 클릭 시 db데이터 삭제 -->
+	<delete id="deleteAlba" parameterType="_int">
+		delete from tbl_alba
+		where alba_number = #{albaNumber}
+	</delete>
+<!-- 멘토 리스트 불러오기 -->
+	<select id="mentorList" resultType="adminMentorVO">
+		select mentor_number, mentor_title, mentor_crops, mentor_location, m.member_id, mentor_email, mentor_phone_number, mentor_image, mentor_date
+		from tbl_mentor mt join tbl_member m
+		on mt.member_number = m.member_number
+		order by mentor_number desc limit #{startRow}, #{rowCount}
+	</select>
+<!-- 멘토 리스트 삭제하기 -->
+	<select id="mentorCount" resultType="_int">
+		select count(mentor_number) from tbl_mentor
+	</select>
+	
+<!-- 농촌 알바 글 삭제버튼 클릭 시 db데이터 삭제 -->
+	<delete id="deleteMentor" parameterType="_int">
+		delete from tbl_mentor
+		where mentor_number = #{mentorNumber}
+	</delete>
+	
+<!-- 소통공간 관리 커뮤니티 갖고오기 -->
+	<select id="communityList" resultType="adminCommunityVO">
+		select community_number, community_title, community_content, m.member_id, community_date,  community_view_count
+		from tbl_community c join tbl_member m
+		on c.member_number = m.member_number
+	</select>
+	
+<!-- 소통공간 글 목록 수 -->
+	<select id="communityCount" resultType="_int">
+		select count(community_number) from tbl_community
+	</select>
+	
+<!-- 소통공간 글 삭제버튼 클릭 시 db데이터 삭제 -->
+	<delete id="deleteCommunity" parameterType="_int">
+		delete from tbl_community
+		where community_number = #{CommunityNumber}
+	</delete>
+	
+<!-- 댓글 목록 가져오기 -->	
+	<select id="replyList" resultType="adminReplyVO">
+		select reply_number, reply_content, m.member_id, reply_date, community_number
+		from tbl_reply r join tbl_member m
+		on r.member_number = m.member_number
+	</select>
+	
+<!-- 댓글 목록 수 -->
+	<select id="replyCount" resultType="_int">
+		select count(reply_number) from tbl_reply
+	</select>
+	
+<!--  댓글 삭제버튼 클릭 시 db데이터 삭제 -->
+	<delete id="deleteReply" parameterType="_int">
+		delete from tbl_reply
+		where reply_number = #{ReplyNumber}
+	</delete>
 	
 </mapper>
