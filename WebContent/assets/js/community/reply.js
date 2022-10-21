@@ -13,7 +13,7 @@ if ($(this).val().length > 1000){
     $(this).val($(this).val().substring(0, 1000)); 
     $('.comment_text02').html("(1000 / 최대 1000자)");
     }
-    });
+});
 
 /* 댓글 목록 출력 */
 show();
@@ -79,9 +79,11 @@ function send(){
 /* 댓글 삭제 */
 $("#replyList").on("click", ".re-delete", function(e){
 	e.preventDefault();
+	
 	$.ajax({ /* 작성을 다 한 후에는 show를 콜백함수로 호출하여 다시 댓글목록 조회 */
 		url: "/reply/deleteOk.re",
 		type: "get",
+		data: {replyNumber: $(this).attr("href")},
 		success: function(){show();}
 	});
 });

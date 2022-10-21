@@ -1,4 +1,4 @@
-package com.farmer.app.reply;
+package com.farmer.app.index;
 
 import java.io.IOException;
 
@@ -8,17 +8,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.farmer.app.Execute;
 import com.farmer.app.Result;
-import com.farmer.app.reply.dao.ReplyDAO;
 
-public class DeleteOkController implements Execute {
+public class IndexOkController implements Execute {
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setContentType("text/html;charset=utf-8");
-		int replyNumber=  Integer.valueOf(req.getParameter("replyNumber"));
+		req.setCharacterEncoding("UTF-8");
+		Result result = new Result();		
 		
-		ReplyDAO replyDAO = new ReplyDAO();
-		replyDAO.delete(replyNumber);
-		
-		return null;
+		result.setPath("/app/main/main.jsp");
+		return result;
 	}
 }

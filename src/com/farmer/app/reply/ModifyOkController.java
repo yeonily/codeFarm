@@ -20,9 +20,6 @@ public class ModifyOkController implements Execute {
 		int replyNumber=  Integer.valueOf(req.getParameter("replyNumber"));
 		String replyContent = req.getParameter("replyContent");
 		
-		System.out.println(replyNumber);
-		System.out.println(replyContent);
-		
 		replyVO.setReplyNumber(replyNumber);
 		replyVO.setReplyContent(replyContent);
 		

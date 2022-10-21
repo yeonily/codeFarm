@@ -66,10 +66,11 @@
         <div class="search-form">
             <span class="s-form">
                 <select name="searchSelect" class="val">
-                    <option value="sj">제목</option>
-                    <option value="cn">내용</option>
-                    <option value="cnsj">제목+내용</option>
-                    <option value="nm">작성자</option>
+                    <option value="sj" id="sj">제목</option>
+                    <option value="cn" id="cn">내용</option>
+                    <option value="cnsj" id="cnsj">제목+내용</option>
+                    <option value="nm" id="nm">작성자</option>
+                    <option value="ft" id="ft" style="display:none">${filter}</option>
                 </select>
             </span>
             <span class="s-f-input">
@@ -131,22 +132,22 @@
 				<div class="page_nation">
 					<c:if test="${prev}">
 						<!-- 이전 페이지(1칸) -->
-						<a class="page-num arrow pprev" href="${pageContext.request.contextPath}/community/listOk.cm?page=1"></a>
-						<a class="page-num arrow prev" href="${pageContext.request.contextPath}/community/listOk.cm?page=${startPage - 1}">&lt;</a>
+						<a class="page-num arrow pprev" href="${pageContext.request.contextPath}/community/searchOk.cm?page=1"></a>
+						<a class="page-num arrow prev" href="${pageContext.request.contextPath}/community/searchOk.cm?page=${startPage - 1}">&lt;</a>
 					</c:if>
 					<c:forEach var="i" begin="${startPage}" end="${endPage}">
 						<c:choose>
 							<c:when test="${not (i eq page)}">
-								<a class="page-num" href="${pageContext.request.contextPath}/community/listOk.cm?page=${i}"><c:out value="${i}" /></a>
+								<a class="page-num" href="${pageContext.request.contextPath}/community/searchOk.cm?page=${i}"><c:out value="${i}" /></a>
 							</c:when>
 							<c:otherwise>
-								<a class="page-num active" href="${pageContext.request.contextPath}/community/listOk.cm?page=${i}"><c:out value="${i}" /></a>
+								<a class="page-num active" href="${pageContext.request.contextPath}/community/searchOk.cm?page=${i}"><c:out value="${i}" /></a>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
 					<c:if test="${next}">
-						<a class="page-num arrow next" href="${pageContext.request.contextPath}/community/listOk.cm?page=${endPage + 1}">&gt;</a>
-						<a class="page-num arrow nnext" href="${pageContext.request.contextPath}/community/listOk.cm?page=${realEndPage}"></a>
+						<a class="page-num arrow next" href="${pageContext.request.contextPath}/community/searchOk.cm?page=${endPage + 1}">&gt;</a>
+						<a class="page-num arrow nnext" href="${pageContext.request.contextPath}/community/searchOk.cm?page=${realEndPage}"></a>
 					</c:if>
 				</div>
 			</div>
@@ -155,4 +156,20 @@
 <jsp:include page="${pageContext.request.contextPath}/app/fix/footer.jsp"/>
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+
+$(".page-num").on("click", function() {
+	var ft = $("#ft").text();
+	$.ajax({
+		url: "/community/searchOk.cm",
+		data: {firstFilter: ft}
+	});
+});
+
+
+$(".searchBtn").on('click', function(){
+	var searchText = $(".searchText").val(); 
+	var filter =$(".val option:selected").text(); // 현재 셀렉트 박스에서 선택된 값
+})
+</script>
 </html>
