@@ -193,22 +193,53 @@ $("input[name='memberPhoneNumber']").on("blur",function(){
         });
     });
 
-    // 휴대폰 인증번호 보내기
-    function codeSend(){
-        if(isNaN(parseInt(detailForm.memberPhoneNumber.value))){
-            detailForm.memberPhoneNumber.focus();
-            return;
-        }
+// 사용자가 입력한 전화번호
+let $memberPhoneNumber;
 
+// 사용자가 인증번호 입력칸에 입력한 값
+let $smsCheckNumber;
+
+// coolSms에서 보낸 인증번호
+let $smsNumber;
+
+// 인증번호 일치 여부 검사
+let $isCheck = false;
+
+
+    // 휴대폰 인증번호 보내기
+    function sendSms(){
+
+	$memberPhoneNumber = $(".phoneNum").val();
+	console.log($memberPhoneNumber);
+	
+	$.ajax({
+		url : "/member/send.me",
+		type : "post",
+		data : {inputPhoneNumber : $memberPhoneNumber},
+		success : function(result){
+			$smsNumber = result;
+		}
+	});
+	
     }
+
     // 인증번호 입력 체크
-    function codeCheck(){
-        if(!detailForm.phoneCode.value){
-            detailForm.phoneCode.focus();
-            alert("휴대폰 인증이 필요합니다.")
-            return;
-        }
-    }
+    function checkSms(){
+	$smsCheckNumber = $("#phoneCode").val();
+	console.log($smsNumber);
+	console.log($smsCheckNumber);
+	if($smsCheckNumber == $smsNumber){
+		console.log("인증번호 일치!");
+		
+		$isCheck = true;
+		alert("인증번호가 일치합니다.");
+	}else{
+		$isCheck = false;
+		
+		alert("인증번호 일치하지 않습니다.");
+		detailForm.phoneCode.focus();
+	}
+   	}
 
     // 입력한 비밀번호가 일치한다면 저장하고 닫기
     function join(){
@@ -283,6 +314,12 @@ $("input[name='memberPhoneNumber']").on("blur",function(){
             alert("휴대폰 인증이 필요합니다.")
             return;
         }
+		
+		if(!$isCheck){
+			detailForm.phoneCode.focus();
+			alert("인증번호를 다시 한번 확인해주세요.");
+			return;
+		}
 		
         detailForm.submit();
         alert('회원가입이 완료되었습니다.')

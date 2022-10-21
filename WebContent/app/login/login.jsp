@@ -116,36 +116,36 @@
                             <h2>아이디 찾기</h2>
                             <span>이름과 휴대폰번호를 입력해주세요.</span>
                         </div>
-                        <form action="" name="findIdForm">
+                        <form method="post" action="${pageContext.request.contextPath}/member/findIdOk.me" name="findIdForm">
                             <div class="pop_con">
                                 <div class="p_con_inner">
                                     <p>이름</p>
                                     <div class="p_inner_box">
-                                        <input type="text" id="find_id_name" placeholder="이름을 입력해주세요." name="findId_name">
+                                        <input type="text" id="find_id_name" placeholder="이름을 입력해주세요." name="memberName">
                                     </div>
                                 </div>
 
                                 <div class="p_con_inner phoneNum">
                                     <p>휴대폰 번호</p>
                                     <div class="p_inner_box">
-                                        <input type="text" id="find_id_phone" placeholder="휴대폰 번호를 입력해주세요." name="findId_phone">
-                                        <a href="javascript:void(0);" class="btn_phone btn_phone_id">인증번호 요청</a>
+                                        <input type="text" id="find_id_phone" class="findId_phone" placeholder="휴대폰 번호를 입력해주세요." name="memberPhoneNumber">
+                                        <a href="javascript:void(0);" class="btn_phone btn_phone_id" onclick="requestSms()">인증번호 요청</a>
                                     </div>
                                 </div>
 
                                 <div class="p_con_inner findId_code">
                                     <p>인증 번호</p>
                                     <div class="p_inner_box">
-                                        <input type="text" id="find_id_phone_code" placeholder="인증 번호를 입력해주세요."
-                                            class="name_text">
+                                        <input type="text" id="find_id_phone_code" placeholder="인증 번호를 입력해주세요." class="name_text">
+                                        <span class="error_next_box" id="findIdMsg"></span>
                                     </div>
                                 </div>
                             </div>
+                        <div class="p_btn01">
+                            <a href="javascript:void(0);" class="id_next_step" onclick="findIdOk()">확인</a>
+                        </div>
                         </form>
 
-                        <div class="p_btn01">
-                            <a href="javascript:void(0);" class="id_next_step">확인</a>
-                        </div>
                     </div>
 
                     <div>
@@ -164,8 +164,8 @@
                         <div class="pop_con">
                             <div class="p_con_inner">
                                 <p>회원님의 아이디</p>
-                                <div class="p_inner_box">
-                                    <p>ssw4688</p>
+                                <div class="p_inner_box"><p>${memberFindId}</p>
+                                    <!-- <p>ssw4688</p> -->
                                 </div>
                             </div>
 
@@ -287,5 +287,6 @@
 <script src="${pageContext.request.contextPath}/assets/js/login/layer_popup.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/login/password.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/login/login_check.js"></script>
-
+<script>
+</script>
 </html>
