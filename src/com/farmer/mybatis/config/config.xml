@@ -59,5 +59,6 @@
       <mapper resource="com/farmer/mybatis/mapper/NoticeFileMapper.xml"/>
       <mapper resource="com/farmer/mybatis/mapper/MyPageMapper.xml"/>
       <mapper resource="com/farmer/mybatis/mapper/AdminMapper.xml"/>
+      <mapper resource="com/farmer/mybatis/mapper/IndexMapper.xml"/>
    </mappers>
 </configuration>
