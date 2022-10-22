@@ -2,6 +2,42 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Admin">
 
+
+<!-- 메인 최근 가입한 사용자 목록-->
+	<select id="mainUserSelect" parameterType="map" resultType="mainUserVO">
+		select member_name, member_email, member_phone_number, member_location, member_join_date
+		from tbl_member
+		order by member_join_date desc
+		limit 0, 5
+	</select>
+	
+<!-- 메인 댓글 관리 리스트 -->
+ 	<select id="mainReplySelect" parameterType="map" resultType="mainReplyVO">
+			select m.member_name, reply_content, reply_date
+			from tbl_reply r join tbl_member m 
+			on r.member_number = m.member_number
+			order by reply_date desc
+			limit 0, 5
+	</select>
+	
+<!--메인 멘토 홍보 리스트 -->
+ 	<select id="mainMentorSelect" parameterType="map" resultType="mainMentorVO">
+			select mentor_location, mentor_crops, mentor_name, mentor_date
+			from tbl_mentor
+			order by mentor_date desc 
+			limit 0,5
+	</select>
+	
+<!-- 메인 소통공간 리스트 -->
+	<select id="mainCommunitySelect" parameterType="map" resultType="mainCommunityVO">
+		select community_title, community_date 
+		from tbl_community
+		order by community_date desc
+		limit 0, 5
+	</select>
+
+
+
 <!-- 사용자관리 유저목록 띄우기(알바, 프로그램 신청 수 생략함) -->
 	<select id="userSelectAll" parameterType="map" resultType="memberVO">
 		select member_number, member_id, member_email, member_phone_number, member_name, member_grade, member_location
@@ -97,6 +133,32 @@
 		delete from tbl_alba
 		where alba_number = #{albaNumber}
 	</delete>
+	
+	
+<!-- 공지사항 글 목록 가져오기(공지 관리) -->
+	<select id="noticeListAll" resultType="adminNoticeVO">
+		select notice_number, notice_title, notice_content, notice_date, notice_view_count 
+		from tbl_notice
+		order by notice_number desc limit #{startRow}, #{rowCount}
+	</select>
+	
+<!-- 공지사항 글 수 -->
+	<select id="noticeCount" resultType="_int">
+		select count(notice_number) from tbl_notice
+	</select>
+	
+<!-- 공지사항 글 삭제 -->
+	<delete id="deleteNotice" parameterType="_int">
+		delete from tbl_notice
+		where notice_number = #{noticeNumber}
+	</delete>
+	
+	
+
+	
+	
+	
+	
 <!-- 멘토 리스트 불러오기 -->
 	<select id="mentorList" resultType="adminMentorVO">
 		select mentor_number, mentor_title, mentor_crops, mentor_location, m.member_id, mentor_email, mentor_phone_number, mentor_image, mentor_date
@@ -150,5 +212,9 @@
 		delete from tbl_reply
 		where reply_number = #{ReplyNumber}
 	</delete>
+	
+	
+	
+	
 	
 </mapper>
