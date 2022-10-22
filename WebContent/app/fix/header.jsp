@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -176,8 +177,16 @@
                 </div>
             </div>
             <div class="usermenu">
-                <div id="lgr_login" onclick="location.href='/young/login.do'">로그인</div>
-                <div id="lgr_join" onclick="location.href='/young/join.do'">회원가입</div>
+            	<c:choose>
+            		<c:when test="${empty memberNumber}">
+               			 <div id="lgr_login" onclick="location.href='${pageContext.request.contextPath}/member/login.me'">로그인</div>
+               			 <div id="lgr_join" onclick="location.href='${pageContext.request.contextPath}/member/join01.me'">회원가입</div>
+               		</c:when>
+                	<c:otherwise>
+              			 <div id="lgr_login" onclick="location.href='${pageContext.request.contextPath}/member/logout.me'">로그아웃</div>
+                <%-- <div id="lgr_join" onclick="location.href='${pageContext.request.contextPath}/member/logout.me'">마이페이지</div> --%>
+               		</c:otherwise>
+                </c:choose>
             </div>
         </div>
         <div id="lgr_topbtn"><img src="https://www.rda.go.kr/young/images/site/main/common_btn_top.png"></div>

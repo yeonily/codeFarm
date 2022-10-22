@@ -11,33 +11,28 @@ import com.farmer.app.Result;
 import com.farmer.app.member.dao.MemberDAO;
 import com.farmer.app.member.vo.MemberVO;
 
-public class FindPwOkController implements Execute {
+public class FindPwController implements Execute {
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
 		req.setCharacterEncoding("UTF-8");
 		
 		MemberDAO memberDAO = new MemberDAO();
 		MemberVO memberVO = new MemberVO();
-		
-		
-		String memberId = req.getParameter("findPw_name");
-		String memberPhoneNumber = req.getParameter("findPw_phone");
+
+		String memberId = req.getParameter("inputId");
+		String memberPhoneNumber = req.getParameter("inputPhoneNumber");
 		String memberPassword = req.getParameter("password");
-		
+				
 		memberVO.setMemberName(memberId);
 		memberVO.setMemberPhoneNumber(memberPhoneNumber);
 		
 		memberDAO.findPassword(memberVO);	
 		
-		
+		memberVO.setMemberPassword(memberPassword);
+				
 		System.out.println(memberId);
 		System.out.println(memberPhoneNumber);
-		memberVO.setMemberPassword(memberPassword);
-		System.out.println(memberPassword);
-		
-		
-		
+				
 		return null;
 	}
 }
