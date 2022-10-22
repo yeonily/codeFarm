@@ -21,9 +21,11 @@ import com.farmer.app.alba.dao.AlbaDAO;
 public class ViewCountOkController implements Execute {
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("text/html; charset=utf-8");
 		HashMap<String, Integer> pageMap = new HashMap<String, Integer>();
 		AlbaDAO albaDAO = new AlbaDAO();
-		Result result = new Result();
 		String temp = req.getParameter("page"); 
 
 		int total = albaDAO.selectCount();
@@ -65,15 +67,15 @@ public class ViewCountOkController implements Execute {
 		req.setAttribute("next", next);
 
 		JSONArray albaLists = new JSONArray();
-		resp.setCharacterEncoding("UTF-8");
 		PrintWriter out = resp.getWriter();
 		
 		albaDAO.selectViewCnt(pageMap).stream().map(albaVO -> new JSONObject(albaVO)).forEach(alba -> albaLists.put(alba));
 
 		out.print(albaLists.toString());
 		out.close();
-		result.setPath("/app/alba/albaApply.jsp");
+		System.out.println("이게 바로 조회순...?");
+		System.out.println(albaLists.toString());
 
-		return result;
+		return null;
 	}
 }
