@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.farmer.app.Result;
-import com.farmer.app.community.DetailOkController;
 
 public class IndexFrontController extends HttpServlet {
 	
@@ -33,7 +32,6 @@ public class IndexFrontController extends HttpServlet {
 	      if(target.equals("/index/main.ix")) { //경로 적기 
 	    	  result = new IndexOkController().execute(req, resp);
 	      }
-	      
 	      
 	      if(result != null) {
 		         if(result.isRedirect()) {

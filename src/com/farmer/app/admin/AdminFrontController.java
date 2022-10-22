@@ -131,7 +131,7 @@ public class AdminFrontController extends HttpServlet {
 			   result = new ReplyOkController().execute(req, resp);
 			   
 		   }else if(target.equals("/admin/adminReplyDeleteOk.ad")) { //댓글 글 정보 삭제(DELETE)
-			   result = new ReplyDeleteOkController().execute(req, resp);
+				/* result = new ReplyDeleteOkController().execute(req, resp); */
 			   
 		   }else if(target.equals("/admin/adminReplySearchOk.ad")) { //댓글 정보 검색(SELECT)
 			   

@@ -46,12 +46,10 @@ public class SearchOkController implements Execute {
 		pageMap.put("startRow", startRow);
 		pageMap.put("rowCount", rowCount);
 		pageMap.put("searchText", searchText);
-		pageMap.put("filter", filter);		
+//		pageMap.put("filter", filter);
 		
-//		System.out.println("filter1 : " + filter);
-//		System.out.println("filter2 : " + filter2);
-		
-		System.out.println(pageMap);
+		System.out.println("filter1 : " + filter);
+		System.out.println("filter2 : " + filter2);
 		
 		switch (filter) {
 		case "sj": // 만약 제목을 선택하고 값을 입력했을 시
