@@ -60,7 +60,7 @@
             return;
         }
         
-        if(pwChangeForm.password.value.length < 4 || pwChangeForm.password.value.length > 20){
+        if(pwChangeForm.password.value.length < 10 || pwChangeForm.password.value.length > 20){
             pwChangeForm.password.focus();
             return;
         }

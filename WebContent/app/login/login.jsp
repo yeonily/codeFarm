@@ -71,6 +71,7 @@
                 <input id="lgr_check" type="checkbox" name="saveId" value="saveId">
                 <div id="lgr_idrem">
                     <label for="lgr_check">아이디 저장</label>
+                    <a href="${pageContext.request.contextPath}/community/detailOk.cm?communityNumber=${memberFindId}"/>
                 </div>
             </div>
             <div class="login_btn">
@@ -84,7 +85,7 @@
                     </li>
                     <li class="lgr_vertical_line"></li>
                     <li>
-                        <a href="javascript:openPop_id()">아이디 찾기</a>
+                        <a href="javascript:openPop_id()" >아이디 찾기</a>
                     </li>
                     <li class="lgr_vertical_line"></li>
                     <li>
@@ -107,6 +108,7 @@
             <!--팝업 컨텐츠 영역-->
             <div class="popup_cont">
                 <!-- 아이디 찾기 step1 -->
+                			<form method="post" action="${pageContext.request.contextPath}/member/findId.me" name="findIdForm">
                 <div class="find_id_wrap id_step1">
                     <div class="find_id_close"><span class="close_btn"></span></div>
 
@@ -116,20 +118,20 @@
                             <h2>아이디 찾기</h2>
                             <span>이름과 휴대폰번호를 입력해주세요.</span>
                         </div>
-                        <form method="post" action="${pageContext.request.contextPath}/member/findIdOk.me" name="findIdForm">
+                        
                             <div class="pop_con">
                                 <div class="p_con_inner">
                                     <p>이름</p>
                                     <div class="p_inner_box">
-                                        <input type="text" id="find_id_name" placeholder="이름을 입력해주세요." name="memberName">
+                                        <input type="text" id="find_id_name" placeholder="이름을 입력해주세요." name="memberFindName">
                                     </div>
                                 </div>
 
                                 <div class="p_con_inner phoneNum">
                                     <p>휴대폰 번호</p>
                                     <div class="p_inner_box">
-                                        <input type="text" id="find_id_phone" class="findId_phone" placeholder="휴대폰 번호를 입력해주세요." name="memberPhoneNumber">
-                                        <a href="javascript:void(0);" class="btn_phone btn_phone_id" onclick="requestSms()">인증번호 요청</a>
+                                        <input type="text" id="find_id_phone" class="findId_phone" placeholder="휴대폰 번호를 입력해주세요." name="memberFindPhoneNumber">
+                                        <a href="javascript:void(0);" class="btn_phone btn_phone_id">인증번호 요청</a>
                                     </div>
                                 </div>
 
@@ -142,15 +144,15 @@
                                 </div>
                             </div>
                         <div class="p_btn01">
-                            <a href="javascript:void(0);" class="id_next_step" onclick="findIdOk()">확인</a>
+                            <a href="javascript:void(0);" class="id_next_step">확인</a>
                         </div>
-                        </form>
 
                     </div>
 
                     <div>
                     </div>
                 </div>
+                </form>
 
                 <!-- 아이디 찾기 step2 -->
                 <div class="find_id_wrap id_step2">
@@ -160,17 +162,14 @@
                             <h2>아이디 찾기</h2>
                             <span>회원님의 회원 아이디입니다.</span>
                         </div>
-
                         <div class="pop_con">
                             <div class="p_con_inner">
                                 <p>회원님의 아이디</p>
-                                <div class="p_inner_box"><p>${memberFindId}</p>
-                                    <!-- <p>ssw4688</p> -->
-                                </div>
+                                <div class="p_inner_box">${memberFindId}</div>
                             </div>
 
                             <div class="p_btn01">
-                                <a href="javascript:closePop_id();">확인</a>
+                                <a href="javascript:closePop_id();" onclick="findIdOk()">확인</a>
                             </div>
                         </div>
                     </div>
@@ -201,7 +200,7 @@
                             <span>휴대폰번호와 아이디를 입력해주세요.</span>
                         </div>
 
-                        <form action="" name="findPwForm">
+                        <form action="${pageContext.request.contextPath}/member/findPwOk.me" name="findPwForm" method="post">
                             <div class="pop_con">
                                 <div class="p_con_inner">
                                     <p>아이디</p>
@@ -238,6 +237,7 @@
                 </div>
 
                 <!-- 비밀번호 찾기 step2 -->
+                 <form action="#" name="pwChangeForm" method="post">
                 <div class="find_id_wrap pw_step2">
                     <div class="pop_inner">
                         <div class="pop_top">
@@ -248,7 +248,6 @@
 
 
                         <!-- 비밀번호 일치하는지 검사 후 비밀번호 수정 완료 -->
-                        <form action="" name="pwChangeForm" method="post">
                             <div class="pop_con">
                                 <div class="p_con_inner">
                                     <p>새로운 비밀번호 입력</p>
@@ -270,9 +269,9 @@
                             <div class="pw_change">
                                 <input type="button" value="비밀번호 변경" onclick="pwChange()"/>
                             </div>
-                        </form>
                     </div>
                 </div>
+                        </form>
 
 
             </div>
