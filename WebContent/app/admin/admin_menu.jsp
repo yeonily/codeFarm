@@ -11,7 +11,7 @@
 
       <!-- 세로 메뉴바 -->
       <nav>
-         <div id="team-logo"><a href="${pageContext.request.contextPath}/admin/admin.ad">너와농부싶어</a></div>
+         <div id="team-logo"><a href="${pageContext.request.contextPath}/admin/MainUserOk.ad">너와농부싶어</a></div>
 
          <div id='side-menu'>
             <div class="side-menu-contents">
@@ -46,7 +46,7 @@
                   <ul>
                      <li class='sub-menu'><a href='#' class="toggleBtn"><span>공지</span></a>
                         <ul>
-                           <li><a href='${pageContext.request.contextPath}/admin/NoticeList.ad'><span>공지 관리</span></a></li>
+                           <li><a href='${pageContext.request.contextPath}/admin/NoticeListOk.ad'><span>공지 관리</span></a></li>
                            <li class='last-menu'><a href='${pageContext.request.contextPath}/admin/NoticeWrite.ad'><span>공지 글 작성</span></a></li>
                         </ul>
                      </li>

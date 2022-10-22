@@ -23,6 +23,8 @@ public class CheckIdOkController implements Execute {
 			jsonObject.put("result", new MemberDAO().checkId(memberId));
 			out.print(jsonObject.toJSONString());
 			out.close();
+			
+		System.out.println(memberId);
 		return null;
 	}
 }

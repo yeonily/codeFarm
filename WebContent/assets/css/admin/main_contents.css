@@ -109,6 +109,7 @@ div.c-content table tr.check {
 div.c-content table tbody.reply td {
     text-align: left;
 }
+
 div.c-content table tbody.reply td.content {
     padding-right: 1vw;
 }

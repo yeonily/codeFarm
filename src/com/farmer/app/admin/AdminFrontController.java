@@ -34,6 +34,13 @@ public class AdminFrontController extends HttpServlet {
 	    	  result = new Result();
 			   result.setPath("/app/admin/main.jsp");
 			   
+	       }else if(target.equals("/admin/MainUserOk.ad")) { //메인에서 유저 목록 불러오기
+	    	   result = new MainUserOkController().execute(req, resp);
+	    	   result = new MainReplyOkController().execute(req, resp);
+	    	   result = new MainMentorOkController().execute(req, resp);
+	    	   result = new MainCommunityOkController().execute(req, resp);
+	    	   
+	    	   
 	       }else if(target.equals("/admin/User.ad")) { //관리자페이지안에서 사용자관리 페이지로 이동
 	    	   result = new UserOkController().execute(req, resp);
 	    	   
@@ -70,10 +77,6 @@ public class AdminFrontController extends HttpServlet {
 			   result = new AlbaApplyMemberOkController().execute(req, resp);
 			   
 			   
-		   }else if(target.equals("/admin/AlbaList.ad")) { //알바 글 관리 페이지로 이동
-			   result = new Result();
-			   result.setPath("/app/admin/alba_list.jsp");
-			   
 		   }else if(target.equals("/admin/AlbaListOk.ad")) { //알바 글 목록들 보여주기(SELECT)
 			   result = new AlbaListOkController().execute(req, resp);
 			   
@@ -83,20 +86,18 @@ public class AdminFrontController extends HttpServlet {
 		   }else if(target.equals("/admin/AlbaListDeleteOk.ad")) { //알바 글 삭제(DELETE)
 			   result = new AlbaListDeleteOkController().execute(req, resp);
 			   
-			   
-		   }else if(target.equals("/admin/NoticeList.ad")) { //공지 관리 페이지로 이동
-			   result = new Result();
-			   result.setPath("/app/admin/notice_list.jsp");
-			   
 		   }else if(target.equals("/admin/NoticeListSearchOk.ad")) { //공지사항 글 검색(SELECT)
 			   
 		   }else if(target.equals("/admin/NoticeListOk.ad")) { //공지사항 전체 리스트(SELECT)
+			   result = new NoticeListOkController().execute(req, resp);
+			   
 			   
 		   }else if(target.equals("/admin/NoitceListUpdate.ad")) { //공지사항 글 수정페이지로 이동
 			   
 		   }else if(target.equals("/admin/NoitceListUpdateOk.ad")) { //공지사항 글 수정(UPDATE)
 			   
-		   }else if(target.equals("/admin/NoitceListDeleteOk.ad")) { //공지사항 글 삭제(DELETE)
+		   }else if(target.equals("/admin/NoticeListDeleteOk.ad")) { //공지사항 글 삭제(DELETE)
+			   result = new NoticeListDeleteOkController().execute(req, resp);
 			   
 		   }else if(target.equals("/admin/NoticeWrite.ad")) { //공지사항 글 작성 페이지로 이동
 			   result = new Result();

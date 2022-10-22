@@ -9,8 +9,13 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import com.farmer.app.admin.vo.AdminAlbaVO;
 import com.farmer.app.admin.vo.AdminCommunityVO;
 import com.farmer.app.admin.vo.AdminMentorVO;
+import com.farmer.app.admin.vo.AdminNoticeVO;
 import com.farmer.app.admin.vo.AdminProgramVO;
 import com.farmer.app.admin.vo.AdminReplyVO;
+import com.farmer.app.admin.vo.MainCommunityVO;
+import com.farmer.app.admin.vo.MainMentorVO;
+import com.farmer.app.admin.vo.MainReplyVO;
+import com.farmer.app.admin.vo.MainUserVO;
 import com.farmer.app.alba.vo.AlbaVO;
 import com.farmer.app.member.vo.MemberVO;
 import com.farmer.app.program.vo.ProgramVO;
@@ -23,6 +28,30 @@ public class AdminDAO {
 	   public AdminDAO() {
 		   sqlSession = sqlSessionFactory.openSession(true);
 	   }
+	   
+
+//	   메인화면에서 user목록 띄우기(메인)
+	   public List<MainUserVO> mainUserSelect(Map<String, Integer> pageMap){
+		   return sqlSession.selectList("Admin.mainUserSelect", pageMap);
+	   }
+	   
+//	   메인화면에서 Reply목록 띄우기(메인)
+	   public List<MainReplyVO> mainReplySelect(Map<String, Integer> pageMap){
+		   return sqlSession.selectList("Admin.mainReplySelect", pageMap);
+	   }
+	   
+//	   메인화면에서 Mentor목록 띄우기(메인)
+	   public List<MainMentorVO> mainMentorSelect(Map<String, Integer> pageMap){
+		   return sqlSession.selectList("Admin.mainMentorSelect", pageMap);
+	   }
+	   
+//	   메인화면에서 Community목록 띄우기(메인)
+	   public List<MainCommunityVO> mainCommunitySelect(Map<String, Integer> pageMap){
+		   return sqlSession.selectList("Admin.mainCommunitySelect", pageMap);
+	   }
+	   
+	   
+	   
 	   
 //	   전체 회원 정보 목록 보여주기 (유저관리)
 	   public List<MemberVO> userSelectAll(Map<String, Integer> pageMap) {
@@ -131,5 +160,21 @@ public class AdminDAO {
 	   public void deleteReply(int replyNumber) {
 		   sqlSession.delete("Admin.deleteReply", replyNumber);
 	   }
+	   
+//	   공지사항 글 목록 불러오기 (공지관리)
+	   public List<AdminNoticeVO> noticeListAll(Map<String, Integer> pageMap){
+		   return sqlSession.selectList("Admin.noticeListAll", pageMap);
+	   }
+	   
+//	   공지사항 글 목록 수 (공지관리)
+	   public int noticeCount() {
+		   return sqlSession.selectOne("Admin.noticeCount");
+	   }
+	   
+//	   공지사항 글 삭제 시키기 (공지 관리)
+	   public void deleteNotice(int noticeNumber) {
+		   sqlSession.delete("Admin.deleteNotice", noticeNumber);
+	   }
+	   
 }
 

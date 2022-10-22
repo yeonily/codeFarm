@@ -22,11 +22,13 @@ public class LoginOkController implements Execute {
 		Result result = new Result();
 		HttpSession session = req.getSession();
 		int memberNumber = 0;
+		int memberGrade = 0;
 //		MemberVO memberNumber;
 //		MemberVO memberGrade;
 		
 		String memberId = req.getParameter("memberId");
 		String memberPassword = req.getParameter("memberPassword");
+		
 		
 		boolean saveId = req.getParameter("saveId")!=null;
 		
@@ -39,12 +41,12 @@ public class LoginOkController implements Execute {
 		
 		try {
 			memberNumber = memberDAO.login(memberVO);
-			
-//			memberGrade = memberDAO.login(memberVO);
+			memberGrade = memberDAO.loginGrade(memberVO);
 			
 			// 로그인 성공
 			session.setAttribute("memberNumber", memberNumber);
 			session.setAttribute("memberId", memberId);
+			session.setAttribute("memberGrade", memberGrade);
 			
 //			session.setAttribute("memberGrade", memberGrade);
 			
