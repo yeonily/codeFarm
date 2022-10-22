@@ -9,8 +9,10 @@
 	
 	<!-- 게시글 전체 조회(페이징까지) -->
 	<select id="selectAll" parameterType="map" resultType="communityDTO">
-		select tc.community_number, tc.community_title, tm.member_id, tc.community_date, tc.community_view_count
-		from tbl_community tc left join tbl_member tm
+		select tc.community_number, tc.community_title, tcf.community_file_name, tm.member_id, tc.community_date, tc.community_view_count
+		from tbl_community tc left outer join tbl_community_file tcf
+		on tc.community_number = tcf.community_number
+		join tbl_member tm
 		on tc.member_number = tm.member_number
 		order by tc.community_number desc limit #{startRow}, #{rowCount}
 	</select>
@@ -19,14 +21,6 @@
 	<select id="selectCnt" resultType="_int">
 		select count(community_number) from tbl_community
 	</select>
-	
-	<!-- 게시글에 첨부파일 존재 유무 -->
-	<!-- <select id="">
-		select tcf.community_file_name, tc.community_number
-		from tbl_community tc left outer join tbl_community_file tcf
-		on tc.community_number = tcf.community_number
-		order by tc.community_number desc;
-	</select> -->
 	
 	<!-- 게시글 검색 결과 전체 개수 확인 -->
 	<select id="searchCnt" parameterType="string" resultType="_int">
@@ -44,11 +38,7 @@
 	
 	<!-- 게시글 검색(제목) -->
 	<select id="searchTitle" parameterType="map" resultType="communityDTO">
-		select tc.community_number, tc.community_title, tm.member_id, tc.community_date, tc.community_view_count
-		from tbl_community tc left join tbl_member tm
-		on tc.member_number = tm.member_number
-		where tc.community_title like #{searchText}
-		order by tc.community_number desc limit #{startRow}, #{rowCount}
+		
 	</select>
 	
 	<!-- 게시글 검색(내용) -->
@@ -70,4 +60,10 @@
 		set community_view_count = community_view_count+1
 		where community_number = #{communityNumber}; 
 	</update>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="delete" parameterType="_int">
+		delete from tbl_community
+		where community_number = #{communityNumber}; 
+	</delete>
 </mapper>

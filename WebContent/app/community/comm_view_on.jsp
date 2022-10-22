@@ -103,8 +103,13 @@
 						</table>
 
 						<div class="te_right mt25">
-							<button type="button" class="iron-iconized iron-action return"
-								onclick="location.href = '${pageContext.request.contextPath}/community/listOk.cm'">
+							<button type="button" class="iron-iconized iron-action return" onclick="location.href = '${pageContext.request.contextPath}/community/listOk.cm'">
+								<span class="val">수정</span>
+							</button>
+							<button type="button" class="iron-iconized iron-action return" onclick="location.href = '${pageContext.request.contextPath}/community/deleteOk.cm?communityNumber=${board.getCommunityNumber()}'">
+								<span class="val">삭제</span>
+							</button>
+							<button type="button" class="iron-iconized iron-action return" onclick="location.href = '${pageContext.request.contextPath}/community/listOk.cm'">
 								<span class="val">목록</span>
 							</button>
 						</div>
@@ -129,15 +134,14 @@
 								</li>
 							</form>
 						</ul>
+					</li>
 					<li class="comment_text02 showLength">0/1000byte</li>
 					</li>
 				</ul>
 				<!-- 댓글 내용 종료 -->
 
 				<!-- 댓글 리스트 -->
-				<!-- 댓글 수 -->
 				<div class="reply">
-					<!-- <div class="reply-count">댓글 <span class="re-count">10</span>개</div> -->
 					<form action="#" id="replyList" name="reModifyForm"></form>
 				</div>
 			</div>

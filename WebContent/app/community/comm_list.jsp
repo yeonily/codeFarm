@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -108,7 +109,13 @@
 										<c:out value="${board.getCommunityTitle()}" />
 									</a>
 								</td>
-								<td>첨부파일</td>
+								<td class="file">
+									<c:choose>
+										<c:when test="${board.getCommunityFileName() != null}"> <!-- 첨부파일이 없다면 if -->
+											<img src = "${pageContext.request.contextPath}/assets/images/common/fileImage.png">
+										</c:when>
+									</c:choose>
+								</td>
 								<td><c:out value="${board.getMemberId()}" /></td>
 								<td><c:out value="${board.getCommunityDate()}" /></td>
 								<td><c:out value="${board.getCommunityViewCount()}" /></td>

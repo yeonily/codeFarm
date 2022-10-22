@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.farmer.app.Execute;
 import com.farmer.app.Result;
 import com.farmer.app.community.dao.CommunityDAO;
-import com.farmer.app.community.vo.CommunityVO;
-import com.farmer.app.communityFile.dao.CommunityFileDAO;
 
 public class ListOkController implements Execute {
 	@Override

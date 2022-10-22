@@ -21,7 +21,7 @@ public class ListOkController implements Execute {
 		int communityNumber = Integer.valueOf(req.getParameter("communityNumber"));
 		ReplyDAO replyDAO = new ReplyDAO();
 		PrintWriter out = resp.getWriter();
-				
+		
 		JSONArray replyList = new JSONArray();
 		replyDAO.selectAll(communityNumber).forEach(replyDTO -> {JSONObject reply = new JSONObject(replyDTO); replyList.put(reply);});
 		out.print(replyList.toString());

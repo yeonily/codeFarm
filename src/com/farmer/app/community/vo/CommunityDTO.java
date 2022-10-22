@@ -3,6 +3,7 @@ package com.farmer.app.community.vo;
 public class CommunityDTO {
 	private int communityNumber;
 	private String communityTitle;
+	private String communityFileName;
 	private String communityContent;
 	private int memberNumber;
 	private String communityDate;
@@ -33,6 +34,14 @@ public class CommunityDTO {
 
 	public void setCommunityTitle(String communityTitle) {
 		this.communityTitle = communityTitle;
+	}
+	
+	public String getCommunityFileName() {
+		return communityFileName;
+	}
+
+	public void setCommunityFileName(String communityFileName) {
+		this.communityFileName = communityFileName;
 	}
 
 	public String getCommunityContent() {
@@ -70,7 +79,8 @@ public class CommunityDTO {
 	@Override
 	public String toString() {
 		return "CommunityDTO [communityNumber=" + communityNumber + ", communityTitle=" + communityTitle
-				+ ", communityContent=" + communityContent + ", memberNumber=" + memberNumber + ", communityDate="
-				+ communityDate + ", communityViewCount=" + communityViewCount + ", memberId=" + memberId + "]";
+				+ ", communityFileName=" + communityFileName + ", communityContent=" + communityContent
+				+ ", memberNumber=" + memberNumber + ", communityDate=" + communityDate + ", communityViewCount="
+				+ communityViewCount + ", memberId=" + memberId + "]";
 	}
 }
