@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -140,7 +142,7 @@
                   <div class="content-title">
                      <div class="title">최근 가입한 사용자</div>
                      <div class="title2">
-                           <a href="">더보기 →</a>
+                           <a href="${pageContext.request.contextPath}/admin/User.ad">더보기 →</a>
                      </div>
                   </div>
                   <div class="c-content">
@@ -153,42 +155,24 @@
                            <col width="20%;">
                         </colgroup>
                         <tbody>
-                           <!-- 멘토홍보 게시글 최근 순 출력 (5개) -->
-                           <tr>
+                        	<!-- 유저관리 목록 -->
+                    		<c:forEach var="mainUserList" items="${userList}">
+                   				 <tr>
+	                    			<td><c:out value="${mainUserList.getMemberName()}"/></td>
+	                    			<td><c:out value="${mainUserList.getMemberEmail()}"/></td>
+	                    			<td><c:out value="${mainUserList.getMemberPhoneNumber()}"/></td>
+	                    			<td><c:out value="${mainUserList.getMemberLocation()}"/></td>
+	                    			<td><c:out value="${mainUserList.getMemberJoinDate()}"/></td>
+                    			</tr>
+                    		</c:forEach>
+         
+                           <!-- tr>
                               <td class="name">[홍길동]</td>
                               <td class="email">java11@gamil.com</td>
                               <td>010-1234-1234</td>
                               <td>서울</td>
                               <td class="date">2022-10-03 10:00</td>
-                           </tr>
-                           <tr>
-                              <td class="name">[이순재]</td>
-                              <td class="email">abc123@gamil.com</td>
-                              <td>010-1234-1234</td>
-                              <td>경기</td>
-                              <td class="date">2022-10-03 10:00</td>
-                           </tr>
-                           <tr>
-                              <td class="name">[가나다]</td>
-                              <td class="email">imnongbu123@gamil.com</td>
-                              <td>010-1234-1234</td>
-                              <td>서울</td>
-                              <td class="date">2022-10-03 10:00</td>
-                           </tr>
-                           <tr>
-                              <td class="name">[한동석]</td>
-                              <td class="email">dongstone@gamil.com</td>
-                              <td>010-1234-1234</td>
-                              <td>인천</td>
-                              <td class="date">2022-10-03 10:00</td>
-                           </tr>
-                           <tr>
-                              <td class="name">[김땡땡]</td>
-                              <td class="email">nongsarang@gamil.com</td>
-                              <td>010-1234-1234</td>
-                              <td>경기</td>
-                              <td class="date">2022-10-03 10:00</td>
-                           </tr>
+                           </tr> -->
                         </tbody>
                      </table>
                   </div>
@@ -199,43 +183,30 @@
                   <div class="content-title">
                      <div class="title">댓글 관리</div>
                      <div class="title2">
-                           <a href="">더보기 →</a>
+                           <a href="${pageContext.request.contextPath}/admin/ReplyOk.ad">더보기 →</a>
                      </div>
                   </div>
                   <div class="c-content">
                      <table>
                         <colgroup>
-                           <col width="17%;">
-                           <col width="65%;">
-                           <col width="18%;">
+                           <col width="30%;">
+                           <col width="50%;">
+                           <col width="20%;">
                         </colgroup>
                         <tbody class="reply">
                            <!-- 소통공간 게시글 최근 순 출력 (5개) -->
-                           <tr>
+                           <c:forEach var="ReplyList" items="${replyList}">
+                   				 <tr>
+	                    			<td style="padding-left:40px"><c:out value="${ReplyList.getMemberName()}"/></td>
+	                    			<td><c:out value="${ReplyList.getReplyContent()}"/></td>
+	                    			<td><c:out value="${ReplyList.getReplyDate()}"/></td>
+                    			</tr>
+                    		</c:forEach>
+                    <!--        <tr>
                               <td class="name">[김지연]</td>
                               <td class="content">안녕하세요~</td>
                               <td class="date">2022-10-03 10:00</td>
-                           </tr>
-                           <tr>
-                              <td class="name">[서승우]</td>
-                              <td class="content">도움 많이 얻었습니다!! 감사합니다!</td>
-                              <td class="date">2022-10-03 10:00</td>
-                           </tr>
-                           <tr>
-                              <td class="name">[정호석]</td>
-                              <td class="content">혹시 바구니 무료나눔 받을 수 있나요??</td>
-                              <td class="date">2022-10-03 10:00</td>
-                           </tr>
-                           <tr>
-                              <td class="name">[김민혁]</td>
-                              <td class="content">오늘 가입했습니다!!</td>
-                              <td class="date">2022-10-03 10:00</td>
-                           </tr>
-                           <tr>
-                              <td class="name">[연태관]</td>
-                              <td class="content">궁금점이 많이 해결된 것 같아요!!</td>
-                              <td class="date">2022-10-03 10:00</td>
-                           </tr>
+                           </tr> -->
                         </tbody>
                      </table>
                   </div>
@@ -250,37 +221,32 @@
                   <div class="content-title">
                      <div class="title">멘토홍보</div>
                      <div class="title2">
-                           <a href="">더보기 →</a>
+                           <a href="${pageContext.request.contextPath}/admin/MentorOk.ad">더보기 →</a>
                      </div>
                   </div>
                   <div class="c-content">
                      <table>
                         <colgroup>
-                           <col width="80%;">
+                           <col width="20%;">
+                           <col width="20%;">
+                           <col width="20%;">
                            <col width="20%;">
                         </colgroup>
                         <tbody>
                            <!-- 멘토홍보 게시글 최근 순 출력 (5개) -->
-                           <tr> <!-- [지역][주작목] - 이름 -->
+                            <c:forEach var="MentorList" items="${mentorList}">
+                   				 <tr>
+	                    			<td>[<c:out value="${MentorList.getMentorLocation()}"/>]</td>
+	                    			<td>[<c:out value="${MentorList.getMentorCrops()}"/>]</td>
+	                    			<td><c:out value="${MentorList.getMentorName()}"/></td>
+	                    			<td><c:out value="${MentorList.getMentorDate()}"/></td>
+                    			</tr>
+                    		</c:forEach>
+                       <!--     <tr> [지역][주작목] - 이름
                               <td class="name">[경기도][블루베리] - 홍길동</td>
                               <td class="date">2022-10-03 10:00</td>
-                           </tr>
-                           <tr>
-                              <td class="name">[홍천군][특수작물] - 나문희</td>
-                              <td class="date">2022-10-03 10:00</td>
-                           </tr>
-                           <tr>
-                              <td class="name">[횡성군][더덕] - 김미영</td>
-                              <td class="date">2022-10-03 10:00</td>
-                           </tr>
-                           <tr>
-                              <td class="name">[화천군][와송] 이순재</td>
-                              <td class="date">2022-10-03 10:00</td>
-                           </tr>
-                           <tr>
-                              <td class="name">[홍천군][밭작물] 한동석</td>
-                              <td class="date">2022-10-03 10:00</td>
-                           </tr>
+                           </tr> -->
+                         
                         </tbody>
                      </table>
                   </div>
@@ -291,7 +257,7 @@
                   <div class="content-title">
                      <div class="title">소통공간</div>
                      <div class="title2">
-                           <a href="">더보기 →</a>
+                           <a href="${pageContext.request.contextPath}/admin/CommunityOk.ad">더보기 →</a>
                      </div>
                   </div>
                   <div class="c-content">
@@ -302,26 +268,17 @@
                         </colgroup>
                         <tbody>
                            <!-- 소통공간 게시글 최근 순 출력 (5개) -->
-                           <tr>
+                             <c:forEach var="CommunityList" items="${communityList}">
+                   				 <tr>
+	                    			<td><c:out value="${CommunityList.getCommunityTitle()}"/></td>
+	                    			<td><c:out value="${CommunityList.getCommunityDate()}"/></td>
+                    			</tr>
+                    		</c:forEach>
+                           <!-- <tr>
                               <td class="title" onclick="location.href='#'">요즘 관심가지고 있는 파테크 아시냐요?</td>
                               <td class="date">2022-10-03 10:00</td>
-                           </tr>
-                           <tr>
-                              <td class="title" onclick="location.href='#'">아이들과 함께하는 꽃밭 가꾸기 팁</td>
-                              <td class="date">2022-10-03 10:00</td>
-                           </tr>
-                           <tr>
-                              <td class="title" onclick="location.href='#'">청년! 3박4일 예천에 한번 살아볼까요?</td>
-                              <td class="date">2022-10-03 10:00</td>
-                           </tr>
-                           <tr>
-                              <td class="title" onclick="location.href='#'">● [ 농산물상자 & 파렛트 ] 저렴히 판매합니다..●</td>
-                              <td class="date">2022-10-03 10:00</td>
-                           </tr>
-                           <tr>
-                              <td class="title" onclick="location.href='#'">귀농 귀촌 하우스 농사 하실분</td>
-                              <td class="date">2022-10-03 10:00</td>
-                           </tr>
+                           </tr> -->
+                          
                         </tbody>
                      </table>
                   </div>

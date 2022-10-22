@@ -27,6 +27,11 @@
       <typeAlias type="com.farmer.app.admin.vo.AdminMentorVO" alias="adminMentorVO"/>
       <typeAlias type="com.farmer.app.admin.vo.AdminCommunityVO" alias="adminCommunityVO"/>
       <typeAlias type="com.farmer.app.admin.vo.AdminReplyVO" alias="adminReplyVO"/>
+      <typeAlias type="com.farmer.app.admin.vo.AdminNoticeVO" alias="adminNoticeVO"/>
+      <typeAlias type="com.farmer.app.admin.vo.MainUserVO" alias="mainUserVO"/>
+      <typeAlias type="com.farmer.app.admin.vo.MainReplyVO" alias="mainReplyVO"/>
+      <typeAlias type="com.farmer.app.admin.vo.MainMentorVO" alias="mainMentorVO"/>
+      <typeAlias type="com.farmer.app.admin.vo.MainCommunityVO" alias="mainCommunityVO"/>
       <!-- <typeAlias type="com.farmer.app.board.vo.BoardDTO" alias="boardDTO"/> -->
    </typeAliases>
       
