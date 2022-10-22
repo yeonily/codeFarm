@@ -23,7 +23,6 @@ public class DeadlineOkController implements Execute {
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HashMap<String, Integer> pageMap = new HashMap<String, Integer>();
 		AlbaDAO albaDAO = new AlbaDAO();
-		Result result = new Result();
 		String temp = req.getParameter("page"); 
 
 		int total = albaDAO.selectCount();
@@ -72,9 +71,8 @@ public class DeadlineOkController implements Execute {
 
 		out.print(albaLists.toString());
 		out.close();
-		result.setPath("/app/alba/albaApply.jsp");
 
-		return result;
+		return null;
 
 	}
 }
