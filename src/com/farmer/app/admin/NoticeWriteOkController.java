@@ -28,6 +28,7 @@ public class NoticeWriteOkController implements Execute {
 		NoticeFileDAO noticeFileDAO = new NoticeFileDAO();
 		Result result = new Result();
 		int currentSequence = 0;
+
 ////		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber"); // Session 로그인 번호
 		
 //		--------------------------------------------------------------------------------------------
@@ -71,7 +72,6 @@ public class NoticeWriteOkController implements Execute {
 			
 			noticeFileDAO.insert(noticeFileVO);
 		}
-		
 //		--------------------------------------------------------------------------------------------
 		
 		result.setPath("/admin/NoticeListOk.ad");

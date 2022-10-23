@@ -30,6 +30,7 @@
             <header>
                 <span id="admin-header-title">사용자 관리</span>
                 <span id="admin-mode">관리자 모드</span>
+                <span id="userCount">가입된 회원 수 총 <strong> <c:out value="${total}"/> </strong>명</span>
             </header>
 
             <!-- 컨텐츠 상단 통계 -->
@@ -239,13 +240,6 @@
 	
 </script>
 <!-- 차트 -->
-<!-- <script>let memberNumber = ${member.getMemberNumber()};</script>
-<script>let memberId = ${member.getMemberId()};</script>
-<script>let memberEmail = ${member.getMemberEmail()};</script>
-<script>let memberPhoneNumber = ${member.getMemberPhoneNumber()};</script>
-<script>let memberName = ${member.getMemberName()};</script>
-<script>let memberGrade = ${member.getMemberGrade()};</script>
-<script>let memberLocation = ${member.getMemberLocation()};</script> -->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/admin/chartAPI.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/admin/user.js"></script>
