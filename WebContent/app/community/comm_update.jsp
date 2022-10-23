@@ -13,8 +13,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/community/comm_write.css"/>
 </head>
 <body>
-	<jsp:include
-		page="${pageContext.request.contextPath}/app/fix/header.jsp" />
+	<jsp:include page="${pageContext.request.contextPath}/app/fix/header.jsp" />
 	<!-- subheader -->
 	<div class="sub_title">
 		<div class="sub_title_container">
@@ -32,7 +31,7 @@
 									<li><a href="/young/board/board07.do" class="active">
 											<span>멘토 홍보 게시판</span>
 									</a></li>
-									<li class="nowMenu"><a href="/community/listOk.cm"
+									<li class="nowMenu"><a href="${pageContent.request.contetPath}/community/listOk.cm"
 										class="active"> <span>소통공간</span>
 									</a></li>
 								</ul>
@@ -41,8 +40,7 @@
 					</div>
 				</div>
 				<div class="title_right_box">
-					<img
-						src="https://www.rda.go.kr/young/file/imageView.do?fpath=78mfPU1tH5tpGdf2EjZQb0R3AXuZGhjU7I8pBv4Rl9tqEaXhOUrKyqO8iZWgudng&fname=9RfoLYoam0TsoWU0M9CunXVDpRV%2BMYjz%2Fwx9V8vcTVN9PUStsh042e3NWGD7IukskEQAGJfLet60yqWGs%2Bedtw%3D%3D&fmime=Lg45aghPCGTl0b%2FVATARWg%3D%3D">
+					<img src="https://www.rda.go.kr/young/file/imageView.do?fpath=78mfPU1tH5tpGdf2EjZQb0R3AXuZGhjU7I8pBv4Rl9tqEaXhOUrKyqO8iZWgudng&fname=9RfoLYoam0TsoWU0M9CunXVDpRV%2BMYjz%2Fwx9V8vcTVN9PUStsh042e3NWGD7IukskEQAGJfLet60yqWGs%2Bedtw%3D%3D&fmime=Lg45aghPCGTl0b%2FVATARWg%3D%3D">
 				</div>
 			</div>
 		</div>
@@ -54,7 +52,8 @@
 			<div class="base_boardwrap">
 				<div class="printboard">
 					<div class="base_boardwrite02">
-						<form action="${pageContext.request.contextPath}/community/writeOk.cm" name="writeForm" method="post" enctype="multipart/form-data">
+						<form action="${pageContext.request.contextPath}/community/updateOk.cm" name="writeForm" method="post" enctype="multipart/form-data">
+							<input type = "hidden" name="communityNumber" value="${param.communityNumber}">
 							<table class="brdTline02 tblspace01">
 								<colgroup>
 									<col width="20%">
@@ -66,14 +65,14 @@
 										<td>
 											<div class="iron-input-note">
 												<span class="content">
-													<input type="text" name="nttSj" id="nttSj" class="val" title="제목" maxlength="1900">
+													<input type="text" name="nttSj" id="nttSj" class="val" title="제목" maxlength="1900" value="${community.getCommunityTitle()}">
 												</span>
 											</div>
 										</td>
 									</tr>
 									<tr>
 										<th>내용</th>
-										<td><textarea id="summernote" name="summernote"></textarea>
+										<td><textarea id="summernote" name="summernote">${community.getCommunityContent()}</textarea>
 										</td>
 									</tr>
 									<tr>
@@ -90,8 +89,11 @@
 							</table>
 							<span class="tbl_lineb"></span>
 							<div class="te_right mt25">
-								<button type="button" class="iron-iconized iron-action primary featured save" onclick="doInsert();">
-									<span class="val">저장</span>
+								<button type="button" class="iron-iconized iron-action primary featured save" onclick="doInsert()">
+									<span class="val">수정</span>
+								</button>
+								<button type="button" class="iron-iconized iron-action primary featured save" onclick="history.back()">
+									<span class="val">취소</span>
 								</button>
 							</div>
 						</form>
@@ -101,8 +103,7 @@
 		</div>
 	</div>
 
-	<jsp:include
-		page="${pageContext.request.contextPath}/app/fix/footer.jsp" />
+	<jsp:include page="${pageContext.request.contextPath}/app/fix/footer.jsp" />
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>

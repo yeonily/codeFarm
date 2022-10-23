@@ -23,26 +23,22 @@ public class LocalSpecialityFrontController extends HttpServlet {
 		doProcess(req, resp);
 	}
 
-
 	protected void doProcess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String requestURI = req.getRequestURI();
 		String contextPath = req.getContextPath();
 		String target = requestURI.substring(contextPath.length());
 		Result result = null;
 
-		if(target.equals("/localSpecialty/searchOk.ls")) {//특산물정보 조건검색 조회(SELECT)
+		if (target.equals("/localSpecialty/searchOk.ls")) {// 특산물정보 조건검색 조회(SELECT)
 //			result = new SearchOkController().execute(req, resp);
-	    	  result = new Result();
-	          result.setPath("/app/local_specialties/local_specialties.jsp");
+			result = new Result();
+			result.setPath("/app/local_specialties/local_specialties.jsp");
 		}
 
-
-
-
-		if(result != null) {
-			if(result.isRedirect()) {
+		if (result != null) {
+			if (result.isRedirect()) {
 				resp.sendRedirect(result.getPath());
-			}else {
+			} else {
 				RequestDispatcher dispatcher = req.getRequestDispatcher(result.getPath());
 				dispatcher.forward(req, resp);
 			}

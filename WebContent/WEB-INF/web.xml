@@ -220,4 +220,14 @@
      <url-pattern>*.rg</url-pattern>
   </servlet-mapping>
   
+  <!-- 테스트 페이지 관련 -->
+   <servlet>
+     <servlet-name>TestFrontController</servlet-name>
+     <servlet-class>com.farmer.app.test.TestFrontController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+     <servlet-name>TestFrontController</servlet-name>
+     <url-pattern>*.te</url-pattern>
+  </servlet-mapping>
 </web-app>

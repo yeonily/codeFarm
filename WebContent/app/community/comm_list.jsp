@@ -63,7 +63,7 @@
     <!-- 검색어 입력 폼 -->
 <div class="contentfullwrap">
     <div class="contentwrap">
-    <form action="/community/searchOk.cm" name="searchForm" method="post" id="inputForm">
+    <form action="/community/searchOk.cm" name="searchForm" method="get" id="inputForm">
         <div class="search-form">
             <span class="s-form">
                 <select name="searchSelect" class="val">
@@ -75,7 +75,7 @@
             </span>
             <span class="s-f-input">
                 <span class="search-input">
-                    <input type="text" class="searchText" name="programSearch" placeholder="검색어를 입력하세요">
+                    <input type="text" class="searchText" name="programSearch" placeholder="검색어를 입력하세요" value=${param.programSearch }>
                 </span>
             </span>
             <button type="submit" class="searchBtn">
@@ -136,25 +136,48 @@
 			<!-- 페이징 -->
 			<div id="page" class="page_height">
 				<div class="page_nation">
-					<c:if test="${prev}">
-						<!-- 이전 페이지(1칸) -->
-						<a class="page-num arrow pprev" href="${pageContext.request.contextPath}/community/listOk.cm?page=1"></a>
-						<a class="page-num arrow prev" href="${pageContext.request.contextPath}/community/listOk.cm?page=${startPage - 1}">&lt;</a>
-					</c:if>
-					<c:forEach var="i" begin="${startPage}" end="${endPage}">
-						<c:choose>
-							<c:when test="${not (i eq page)}">
-								<a class="page-num" href="${pageContext.request.contextPath}/community/listOk.cm?page=${i}"><c:out value="${i}" /></a>
-							</c:when>
-							<c:otherwise>
-								<a class="page-num active" href="${pageContext.request.contextPath}/community/listOk.cm?page=${i}"><c:out value="${i}" /></a>
-							</c:otherwise>
-						</c:choose>
-					</c:forEach>
-					<c:if test="${next}">
-						<a class="page-num arrow next" href="${pageContext.request.contextPath}/community/listOk.cm?page=${endPage + 1}">&gt;</a>
-						<a class="page-num arrow nnext" href="${pageContext.request.contextPath}/community/listOk.cm?page=${realEndPage}"></a>
-					</c:if>
+					<c:choose>
+						<c:when test="${param.searchSelect != null}"> <!-- 검색 중인 경우 -->
+							<c:if test="${prev}">
+								<a class="page-num arrow pprev" href="${pageContext.request.contextPath}/community/searchOk.cm?page=1&searchSelect=${param.searchSelect}&programSearch=${param.programSearch}"></a>
+								<a class="page-num arrow prev" href="${pageContext.request.contextPath}/community/searchOk.cm?page=${startPage - 1}&searchSelect=${param.searchSelect}&programSearch=${param.programSearch}">&lt;</a>
+							</c:if>
+							<c:forEach var="i" begin="${startPage}" end="${endPage}">
+								<c:choose>
+									<c:when test="${not (i eq page)}">
+										<a class="page-num" href="${pageContext.request.contextPath}/community/searchOk.cm?page=${i}&searchSelect=${param.searchSelect}&programSearch=${param.programSearch}"><c:out value="${i}" /></a>
+									</c:when>
+									<c:otherwise>
+										<a class="page-num active" href="${pageContext.request.contextPath}/community/searchOk.cm?page=${i}&searchSelect=${param.searchSelect}&programSearch=${param.programSearch}"><c:out value="${i}" /></a>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+							<c:if test="${next}">
+								<a class="page-num arrow next" href="${pageContext.request.contextPath}/community/searchOk.cm?page=${endPage + 1}&searchSelect=${param.searchSelect}&programSearch=${param.programSearch}">&gt;</a>
+								<a class="page-num arrow nnext" href="${pageContext.request.contextPath}/community/searchOk.cm?page=${realEndPage}&searchSelect=${param.searchSelect}&programSearch=${param.programSearch}"></a>
+							</c:if>
+						</c:when>
+						<c:otherwise> <!-- 검색 중이 아닌 경우 -->
+							<c:if test="${prev}">
+								<a class="page-num arrow pprev" href="${pageContext.request.contextPath}/community/listOk.cm?page=1"></a>
+								<a class="page-num arrow prev" href="${pageContext.request.contextPath}/community/listOk.cm?page=${startPage - 1}">&lt;</a>
+							</c:if>
+							<c:forEach var="i" begin="${startPage}" end="${endPage}">
+								<c:choose>
+									<c:when test="${not (i eq page)}">
+										<a class="page-num" href="${pageContext.request.contextPath}/community/listOk.cm?page=${i}"><c:out value="${i}" /></a>
+									</c:when>
+									<c:otherwise>
+										<a class="page-num active" href="${pageContext.request.contextPath}/community/listOk.cm?page=${i}"><c:out value="${i}" /></a>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+							<c:if test="${next}">
+								<a class="page-num arrow next" href="${pageContext.request.contextPath}/community/listOk.cm?page=${endPage + 1}">&gt;</a>
+								<a class="page-num arrow nnext" href="${pageContext.request.contextPath}/community/listOk.cm?page=${realEndPage}"></a>
+							</c:if>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
 		</div>
@@ -162,4 +185,11 @@
 <jsp:include page="${pageContext.request.contextPath}/app/fix/footer.jsp"/>
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+	const search = '${param.searchSelect}';
+
+	if(search) {
+		$('select[name="searchSelect"]').val(search);
+	}
+</script>
 </html>

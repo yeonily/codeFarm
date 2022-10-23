@@ -39,7 +39,7 @@
 		</div> 
 		<!-- 버튼 그룹 -->
         <div id="lgr_right">
-            <div id="lgr_top_btn_season" onclick="window.open('https://seasonmarket.co.kr/home/promotion?exhbFormSeq=74', '_blank');">
+            <div id="lgr_top_btn_season" onclick="location.href='${pageContext.request.contextPath}/policy/policys.po'">
                 <div class="lgr_top_menubtn">
                     <div class="lgr_top_imgwrap">
                         <img src="https://www.rda.go.kr/young/images/site/main/ma_ico_seasonmarket.png">
@@ -99,13 +99,13 @@
                     </div>
                 </div>
             </div>
-            <div id="lgr_top_btn4"  onclick="location.href='/young/board/board15.do'">
+            <div id="lgr_top_btn4"  onclick="location.href='${pageContext.request.contextPath}/community/listOk.cm'">
                 <div class="lgr_top_menubtn">
                     <div class="lgr_top_imgwrap">
                         <img src="https://www.rda.go.kr/young/images/site/main/ma_ico_menu03.png">
                         <img src="https://www.rda.go.kr/young/images/site/main/ma_ico_menu03_over.png" >
                     </div>
-                    <div class="lgr_top_btntext">
+                    <div class="lgr_top_btntext" >
                         <span>커뮤니티</span>
                     </div>
                     <div class="lgr_top_btnbtn">
@@ -119,7 +119,7 @@
                     </div>
                 </div>
             </div>
-            <div id="lgr_top_btn5"  onclick="location.href='/young/board/board21.do'">
+            <div id="lgr_top_btn5"  onclick="location.href='${pageContext.request.contextPath}/region/region.rg'">
                 <div class="lgr_top_menubtn">
                     <div class="lgr_top_imgwrap">
                         <img src="	https://www.rda.go.kr/young/images/site/main/ma_ico_menu04.png">
@@ -139,7 +139,7 @@
                     </div>
                 </div>
             </div>
-            <div id="lgr_top_btn6"  onclick="location.href='/young/board/board04.do'">
+            <div id="lgr_top_btn6"  onclick="location.href='${pageContext.request.contextPath}/test/readyTest.te'">
                 <div class="lgr_top_menubtn">
                     <div class="lgr_top_imgwrap">
                         <img src="https://www.rda.go.kr/young/images/site/main/ma_ico_menu05.png">
@@ -159,14 +159,27 @@
                     </div>
                 </div>
             </div>
-            <div id="lgr_top_login" onclick="location.href='/young/board/board04.do'">
+            <c:choose>
+              	<c:when test="${memberNumber != null}">
+              		<div id="lgr_top_login" onclick="location.href='${pageContext.request.contextPath}/member/logout.me'">
+              	</c:when>
+              	<c:otherwise>
+              		<div id="lgr_top_login" onclick="location.href='${pageContext.request.contextPath}/member/login.me'">
+              	</c:otherwise>
+           	</c:choose>
+            
                 <div class="lgr_top_menubtn">
                     <div class="lgr_top_imgwrap">
                         <img src="${pageContext.request.contextPath}/assets/images/main/login.png" >
                         <img src="${pageContext.request.contextPath}/assets/images/main/login_over.png" >
                     </div>
                     <div class="lgr_top_btntext">
-                        <span>로그인</span>
+                        <span>
+                        <c:choose>
+                        	<c:when test="${memberNumber != null}">로그아웃</c:when>
+                        	<c:otherwise>로그인</c:otherwise>
+                       	</c:choose>
+                        </span>
                     </div>
                     <div class="lgr_top_btnbtn">
                         <div>
@@ -179,7 +192,8 @@
                     </div>
                 </div>
             </div>
-            <div id="lgr_top_join" onclick="location.href='/young/board/board04.do'">
+            
+            <div id="lgr_top_join" onclick="location.href='${pageContext.request.contextPath}/member/join01.me'">
                 <div class="lgr_top_menubtn">
                     <div class="lgr_top_imgwrap">
                         <img src="${pageContext.request.contextPath}/assets/images/main/user.png">
@@ -331,8 +345,6 @@
 				</div>
 		</div>
 	</div>
-	
-	
 </div>
 
 
