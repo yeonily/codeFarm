@@ -40,7 +40,6 @@ public class SearchOkController implements Execute {
 			communityDTO.setCommunityTitle(inputText);
 			communityDTO.setCommunityContent(inputText);
 			total = communityDAO.searchCntTitleContent(communityDTO);
-			System.out.println(total);
 			break;
 
 		case "nm":
@@ -52,7 +51,7 @@ public class SearchOkController implements Execute {
 		}
 		
 		
-		
+		/* 페이징 설정 */
 		int page = temp == null ? 1 : Integer.parseInt(temp);
 		int rowCount = 10, pageCount = 10;
 		int startRow = (page - 1) * rowCount;
@@ -68,13 +67,8 @@ public class SearchOkController implements Execute {
 		pageMap.put("startRow", startRow);
 		pageMap.put("rowCount", rowCount);
 
-//		System.out.println("현재 페이지 : " + page);
-//		System.out.println("시작 페이지 : " + startPage);
-//		System.out.println("끝나는 페이지 : " + endPage);
-//		System.out.println("startRow : " + startPage);
-//		System.out.println("rowCount : " + rowCount);
 		
-		/* 사용자가 선택한 필터 */
+		/* 사용자가 선택한 필터에 따른 게시글들 가져오기 */
 		switch (choice) {
 		case "sj": // 제목
 			pageMap.put("communityTitle", inputText);

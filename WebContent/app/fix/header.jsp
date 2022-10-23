@@ -40,8 +40,8 @@
                 </ul>
                 <ul>
                     <li class="lgr_gnbhead" id="k3" ><a href="javascript:void(0);" >프로그램</a></li>
-                    <li class="j3"><a href="/young/board/board15.do">농촌 체험 프로그램 신청</a></li>
-                    <li class="j3"><a href="/young/board/board17.do">농촌 아르바이트 신청</a></li>
+                    <li class="j3"><a href="${pageContext.request.contextPath}/program/applyListOk.pg">농촌 체험 프로그램 신청</a></li>
+                    <li class="j3"><a href="${pageContext.request.contextPath}/alba/applyListOk.ab">농촌 아르바이트 신청</a></li>
                 </ul>
                 <ul>
                     <li class="lgr_gnbhead"  id="k4"><a href="javascript:void(0);" >커뮤니티</a></li>
@@ -104,11 +104,11 @@
                                     <span>프로그램</span>
                                 </a>
                                 <ul style="text-align: right;" data-level="2">
-                                    <li><a href="/young/board/board15.do" >
+                                    <li><a href="${pageContext.request.contextPath}/program/applyListOk.pg" >
                                             <span>농촌 체험 프로그램 신청</span>
                                         </a>
                                     </li>
-                                    <li><a href="/young/board/board17.do" >
+                                    <li><a href="${pageContext.request.contextPath}/alba/applyListOk.ab" >
                                             <span>농촌 아르바이트 신청</span>
                                         </a>
                                     </li>
