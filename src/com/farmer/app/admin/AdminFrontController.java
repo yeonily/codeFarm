@@ -40,11 +40,12 @@ public class AdminFrontController extends HttpServlet {
 	    	   result = new MainMentorOkController().execute(req, resp);
 	    	   result = new MainCommunityOkController().execute(req, resp);
 	    	   
-	    	   
 	       }else if(target.equals("/admin/User.ad")) { //관리자페이지안에서 사용자관리 페이지로 이동
 	    	   result = new UserOkController().execute(req, resp);
 	    	   
 		   }else if(target.equals("/admin/UserSearchOk.ad")) { //사용자 정보 검색하기(SELECT)
+//			   result = new UserSearchOkController().execute(req, resp);
+			   new UserSearchOkController().execute(req, resp);
 			   
 		   }else if(target.equals("/admin/UserOk.ad")) { //사용자 정보 불러오기(SELECT)
 			   
@@ -104,7 +105,7 @@ public class AdminFrontController extends HttpServlet {
 			   result.setPath("/app/admin/notice_write.jsp");
 			   
 		   }else if(target.equals("/admin/NoticeWriteOk.ad")) { //공지사항 글 작성(INSERT)
-			   
+			   result = new NoticeWriteOkController().execute(req, resp);
 			   
 		   }else if(target.equals("/admin/MentorOk.ad")) { //멘토 전체정보 불러오기(SELECT)
 			   result = new MentorOkController().execute(req, resp);

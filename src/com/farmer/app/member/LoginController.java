@@ -18,18 +18,16 @@ public class LoginController implements Execute {
 		Result result = new Result();
 //		HttpSession session = req.getSession();
 		String memberId = null;
+		
 		boolean logout = Boolean.valueOf(req.getParameter("logout"));
 		
 		if(req.getHeader("Cookie")!=null) {
 			for(Cookie cookie : req.getCookies()) {
 				if(cookie.getName().equals("memberId")){
-					memberId = cookie.getValue();
+					req.setAttribute("memberId", cookie.getValue());
 					}
 				}
 			}
-		req.setAttribute("memberId", memberId);
-		
-	
 		
 		result.setPath("/app/login/login.jsp");
 

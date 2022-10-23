@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.farmer.app.admin.vo.AdminAlbaVO;
 import com.farmer.app.admin.vo.AdminCommunityVO;
+import com.farmer.app.admin.vo.AdminMemberDTO;
 import com.farmer.app.admin.vo.AdminMentorVO;
 import com.farmer.app.admin.vo.AdminNoticeVO;
 import com.farmer.app.admin.vo.AdminProgramVO;
@@ -18,6 +19,7 @@ import com.farmer.app.admin.vo.MainReplyVO;
 import com.farmer.app.admin.vo.MainUserVO;
 import com.farmer.app.alba.vo.AlbaVO;
 import com.farmer.app.member.vo.MemberVO;
+import com.farmer.app.notice.vo.NoticeVO;
 import com.farmer.app.program.vo.ProgramVO;
 import com.farmer.mybatis.config.MyBatisConfig;
 
@@ -58,6 +60,14 @@ public class AdminDAO {
 		   return sqlSession.selectList("Admin.userSelectAll", pageMap);
 	   }
 	   
+//	   전체 회원 정보 검색 (유저관리)
+	   public List<MemberVO> findAllSearchBy(AdminMemberDTO adminMemberDTO) {
+		   return sqlSession.selectList("Admin.findAllSearchBy", adminMemberDTO);
+	   } 
+	   
+	   
+	   
+	   
 //	   전체 회원 수 (유저관리)
 	   public int selectCount() {
 		   return sqlSession.selectOne("Admin.selectCount");
@@ -92,11 +102,11 @@ public class AdminDAO {
 	   public void deleteProgram(int programNumber) {
 		   sqlSession.delete("Admin.deleteProgram", programNumber);
 	   }
-	   
+//	   알바 지원자 목록 보여주기
 	   public List<AdminAlbaVO> albaUserSelectAll(Map<String, Integer> pageMap){
 		   return sqlSession.selectList("Admin.albaUserSelectAll", pageMap);
 	   }
-	   
+//	   알바 지원자 목록 수
 	   public int selectIdCounta() {
 		   return sqlSession.selectOne("Admin.selectIdCounta");
 	   }
@@ -115,6 +125,9 @@ public class AdminDAO {
 	   public void deleteAlba(int albaNumber) {
 		   sqlSession.delete("Admin.deleteAlba", albaNumber);
 	   }
+	   
+	   
+	   
 	   
 //	   멘토 리스트 (멘토 홍보 관리)
 	   public List<AdminMentorVO> mentorList(Map<String, Integer> pageMap){
@@ -175,6 +188,16 @@ public class AdminDAO {
 	   public void deleteNotice(int noticeNumber) {
 		   sqlSession.delete("Admin.deleteNotice", noticeNumber);
 	   }
+	   
+//	   공지사항 글 작성 (공지 글 쓰기)
+	   public void write(NoticeVO noticeVO) {
+		   sqlSession.insert("Admin.write", noticeVO);
+	   }
+	   
+//		가장 최신 게시글 번호
+		public int selectCurrentSequence() {
+			return sqlSession.selectOne("Admin.selectCurrentSequence");
+		}
 	   
 }
 

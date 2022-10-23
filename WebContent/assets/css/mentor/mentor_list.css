@@ -28,6 +28,15 @@
   /*.top{margin-bottom:100px;}*/
   /*공통 스타일 끝*/
 
+
+.numberClick{
+	
+	position: absolute;
+    margin-left: 430px;
+    top: 1480px;
+    
+}
+
   .sub_wrap .sub_content {
     bottom: 73px;
     position: relative;
@@ -137,7 +146,7 @@ input {
 /* 1 */
 .hn_photo_list {}
 .hn_photo_list>ul {/* overflow:hidden; */}
-.hn_photo_list>ul>li {position:relative; margin: 0 3.882rem 4.118rem 0; display: inline-block; /* float:left; */ overflow: hidden; width: 24.706rem; height: 24.806rem; /* width:calc(25% - 1.176rem);margin:35px; */box-sizing:border-box;
+.hn_photo_list>ul>li {position:relative; margin: 0 3.882rem 4.118rem 0; display: inline-block; float:left; overflow: hidden; /* width:calc(25% - 1.176rem);margin:35px; */box-sizing:border-box;
  border:0.059rem solid #ccc; background-color:#fff; border-radius: 0.588rem; box-shadow: 0 0.294rem 0.882rem -0.118rem #e5e5e5; animation: fadein 3s;
   -moz-animation: fadein 3s; /* Firefox */
   -webkit-animation: fadein 3s; /* Safari and Chrome */

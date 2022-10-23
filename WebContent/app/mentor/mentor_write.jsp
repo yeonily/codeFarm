@@ -60,6 +60,7 @@
             <div class="base_boardwrap">
                 <div class="printboard">
                     <div class="base_boardwrite02">
+                    <form method="post" action="" name="writeForm">
                             <table class="brdTline02 tblspace01">
                                 <colgroup>
                                     <col width="20%">
@@ -70,7 +71,7 @@
                                         <th>제목</th>
                                         <td>
                                             <div class="iron-input-note">
-                                                <span class="content"><input type="text" name="nttSj" id="nttSj" class="val" title="제목" maxlength="1900"></span>
+                                                <span class="content"><input type="text" name="mentorTitle" id="nttSj" class="val" title="제목" maxlength="1900"></span>
                                             </div>
                                         </td>
                                     </tr>
@@ -78,7 +79,7 @@
                                         <th>지역</th>
                                         <td>
                                             <div class="iron-input-note">
-                                                <span class="content"><input type="text" name="nttSj" id="nttSj" class="val" title="제목" maxlength="1900"></span>
+                                                <span class="content"><input type="text" name="mentorLocation" id="nttSj" class="val" title="제목" maxlength="1900"></span>
                                             </div>
                                             </td>
                                     </tr>
@@ -86,7 +87,7 @@
                                         <th>주작물</th>
                                         <td>
                                             <div class="iron-input-note">
-                                                <span class="content"><input type="text" name="nttSj" id="nttSj" class="val" title="제목" maxlength="1900"></span>
+                                                <span class="content"><input type="text" name="mentorCrops" id="nttSj" class="val" title="제목" maxlength="1900"></span>
                                             </div>
                                             </td>
                                     </tr>
@@ -94,7 +95,7 @@
                                         <th>이름</th>
                                         <td>
                                             <div class="iron-input-note">
-                                                <span class="content"><input type="text" name="nttSj" id="nttSj" class="val" title="제목" maxlength="1900"></span>
+                                                <span class="content"><input type="text" name="mentorName" id="nttSj" class="val" title="제목" maxlength="1900"></span>
                                             </div>
                                             </td>
                                     </tr>
@@ -102,7 +103,7 @@
                                         <th>이메일</th>
                                         <td>
                                             <div class="iron-input-note">
-                                                <span class="content"><input type="text" name="nttSj" id="nttSj" class="val" title="제목" maxlength="1900"></span>
+                                                <span class="content"><input type="text" name="mentorEmail" id="nttSj" class="val" title="제목" maxlength="1900"></span>
                                             </div>
                                             </td>
                                     </tr>
@@ -110,7 +111,7 @@
                                         <th>연락처</th>
                                         <td>
                                             <div class="iron-input-note">
-                                                <span class="content"><input type="text" name="nttSj" id="nttSj" class="val" title="제목" maxlength="1900"></span>
+                                                <span class="content"><input type="text" name="mentorPhoneNumber" id="nttSj" class="val" title="제목" maxlength="1900"></span>
                                             </div>
                                             </td>
                                     </tr>
@@ -118,7 +119,7 @@
                                             <th>첨부파일</th>
                                             <td>
                                                 <div class="fileInfo">
-                                                    <input type="file" id="egovComFileUploader" title="첨부파일" name="file_0">
+                                                    <input type="file" id="egovComFileUploader" title="첨부파일" name="mentorImage">
                                                 </div>
                                                 <div id="egovComFileList"></div>
                                                     <span class="attchtext"> 첨부파일은 총 1개까지 가능합니다.</span>
@@ -139,4 +140,5 @@
     </div>
 <jsp:include page="${pageContext.request.contextPath}/app/fix/footer.jsp"/>
 </body>
+<script src="${pageContext.request.contextPath}/assets/js/mentor/mentor_write.js"></script>
 </html>

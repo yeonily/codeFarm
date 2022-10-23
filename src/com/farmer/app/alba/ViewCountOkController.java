@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,7 @@ import org.json.JSONObject;
 import com.farmer.app.Execute;
 import com.farmer.app.Result;
 import com.farmer.app.alba.dao.AlbaDAO;
+import com.farmer.app.alba.vo.AlbaVO;
 
 public class ViewCountOkController implements Execute {
 	@Override
@@ -57,8 +59,16 @@ public class ViewCountOkController implements Execute {
 		// 포맷팅 적용
 		String fToday = f.format(today);
 
-		req.setAttribute("processCount", albaDAO.selectProcess(fToday));
-		req.setAttribute("total", total);
+		List<AlbaVO> resultList = albaDAO.selectViewCnt(pageMap);
+//		System.out.println(resultList);
+		
+		for(AlbaVO item : resultList) {
+			System.out.println(String.format("albaId=%d viewCnt=%d", item.getAlbaNumber(), item.getAlbaViewCount()));
+		}
+		System.out.println("------------------");
+		
+//        req.setAttribute("albaLists", albaDAO.selectViewCnt(pageMap));
+		
 		req.setAttribute("page", page);
 		req.setAttribute("startPage", startPage);
 		req.setAttribute("endPage", endPage);
@@ -73,7 +83,6 @@ public class ViewCountOkController implements Execute {
 
 		out.print(albaLists.toString());
 		out.close();
-		System.out.println("이게 바로 조회순...?");
 		System.out.println(albaLists.toString());
 
 		return null;

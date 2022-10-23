@@ -23,4 +23,4 @@ function send() {
 let memberId = "${memberId}";
 
 // 위의 상황에 맞게 체크해주기!
-if (memberId) { $("input[name='saveId']").prop("checked", true); }
+if(memberId){$("input[name='saveId']").prop("checked", true);}

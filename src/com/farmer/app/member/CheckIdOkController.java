@@ -24,7 +24,6 @@ public class CheckIdOkController implements Execute {
 			out.print(jsonObject.toJSONString());
 			out.close();
 			
-		System.out.println(memberId);
 		return null;
 	}
 }

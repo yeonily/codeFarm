@@ -34,7 +34,7 @@
 			} else {
 				document.detailForm.agree.value = true;
                 document.detailForm.submit();
-                location.href='join02.html';
+                location.href='/member/join02.me';
 		    } 
     }
 

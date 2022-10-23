@@ -109,7 +109,7 @@
                                     <input type="text" name="memberPhoneNumber" class="phoneNum" value="" placeholder="휴대폰 번호(-제외)를 입력해주세요.">
                             </div>    
                                 <div class="fixedBtnSize">
-                                    <button type="button" class="btn_phoneNum" onclick="sendSms()">인증번호 받기</button>
+                                    <button type="button" id="numberButton" class="btn_phoneNum" name="numberButton" onclick="sendSms()">인증번호 받기</button>
                                 </div>
                         
                             </div>

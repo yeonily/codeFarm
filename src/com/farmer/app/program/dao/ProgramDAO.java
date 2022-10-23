@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import com.farmer.app.alba.vo.AlbaVO;
 import com.farmer.app.program.vo.ProgramVO;
 import com.farmer.mybatis.config.MyBatisConfig;
 
@@ -61,4 +62,16 @@ public class ProgramDAO {
 		public void update(ProgramVO programVO) {
 			sqlSession.update("program.update", programVO);
 		}
+		
+//		조회순 정렬
+		public List<ProgramVO> selectView(Map<String, Integer> pageMap) {
+			return sqlSession.selectList("program.selectView", pageMap);
+		}
+		
+//		최근 마감일순 정렬
+		public List<ProgramVO> selectDeadline(Map<String, Integer> pageMap) {
+			return sqlSession.selectList("program.selectDeadline", pageMap);
+		}
+
+		
 }

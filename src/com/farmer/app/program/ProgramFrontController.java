@@ -56,18 +56,18 @@ public class ProgramFrontController extends HttpServlet {
 	    	  result = new Result();
 	    	  result.setPath("/app/program/programDetailPage_3.jsp");
 	    	  
-			} /*
-				 * else if(target.equals("/program/deleteOk.pg")) {//프로그램 글 삭제(DELETE) result =
-				 * new DeleteOkController().execute(req, resp);
-				 * 
-				 * }else if(target.equals("/program/update.pg")) {//프로그램 글 수정 페이지로 이동 result =
-				 * new UpdateController().execute(req, resp);
-				 * 
-				 * }else if(target.equals("/program/updateOk.pg")) {//프로그램 글 수정(UPDATE) result =
-				 * new UpdateOkController().execute(req, resp);
-				 * 
-				 * }
-				 */
+
+	      }else if(target.equals("/program/deleteOk.pg")) {//프로그램 글 삭제(DELETE)
+	    	  result = new DeleteOkController().execute(req, resp);
+	    	  
+		    }else if(target.equals("/program/update.pg")) {//프로그램 글 수정 페이지로 이동
+				  result = new UpdateController().execute(req, resp);
+	    	  
+	      }else if(target.equals("/program/updateOk.pg")) {//프로그램 글 수정(UPDATE)
+	    	  result = new UpdateOkController().execute(req, resp);
+	    	  
+	      } 
+
 
 	
 	    if(result != null) {

@@ -191,7 +191,7 @@ function sortList(albaLists) {
 	});
 
 	$("#albaListsAllUl").html(text);
-	pageNation(page);
+	pageNation();
 }
 
 function pageNation() {
@@ -199,7 +199,6 @@ function pageNation() {
 	
 	pageText+= `<div class="page_nation">`;
 	<c:if test="${prev}">
-	console.log(${prev});
 	pageText+= `<a href="1" class="page-num arrow pprev"></a>`;
 	pageText+= `<a href="` + ${startPage + 1} + `" class="page-num arrow prev" ></a>`;
 	</c:if>
@@ -224,14 +223,13 @@ function pageNation() {
 	pageText+= `</div>`;
 	
 	$("#page").html(pageText);
-
 	$("#page").on("click", "a.page-num",function(e){
 		console.log("이게 버튼 클릭...?");
-		console.log($(this).html());
 		e.preventDefault();
 		page = $(this).html();
-		return page;
+	return page;		
 	});
+		console.log("페이징ㅜㅜ : " + page);
 }
 
 

@@ -29,7 +29,7 @@
         </div>
     <!-- 바디 -->
  	<div id="write">
-            <form action="${pageContext.request.contextPath}/alba/albaWriteOk.ab" name="albaForm" method="post">
+            <form action="${pageContext.request.contextPath}/alba/albaWriteOk.ab" name="albaForm" method="post" enctype="multipart/form-data">
                <table>
                   <colgroup>
                      <col width="20%;">
@@ -124,9 +124,9 @@
                         <th>첨부파일</th>
                         <td>
                            <div class="file">
-                              <input type="file" name="file">
+                              <input type="file" name="file" class="fileName" onchange="fileUpload()">
                            </div>
-                           <div id="file-content"></div>
+                           <div id="file-content"></div><img id="deleteBtn" style="display: none;" alt="첨부 삭제" src="${pageContext.request.contextPath}/assets/images/login/close.png" onclick="cancelFile()">
                            <span class="file-limit"> 첨부파일은 총 1개까지 가능합니다.</span>
                         </td>
                      </tr>

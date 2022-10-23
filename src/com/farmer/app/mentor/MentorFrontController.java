@@ -29,8 +29,11 @@ public class MentorFrontController extends HttpServlet {
 	    String target = requestURI.substring(contextPath.length());
 	    Result result = null;
 	    
-	      if(target.equals("/mentor/searchOk.mt")) {//멘토 검색 실행(SELECT)
+	      if(target.equals("/mentor/listOk.mt")) {// 멘토 리스트(SELECT)
+	    	result = new ListOkController().execute(req, resp);
 	          
+	       }else if(target.equals("/mentor/searchOk.mt")) {//멘토 검색 실행(SELECT)
+	   		
 	       }else if(target.equals("/mentor/write.mt")) {//멘토 작성페이지로 이동
 	   		
 	       }else if(target.equals("/mentor/writeOk.mt")) {//멘토 작성(INSERT)

@@ -30,8 +30,6 @@ public class FindPwController implements Execute {
 		
 		memberVO.setMemberPassword(memberPassword);
 				
-		System.out.println(memberId);
-		System.out.println(memberPhoneNumber);
 				
 		return null;
 	}
