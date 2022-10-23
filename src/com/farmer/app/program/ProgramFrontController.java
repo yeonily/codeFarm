@@ -65,7 +65,7 @@ public class ProgramFrontController extends HttpServlet {
 	      }else if(target.equals("/program/updateOk.pg")) {//프로그램 글 수정(UPDATE)
 	    	  result = new UpdateOkController().execute(req, resp);
 	    	  
-	      }
+	      } 
 
 	
 	    if(result != null) {
