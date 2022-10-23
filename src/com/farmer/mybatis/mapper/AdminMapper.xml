@@ -44,6 +44,35 @@
 		from tbl_member
 		order by member_number desc limit #{startRow}, #{rowCount}
 	</select>
+	
+<!-- 사용자관리 검색기능 -->
+ 	<select id="findAllSearchBy" parameterType="adminMemberDTO" resultType="memberVO">
+		select member_id, member_email, member_name, member_phone_number from tbl_member
+		where 
+		<trim prefixOverrides="OR">
+			<foreach item="type"  collection="types">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'i'.toString()">
+							member_id = #{keyword}
+						</when>
+						<when test="type == 'e'.toString()">
+							member_email = #{keyword}
+						</when>
+						<when test="type == 'n'.toString()">
+							member_name = #{keyword}
+						</when>
+						<otherwise>
+							member_phone_number = #{keyword}
+						</otherwise>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</select> 
+
+	
+	
 <!-- 사용자관리 db에 있는 유저 수 count -->
 	<select id="selectCount" resultType="_int">
 		select count(member_number) from tbl_member
@@ -154,6 +183,16 @@
 	</delete>
 	
 	
+<!-- 공지사항 글 작성하기 -->
+	<insert id="write" parameterType="noticeVO">
+		insert into tbl_notice (notice_title, notice_content, member_number)
+		values(#{noticeTitle}, #{noticeContent}, #{memberNumber})
+	</insert>
+	
+<!-- 가장 최신 게시글 번호 -->
+	<select id="selectCurrentSequence" resultType="_int">
+		select last_insert_id()
+	</select>
 
 	
 	
