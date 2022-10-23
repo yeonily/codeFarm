@@ -29,7 +29,7 @@ public class SmsOkController implements Execute {
 		String phoneNumber = req.getParameter("inputPhoneNumber");
 		System.out.println(phoneNumber);
 		
-		String api_key = "CS3F5ZY1AHQHACO";
+		String api_key = "NCS3F5ZY1AHQHACO";
 	    String api_secret = "I9IIYDUN1G7N2NTDBHAQQQODLOL884JJ";
 	    Message coolsms = new Message(api_key, api_secret);
 	    Random r = new Random();

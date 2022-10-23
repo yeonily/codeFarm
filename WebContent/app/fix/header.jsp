@@ -19,7 +19,7 @@
     <div class="lgr_back">
         <div class="lgr_logo_head">
             <div class="lgr_backg_logo">
-                <a href="/young/index.do"><img src="${pageContext.request.contextPath}/assets/images/common/logo_black.png" alt="메인 로고"
+                <a href="${pageContext.request.contextPath}/index/main.ix"><img src="${pageContext.request.contextPath}/assets/images/common/logo_black.png" alt="메인 로고"
                         style="vertical-align: middle; display: inline-block;"></a>
             </div>
         </div>
@@ -29,37 +29,34 @@
             </div>
             <div class="lgr_normal_link">
                 <ul>
-                    <li class="lgr_gnbhead" id="k1"><a href="/young/custom.do">지원정책</a></li>
-                    <li class="j1"><a href="/young/custom.do">청년농 지원정책</a></li>
+                    <li class="lgr_gnbhead" id="k1"><a href="javascript:void(0);">지원정책</a></li>
+                    <li class="j1"><a href="${pageContext.request.contextPath}/policy/policys.po">청년농 지원정책</a></li>
                 </ul>
                 <ul>
-                    <li class="lgr_gnbhead"  id="k2"><a href="/young/content/content01.do">농업정보</a></li>
+                    <li class="lgr_gnbhead"  id="k2"><a href="javascript:void(0);">농업정보</a></li>
                     <li class="j2"><a href="/young/content/content01.do">작물 정보</a></li>
-                    <li class="j2"><a href="/young/content/content02.do">지역별 특산물 정보</a></li>
-                    <li class="j2"><a href="/young/content/content03.do">계절별 작물 추천</a></li>
-                    <li class="j2"><a href="/young/content/content02040101.do">작물 시세 확인</a></li>
-                    <li class="j2"><a href="/young/content/content02040101.do">병해충 정보</a></li>
-                    <li class="j2"><a href="/young/content/content02040101.do">농약 정보</a></li>
+                    <li class="j2"><a href="${pageContext.request.contextPath}/localSpecialty/searchOk.ls">지역별 특산물 정보</a></li>
+                    <li class="j2"><a href="${pageContext.request.contextPath}/season/info.sc">계절별 작물 추천</a></li>
                 </ul>
                 <ul>
-                    <li class="lgr_gnbhead" id="k3" ><a href="/young/board/board15.do" >프로그램</a></li>
-                    <li class="j3"><a href="/young/board/board15.do">농촌 체험 프로그램 신청</a></li>
-                    <li class="j3"><a href="/young/board/board17.do">농촌 아르바이트 신청</a></li>
+                    <li class="lgr_gnbhead" id="k3" ><a href="javascript:void(0);" >프로그램</a></li>
+                    <li class="j3"><a href="${pageContext.request.contextPath}/program/applyListOk.pg">농촌 체험 프로그램 신청</a></li>
+                    <li class="j3"><a href="${pageContext.request.contextPath}/alba/applyListOk.ab">농촌 아르바이트 신청</a></li>
                 </ul>
                 <ul>
-                    <li class="lgr_gnbhead"  id="k4"><a href="/young/board/board21.do" >커뮤니티</a></li>
+                    <li class="lgr_gnbhead"  id="k4"><a href="javascript:void(0);" >커뮤니티</a></li>
                     <li class="j4"><a href="/young/board/board21.do">공지사항</a></li>
                     <li class="j4"><a href="/young/board/board02.do">멘토 홍보 게시판</a></li>
-                    <li class="j4"><a href="/young/board/board03.do">소통공간</a></li>
+                    <li class="j4"><a href="${pageContext.request.contextPath}/community/listOk.cm">소통공간</a></li>
                 </ul>
                 <ul>
-                    <li class="lgr_gnbhead"  id="k5"><a href="/young/board/board04.do" >지역정보</a></li>
-                    <li class="j5"><a href="/young/board/board04.do">마을회관 정보</a></li>
+                    <li class="lgr_gnbhead"  id="k5"><a href="javascript:void(0);" >지역정보</a></li>
+                    <li class="j5"><a href="${pageContext.request.contextPath}/region/region.rg">마을회관 정보</a></li>
                 </ul>
                 <ul>
-                    <li class="lgr_gnbhead"  id="k6"><a href="/young/board/board15.do" >귀농 테스트</a></li>
-                    <li class="j6"><a href="/young/board/board15.do">귀농 준비도 테스트</a></li>
-                    <li class="j6"><a href="/young/board/board17.do">귀농 단계별 체크리스트</a></li>
+                    <li class="lgr_gnbhead"  id="k6"><a href="javascript:void(0);" >귀농 테스트</a></li>
+                    <li class="j6"><a href="${pageContext.request.contextPath}/test/readyTest.te">귀농 준비도 테스트</a></li>
+                    <li class="j6"><a href="${pageContext.request.contextPath}/test/readyCheck.te">귀농 단계별 체크리스트</a></li>
                 </ul>
             </div>
         </div>
@@ -69,23 +66,23 @@
         <div class="logo_wrap">
             <div class="header_container">
                 <div class="logo">
-                    <a href="/young/index.do" title="홈"><img src="${pageContext.request.contextPath}/assets/images/common/logo_black.png"
+                    <a href="${pageContext.request.contextPath}/index/main.ix" title="홈"><img src="${pageContext.request.contextPath}/assets/images/common/logo_black.png"
                             alt="똑똑! 청년농부"></a>
                 </div>
                 <div id="gnb_wrap" class="gnb_wrap">
                     <nav id="gnb" class="gnb">
                         <ul data-level="1">
-                            <li><a href="/young/custom.do">
+                            <li><a href="javascript:void(0);">
                                     <span>지원정책</span>
                                 </a>
                                 <ul style="text-align: right;" data-level="2">
-                                    <li><a href="/young/custom.do">
+                                    <li><a href="${pageContext.request.contextPath}/policy/policys.po">
                                             <span>청년농 지원정책</span>
                                         </a>
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="/young/content/content01.do">
+                            <li><a href="javascript:void(0);">
                                     <span>농업정보</span>
                                 </a>
                                 <ul style="text-align: right;" data-level="2">
@@ -93,43 +90,31 @@
                                             <span>작물정보</span>
                                         </a>
                                     </li>
-                                    <li><a href="/young/content/content02.do">
+                                    <li><a href="${pageContext.request.contextPath}/season/info.sc">
                                             <span>계절별 작물 추천</span>
                                         </a>
                                     </li>
-                                    <li><a href="/young/content/content03.do">
+                                    <li><a href="${pageContext.request.contextPath}/localSpecialty/searchOk.ls">
                                             <span>지역별 특산물 정보</span>
-                                        </a>
-                                    </li>
-                                    <li><a href="/young/content/content02040101.do">
-                                            <span>작물 시세 확인</span>
-                                        </a>
-                                    </li>
-                                    <li><a href="/young/content/content02040101.do">
-                                            <span>병해충 정보</span>
-                                        </a>
-                                    </li>
-                                    <li><a href="/young/content/content02040101.do">
-                                            <span>농약 정보</span>
                                         </a>
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="/young/board/board15.do" >
+                            <li><a href="javascript:void(0);" >
                                     <span>프로그램</span>
                                 </a>
                                 <ul style="text-align: right;" data-level="2">
-                                    <li><a href="/young/board/board15.do" >
+                                    <li><a href="${pageContext.request.contextPath}/program/applyListOk.pg" >
                                             <span>농촌 체험 프로그램 신청</span>
                                         </a>
                                     </li>
-                                    <li><a href="/young/board/board17.do" >
+                                    <li><a href="${pageContext.request.contextPath}/alba/applyListOk.ab" >
                                             <span>농촌 아르바이트 신청</span>
                                         </a>
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="/young/board/board21.do">
+                            <li><a href="javascript:void(0);">
                                 <span>커뮤니티</span>
                             </a>
                             <ul style="text-align: right;" data-level="2">
@@ -141,31 +126,31 @@
                                             <span>멘토 홍보 게시판</span>
                                         </a>
                                     </li>
-                                    <li><a href="/young/board/board03.do" >
+                                    <li><a href="${pageContext.request.contextPath}/community/listOk.cm" >
                                             <span>소통공간</span>
                                         </a>
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="/young/board/board04.do" >
+                            <li><a href="javascript:void(0);" >
                                     <span>지역정보</span>
                                 </a>
                                 <ul style="text-align: right;" data-level="2">
-                                    <li><a href="/young/board/board04.do" >
+                                    <li><a href="${pageContext.request.contextPath}/region/region.rg" >
                                         <span>마을회관 정보</span>
                                     </a>
                                 </li>
                                 </ul>
                             </li>
-                            <li><a href="/young/board/board15.do" >
+                            <li><a href="javascript:void(0);" >
                                     <span>귀농 테스트</span>
                                 </a>
                                 <ul style="text-align: right;" data-level="2">
-                                    <li><a href="/young/board/board15.do" >
+                                    <li><a href="${pageContext.request.contextPath}/test/readyTest.te" >
                                             <span>귀농 준비도 테스트</span>
                                         </a>
                                     </li>
-                                    <li><a href="/young/board/board17.do" >
+                                    <li><a href="${pageContext.request.contextPath}/test/readyCheck.te" >
                                             <span>귀농 단계별 체크리스트</span>
                                         </a>
                                     </li>
@@ -184,7 +169,7 @@
                		</c:when>
                 	<c:otherwise>
               			 <div id="lgr_login" onclick="location.href='${pageContext.request.contextPath}/member/logout.me'">로그아웃</div>
-                <%-- <div id="lgr_join" onclick="location.href='${pageContext.request.contextPath}/member/logout.me'">마이페이지</div> --%>
+                		<div id="lgr_join" onclick="location.href='${pageContext.request.contextPath}/mypage/mypageOk.my'">마이페이지</div>
                		</c:otherwise>
                 </c:choose>
             </div>

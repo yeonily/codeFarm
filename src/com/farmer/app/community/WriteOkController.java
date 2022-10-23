@@ -27,7 +27,7 @@ public class WriteOkController implements Execute {
 		CommunityFileDAO communityFileDAO = new CommunityFileDAO();
 		Result result = new Result();
 		int currentSequence = 0;
-//		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber"); // Session 로그인 번호
+		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber"); // Session 로그인 번호
 		
 //		--------------------------------------------------------------------------------------------
 //		* 파일 기본 세팅 *
@@ -42,8 +42,10 @@ public class WriteOkController implements Execute {
 		
 		communityVO.setCommunityTitle(multipartRequest.getParameter("nttSj"));
 		communityVO.setCommunityContent(multipartRequest.getParameter("summernote"));
+		communityVO.setMemberNumber(memberNumber); // session은 multipartRequest 필요 x
 //		communityVO.setMemberNumber(memberNumber); // session은 multipartRequest 필요 x
 		communityVO.setMemberNumber(2); // 이후에 session에 저장된 회원번호로 변경해야함
+
 		
 		communityDAO.write(communityVO);
 		currentSequence = communityDAO.selectCurrentSequence();
@@ -67,7 +69,6 @@ public class WriteOkController implements Execute {
 		}
 		
 //		--------------------------------------------------------------------------------------------
-		
 		result.setPath("/community/listOk.cm");
 		return result;
 	}

@@ -22,17 +22,17 @@ public class ReplyDAO {
 		   return sqlSession.selectList("Reply.selectAll", communityNumber);
 	   }
 	   
-		/* 게시글 작성 */
+		/* 댓글 작성 */
 	   public void insert(ReplyVO replyVO) {
 		   sqlSession.insert("Reply.insert", replyVO);
 	   }
 	   
-		/* 게시글 수정 */
+		/* 댓글 수정 */
 	   public void update(ReplyVO replyVO) {
 		   sqlSession.update("Reply.update", replyVO);
 	   }
 	   
-		/* 게시글 삭제 */
+		/* 댓글 삭제 */
 	   public void delete(int replyNumber) {
 		   sqlSession.delete("Reply.delete", replyNumber);
 	   }

@@ -45,11 +45,13 @@ public class CommunityFrontController extends HttpServlet {
 			result.setPath("/app/community/comm_write.jsp");
 			
 		} else if (target.equals("/community/deleteOk.cm")) {// 소통공간 글 삭제(DELETE)
-
+			result = new DeleteOkController().execute(req, resp);
+			
 		} else if (target.equals("/community/update.cm")) {// 소통공간 글 수정 페이지로 이동(controller 필요)
-
+			result = new UpdateController().execute(req, resp);
+			
 		} else if (target.equals("/community/updateOk.cm")) {// 소통공간 글 수정(UPDATE)
-
+			result = new UpdateOkController().execute(req, resp);
 		}
 
 		if (result != null) {

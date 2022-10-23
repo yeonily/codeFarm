@@ -3,7 +3,7 @@
 <mapper namespace="Reply">
 	<!-- 게시글 번호에 해당하는 댓글 전체 출력 -->
 	<select id="selectAll" parameterType="_int" resultType="replyDTO">
-		select re.reply_number, tm.member_id, re.reply_date, re.reply_content
+		select re.reply_number, tm.member_id, tm.member_number, re.reply_date, re.reply_content
 		from tbl_reply re join tbl_member tm
 		on re.member_number = tm.member_number
 		where re.community_number = #{communityNumber}

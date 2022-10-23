@@ -10,23 +10,49 @@ import javax.servlet.http.HttpServletResponse;
 import com.farmer.app.Execute;
 import com.farmer.app.Result;
 import com.farmer.app.community.dao.CommunityDAO;
+import com.farmer.app.community.vo.CommunityDTO;
 
 public class SearchOkController implements Execute {
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
-		String filter = req.getParameter("searchSelect"); // 셀렉트 박스에서 선택한 값
-		String filter2 = req.getParameter("firstFilter");
-		String searchText = "%" + req.getParameter("programSearch") + "%"; // 사용자가 검색창에 입력한 값
-		
-		
+		Result result = new Result();
 		HashMap<String, Object> pageMap = new HashMap<String, Object>();
 		CommunityDAO communityDAO = new CommunityDAO();
-		Result result = new Result();
-		String temp = req.getParameter("page");
+		CommunityDTO communityDTO = new CommunityDTO();
 		
+		String temp = req.getParameter("page");
+		String inputText = req.getParameter("programSearch");
+		String choice = req.getParameter("searchSelect");
+		int total = 0;
+		
+		/* 사용자가 선택한 드롭박스에 따라 검색결과 개수를 카운트 */
+		switch (choice) {
+		case "sj":
+			total = communityDAO.searchCntTitle(inputText);
+			break;
+
+		case "cn":
+			total = communityDAO.searchCntContent(inputText);
+			break;
+
+		case "cnsj":
+			communityDTO.setCommunityTitle(inputText);
+			communityDTO.setCommunityContent(inputText);
+			total = communityDAO.searchCntTitleContent(communityDTO);
+			break;
+
+		case "nm":
+			total = communityDAO.searchCntWriter(inputText);
+			break;
+
+		default:
+			break;
+		}
+		
+		
+		/* 페이징 설정 */
 		int page = temp == null ? 1 : Integer.parseInt(temp);
-		int total = communityDAO.searchCnt(searchText);
 		int rowCount = 10, pageCount = 10;
 		int startRow = (page - 1) * rowCount;
 		
@@ -37,54 +63,47 @@ public class SearchOkController implements Execute {
 		boolean prev = startPage > 1; 
 		endPage = endPage > realEndPage ? realEndPage : endPage;
 		boolean next = endPage != realEndPage;
-		
-		/* 첫 번째 필터 검색 후 기존 필터 검색 조건을 유지하기 위함 */
-		if(filter == null) {
-			filter = filter2;
-		}
-		
+
 		pageMap.put("startRow", startRow);
 		pageMap.put("rowCount", rowCount);
-		pageMap.put("searchText", searchText);
-//		pageMap.put("filter", filter);
+
 		
-		System.out.println("filter1 : " + filter);
-		System.out.println("filter2 : " + filter2);
-		
-		switch (filter) {
-		case "sj": // 만약 제목을 선택하고 값을 입력했을 시
-			req.setAttribute("boards", communityDAO.SearchTitle(pageMap));
-			req.setAttribute("total", total);
-			req.setAttribute("page", page);
-			req.setAttribute("startPage", startPage);
-			req.setAttribute("endPage", endPage);
-			req.setAttribute("realEndPage", realEndPage);
-			req.setAttribute("prev", prev);
-			req.setAttribute("next", next);
-			req.setAttribute("searchText", searchText);
-			req.setAttribute("filter", filter);
+		/* 사용자가 선택한 필터에 따른 게시글들 가져오기 */
+		switch (choice) {
+		case "sj": // 제목
+			pageMap.put("communityTitle", inputText);
+			req.setAttribute("boards", communityDAO.searchTitle(pageMap));
+			break;
+			
+		case "cn": // 내용
+			pageMap.put("communityContent", inputText);
+			req.setAttribute("boards", communityDAO.searchContent(pageMap));
+			break;
+			
+		case "cnsj":  // 제목+내용
+			pageMap.put("communityTitle", inputText);
+			pageMap.put("communityContent", inputText);
+			req.setAttribute("boards", communityDAO.searchTitleContent(pageMap));
+			break;
+			
+		case "nm": // 작성자
+			pageMap.put("memberId", inputText);
+			req.setAttribute("boards", communityDAO.searchWriter(pageMap));
 			break;
 
-		case "cn": // 만약 내용을 선택하고 값을 입력했을 시
-			req.setAttribute("filter", filter);
-			break;
-
-		case "cnsj": // 만약 제목+내용을 선택하고 값을 입력했을 시
-			req.setAttribute("filter", filter);
-			break;
-			
-		case "nm": // 만약 작성자를 선택하고 값을 입력했을 시
-			req.setAttribute("filter", filter);
-			break;
-			
-		
-			
-			
 		default:
 			break;
 		}
-				
-		result.setPath("/app/community/comm_list_result.jsp");
+		
+		req.setAttribute("total", total);
+		req.setAttribute("page", page);
+		req.setAttribute("startPage", startPage);
+		req.setAttribute("endPage", endPage);
+		req.setAttribute("realEndPage", realEndPage);
+		req.setAttribute("prev", prev);
+		req.setAttribute("next", next);
+		
+		result.setPath("/app/community/comm_list.jsp");
 		return result;
 	}
 }
