@@ -10,6 +10,8 @@
    <!-- 썸머노트 API -->
    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+   <link rel="stylesheet" type="text/css" href="/assets/css/summernote-lite.min.css" />
+	<script type="text/javascript" src="/assets/js/summernote-lite.min.js"></script>
    <title>관리자-공지 글 작성</title>
 </head>
 
@@ -25,7 +27,6 @@
          <header>
             <span id="admin-header-title">공지 글 작성</span>
             <span id="admin-mode">관리자 모드</span>
-            <span id="userCount">가입된 회원 수 총 <strong> 21343 </strong>명</span>
          </header>
 
          <!-- 메인화면 컨텐츠 -->
@@ -69,7 +70,7 @@
                   </tbody>
                </table>
                <div class="btns-group">
-                  <input type="button" onclick="saveCheck()" class="g-btn list" value="공지 목록">
+                  <input type="button" onclick="saveCheck(); location.href='${pageContext.request.contextPath}/admin/NoticeListOk.ad'" class="g-btn list" value="공지 목록">
                   <input type="button" onclick="doInsert()" class="g-btn submit" value="저장">
                </div>
             </form>
@@ -125,7 +126,6 @@ function doInsert() {
 	text = text.replace(/<br\/>/ig, "\n");
 	text = text.replace(/<(\/)?([a-zA-Z]*)(\s[a-zA-Z]*=[^>]*)?(\s)*(\/)?>/ig, "");
 	
-	console.log(text);
 	
 	if(!writeForm.nttSj.value) {
 		alert("제목을 입력해주세요.");
@@ -137,6 +137,8 @@ function doInsert() {
 	}
 	writeForm.submit(); // 위 조건에서 걸리지 않으면 커밋
 }
+
+$("#content").html(data.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g,'"').replace(/&#40;/g,'(').replace(/&#41;/g,')').replace(/&#35;/g,'#'));
 	
 </script>
 <script type="text/javascript">
@@ -145,5 +147,8 @@ function doInsert() {
 	    checkUnload = false;
 	    $("submit").submit();
 	});
+
 </script>
+
+
 </html>

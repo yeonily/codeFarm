@@ -24,7 +24,7 @@
          <header>
             <span id="admin-header-title" class="short">메인</span>
             <span id="admin-mode">관리자 모드</span>
-            <span id="userCount">가입된 회원 수 총 <strong> 21343 </strong>명</span>
+            <span id="userCount">가입된 회원 수 총 <strong> <c:out value="${total}"/> </strong>명</span>
          </header>
 
          <!-- 메인화면 컨텐츠 -->
