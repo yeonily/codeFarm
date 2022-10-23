@@ -43,6 +43,9 @@ public class WriteOkController implements Execute {
 		communityVO.setCommunityTitle(multipartRequest.getParameter("nttSj"));
 		communityVO.setCommunityContent(multipartRequest.getParameter("summernote"));
 		communityVO.setMemberNumber(memberNumber); // session은 multipartRequest 필요 x
+//		communityVO.setMemberNumber(memberNumber); // session은 multipartRequest 필요 x
+		communityVO.setMemberNumber(2); // 이후에 session에 저장된 회원번호로 변경해야함
+
 		
 		communityDAO.write(communityVO);
 		currentSequence = communityDAO.selectCurrentSequence();

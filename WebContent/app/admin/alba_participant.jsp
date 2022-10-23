@@ -30,7 +30,7 @@
             <header>
                 <span id="admin-header-title">아르바이트 지원자 관리</span>
                 <span id="admin-mode">관리자 모드</span>
-                <span id="userCount">가입된 회원 수 총 <strong> 21343 </strong>명</span>
+                <span id="userCount">가입된 회원 수 총 <strong> <c:out value="${userTotalCount}"/> </strong>명</span>
             </header>
 
             <!-- 컨텐츠 상단 통계 -->

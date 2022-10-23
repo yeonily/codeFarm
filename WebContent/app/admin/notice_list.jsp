@@ -30,7 +30,7 @@
             <header>
                 <span id="admin-header-title" class="short">공지 관리</span>
                 <span id="admin-mode">관리자 모드</span>
-                <span id="userCount">가입된 회원 수 총 <strong> 21343 </strong>명</span>
+                <span id="userCount">가입된 회원 수 총 <strong> <c:out value="${userTotalCount}"/> </strong>명</span>
             </header>
 
             <!-- 컨텐츠 검색 부분 -->
@@ -135,7 +135,7 @@
                     </div>
                 </div>
                 <div id="write">
-                    <input type="button" onclick="location.href='notice_write.html'" value="작성">
+                    <input type="button" onclick="location.href='${pageContext.request.contextPath}/admin/NoticeWrite.ad'" value="작성">
                 </div>
 
             </div>
