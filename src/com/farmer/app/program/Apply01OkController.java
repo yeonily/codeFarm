@@ -1,6 +1,7 @@
 package com.farmer.app.program;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,7 @@ public class Apply01OkController implements Execute {
 		ProgramVO programVO = new ProgramVO();
 		Result result = new Result();
 		int programNumber = Integer.valueOf(req.getParameter("programNumber"));
+		
 
 		req.setAttribute("program", programDAO.select(programNumber));
 		programDAO.updateViewCount(programNumber);

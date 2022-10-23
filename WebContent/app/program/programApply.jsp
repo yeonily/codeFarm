@@ -69,7 +69,7 @@
                                                 	<span class="pCount"><c:out value="${processCount}" /></span>건) 
                                                 </p>
                                                 <br>
-                                                <ul style="margin: 0px">
+                                                <ul style="margin: 0px" id="programListsAllUl">
                                                 		<c:if test="${programs != null and fn:length(programs) > 0}">
                                                 			<c:forEach var="program" items="${programs}">
                                                 			
@@ -142,27 +142,17 @@
 <script src="${pageContext.request.contextPath}/assets/js/program/program_apply.js"></script>
 <script>
 /* 조회순 정렬 */
-/* function viewOrder(){
+function viewOrder(){
 		$.ajax({
-		url: "/program/listOk.re",
-		type: "get", 
+		url: "${pageContext.request.contextPath}/program/viewCountOk.pg",
 		contextType: "application/json; charset=utf-8",
 		dataType: "json",
-		success: showList
-		
-	});
-}
-
-function showByViewCnt(){
-	$.ajax({
-		url: "${pageContext.request.contextPath}/alba/viewCountOk.ab",
-		dataType: "json",
-		success: function(albaLists){
+		success: function(programLists){
 			console.log("들어옴?");
 			let text = "";
 			let pageText = "";
 			
-			albaLists.forEach(alba => {
+			programLists.forEach(alba => {
 				text += `<li class="alba" onclick="location.href='${pageContext.request.contextPath}/alba/apply01.ab?albaNumber=` + alba.albaNumber + `'">`;
 				text += `<div class="info">`;
 				text += `<p class="local"> ` + alba.albaLocation + `</p>`;
@@ -187,7 +177,7 @@ function showByViewCnt(){
 			
 			});
 	
-			$("#albaListsAllUl").html(text);
+			$("#programListsAllUl").html(text);
 		},
 		error : function(request, status, error) {
 		}
@@ -205,6 +195,6 @@ function recentOrder(){
 		success: showList
 		
 	});
-} */
+} 
 </script>
 </html>

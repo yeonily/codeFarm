@@ -101,9 +101,16 @@
                <img src="${pageContext.request.contextPath}/upload/program/${program.getProgramImage()}" alt="">
                <div class="detail_info">
                    <div class="info_apply">
-                       <a href="${pageContext.request.contextPath}/program/apply02.pg?programNumber=${program.getProgramNumber()}" class="apply_on" id="program_apply">
-                           <span>프로그램 신청</span>
-                       </a>
+                  	<c:choose>
+                  	   <c:when test="${isApply == 0}">
+	                       <a href="${pageContext.request.contextPath}/program/apply02.pg?programNumber=${program.getProgramNumber()}" class="apply_on" id="program_apply">
+	                           <span>프로그램 신청</span></a>
+                       </c:when>
+                       <c:otherwise>
+                           <a href="${pageContext.request.contextPath}/program/applydelete.mp?programNumber=${program.getProgramNumber()}" class="apply_on" id="program_apply">
+                           <span>신청 취소</span></a>
+                       </c:otherwise>
+                    </c:choose>
                        <a href="${pageContext.request.contextPath}/program/applyListOk.pg" class="apply_on list" >
                            <span>목록</span>
                        </a>

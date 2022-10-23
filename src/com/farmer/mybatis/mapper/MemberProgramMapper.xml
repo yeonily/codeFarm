@@ -10,4 +10,14 @@
 		VALUES(#{memberName}, #{memberGender}, #{memberBirth}, #{memberPhoneNumber}, #{memberEmail}, 
 		#{memberReason}, #{memberAddress}, #{memberNumber}, #{programNumber})
    </insert>
+   
+   	<!-- 프로그램 신청여부 확인 -->
+	<select id="isApply" parameterType="map" resultType="_int">
+		select count(member_number) from tbl_member_program where member_number = #{memberNumber} and program_number = #{programNumber}	
+	</select>
+   
+   	<!-- 프로그램 신청 삭제 -->
+	<delete id="applyDelete" parameterType="_int">
+		delete from tbl_member_program where member_number = #{memberNumber} 
+	</delete>
 </mapper>
