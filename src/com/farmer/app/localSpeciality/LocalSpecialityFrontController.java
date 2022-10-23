@@ -9,40 +9,43 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.farmer.app.Result;
+import com.farmer.app.cropsInfo.SearchOkController;
 
 public class LocalSpecialityFrontController extends HttpServlet {
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doProcess(req, resp);
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doProcess(req, resp);
 	}
 
-	
+
 	protected void doProcess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String requestURI = req.getRequestURI();
-	    String contextPath = req.getContextPath();
-	    String target = requestURI.substring(contextPath.length());
-	    Result result = null;
-	    
-	      if(target.equals("/LocalSpeciality/searchOk.ls")) {//특산물정보 조건검색 조회(SELECT)
-	          
-	       }
-	      
+		String contextPath = req.getContextPath();
+		String target = requestURI.substring(contextPath.length());
+		Result result = null;
+
+		if(target.equals("/localSpecialty/searchOk.ls")) {//특산물정보 조건검색 조회(SELECT)
+//			result = new SearchOkController().execute(req, resp);
+	    	  result = new Result();
+	          result.setPath("/app/local_specialties/local_specialties.jsp");
+		}
 
 
-	
-	    if(result != null) {
-	         if(result.isRedirect()) {
-	            resp.sendRedirect(result.getPath());
-	         }else {
-	            RequestDispatcher dispatcher = req.getRequestDispatcher(result.getPath());
-	            dispatcher.forward(req, resp);
-	         }
-	    }
+
+
+		if(result != null) {
+			if(result.isRedirect()) {
+				resp.sendRedirect(result.getPath());
+			}else {
+				RequestDispatcher dispatcher = req.getRequestDispatcher(result.getPath());
+				dispatcher.forward(req, resp);
+			}
+		}
 	}
 }

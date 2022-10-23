@@ -108,3 +108,28 @@ function save(){
 	alert("글이 정상적으로 등록되었습니다.");
 	albaForm.submit();
 }
+
+//첨부파일 파일명 보이기
+function fileUpload(){
+	var fileValue = $(".fileName").val().split("\\");
+	var fileName = fileValue[fileValue.length-1]; // 파일명
+	$("#file-content").html(fileName);
+	
+}
+
+//삭제 버튼
+$('input[type="file"]').on("change",function(){
+	if($("#file-content").html() == ""){
+		$("#deleteBtn").hide();
+	}else{
+		$("#deleteBtn").show();
+	}
+});
+
+//첨부파일 업로드 취소
+function cancelFile(){
+	$("input[type='file']").val("");
+	$("#file-content").html("");
+	console.log($("input[type='file']").val(""));
+	$("#deleteBtn").hide();
+}

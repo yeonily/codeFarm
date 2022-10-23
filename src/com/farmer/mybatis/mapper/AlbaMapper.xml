@@ -4,19 +4,25 @@
 	<!--아르바이트 리스트를 최근 등록 순으로 정렬-->
 	<select id="selectRegistration" parameterType="map" resultType="albaVo">
 		select alba_number, alba_name, alba_location, alba_apply_start_date, alba_apply_end_date, alba_date, alba_view_count
-		from tbl_alba order by alba_date desc limit #{startRow}, #{rowCount}
+		from tbl_alba
+		order by alba_date desc
+		limit #{startRow}, #{rowCount}
 	</select>
 
 	<!--아르바이트 리스트를 조회 순으로 정렬-->
 	<select id="selectViewCnt" parameterType="map" resultType="albaVo">
 		select alba_number, alba_name, alba_location, alba_apply_start_date, alba_apply_end_date, alba_date, alba_view_count
-		from tbl_alba order by alba_view_count desc limit #{startRow}, #{rowCount}
+		from tbl_alba
+		order by alba_view_count desc
+		limit #{startRow}, #{rowCount}
 	</select>
 	
 	<!--아르바이트 리스트를 최근 마감일 순으로 정렬-->
 	<select id="selectEndDay" parameterType="map" resultType="albaVo">
 		select alba_number, alba_name, alba_location, alba_apply_start_date, alba_apply_end_date, alba_date, alba_view_count
-		from tbl_alba order by alba_apply_end_date desc limit #{startRow}, #{rowCount}
+		from tbl_alba
+		order by alba_apply_end_date
+		desc limit #{startRow}, #{rowCount}
 	</select>
 	
 	<!-- 아르바이트 전체 개수 -->
@@ -61,6 +67,21 @@
 	    	#{albaNumber}
 	    </if>
 	</select>
+	
+	<!-- 아르바이트 글 삭제 -->
+	<delete id="delete" parameterType="_int"> 
+		delete from tbl_alba where alba_number = #{albaNumber} 
+	</delete>
+	
+	<!-- 아르바이트 글 수정 -->
+	<update id="update" parameterType="albaVO">
+		update tbl_alba
+		set alba_name=#{albaName}, alba_location=#{albaLocation}, alba_start_date=#{albaStartDate}, alba_end_date=#{albaEndDate},
+		alba_start_time=#{albaStartTime}, alba_end_time=#{albaEndTime}, alba_fee=#{albaFee}, 
+		alba_apply_start_date=#{albaApplyStartDate}, alba_apply_end_date=#{albaApplyEndDate}, 
+		alba_recruited_total_count=#{albaRecruitedTotalCount}, alba_phone_number=#{albaPhoneNumber}, alba_image=#{albaImage}
+		where alba_number = #{albaNumber} ;
+	</update>
 	
 	
 </mapper>

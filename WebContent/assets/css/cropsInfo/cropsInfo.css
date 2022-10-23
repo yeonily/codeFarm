@@ -23,9 +23,8 @@ body {
     margin: 0;
 }
 
-body {
-    margin: 0;
-}
+a { text-decoration: none; }
+
 .sub_title{
     width: 100%;
     background-image: url(https://www.rda.go.kr/young/file/imageView.do?fpath=78mfPU1tH5tpGdf2EjZQb0R3AXuZGhjU7I8pBv4Rl9tqEaXhOUrKyqO8iZWgudng&fname=3Yhidi6uci2svReb6yH2fn%2FNCCJ1B2ad2%2BU32UOCd8pWSv8Igj8WOJYku7BlBnbuIoJc07AnYr3VL%2F7qzMzAXw%3D%3D&fmime=Lg45aghPCGTl0b%2FVATARWg%3D%3D);
@@ -74,8 +73,10 @@ nav.snb{
     list-style: none;
     font-size: 0.882rem;
 }
-li.nowMenu{
-    float: left;
+
+ul.lgr_ul li { float: left; }
+
+li.nowMenu a {
     color: #333;
     font-weight: 600;
     font-size: 0.941rem;
@@ -91,13 +92,12 @@ li.after_slash::after{
     margin: 0 1.176rem;
     color: rgb(0,0,0,.5);
 }
-.lgr_ul li{
+.lgr_ul li a {
     display: table-cell;
     font-size: 0.941rem;
     letter-spacing: -0.05em;
 }
-.subMenu{
-    float: right;
+.subMenu a {
     color: rgb(0,0,0,.5);
     font-size: 0.941rem;
 }
@@ -180,14 +180,13 @@ li.after_slash::after{
 }
 .grid_topLine{
     border-top: 2px solid #7e7e7e;
-    width: 82.353rem;
     text-align: center;
 }
 .table_wrap{
     margin-top: 50px;
     margin: 0 auto;
     /* border: 1px solid black; */
-    width: 82.353rem;
+    width: 85%;
 }
 tbody{
     display: table-row-group;
@@ -270,5 +269,4 @@ tr {
 	border: 1px solid #3B6A39;
 	color:#3B6A39;
 }
-
 
