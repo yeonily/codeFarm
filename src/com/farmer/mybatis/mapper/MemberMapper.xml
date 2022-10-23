@@ -19,15 +19,15 @@
 	</insert>
 	
 	<select id="login" parameterType="memberVO" resultType="_int">
-		select  member_number from tbl_member where member_id = #{memberId} and member_password = #{memberPassword}
+		select member_number from tbl_member where member_id = #{memberId} and member_password = #{memberPassword}
 	</select>
 	
 	<select id="loginGrade" parameterType="memberVO" resultType="_int">
-		select  member_grade from tbl_member where member_id = #{memberId} and member_password = #{memberPassword}
+		select member_grade from tbl_member where member_id = #{memberId} and member_password = #{memberPassword}
 	</select>
 	
 	<select id="findId" parameterType="memberVO" resultType="string">
-		select member_id from tbl_member where member_name=#{memberName} and member_phone_number=#{memberPhoneNumber}
+		select member_id from tbl_member where member_name = #{memberName} and member_phone_number = #{memberPhoneNumber}
 	</select>
 	
 	<update id="findPassword" parameterType="memberVO">
