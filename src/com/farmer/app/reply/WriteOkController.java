@@ -16,10 +16,9 @@ public class WriteOkController implements Execute {
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ReplyDAO replyDAO = new ReplyDAO();
 		ReplyVO replyVO = new ReplyVO();
-		
+				
 		int communityNumber = Integer.valueOf(req.getParameter("communityNumber"));
-//		int memberNumber = Integer.valueOf(req.getParameter("memberNumber")); // 이후에 session 로그인 된 회원으로 변경 필요
-		int memberNumber = 1;
+		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber"); // 이후에 session 로그인 된 회원으로 변경 필요
 		String replyContent = req.getParameter("replyContent");
 		
 		replyVO.setCommunityNumber(communityNumber);

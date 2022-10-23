@@ -157,6 +157,9 @@
 	<jsp:include page="${pageContext.request.contextPath}/app/fix/footer.jsp"/>
 </body>
 <script>
+	sessionStorage.setItem("memberId", ${memberNumber});
+	var loginMemberNumber = sessionStorage.getItem("memberId");
+	
 	let communityNumber = "${board.getCommunityNumber()}";
 	let memberNumber = "${board.getMemberNumber()}";
 	let memberId = "${board.getMemberId()}";

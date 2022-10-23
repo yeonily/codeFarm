@@ -23,7 +23,7 @@ public class ListOkController implements Execute {
 		PrintWriter out = resp.getWriter();
 		
 		JSONArray replyList = new JSONArray();
-		replyDAO.selectAll(communityNumber).forEach(replyDTO -> {JSONObject reply = new JSONObject(replyDTO); replyList.put(reply);});
+		replyDAO.selectAll(communityNumber).forEach(replyDTO -> {JSONObject reply = new JSONObject(replyDTO); replyList.put(reply);});		
 		out.print(replyList.toString());
 		out.close();
 		return null;
