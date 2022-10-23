@@ -30,7 +30,7 @@
 
          <!-- 메인화면 컨텐츠 -->
          <div id="write">
-            <form action="" name="noticeForm" method="post">
+            <form action="${pageContext.request.contextPath}/admin/NoticeWriteOk.ad" name="writeForm" method="post" enctype="multipart/form-data">
                <table>
                   <colgroup>
                      <col width="20%;">
@@ -41,7 +41,7 @@
                         <th>제목</th>
                         <td>
                            <div class="title">
-                              <input type="text" name="n_title" class="notice_title" placeholder="제목을 입력하세요" autocomplete="off">
+                              <input type="text" name="nttSj" class="notice_title" placeholder="제목을 입력하세요" autocomplete="off">
                            </div>
                         </td>
                      </tr>
@@ -49,7 +49,7 @@
                         <th>내용</th>
                         <td>
                            <div id="editor">
-                              <textarea class="summernote" name="editorForm"></textarea>
+                              <textarea id="summernote" name="summernote"></textarea>
                               <div id="letter-count">
                                  <p id="letter-length" style="display: inline;">0</p> / 100
                               </div>
@@ -70,7 +70,7 @@
                </table>
                <div class="btns-group">
                   <input type="button" onclick="saveCheck()" class="g-btn list" value="공지 목록">
-                  <input type="button" onclick="save()" class="g-btn submit" value="저장">
+                  <input type="button" onclick="doInsert()" class="g-btn submit" value="저장">
                </div>
             </form>
          </div>
@@ -88,4 +88,62 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/admin/summerNote.js"></script>
-<html>
+<script>
+	$(document).ready( function() {
+			$('#summernote').summernote(
+				{
+					height : 400,
+					resize : false,
+					callbacks : { // 글자수 체크하는 코드
+						onChange : function(contents, $editable) {
+							editorText = f_SkipTags_html(contents);
+							editorText = editorText.replace(/\s/gi, ""); //줄바꿈 제거
+							editorText = editorText.replace(/&nbsp;/gi,""); //공백제거
+							/* console.log(editorText);
+							console.log(editorText.length); */
+							$("#letter-length").text(editorText.length);
+						},
+						onImageUpload : function(files,editor) {
+							console.log(files);
+						}
+					}
+				});
+			
+			function f_SkipTags_html(input, allowed) {
+				// 허용할 태그는 다음과 같이 소문자로 넘겨받습니다. (<a><b><c>)
+				allowed = (((allowed || "") + "").toLowerCase().match(/<[a-z][a-z0-9]*>/g) || []).join('');
+				var tags = /<\/?([a-z][a-z0-9]*)\b[^>]*>/gi, commentsAndPhpTags = /<!--[\s\S]*?-->|<\?(?:php)?[\s\S]*?\?>/gi;
+				return input.replace(commentsAndPhpTags, '').replace(tags,
+								function($0, $1) {return allowed.indexOf('<'+ $1.toLowerCase()+ '>') > -1 ? $0 : '';});
+			}
+		}
+);
+
+/* 글작성 submit */
+function doInsert() {
+	var text = $("#summernote").val();
+	text = text.replace(/<br\/>/ig, "\n");
+	text = text.replace(/<(\/)?([a-zA-Z]*)(\s[a-zA-Z]*=[^>]*)?(\s)*(\/)?>/ig, "");
+	
+	console.log(text);
+	
+	if(!writeForm.nttSj.value) {
+		alert("제목을 입력해주세요.");
+		return;
+	}
+	if(!text) {
+		alert("내용을 입력해주세요.");
+		return;
+	}
+	writeForm.submit(); // 위 조건에서 걸리지 않으면 커밋
+}
+	
+</script>
+<script type="text/javascript">
+	var checkUnload = true;
+	$("#write").on("click", function () {
+	    checkUnload = false;
+	    $("submit").submit();
+	});
+</script>
+</html>

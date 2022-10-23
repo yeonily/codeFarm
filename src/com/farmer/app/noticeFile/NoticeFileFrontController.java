@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.farmer.app.Result;
+import com.farmer.app.noticeFile.DownloadController;
 
 public class NoticeFileFrontController extends HttpServlet {
 	
@@ -30,7 +31,7 @@ public class NoticeFileFrontController extends HttpServlet {
 	    Result result = null;
 	    
 	      if(target.equals("/noticeFile/download.ntFile")) {	//다운로드 받기(다운로드 controller 필요)
-	          
+	    	  result = new DownloadController().execute(req, resp);
 	       }
 	      
 

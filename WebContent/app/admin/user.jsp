@@ -61,19 +61,19 @@
                 <form action="" name="searchForm" method="post">
                     <div class="search-form">
                         <span class="s-form">
-                            <select name="searchSelect" class="s-select">
-                                <option value="id">ID</option>
-                                <option value="email">이메일</option>
-                                <option value="name">이름</option>
-                                <option value="phone">연락처</option>
+                            <select id="type-container" name="type" class="s-select">
+                                <option value="i">ID</option>
+                                <option value="e">이메일</option>
+                                <option value="n">이름</option>
+                                <option value="p">연락처</option>
                             </select>
                         </span>
                         <span class="s-f-input">
                             <span class="search-input">
-                                <input type="text" name="userSearch" placeholder="검색어를 입력하세요">
+                                <input id="keyword" type="text" name="keyword" placeholder="검색어를 입력하세요">
                             </span>
                         </span>
-                        <button type="button" onclick="userSearch()">
+                        <button type="button" onclick="showResultBySearch()">
                             <img src="${pageContext.request.contextPath}/assets/images/common/search.png">
                         </button>
                     </div>
@@ -97,8 +97,8 @@
                         <th class="name">이름</th>
                         <th class="birth">구분</th>
                         <th class="address">주소</th>
-                        <th class="program-count"></th>
-                        <th class="part-count"></th> 
+                    <!--     <th class="program-count"></th>
+                        <th class="part-count"></th>  -->
                         <th class="delete"></th>
                     </tr>
                     <!-- ↓ 데이터 출력 -->
@@ -114,8 +114,8 @@
 	                    			<td><c:out value="${member.getMemberName()}"/></td>
 	                    			<td><c:out value="${member.getMemberGrade()}"/></td>
 	                    			<td><c:out value="${member.getMemberLocation()}"/></td>
-	                    			<td></td>
-	                    			<td></td>
+	                    			<!-- <td></td>
+	                    			<td></td> -->
 	                    			<td class="delete"><input type="button" value="탈퇴" onClick="outCheck(this); location.href = '${pageContext.request.contextPath}/admin/UserDeleteOk.ad?memberNumber=${member.getMemberNumber()}';"></td>
                     			</tr>
                     		</c:forEach>
@@ -184,6 +184,60 @@
     </div>
 
 </body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script>
+/* function showResultBySearch(type){
+	$.ajax({
+		url: "${pageContext.request.contextPath}/admin/UserSearchOk.ad",
+		type: "get",
+		data: {type: $("#type-container").val(), keyword: $("#keyword").val()},
+		dataType: "json",
+		success: function(members){
+			if(members.length == 0){
+				alert('해당 정보가 없습니다');
+			}
+		}
+	});
+} */
+
+ /* function showResultBySearch(){
+	$.ajax({
+		url: "${pageContext.request.contextPath}/admin/UserSearchOk.ad",
+		type: "get",
+		data: {type: $("#type-container").val(), keyword: $("#keyword").val()},
+		dataType: "json",
+		success: function(members){
+			let text = "";
+			let $result = $("tbody");
+			if(members.length == 0){
+				$result.html("검색 결과가 없습니다.");
+			}
+			$.each(members, function(i, member){
+				text += `<tr><td>` + member.memberNumber + `</td>`;
+				text += `<td>` + member.memberId + `</td>`;
+				text += `<td>` + member.memberEmail + `</td>`;
+				text += `<td>` + member.memberPhoneNumber + `</td>`;
+				text += `<td>` + member.memberName + `</td>`;
+				text += `<td>` + member.memberGrade + `</td>`;
+				text += `<td>` + member.memberLocation + `</td>`;
+				text += `<td>` + member.memberId + `</td></tr>`;
+				
+				text += `<p>` + member.memberId + `</p>`;
+				text += member.memberEmail + `,  `;
+				text += member.memberName + `,  `;
+				text += member.memberPhoneNumber + `,  `;
+				text += `</li>`;
+				
+				$result.html(text);
+			});
+		},
+		error: function(a, b, c){
+			console.log(a, b, c);
+		}
+	});
+} */
+	
+</script>
 <!-- 차트 -->
 <!-- <script>let memberNumber = ${member.getMemberNumber()};</script>
 <script>let memberId = ${member.getMemberId()};</script>
