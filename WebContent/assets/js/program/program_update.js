@@ -36,7 +36,7 @@ function fileUpload(){
 
 // 취소 버튼 눌렀을 때 알림창
 function saveCheck(){
-    var msg = "지금 나가면 글이 저장되지 않습니다.\n그래도 나가시곘습니까?";
+    var msg = "지금 나가면 글이 저장되지 않습니다.\n그래도 나가시겠습니까?";
     var flag = confirm(msg);
     list = '/program/applyListOk.pg';
 

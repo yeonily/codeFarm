@@ -107,7 +107,7 @@
 	                           <span>프로그램 신청</span></a>
                        </c:when>
                        <c:otherwise>
-                           <a href="${pageContext.request.contextPath}/program/applydelete.mp?programNumber=${program.getProgramNumber()}" class="apply_on" id="program_apply">
+                           <a onclick="javascript:alertCancel();" href="javascript:void(0);" class="apply_on" id="program_apply">
                            <span>신청 취소</span></a>
                        </c:otherwise>
                     </c:choose>
@@ -164,7 +164,7 @@
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/program/program_apply.js"></script>
 <script>
-/* 삭제 알람 */
+/* 글 삭제 알람 */
 function alert(){
 
         var result = confirm("정말 삭제하시겠습니까?");
@@ -172,6 +172,19 @@ function alert(){
         if(result) {
            //yes
             location.href = '/program/deleteOk.pg?programNumber=${param.programNumber}';
+        } else {
+            //no
+        }
+
+}
+/* 신청 삭제 알람 */
+function alertCancel(){
+
+        var result = confirm("정말 신청 취소하시겠습니까?");
+
+        if(result) {
+           //yes
+            location.href = '/memberProgram/applyDeleteOk.mp?programNumber=${program.getProgramNumber()}';
         } else {
             //no
         }

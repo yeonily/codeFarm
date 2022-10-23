@@ -40,6 +40,9 @@ public class ProgramFrontController extends HttpServlet {
 	    	  
 	      }else if(target.equals("/program/deadlineOk.pg")) {//프로그램목록 최근 마감일로 정렬
 		   	  result = new DeadlineOkController().execute(req, resp);	
+		   	  
+	      }else if(target.equals("/program/recentRegisterOk.pg")) {//프로그램목록 최근 마감일로 정렬
+	    	  result = new RecentRegisterOkController().execute(req, resp);	
 	    	  
 	      }else if(target.equals("/program/apply02.pg")) {//프로그램 신청상세페이지2로 이동
 	    	  result = new Result();
