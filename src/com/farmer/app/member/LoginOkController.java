@@ -23,12 +23,9 @@ public class LoginOkController implements Execute {
 		HttpSession session = req.getSession();
 		int memberNumber = 0;
 		int memberGrade = 0;
-//		MemberVO memberNumber;
-//		MemberVO memberGrade;
 		
 		String memberId = req.getParameter("memberId");
 		String memberPassword = req.getParameter("memberPassword");
-		
 		
 		boolean saveId = req.getParameter("saveId")!=null;
 		
@@ -48,13 +45,11 @@ public class LoginOkController implements Execute {
 			session.setAttribute("memberId", memberId);
 			session.setAttribute("memberGrade", memberGrade);
 			
-//			session.setAttribute("memberGrade", memberGrade);
-			
 			// 아이디 저장(쿠키 저장)
 			if(saveId) {
-				Cookie cookieMemberId = new Cookie("memberId", memberId);
-				cookieMemberId.setMaxAge(60*60*24*365);
-				resp.addCookie(cookieMemberId);
+				Cookie cookie = new Cookie("memberId", memberId);
+				cookie.setMaxAge(60*60*24*365);
+				resp.addCookie(cookie);
 				
 			}else {
 				if(req.getHeader("Cookie")!=null) {
@@ -62,6 +57,7 @@ public class LoginOkController implements Execute {
 						if(cookie.getName().equals("memberId")) {
 							cookie.setMaxAge(0);
 							resp.addCookie(cookie);
+							break;
 						}
 					}
 				}

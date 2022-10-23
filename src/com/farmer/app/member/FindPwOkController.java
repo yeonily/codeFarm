@@ -31,10 +31,7 @@ public class FindPwOkController implements Execute {
 		memberDAO.findPassword(memberVO);	
 		
 		
-		System.out.println(memberId);
-		System.out.println(memberPhoneNumber);
 		memberVO.setMemberPassword(memberPassword);
-		System.out.println(memberPassword);
 		
 		
 		

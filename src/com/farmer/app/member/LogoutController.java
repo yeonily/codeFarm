@@ -21,8 +21,6 @@ public class LogoutController implements Execute {
 		session.invalidate(); // 세션 전체 삭제
 		
 		result.setPath("/member/login.me?logout=true");
-		
-		
 
 		return result;
 	}

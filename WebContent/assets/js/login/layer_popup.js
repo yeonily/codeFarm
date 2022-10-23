@@ -53,6 +53,7 @@ let $smsNumber;
         code_id_check = true;
     });
 
+let memberFindId;
     // 이이디 찾기 핸드폰 인증 후 확인 버튼
     $(".id_next_step").click(function () {
 		$smsCheckNumber = $("#find_id_phone_code").val();
@@ -69,12 +70,19 @@ let $smsNumber;
 			data: { inputPhoneNumber: $inputPhoneNumber, inputName : $inputName },
 			success: function(result) {
 				console.log(result);
+				memberFindId = result;
+				console.log(memberFindId);
+				$("#memberFindId").text(memberFindId);
+				console.log(memberFindId);
 			}
 		});
+		
+		/*document.getElementById("memberFindId").innerHTML=memberFindId;*/
 	console.log($inputPhoneNumber);
 	console.log($inputName);
 	
 });
+
  // ---------------------------------------------------------------------------------
 
 

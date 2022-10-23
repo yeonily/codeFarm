@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -81,7 +84,10 @@
                                 </div>
                                 
                             </div>
-                            <!-- 보기방식: 갤러리형 -->
+                            <!-- 보기방식: 갤러리형 --><!--작업시작부분 -->
+                            <c:choose>
+                            <c:when test="${lists !=null and fn:length(lists) >0}">
+                                <c:forEach var="list" items="${lists}">
                             <div class="hn_photo_list">
                                 <ul>
                                     <li>
@@ -94,262 +100,39 @@
                                         <div class="item_tech">
                                             <ul>
                                                 <li>
-                                                    <p><span>경북 &nbsp; 성주</span></p>
+                                                    <p><span>
+                                                    <c:out value="${list.getMentorLocation()}"/>
+                                                    </span></p>
                                                 </li>
                                                 <li>
-                                                    <p><span>참외</span></p>
+                                                    <p><span><c:out value="${list.getMentorCrops()}"/></span></p>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="item_cont">
                                             <div class="tit" data-depth="1">
                                                 <a class="link" href="javascript:fn_detailView('BOARD02_0000000068');">
-                                                    명품 성주 참외 가업 잇는 안규찬 대표</a>
+                                                    <c:out value="${list.getMentorTitle()}"/></a>
                                             </div>
                                             <div class="writer_info">
-                                                멘토 : <span class="mentor_name"> 안규찬 </span><br>
-                                                이메일 : <span class="mentor_email">zzzzzzzzzzz@naver.com</span><br>
-                                                연락처 : <span class="menter_phone">010-0000-0000
+                                                멘토 : <span class="mentor_name"><c:out value="${list.getMentorName()}"/></span><br>
+                                                이메일 : <span class="mentor_email"><c:out value="${list.getMentorEmail()}"/></span><br>
+                                                연락처 : <span class="menter_phone"><c:out value="${list.getMentorPhoneNumber()}"/>
                                                 <span class="write_info_img1"></span>
                                                 <span class="write_info_img2"></span>
                                             </span>
                                             </div>
                                         </div>
                                     </li>
-                                    <li>
-                                        <div class="item_photo">
-                                            <a class="link" href="javascript:fn_detailView('BOARD02_0000000067');">
-                                                <img src="https://www.rda.go.kr/young/file/imageView.do?fpath=78mfPU1tH5tpGdf2EjZQb0R3AXuZGhjU7I8pBv4Rl9uatpWP5y%2FBsLxA7Vla4IuDEe3XyLlcyhgajvjHTrVwew%3D%3D&fname=VaQZG4aE8tLnk0UPRWfmFcrbSVNEoHKXY6mhu5KW2lUhL15U171p56%2Fumq7ABh5d2Rm1FAG7xjNLtT8OpRD6EQ%3D%3D&fmime=Lg45aghPCGTl0b%2FVATARWg%3D%3D"
-                                                    alt="스마트하게 키우는 소비자들의 완숙토마토, 소비자들의 인생토마토">
-                                            </a>
-                                        </div>
-                                        <div class="item_tech">
-                                            <ul>
-                                                <li>
-                                                    <p><span>경남 &nbsp; 창원</span></p>
-                                                </li>
-                                                <li>
-                                                    <p><span>토마토</span></p>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="item_cont">
-                                            <div class="tit" data-depth="1">
-                                                <a class="link" href="javascript:fn_detailView('BOARD02_0000000067');">
-                                                    스마트하게 키우는 소비자들의 완숙토마토, 소비자들의 인생토마토</a>
-                                            </div>
-                                            <div class="writer_info">
-                                                멘토 : <span class="mentor_name"> 서진웅 </span><br>
-                                                이메일 : <span class="mentor_email">zzzzzzzzzzz@gmail.com</span><br>
-                                                연락처 : <span class="menter_phone">010-0000-0000</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="item_photo">
-                                            <a class="link" href="javascript:fn_detailView('BOARD02_0000000066');">
-                                                <img src="https://www.rda.go.kr/young/file/imageView.do?fpath=78mfPU1tH5tpGdf2EjZQb0R3AXuZGhjU7I8pBv4Rl9uatpWP5y%2FBsLxA7Vla4IuDEe3XyLlcyhgajvjHTrVwew%3D%3D&fname=VaQZG4aE8tLnk0UPRWfmFcrbSVNEoHKXY6mhu5KW2lUhL15U171p56%2Fumq7ABh5d2Rm1FAG7xjNLtT8OpRD6EQ%3D%3D&fmime=Lg45aghPCGTl0b%2FVATARWg%3D%3D"
-                                                    alt="꾸지뽕이 식문화에 가깝게 다가가길 바랍니다">
-                                            </a>
-                                        </div>
-                                        <div class="item_tech">
-                                            <ul>
-                                                <li>
-                                                    <p><span>전북 &nbsp; 진안</span></p>
-                                                </li>
-                                                <li>
-                                                    <p><span>꾸지뽕나무</span></p>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="item_cont">
-                                            <div class="tit" data-depth="1">
-                                                <a class="link" href="javascript:fn_detailView('BOARD02_0000000066');">
-                                                    꾸지뽕이 식문화에 가깝게 다가가길 바랍니다</a>
-                                            </div>
-                                            <div class="writer_info">
-                                                멘토 : <span class="mentor_name"> 안지인 </span><br>
-                                                이메일 : <span class="mentor_email">-</span><br>
-                                                연락처 : <span class="menter_phone">010-0000-0000</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="item_photo">
-                                            <a class="link" href="javascript:fn_detailView('BOARD02_0000000065');">
-                                                <img src="https://www.rda.go.kr/young/file/imageView.do?fpath=78mfPU1tH5tpGdf2EjZQb0R3AXuZGhjU7I8pBv4Rl9uatpWP5y%2FBsLxA7Vla4IuDEe3XyLlcyhgajvjHTrVwew%3D%3D&fname=VaQZG4aE8tLnk0UPRWfmFcrbSVNEoHKXY6mhu5KW2lUhL15U171p56%2Fumq7ABh5d2Rm1FAG7xjNLtT8OpRD6EQ%3D%3D&fmime=Lg45aghPCGTl0b%2FVATARWg%3D%3D"
-                                                    alt="고운 정성과 마음으로 일군 땅콩">
-                                            </a>
-                                        </div>
-                                        <div class="item_tech">
-                                            <ul>
-                                                <li>
-                                                    <p><span>전북 &nbsp; 고창</span></p>
-                                                </li>
-                                                <li>
-                                                    <p><span>땅콩</span></p>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="item_cont">
-                                            <div class="tit" data-depth="1">
-                                                <a class="link" href="javascript:fn_detailView('BOARD02_0000000065');">
-                                                    고운 정성과 마음으로 일군 땅콩</a>
-                                            </div>
-                                            <div class="writer_info">
-                                                멘토 : <span class="mentor_name"> 이누리 </span><br>
-                                                이메일 : <span class="mentor_email">-</span><br>
-                                                연락처 : <span class="menter_phone">010-0000-0000</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="item_photo">
-                                            <a class="link" href="javascript:fn_detailView('BOARD02_0000000064');">
-                                                <img src="https://www.rda.go.kr/young/file/imageView.do?fpath=78mfPU1tH5tpGdf2EjZQb0R3AXuZGhjU7I8pBv4Rl9uatpWP5y%2FBsLxA7Vla4IuDEe3XyLlcyhgajvjHTrVwew%3D%3D&fname=VaQZG4aE8tLnk0UPRWfmFcrbSVNEoHKXY6mhu5KW2lUhL15U171p56%2Fumq7ABh5d2Rm1FAG7xjNLtT8OpRD6EQ%3D%3D&fmime=Lg45aghPCGTl0b%2FVATARWg%3D%3D"
-                                                    alt="곤충 산업에서 찾은 미래 가능성에 도전하다">
-                                            </a>
-                                        </div>
-                                        <div class="item_tech">
-                                            <ul>
-                                                <li>
-                                                    <p><span>충북 &nbsp; 청주</span></p>
-                                                </li>
-                                                <li>
-                                                    <p><span>반려동물 간</span></p>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="item_cont">
-                                            <div class="tit" data-depth="1">
-                                                <a class="link" href="javascript:fn_detailView('BOARD02_0000000064');">
-                                                    곤충 산업에서 찾은 미래 가능성에 도전하다</a>
-                                            </div>
-                                            <div class="writer_info">
-                                                멘토 : <span class="mentor_name"> 이누리 </span><br>
-                                                이메일 : <span class="mentor_email">-</span><br>
-                                                연락처 : <span class="menter_phone">010-0000-0000</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="item_photo">
-                                            <a class="link" href="javascript:fn_detailView('BOARD02_0000000063');">
-                                                <img src="https://www.rda.go.kr/young/file/imageView.do?fpath=78mfPU1tH5tpGdf2EjZQb0R3AXuZGhjU7I8pBv4Rl9uatpWP5y%2FBsLxA7Vla4IuDEe3XyLlcyhgajvjHTrVwew%3D%3D&fname=VaQZG4aE8tLnk0UPRWfmFcrbSVNEoHKXY6mhu5KW2lUhL15U171p56%2Fumq7ABh5d2Rm1FAG7xjNLtT8OpRD6EQ%3D%3D&fmime=Lg45aghPCGTl0b%2FVATARWg%3D%3D"
-                                                    alt="정직하게 키우고 정성으로 달이다 건강한 단맛, 흑도라지강청">
-                                            </a>
-                                        </div>
-                                        <div class="item_tech">
-                                            <ul>
-                                                <li>
-                                                    <p><span>전북 &nbsp; 장수</span></p>
-                                                </li>
-                                                <li>
-                                                    <p><span>흑도라지강청</span></p>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="item_cont">
-                                            <div class="tit" data-depth="1">
-                                                <a class="link" href="javascript:fn_detailView('BOARD02_0000000063');">
-                                                    정직하게 키우고 정성으로 달이다 건강한 단맛, 흑도라지강청</a>
-                                            </div>
-                                            <div class="writer_info">
-                                                멘토 : <span class="mentor_name"> 이누리 </span><br>
-                                                이메일 : <span class="mentor_email">-</span><br>
-                                                연락처 : <span class="menter_phone">010-0000-0000</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="item_photo">
-                                            <a class="link" href="javascript:fn_detailView('BOARD02_0000000062');">
-                                                <img src="https://www.rda.go.kr/young/file/imageView.do?fpath=78mfPU1tH5tpGdf2EjZQb0R3AXuZGhjU7I8pBv4Rl9uatpWP5y%2FBsLxA7Vla4IuDEe3XyLlcyhgajvjHTrVwew%3D%3D&fname=VaQZG4aE8tLnk0UPRWfmFcrbSVNEoHKXY6mhu5KW2lUhL15U171p56%2Fumq7ABh5d2Rm1FAG7xjNLtT8OpRD6EQ%3D%3D&fmime=Lg45aghPCGTl0b%2FVATARWg%3D%3D"
-                                                    alt="생강청에 지리산의 자연을 담다">
-                                            </a>
-                                        </div>
-                                        <div class="item_tech">
-                                            <ul>
-                                                <li>
-                                                    <p><span>경남 &nbsp; 함양</span></p>
-                                                </li>
-                                                <li>
-                                                    <p><span>생강</span></p>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="item_cont">
-                                            <div class="tit" data-depth="1">
-                                                <a class="link" href="javascript:fn_detailView('BOARD02_0000000062');">
-                                                    생강청에 지리산의 자연을 담다</a>
-                                            </div>
-                                            <div class="writer_info">
-                                                멘토 : <span class="mentor_name"> 이누리 </span><br>
-                                                이메일 : <span class="mentor_email">-</span><br>
-                                                연락처 : <span class="menter_phone">010-0000-0000</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="item_photo">
-                                            <a class="link" href="javascript:fn_detailView('BOARD02_0000000061');">
-                                                <img src="https://www.rda.go.kr/young/file/imageView.do?fpath=78mfPU1tH5tpGdf2EjZQb0R3AXuZGhjU7I8pBv4Rl9uatpWP5y%2FBsLxA7Vla4IuDEe3XyLlcyhgajvjHTrVwew%3D%3D&fname=VaQZG4aE8tLnk0UPRWfmFcrbSVNEoHKXY6mhu5KW2lUhL15U171p56%2Fumq7ABh5d2Rm1FAG7xjNLtT8OpRD6EQ%3D%3D&fmime=Lg45aghPCGTl0b%2FVATARWg%3D%3D"
-                                                    alt="버섯산업 발전과 청년농업인 유입을 위해 최선을 다하겠습니다">
-                                            </a>
-                                        </div>
-                                        <div class="item_tech">
-                                            <ul>
-                                                <li>
-                                                    <p><span>전북 &nbsp; 김제</span></p>
-                                                </li>
-                                                <li>
-                                                    <p><span>버섯</span></p>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="item_cont">
-                                            <div class="tit" data-depth="1">
-                                                <a class="link" href="javascript:fn_detailView('BOARD02_0000000061');">
-                                                    버섯산업 발전과 청년농업인 유입을 위해 최선을 다하겠습니다</a>
-                                            </div>
-                                            <div class="writer_info">
-                                                멘토 : <span class="mentor_name"> 이누리 </span><br>
-                                                이메일 : <span class="mentor_email">-</span><br>
-                                                연락처 : <span class="menter_phone">010-0000-0000</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="item_photo">
-                                            <a class="link" href="javascript:fn_detailView('BOARD02_0000000060');">
-                                                <img src="https://www.rda.go.kr/young/file/imageView.do?fpath=78mfPU1tH5tpGdf2EjZQb0R3AXuZGhjU7I8pBv4Rl9uatpWP5y%2FBsLxA7Vla4IuDEe3XyLlcyhgajvjHTrVwew%3D%3D&fname=VaQZG4aE8tLnk0UPRWfmFcrbSVNEoHKXY6mhu5KW2lUhL15U171p56%2Fumq7ABh5d2Rm1FAG7xjNLtT8OpRD6EQ%3D%3D&fmime=Lg45aghPCGTl0b%2FVATARWg%3D%3D"
-                                                    alt="산청에서 청년농부가 유기농으로 생산한 국산 바나나의 특별한 맛">
-                                            </a>
-                                        </div>
-                                        <div class="item_tech">
-                                            <ul>
-                                                <li>
-                                                    <p><span>경남 &nbsp; 산청</span></p>
-                                                </li>
-                                                <li>
-                                                    <p><span>바나나</span></p>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="item_cont">
-                                            <div class="tit" data-depth="1">
-                                                <a class="link" href="javascript:fn_detailView('BOARD02_0000000060');">
-                                                    산청에서 청년농부가 유기농으로 생산한 국산 바나나의 특별한 맛</a>
-                                            </div>
-                                            <div class="writer_info">
-                                                멘토 : <span class="mentor_name"> 이누리 </span><br>
-                                                이메일 : <span class="mentor_email">-</span><br>
-                                                연락처 : <span class="menter_phone">010-0000-0000</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
+                                    </ul>
+                                    </div>
+                                    </c:forEach>
+                            </c:when>
+                           <c:otherwise>
+                           <td colspan ="5" align ="center">등록된 게시물이 없습니다.</td>
+                           </c:otherwise>
+                            </c:choose>
+                                   
 
                             <div class="btn_wrap">
                                 <ul>
@@ -357,21 +140,27 @@
                             </div>
                                <!-- 페이징 -->
                 <div id="page" class="page_height">
+                    <div class="numberClick">
                     <div class="page_nation">
-                       <a class="page-num arrow pprev" href="#"></a>
-                       <a class="page-num arrow prev" href="#"></a>
-                       <a class="page-num active" href="#">1</a>
-                       <a class="page-num" href="#">2</a>
-                       <a class="page-num" href="#">3</a>
-                       <a class="page-num" href="#">4</a>
-                       <a class="page-num" href="#">5</a>
-                       <a class="page-num" href="#">6</a>
-                       <a class="page-num" href="#">7</a>
-                       <a class="page-num" href="#">8</a>
-                       <a class="page-num" href="#">9</a>
-                       <a class="page-num" href="#">10</a>
-                       <a class="page-num arrow next" href="#"></a>
-                       <a class="page-num arrow nnext" href="#"></a>
+                       <c:if test="${prev}">
+                       <a class="page-num arrow pprev" href="${pageContext.request.contextPath}/mentor/listOk.mt?page=1"></a>
+                       <a class="page-num arrow prev" href="${pageContext.request.contextPath}/mentor/listOk.mt?page=${startPage-1}"></a>
+                       </c:if>
+                    	<c:forEach var = "i" begin ="${startPage}" end="${endPage}">
+                    	<c:choose>
+                    	<c:when test = "${not (i eq page)}">
+                       <a class="page-num active" href="${pageContext.request.contextPath}/mentor/listOk.mt?page=${i}"><c:out value="${i}"/></a>
+                       </c:when>
+                       <c:otherwise>
+                       <a class="page-num active" href="${pageContext.request.contextPath}/mentor/listOk.mt?page=${i}"><c:out value="${i}"/></a>
+                       </c:otherwise>
+                       </c:choose>
+                       </c:forEach>
+                       <c:if test="${next}">
+                       <a class="page-num arrow next" href="${pageContext.request.contextPath}/mentor/listOk.mt?page=${endPage+1}"></a>
+                       <a class="page-num arrow nnext" href="${pageContext.request.contextPath}/mentor/listOk.mt?page=${realEndPage}"></a>
+                       </c:if>
+                    </div>
                     </div>
                 </div>
     </form>

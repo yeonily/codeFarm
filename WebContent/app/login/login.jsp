@@ -55,8 +55,7 @@
             </div>
     	<form method="post" action="${pageContext.request.contextPath}/member/loginOk.me" name="loginForm">
             <div class="login_input" id="lgr_login_idinput">
-                <input type="text" id="inputId" onkeydown="if(event.keycode==13){fn_loginAction();}"
-                    placeholder="아이디를 입력해주세요." autocomplete="off" name="memberId" value="${empty memberId ? '' : memberId}"/>
+                <input type="text" id="inputId" placeholder="아이디를 입력해주세요." autocomplete="off" name="memberId" value="${empty memberId ? '' : memberId}"/>
                 <img id="lgr_idimg1" src="https://www.rda.go.kr/young/images/site/login/login02_1.png">
                 <img id="lgr_idimg1" src="https://www.rda.go.kr/young/images/site/login/login02_2.png">
             </div>
@@ -71,7 +70,6 @@
                 <input id="lgr_check" type="checkbox" name="saveId" value="saveId">
                 <div id="lgr_idrem">
                     <label for="lgr_check">아이디 저장</label>
-                    <a href="${pageContext.request.contextPath}/community/detailOk.cm?communityNumber=${memberFindId}"/>
                 </div>
             </div>
             <div class="login_btn">
@@ -108,7 +106,7 @@
             <!--팝업 컨텐츠 영역-->
             <div class="popup_cont">
                 <!-- 아이디 찾기 step1 -->
-                			<form method="post" action="${pageContext.request.contextPath}/member/findId.me" name="findIdForm">
+               <form method="post" action="${pageContext.request.contextPath}/member/findId.me" name="findIdForm">
                 <div class="find_id_wrap id_step1">
                     <div class="find_id_close"><span class="close_btn"></span></div>
 
@@ -152,8 +150,6 @@
                     <div>
                     </div>
                 </div>
-                </form>
-
                 <!-- 아이디 찾기 step2 -->
                 <div class="find_id_wrap id_step2">
                     <div class="pop_inner">
@@ -165,15 +161,16 @@
                         <div class="pop_con">
                             <div class="p_con_inner">
                                 <p>회원님의 아이디</p>
-                                <div class="p_inner_box">${memberFindId}</div>
+                                <div class="p_inner_box"><p id="memberFindId"></p></div>
                             </div>
 
                             <div class="p_btn01">
-                                <a href="javascript:closePop_id();" onclick="findIdOk()">확인</a>
+                                <a href="javascript:closePop_id();" onclick="">확인</a>
                             </div>
                         </div>
                     </div>
                 </div>
+                </form>
 
 
             </div>

@@ -1,9 +1,9 @@
 package com.farmer.app.member;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,11 +15,14 @@ import com.farmer.app.member.vo.MemberVO;
 public class FindIdController implements Execute {
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setCharacterEncoding("UTF-8");
 		
+		req.setCharacterEncoding("UTF-8");
+	
 		MemberDAO memberDAO = new MemberDAO();
 		MemberVO memberVO = new MemberVO();
 		Result result = new Result();
+		PrintWriter out = resp.getWriter();
+		
 		String memberFindId="";
 		
 		String memberName = req.getParameter("inputName");
@@ -27,16 +30,22 @@ public class FindIdController implements Execute {
 				
 		memberVO.setMemberName(memberName);
 		memberVO.setMemberPhoneNumber(memberPhoneNumber);
-				
+		
+		
 		memberFindId=memberDAO.findId(memberVO);
 				
-				req.setAttribute("memberFindId", memberFindId);
+		req.setAttribute("memberFindId", memberFindId);
+		
 				
-				System.out.println(memberName);
-				System.out.println(memberPhoneNumber);
-				System.out.println(memberFindId);
+		System.out.println(memberName);
+		System.out.println(memberPhoneNumber);
+		System.out.println(memberFindId);
 				
-				result.setPath("/app/login/login.jsp");
-				return result;
+				
+		
+		out.print(memberFindId);
+		
+//		result.setPath("/app/login/login.jsp");
+		return null;
 	}
 }

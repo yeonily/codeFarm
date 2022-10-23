@@ -168,7 +168,8 @@ function checkPhoneNumber(memberPhoneNumber){
 			}
 		}
 	});
-}
+	
+	}
 
 $("input[name='memberPhoneNumber']").on("blur",function(){
 	checkPhoneNumber($(this).val());
@@ -222,6 +223,9 @@ let $isCheck = false;
 	});
 	
     }
+
+
+
 
     // 인증번호 입력 체크
     function checkSms(){
