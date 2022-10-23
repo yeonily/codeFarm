@@ -38,6 +38,7 @@ public class SmsOkController implements Execute {
 
 	    //	    랜덤 숫자 4자리
 	    certificationNumber = String.valueOf(r.nextInt(9000) + 1000);
+	    System.out.println(certificationNumber);
 	    
 	    
 	    // 4 params(to, from, type, text) are mandatory. must be filled

@@ -1,29 +1,31 @@
-package com.farmer.app.member;
+package com.farmer.app.admin;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.farmer.app.Execute;
 import com.farmer.app.Result;
+import com.farmer.app.admin.dao.AdminDAO;
 
-public class LogoutController implements Execute {
+public class MainMentorOkController implements Execute {
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		HttpSession session = req.getSession();
+		HashMap<String, Integer> pageMap = new HashMap<String, Integer>();
 		Result result = new Result();
+		AdminDAO adminDAO = new AdminDAO();
 		
-//		session.removeAttribute("memberNumber"); // 원하는 항목의 세션 삭제
-		session.invalidate(); // 세션 전체 삭제
-		
-		result.setPath("/member/login.me?logout=true");
-		
+		req.setAttribute("mentorList", adminDAO.mainMentorSelect(pageMap));
 		
 
+		result.setPath("/app/admin/main.jsp");
+		
 		return result;
 	}
 }
+	
+

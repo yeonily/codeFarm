@@ -56,9 +56,11 @@ public class MemberFrontController extends HttpServlet {
 	       }else if(target.equals("/member/loginOk.me")) {//로그인 실행(SELECT)
 	    	   result = new LoginOkController().execute(req, resp);
 	          
+	       }else if(target.equals("/member/findId.me")) {//아이디 찾기 실행
+	    	   result = new FindIdController().execute(req, resp);
+	    	   
 	       }else if(target.equals("/member/findIdOk.me")) {//아이디 찾기 실행(SELECT)
 	    	   result = new FindIdOkController().execute(req, resp);
-	    	   System.out.println("fc들어옴");
 	    	   
 	       }else if(target.equals("/member/findPwOk.me")) {//비밀번호 찾기 실행(UPDATE)
 	    	   result = new FindPwOkController().execute(req, resp);

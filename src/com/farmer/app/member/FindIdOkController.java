@@ -1,12 +1,14 @@
 package com.farmer.app.member;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Base64;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 
 import com.farmer.app.Execute;
 import com.farmer.app.Result;
@@ -21,7 +23,6 @@ public class FindIdOkController implements Execute {
 		MemberDAO memberDAO = new MemberDAO();
 		MemberVO memberVO = new MemberVO();
 		Result result = new Result();
-		
 		String memberFindId="";
 		
 
@@ -43,10 +44,7 @@ public class FindIdOkController implements Execute {
 		System.out.println(memberPhoneNumber);
 		System.out.println(memberFindId);
 		
-		result.setRedirect(true);
-		
-		
-
+		result.setPath("/member/login.me");
 		return result;
 	}
 }

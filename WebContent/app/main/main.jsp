@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -204,10 +206,9 @@
 	<div id="lgr_main_content">
 		
 		<div id="lgr_title">
-			<span  id="lgr_jungbo">지원</span><span>사업</span>
-			<!-- <div id="lgr_circle" onclick="location.href='/young/custom.do'"><img src="/young/images/site/main/ma_ico_plus.png"></div> -->
+			<span  id="lgr_jungbo">최신 체험 프로그램</span>
 		</div>
-		<div id="lgr_subtitle"><span>청년 농업인들을 위한 프로그램을 모았습니다!</span></div>
+		<div id="lgr_subtitle"><span>청년 농업인들을 위한 체험 프로그램을 모았습니다!</span></div>
 		
 		<form id="searchasForm" name="searchasForm"  method="post" autocomplete="off">
 		<input type="hidden" name="search_category" value="">
@@ -222,356 +223,26 @@
 		<!-- Swiper -->
 		<div class="swiper customSwiper">
 		  <ul class="swiper-wrapper">
-		    <li class="swiper-slide lgr_content"  onclick="location.href='/young/custom/edu/view.do?sId=7102'">
-					<!-- 카테고리 -->
-					<div class="lgr_categorywrap">
-						<div class="place_box">
-							<div class="lgr_place">
-								<p class="place_txt">
-									전국</p>
-							</div>
-						</div>
-						<div class="type_box">
-							<p class="lgr_type">교육</p>
-						</div>
-					</div>
-					<!-- 내용 -->
-					<div class="lgr_subject"><span>22년 농산업 취창업캠프</span></div>
-					<div class="lgr_datebadge"><span>기간</span></div>
-					<div class="lgr_date">~&nbsp;2022-10-01</div>
-					<div class="lgr_more">
-						더보기
-					</div>
-				</li>
-		  	<li class="swiper-slide lgr_content"  onclick="location.href='/young/custom/edu/view.do?sId=7101'">
-					<!-- 카테고리 -->
-					<div class="lgr_categorywrap">
-						<div class="place_box">
-							<div class="lgr_place">
-								<p class="place_txt">
-									경북<span style="margin-left: 5px;">구미</span>
-									</p>
-							</div>
-						</div>
-						<div class="type_box">
-							<p class="lgr_type">교육</p>
-						</div>
-					</div>
-					<!-- 내용 -->
-					<div class="lgr_subject"><span>농업용 무인항공기(드론) 교육</span></div>
-					<div class="lgr_datebadge"><span>기간</span></div>
-					<div class="lgr_date">~&nbsp;2022-10-04</div>
-					<div class="lgr_more">
-						더보기
-					</div>
-				</li>
-		  	<li class="swiper-slide lgr_content"  onclick="location.href='/young/custom/policy/view.do?sId=7088'">
-					<!-- 카테고리 -->
-					<div class="lgr_categorywrap">
-						<div class="place_box">
-							<div class="lgr_place">
-								<p class="place_txt">
-									경북<span style="margin-left: 5px;">청송</span>
-									</p>
-							</div>
-						</div>
-						<div class="type_box">
-							<p class="lgr_type">자금</p>
-						</div>
-					</div>
-					<!-- 내용 -->
-					<div class="lgr_subject"><span>23년 사회적농업 활성화 지원사업</span></div>
-					<div class="lgr_datebadge"><span>기간</span></div>
-					<div class="lgr_date">~&nbsp;2022-10-14</div>
-					<div class="lgr_more">
-						더보기
-					</div>
-				</li>
-		  	<li class="swiper-slide lgr_content"  onclick="location.href='/young/custom/policy/view.do?sId=7087'">
-					<!-- 카테고리 -->
-					<div class="lgr_categorywrap">
-						<div class="place_box">
-							<div class="lgr_place">
-								<p class="place_txt">
-									경북<span style="margin-left: 5px;">경산</span>
-									</p>
-							</div>
-						</div>
-						<div class="type_box">
-							<p class="lgr_type">자금</p>
-						</div>
-					</div>
-					<!-- 내용 -->
-					<div class="lgr_subject"><span>23년 치유농장 육성 지원사업</span></div>
-					<div class="lgr_datebadge"><span>기간</span></div>
-					<div class="lgr_date">~&nbsp;2022-09-30</div>
-					<div class="lgr_more">
-						더보기
-					</div>
-				</li>
-		  	<li class="swiper-slide lgr_content"  onclick="location.href='/young/custom/policy/view.do?sId=7086'">
-					<!-- 카테고리 -->
-					<div class="lgr_categorywrap">
-						<div class="place_box">
-							<div class="lgr_place">
-								<p class="place_txt">
-									경북<span style="margin-left: 5px;">울릉</span>
-									</p>
-							</div>
-						</div>
-						<div class="type_box">
-							<p class="lgr_type">자금, 판로</p>
-						</div>
-					</div>
-					<!-- 내용 -->
-					<div class="lgr_subject"><span>23년 청년농업인 자립기반 구축 지원사업</span></div>
-					<div class="lgr_datebadge"><span>기간</span></div>
-					<div class="lgr_date">~&nbsp;2022-10-04</div>
-					<div class="lgr_more">
-						더보기
-					</div>
-				</li>
-		  	<li class="swiper-slide lgr_content"  onclick="location.href='/young/custom/policy/view.do?sId=7085'">
-					<!-- 카테고리 -->
-					<div class="lgr_categorywrap">
-						<div class="place_box">
-							<div class="lgr_place">
-								<p class="place_txt">
-									경북<span style="margin-left: 5px;">울진</span>
-									</p>
-							</div>
-						</div>
-						<div class="type_box">
-							<p class="lgr_type">자금, 컨설팅, 판로</p>
-						</div>
-					</div>
-					<!-- 내용 -->
-					<div class="lgr_subject"><span>22년 농가맛집 육성 시범사업(재신청)</span></div>
-					<div class="lgr_datebadge"><span>기간</span></div>
-					<div class="lgr_date">~&nbsp;2022-10-06</div>
-					<div class="lgr_more">
-						더보기
-					</div>
-				</li>
-		  	<li class="swiper-slide lgr_content"  onclick="location.href='/young/custom/policy/view.do?sId=7084'">
-					<!-- 카테고리 -->
-					<div class="lgr_categorywrap">
-						<div class="place_box">
-							<div class="lgr_place">
-								<p class="place_txt">
-									경북<span style="margin-left: 5px;">봉화</span>
-									</p>
-							</div>
-						</div>
-						<div class="type_box">
-							<p class="lgr_type">자금 </p>
-						</div>
-					</div>
-					<!-- 내용 -->
-					<div class="lgr_subject"><span>청년농업인 농지 임대료 지원사업</span></div>
-					<div class="lgr_datebadge"><span>기간</span></div>
-					<div class="lgr_date">~&nbsp;2022-10-31</div>
-					<div class="lgr_more">
-						더보기
-					</div>
-				</li>
-		  	<li class="swiper-slide lgr_content"  onclick="location.href='/young/custom/policy/view.do?sId=7071'">
-					<!-- 카테고리 -->
-					<div class="lgr_categorywrap">
-						<div class="place_box">
-							<div class="lgr_place">
-								<p class="place_txt">
-									경북<span style="margin-left: 5px;">안동</span>
-									</p>
-							</div>
-						</div>
-						<div class="type_box">
-							<p class="lgr_type">자금 </p>
-						</div>
-					</div>
-					<!-- 내용 -->
-					<div class="lgr_subject"><span>23년 영농현장 애로사항 기술개발 과제 시범사업</span></div>
-					<div class="lgr_datebadge"><span>기간</span></div>
-					<div class="lgr_date">~&nbsp;2022-12-16</div>
-					<div class="lgr_more">
-						더보기
-					</div>
-				</li>
-		  	<li class="swiper-slide lgr_content"  onclick="location.href='/young/custom/policy/view.do?sId=7066'">
-					<!-- 카테고리 -->
-					<div class="lgr_categorywrap">
-						<div class="place_box">
-							<div class="lgr_place">
-								<p class="place_txt">
-									강원<span style="margin-left: 5px;">고성</span>
-									</p>
-							</div>
-						</div>
-						<div class="type_box">
-							<p class="lgr_type">자금, 컨설팅</p>
-						</div>
-					</div>
-					<!-- 내용 -->
-					<div class="lgr_subject"><span>23년 곤충 유통사업 지원사업</span></div>
-					<div class="lgr_datebadge"><span>기간</span></div>
-					<div class="lgr_date">~&nbsp;2022-10-11</div>
-					<div class="lgr_more">
-						더보기
-					</div>
-				</li>
-		  	<li class="swiper-slide lgr_content"  onclick="location.href='/young/custom/policy/view.do?sId=6966'">
-					<!-- 카테고리 -->
-					<div class="lgr_categorywrap">
-						<div class="place_box">
-							<div class="lgr_place">
-								<p class="place_txt">
-									경북<span style="margin-left: 5px;">김천</span>
-									</p>
-							</div>
-						</div>
-						<div class="type_box">
-							<p class="lgr_type">자금, 네트워크</p>
-						</div>
-					</div>
-					<!-- 내용 -->
-					<div class="lgr_subject"><span>23년 청년농업인 커뮤니티 활성화 지원사업</span></div>
-					<div class="lgr_datebadge"><span>기간</span></div>
-					<div class="lgr_date">~&nbsp;2022-09-30</div>
-					<div class="lgr_more">
-						더보기
-					</div>
-				</li>
-		  	<li class="swiper-slide lgr_content"  onclick="location.href='/young/custom/policy/view.do?sId=6958'">
-					<!-- 카테고리 -->
-					<div class="lgr_categorywrap">
-						<div class="place_box">
-							<div class="lgr_place">
-								<p class="place_txt">
-									충북<span style="margin-left: 5px;">음성</span>
-									</p>
-							</div>
-						</div>
-						<div class="type_box">
-							<p class="lgr_type">네트워크</p>
-						</div>
-					</div>
-					<!-- 내용 -->
-					<div class="lgr_subject"><span>22년 음성군 품목별 청년농업인 모집</span></div>
-					<div class="lgr_datebadge"><span>기간</span></div>
-					<div class="lgr_date">~&nbsp;2022-09-30</div>
-					<div class="lgr_more">
-						더보기
-					</div>
-				</li>
-		  	<li class="swiper-slide lgr_content"  onclick="location.href='/young/custom/policy/view.do?sId=6614'">
-					<!-- 카테고리 -->
-					<div class="lgr_categorywrap">
-						<div class="place_box">
-							<div class="lgr_place">
-								<p class="place_txt">
-									강원<span style="margin-left: 5px;">삼척</span>
-									</p>
-							</div>
-						</div>
-						<div class="type_box">
-							<p class="lgr_type">자금 , 네트워크</p>
-						</div>
-					</div>
-					<!-- 내용 -->
-					<div class="lgr_subject"><span>22년 귀농귀촌 마을환영회 신청 안내</span></div>
-					<div class="lgr_datebadge"><span>기간</span></div>
-					<div class="lgr_date">~&nbsp;2022-10-31</div>
-					<div class="lgr_more">
-						더보기
-					</div>
-				</li>
-		  	<li class="swiper-slide lgr_content"  onclick="location.href='/young/custom/policy/view.do?sId=6595'">
-					<!-- 카테고리 -->
-					<div class="lgr_categorywrap">
-						<div class="place_box">
-							<div class="lgr_place">
-								<p class="place_txt">
-									전북<span style="margin-left: 5px;">남원</span>
-									</p>
-							</div>
-						</div>
-						<div class="type_box">
-							<p class="lgr_type">자금 , 네트워크</p>
-						</div>
-					</div>
-					<!-- 내용 -->
-					<div class="lgr_subject"><span>22년 마을환영회 지원사업 모집공고</span></div>
-					<div class="lgr_datebadge"><span>기간</span></div>
-					<div class="lgr_date">~&nbsp;2022-12-31</div>
-					<div class="lgr_more">
-						더보기
-					</div>
-				</li>
-		  	<li class="swiper-slide lgr_content"  onclick="location.href='/young/custom/policy/view.do?sId=6497'">
-					<!-- 카테고리 -->
-					<div class="lgr_categorywrap">
-						<div class="place_box">
-							<div class="lgr_place">
-								<p class="place_txt">
-									전북<span style="margin-left: 5px;">군산</span>
-									</p>
-							</div>
-						</div>
-						<div class="type_box">
-							<p class="lgr_type">자금, 주거</p>
-						</div>
-					</div>
-					<!-- 내용 -->
-					<div class="lgr_subject"><span>22년 [주택 및 공통작업장 보수·수선] 신청</span></div>
-					<div class="lgr_datebadge"><span>기간</span></div>
-					<div class="lgr_date">~&nbsp;2022-09</div>
-					<div class="lgr_more">
-						더보기
-					</div>
-				</li>
-		  	<li class="swiper-slide lgr_content"  onclick="location.href='/young/custom/policy/view.do?sId=5997'">
-					<!-- 카테고리 -->
-					<div class="lgr_categorywrap">
-						<div class="place_box">
-							<div class="lgr_place">
-								<p class="place_txt">
-									경기</p>
-							</div>
-						</div>
-						<div class="type_box">
-							<p class="lgr_type">컨설팅</p>
-						</div>
-					</div>
-					<!-- 내용 -->
-					<div class="lgr_subject"><span>22년 경기도 귀농귀촌 초보귀농인(멘티) 모집</span></div>
-					<div class="lgr_datebadge"><span>기간</span></div>
-					<div class="lgr_date">~&nbsp;2022-12</div>
-					<div class="lgr_more">
-						더보기
-					</div>
-				</li>
-		  	<li class="swiper-slide lgr_content"  onclick="location.href='/young/custom/policy/view.do?sId=5901'">
-					<!-- 카테고리 -->
-					<div class="lgr_categorywrap">
-						<div class="place_box">
-							<div class="lgr_place">
-								<p class="place_txt">
-									강원<span style="margin-left: 5px;">영월</span>
-									</p>
-							</div>
-						</div>
-						<div class="type_box">
-							<p class="lgr_type">자금, 네트워크</p>
-						</div>
-					</div>
-					<!-- 내용 -->
-					<div class="lgr_subject"><span>22년 귀농귀촌인 주민 초청 행사</span></div>
-					<div class="lgr_datebadge"><span>기간</span></div>
-					<div class="lgr_date">~&nbsp;2022-12</div>
-					<div class="lgr_more">
-						더보기
-					</div>
-				</li>
+		  	<c:choose>
+		  			<c:when test="${programs != null and fn:length(programs) > 0}">
+		  				<c:forEach var="program" items="${programs}">
+		  					<li class="swiper-slide lgr_content"  onclick="location.href='${pageContext.request.contextPath}/program/apply01Ok.pg?programNumber=${program.getProgramNumber()}'">
+								<!-- 카테고리 -->
+								<div class="lgr_categorywrap">
+									<div class="place_box"><div class="lgr_place"><p class="place_txt">${program.getProgramLocation()}</p></div></div>
+								</div>
+								<!-- 내용 -->
+								<div class="lgr_subject"><span>${program.getProgramName()}</span></div>
+								<div class="lgr_datebadge"><span>기간</span></div>
+								<div class="lgr_date">${program.getProgramApplyStartDate()}&nbsp;~&nbsp;${program.getProgramApplyEndDate()}</div>
+								<div class="lgr_more"><p style="display: inline; margin-right: -50px;">더보기</p></div>
+							</li>
+		  				</c:forEach>
+		  			</c:when>
+		  			<c:otherwise>
+						<span  style="text-align:center; width:100%; padding-top: 100px; font-size: 20px;">등록된 프로그램이 없습니다.</span>
+					</c:otherwise>
+		  		</c:choose>
 		  	</ul>
 		  <div class="swiper-pagination"></div>
 		</div>
@@ -579,11 +250,11 @@
 		<script type="text/javascript">
 			//슬라이드
 			var swiper = new Swiper(".customSwiper", {
-				slidesPerView: 4,
-				spaceBetween: 20,
+				slidesPerView: 'auto',
+				spaceBetween: 18,
 				pagination: {
 					el: ".swiper-pagination",
-					type: "fraction",
+					type: "pagination",
 				 },
 				navigation: {
 					nextEl: ".swiper-button-next",
@@ -606,7 +277,6 @@
 			
 			
 			<!-- 버튼 -->
-			
 			<div id="lgr_middlebtn_group">
 					<div id="lgr_middlebtn1" onclick="location.href='/young/board/board15.do'">
 						<div class="lgr_middlebtn_imgwrap">
