@@ -41,7 +41,6 @@ public class ApplyListOkController implements Execute {
 		int startRow = (page - 1) * rowCount;
 		int sort = 0;
 		
-		
 		int endPage = (int)(Math.ceil(page / (double)pageCount) * pageCount); //단위에서 마지막 페이지
 		int startPage = endPage - (pageCount - 1); //단위에서 첫번째 페이지
 		int realEndPage = (int)Math.ceil(total / (double)rowCount);

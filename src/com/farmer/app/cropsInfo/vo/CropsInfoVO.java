@@ -8,25 +8,27 @@ public class CropsInfoVO {
 	private String cropsInstitution;
 	private String cropsDetailName;
 	private String cropsExplain;
+	private String cropsCategory;
+	private String cropsKinds;
 	
 	public CropsInfoVO() {;}
-	
+
 	public int getCropsNumber() {
 		return cropsNumber;
 	}
-	
+
 	public void setCropsNumber(int cropsNumber) {
 		this.cropsNumber = cropsNumber;
 	}
-	
+
 	public String getCropsImage() {
 		return cropsImage;
 	}
-	
+
 	public void setCropsImage(String cropsImage) {
 		this.cropsImage = cropsImage;
 	}
-	
+
 	public String getCropsName() {
 		return cropsName;
 	}
@@ -67,10 +69,28 @@ public class CropsInfoVO {
 		this.cropsExplain = cropsExplain;
 	}
 
+	public String getCropsCategory() {
+		return cropsCategory;
+	}
+
+	public void setCropsCategory(String cropsCategory) {
+		this.cropsCategory = cropsCategory;
+	}
+
+	public String getCropsKinds() {
+		return cropsKinds;
+	}
+
+	public void setCropsKinds(String cropsKinds) {
+		this.cropsKinds = cropsKinds;
+	}
+
 	@Override
 	public String toString() {
 		return "CropsInfoVO [cropsNumber=" + cropsNumber + ", cropsImage=" + cropsImage + ", cropsName=" + cropsName
 				+ ", cropsDevYear=" + cropsDevYear + ", cropsInstitution=" + cropsInstitution + ", cropsDetailName="
-				+ cropsDetailName + ", cropsExplain=" + cropsExplain + "]";
+				+ cropsDetailName + ", cropsExplain=" + cropsExplain + ", cropsCategory=" + cropsCategory
+				+ ", cropsKinds=" + cropsKinds + "]";
 	}
+	
 }

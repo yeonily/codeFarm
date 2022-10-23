@@ -96,8 +96,7 @@
 				<h3 class="view_tit">${alba.getAlbaName()}</h3>
 				<div class="view_main">
 					<img
-						src="${pageContext.request.contextPath}/assets/images/alba_Apply/alba_banner.png"
-						alt="">
+						src="${pageContext.request.contextPath}/assets/images/alba_Apply/${alba.getAlbaImage()}">
 					<div class="detail_info">
 						<div class="info_apply">
 							<a href="${pageContext.request.contextPath}/alba/apply02.ab?albaNumber=${param.albaNumber}" id="alba_apply" class="apply_on"> <span>아르바이트 신청</span></a>
@@ -157,6 +156,10 @@
 								</tr>
 							</tbody>
 						</table>
+                  		 <div class="btns">
+                  		 	<input type="button" class="btn" value="수정" onclick="location.href = '${pageContext.request.contextPath}/alba/update.ab?albaNumber=${alba.getAlbaNumber()}'"/>
+                  		 	<input type="button" class="btn" value="삭제" onclick="javascript:alert();"/>
+                         </div>
 					</div>
 				</div>
 			</form>
@@ -167,5 +170,20 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/alba/alba_days.js"></script>
+<script>
+/* 삭제 알람 */
+function alert(){
+
+        var result = confirm("정말 삭제하시겠습니까?");
+
+        if(result) {
+           //yes
+            location.href = '/alba/deleteOk.ab?albaNumber=${param.albaNumber}';
+        } else {
+            //no
+        }
+
+}
+</script>
 
 </html>

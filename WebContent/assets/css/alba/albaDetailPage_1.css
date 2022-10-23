@@ -342,3 +342,28 @@ span.checkText {
 a.backList {
     background-color: #464d77;
 }
+
+
+a.a_tag{
+	text-decoration: none;
+}
+
+.btns{
+	text-align: right;
+}
+
+.btn {
+    font-size: 20px;
+    color: #fff;
+    line-height: 31px;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    padding-top: 3px;
+    background-color: #464d77;
+    text-decoration: none;
+    border: none;
+    border-radius: 22px;
+    width: 62px;
+    font-family: ONE-Mobile-Regular;
+    cursor: pointer;
+}
