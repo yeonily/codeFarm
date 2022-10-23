@@ -9,7 +9,7 @@
 		limit #{startRow}, #{rowCount}
 	</select>
 	
-	<!-- 아르바이트 전체 개수 -->
+	<!-- 작물정보 전체 개수 -->
 	<select id="selectCount" resultType="_int">
 		select count(crops_number) from tbl_crops_info
 	</select>

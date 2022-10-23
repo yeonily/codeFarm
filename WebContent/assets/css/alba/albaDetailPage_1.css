@@ -367,3 +367,7 @@ a.a_tag{
     font-family: ONE-Mobile-Regular;
     cursor: pointer;
 }
+.albaBanner {
+	max-height:525px;
+	object-fit: scale-down;
+}

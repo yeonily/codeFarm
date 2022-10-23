@@ -273,7 +273,7 @@ table th{
 table td{
     border-left: 1px solid #ddd;
 }
-#userName{
+table td input {
     height: 40px;
     line-height: 40px;
     padding: 0 10px;

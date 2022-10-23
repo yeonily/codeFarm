@@ -30,9 +30,13 @@ public class MemberAlbaFrontController extends HttpServlet {
 	    Result result = null;
 	    
 	      
-	       if(target.equals("/memberAlba/applyOK.ma")) {//알바 신청상세페이지2에서 개인정보입력(INSERT) , 컨트롤러에서 신청페이지3으로 이동 구현 예정
+	       if(target.equals("/memberAlba/applyOK.ma")) {//프로그램 신청상세페이지2에서 개인정보입력(INSERT) , 컨트롤러에서 신청페이지3으로 이동 구현 예정
+		   		result = new ApplyOkController().execute(req, resp);
 		   		
-	       }
+	       }else if(target.equals("/alba/applyDeleteOk.ma")) {//프로그램 신청 삭제(DELETE)
+		    	  result = new ApplyDeleteOkController().execute(req, resp);
+		    	  
+		   } 
 
 
 	

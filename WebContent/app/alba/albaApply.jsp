@@ -191,7 +191,7 @@ function sortList(albaLists) {
 	});
 
 	$("#albaListsAllUl").html(text);
-	pageNation();
+	/* pageNation(); */
 }
 
 function pageNation() {
@@ -230,6 +230,7 @@ function pageNation() {
 	return page;		
 	});
 		console.log("페이징ㅜㅜ : " + page);
+	sortList();
 }
 
 

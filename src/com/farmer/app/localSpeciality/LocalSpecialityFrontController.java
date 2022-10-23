@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.farmer.app.Result;
-import com.farmer.app.cropsInfo.SearchOkController;
 
 public class LocalSpecialityFrontController extends HttpServlet {
 
@@ -31,9 +30,7 @@ public class LocalSpecialityFrontController extends HttpServlet {
 		Result result = null;
 
 		if(target.equals("/localSpecialty/searchOk.ls")) {//특산물정보 조건검색 조회(SELECT)
-//			result = new SearchOkController().execute(req, resp);
-	    	  result = new Result();
-	          result.setPath("/app/local_specialties/local_specialties.jsp");
+			result = new SearchOkController().execute(req, resp);
 		}
 
 

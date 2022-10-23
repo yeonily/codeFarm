@@ -101,6 +101,7 @@
                 </span>
                 <p class="h2">신청이 완료되었습니다</h2>
                 <p class="txt">관리자 승인 이후 확정됩니다.&nbsp;&nbsp;자세한 내용은 마이페이지를 참조해주세요</h2>
+                <p class="txt returnlist"><a class="txt a_return" href="${pageContext.request.contextPath}/alba/applyListOk.ab">목록으로 돌아가기</a></p>
            </div>
         </div>
     </div>

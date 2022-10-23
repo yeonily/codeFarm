@@ -69,7 +69,6 @@ public class AlbaWriteOkController implements Execute {
 		albaVO.setAlbaApplyEndDate(applyEndDate);
 		albaVO.setAlbaRecruitedTotalCount(persons);
 		albaVO.setAlbaPhoneNumber(phone);
-		albaVO.setAlbaImage("test");
 		albaVO.setAlbaImage(fileSystemName);
 		albaVO.setMemberNumber(1);
 		
