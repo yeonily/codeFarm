@@ -10,16 +10,25 @@ import javax.servlet.http.HttpServletResponse;
 import com.farmer.app.Execute;
 import com.farmer.app.Result;
 import com.farmer.app.program.dao.ProgramDAO;
-import com.farmer.app.program.vo.ProgramVO;
 
 public class Apply01OkController implements Execute {
 
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		HashMap<String, Integer> userMap = new HashMap<String, Integer>();
 		ProgramDAO programDAO = new ProgramDAO();
-		ProgramVO programVO = new ProgramVO();
 		Result result = new Result();
 		int programNumber = Integer.valueOf(req.getParameter("programNumber"));
+//		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber");
+		int memberNumber = 4;
+		
+		
+		userMap.put("programNumber", programNumber);
+		userMap.put("memberNumber", memberNumber);	
+		
+		int isApply = programDAO.isApply(userMap);
+		
+		req.setAttribute("isApply", isApply);
 		
 
 		req.setAttribute("program", programDAO.select(programNumber));

@@ -26,14 +26,15 @@ public class ViewCountOkController implements Execute {
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html; charset=utf-8");
 		
+		
 		HashMap<String, Integer> pageMap = new HashMap<String, Integer>();
 		ProgramDAO programDAO = new ProgramDAO();
 		Result result = new Result();
 		String temp = req.getParameter("page"); 
-
+		
 		int total = programDAO.selectAllCount();
 
-		int page = temp == null ? 1 : Integer.parseInt(temp); // 디폴트는 1페이지
+		int page = temp == null ? 1 : Integer.parseInt(temp.trim()); // 디폴트는 1페이지
 		//		한 페이지에 출력되는 게시글의 개수
 		int rowCount = 12;
 		//		한 페이지에서 나오는 페이지 버튼의 개수

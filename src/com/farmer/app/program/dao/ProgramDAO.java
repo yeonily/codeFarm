@@ -73,5 +73,8 @@ public class ProgramDAO {
 			return sqlSession.selectList("program.selectDeadline", pageMap);
 		}
 
-		
+//		프로그램 신청여부 확인
+		public int isApply(Map<String, Integer> userMap) {
+			return sqlSession.selectOne("program.isApply", userMap);
+		}
 }

@@ -20,13 +20,9 @@ public class MemberProgramDAO {
 		   sqlSession.insert("memberProgram.insert", memberProgramVO);
 	   }
 	   
-//		프로그램 신청여부 확인
-		public int isApply(Map<String, Integer> userMap) {
-			return sqlSession.selectOne("memberProgram.isApply", userMap);
-		}
-		
-		public void applyDelete(int memberNumber) {
-			sqlSession.delete("memberProgram.applyDelete", memberNumber);
+//		신청삭제
+		public void applyDelete(Map<String, Integer> userMap) {
+			sqlSession.delete("memberProgram.applyDelete", userMap);
 		}
 		
 }

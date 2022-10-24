@@ -84,7 +84,10 @@
 		where program_number = #{programNumber}
 	</update>
 	
-
+   	<!-- 프로그램 신청여부 확인 -->
+	<select id="isApply" parameterType="map" resultType="_int">
+		select count(member_number) from tbl_member_program where member_number = #{memberNumber} and program_number = #{programNumber}	
+	</select>
 	
 
 	

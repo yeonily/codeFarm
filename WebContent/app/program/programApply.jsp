@@ -102,8 +102,8 @@
                                             </div>
                                            
                                         </div>
-                                       <!-- 페이징 -->
-                                        <div id="page" style="margin-bottom : 30px">
+                                       <%-- 등록순 페이징 --%>
+                                        	 <div id="page" style="margin-bottom : 30px">
                                             <div class="page_nation">
                                             	<c:if test="${prev}">
 			                                            <a class="page-num arrow pprev" href="${pageContext.request.contextPath}/program/applyListOk.pg?page=1"></a>
@@ -112,10 +112,13 @@
 	                                            <c:forEach var="i" begin="${startPage}" end="${endPage}">
 	                                            <c:choose>
 															<c:when test="${not (i eq page)}">
-			                                            		<a class="page-num " href="${pageContext.request.contextPath}/program/applyListOk.pg?page=${i}">
+															
+	                                            			<!-- 현재페이지 아님 -->
+			                                            		<a class="page-num" href="${pageContext.request.contextPath}/program/applyListOk.pg?page=${i}">
 			                                            		<c:out value="${i}"/></a>
 															</c:when>
 															<c:otherwise>
+															<!-- 현재페이지 -->
 			                                            		<a class="page-num active" href="${pageContext.request.contextPath}/program/applyListOk.pg?page=${i}">
 			                                            		<c:out value="${i}"/></a>
 															</c:otherwise>
@@ -141,60 +144,145 @@
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/program/program_apply.js"></script>
 <script>
-/* 조회순 정렬 */
+let page = 1;
+/* 조회순 정렬 ajax */
 function viewOrder(){
 		$.ajax({
 		url: "${pageContext.request.contextPath}/program/viewCountOk.pg",
 		contextType: "application/json; charset=utf-8",
 		dataType: "json",
-		success: function(programLists){
-			console.log("들어옴?");
-			let text = "";
-			let pageText = "";
-			
-			programLists.forEach(alba => {
-				text += `<li class="alba" onclick="location.href='${pageContext.request.contextPath}/alba/apply01.ab?albaNumber=` + alba.albaNumber + `'">`;
-				text += `<div class="info">`;
-				text += `<p class="local"> ` + alba.albaLocation + `</p>`;
-				text += `<p class="progress">진행중</p>`;
-				text += `</div>`;
-				text += `<div class="title">`;
-				text += `<p> ` + alba.albaName + `</p>`;
-				text += `</div>`;
-				text += `<div class="num">`;
-				text += `<p class="prd">`;
-				text += `<span class="endstatus"></span> &nbsp;| &nbsp;`;
-				text += `<span class="end-day">` + alba.albaApplyEndDate + `</span>`;
-				text += `<span style="display: none;">` + alba.albaApplyStartDate + `</span>`;
-				text += `</p>`;
-				text += `<p class="hits">`;
-				text += `<img src="https://www.rda.go.kr/young/images/site/sub/common_ico_view.png">`;
-				text += `<span style="display: none;">` + alba.albaViewCount + `</span>`;
-				text += `</p>`;
-				text += `</div>`;
-				text += `</div>`;
-				text += `</li>`;
-			
-			});
-	
-			$("#programListsAllUl").html(text);
-		},
+		success: viewOrderList,
 		error : function(request, status, error) {
+			console.log(error);
 		}
 	});
 }
 
-/* 최근마감일순 정렬 */
+//조회순 정렬 함수
+function viewOrderList(programLists){
+	let text = "";
+	let pageText = "";
+	
+	programLists.forEach(program => {
+		text += `<li class="program" onclick="location.href='${pageContext.request.contextPath}/program/apply01Ok.pg?programNumber=` + program.programNumber + `'">`;
+		text += `<div class="info">`;
+		text += `<p class="local"> ` + program.programLocation + `</p>`;
+		text += `<p class="progress">진행중</p>`;
+		text += `</div>`;
+		text += `<div class="title">`;
+		text += `<p> ` + program.programName + `</p>`;
+		text += `</div>`;
+		text += `<div class="num">`;
+		text += `<p class="prd">`;
+		text += `<span class="endstatus"></span> &nbsp;| &nbsp;`;
+		text += `<span class="end-day">` + program.programApplyEndDate + `</span>`;
+		text += `<span style="display: none;">` + program.programApplyStartDate + `</span>`;
+		text += `</p>`;
+		text += `<p class="hits">`;
+		text += `<img src="https://www.rda.go.kr/young/images/site/sub/common_ico_view.png">`;
+		text += `<span >` + program.programViewCount + `</span>`;
+		text += `</p>`;
+		text += `</div>`;
+		text += `</div>`;
+		text += `</li>`;
+	
+	});
+
+	$("#programListsAllUl").html(text);
+	
+	pageText+= `<div class="page_nation">`;
+	pageText+= `<c:if test="${prev}">`;
+	pageText+= `<a href="1" class="page-num arrow pprev"></a>`;
+	pageText+= `<a href="` + ${startPage + 1} + `" class="page-num arrow prev" ></a>`;
+	pageText+= `</c:if>`;
+	pageText+= `<c:forEach var="i" begin="${startPage}" end="${endPage}">`;
+	
+	pageText+= `<c:choose><c:when test="`+${not (i eq page)}+`">`;
+	pageText+=`<a class="page-num" href="${pageContext.request.contextPath}/program/viewCountOk.pg?page=${i}">`;
+	pageText+=`<c:out value="`+${i}+`"/></a></c:when><c:otherwise>`;
+	pageText+=`<a class="page-num active" href="${pageContext.request.contextPath}/program/viewCountOk.pg?page=${i}">`;
+	pageText+=`<c:out value="`+${i}+`"/></a>`;
+	pageText+=`</c:otherwise></c:choose>`;
+	
+	pageText+= `</c:forEach>`;
+	pageText+= `<c:if test="${next}">`;
+	pageText+= `<a href="` + ${endPage + 1} + `" class="page-num arrow next"></a>`;
+	pageText+= `<a href="` + ${realEndPage} + `" class="page-num arrow nnext"></a>`;
+	pageText+= `</c:if>`;
+	pageText+= `</div>`;
+
+	$(".page_nation").html(pageText);
+}
+
+/* 최근마감일순 정렬 ajax*/
 function recentOrder(){
 		$.ajax({
-		url: "/reply/listOk.re",
-		type: "get", 
-		data: {boardNumber: boardNumber}, 
-		contextType: "application/json; charset=utf-8",
-		dataType: "json",
-		success: showList
-		
-	});
+			url: "${pageContext.request.contextPath}/program/deadlineOk.pg",
+			contextType: "application/json; charset=utf-8",
+			dataType: "json",
+			success: recentOrderList,
+			error : function(request, status, error) {
+				console.log(error);
+			}
+		});
 } 
+
+
+//마감순 정렬 함수
+function recentOrderList(programLists){
+	let text = "";
+	let pageText = "";
+	
+	programLists.forEach(program => {
+		text += `<li class="program" onclick="location.href='${pageContext.request.contextPath}/program/apply01Ok.pg?programNumber=` + program.programNumber + `'">`;
+		text += `<div class="info">`;
+		text += `<p class="local"> ` + program.programLocation + `</p>`;
+		text += `<p class="progress">진행중</p>`;
+		text += `</div>`;
+		text += `<div class="title">`;
+		text += `<p> ` + program.programName + `</p>`;
+		text += `</div>`;
+		text += `<div class="num">`;
+		text += `<p class="prd">`;
+		text += `<span class="endstatus"></span> &nbsp;| &nbsp;`;
+		text += `<span class="end-day">` + program.programApplyEndDate + `</span>`;
+		text += `<span style="display: none;">` + program.programApplyStartDate + `</span>`;
+		text += `</p>`;
+		text += `<p class="hits">`;
+		text += `<img src="https://www.rda.go.kr/young/images/site/sub/common_ico_view.png">`;
+		text += `<span >` + program.programViewCount + `</span>`;
+		text += `</p>`;
+		text += `</div>`;
+		text += `</div>`;
+		text += `</li>`;
+	
+	});
+
+	$("#programListsAllUl").html(text);
+	
+	pageText+= `<div class="page_nation">`;
+	pageText+= `<c:if test="${prev}">`;
+	pageText+= `<a href="1" class="page-num arrow pprev"></a>`;
+	pageText+= `<a href="` + ${startPage + 1} + `" class="page-num arrow prev" ></a>`;
+	pageText+= `</c:if>`;
+	pageText+= `<c:forEach var="i" begin="${startPage}" end="${endPage}">`;
+	
+	pageText+= `<c:choose><c:when test="`+${not (i eq page)}+`">`;
+	pageText+=`<a class="page-num" href="${pageContext.request.contextPath}/program/deadlineOk.pg?page=${i}">`;
+	pageText+=`<c:out value="`+${i}+`"/></a></c:when><c:otherwise>`;
+	pageText+=`<a class="page-num active" href="${pageContext.request.contextPath}/program/deadlineOk.pg?page=${i}">`;
+	pageText+=`<c:out value="`+${i}+`"/></a>`;
+	pageText+=`</c:otherwise></c:choose>`;
+	
+	pageText+= `</c:forEach>`;
+	pageText+= `<c:if test="${next}">`;
+	pageText+= `<a href="` + ${endPage + 1} + `" class="page-num arrow next"></a>`;
+	pageText+= `<a href="` + ${realEndPage} + `" class="page-num arrow nnext"></a>`;
+	pageText+= `</c:if>`;
+	pageText+= `</div>`;
+
+	$(".page_nation").html(pageText);
+}
+
 </script>
 </html>
