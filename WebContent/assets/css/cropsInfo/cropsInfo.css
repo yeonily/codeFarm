@@ -176,6 +176,7 @@ li.after_slash::after{
     margin-left: 20px;
     position: absolute;
     right: 24px;
+    cursor: pointer;
     
 }
 .grid_topLine{
