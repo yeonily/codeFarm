@@ -29,9 +29,11 @@ public class MyPageOkController implements Execute {
 		String gradeText;
 		String programName;
 		String programDate;
+		int programNumber;
 		String albaName;
 		String albaDate;
-
+		int albaNumber;
+		
 		int memberNumber = (Integer)session.getAttribute("memberNumber");
 		
 //		마이페이지 내 정보칸에 나타낼 값 select
@@ -61,7 +63,7 @@ public class MyPageOkController implements Execute {
 		
 //		농장주, 일반사용자 검사
 		if(memberGrade == -1) {
-			if(mypageDAO.selectFarmerAlba(memberNumber) == null) {
+			if(mypageDAO.selectFarmerAlba(memberNumber) == null) { // 농장주일 때
 				albaApply = false;
 			}else {
 				albaApply = true;
@@ -73,20 +75,29 @@ public class MyPageOkController implements Execute {
 				programApply = true;
 				programVO = mypageDAO.selectFarmerProgram(memberNumber);
 			}
+			
+			System.out.println(albaVO);
+			
 			albaName = albaVO.getAlbaName();
 			albaDate = albaVO.getAlbaDate();
+			albaNumber = albaVO.getAlbaNumber();
 			programName = programVO.getProgramName();
 			programDate = programVO.getProgramDate();
+			programNumber = programVO.getProgramNumber();
 			gradeText = "등록";
 			memberType = "농장주";
 			req.setAttribute("memberType", memberType);
 			req.setAttribute("gradeText", gradeText);
 			req.setAttribute("albaName", albaName);
 			req.setAttribute("albaDate", albaDate);
+			req.setAttribute("albaNumber", albaNumber);
 			req.setAttribute("programName", programName);
 			req.setAttribute("programDate", programDate);
+			req.setAttribute("programNumber", programNumber);
+			
 		}else if(memberGrade == 1) {
 //			내가 신청한 알바 신청 최신순 1개 가져오기
+			
 			if(mypageDAO.selectRecentAlbas(memberNumber) == null) {
 				albaApply = false;
 			}else {
@@ -103,16 +114,21 @@ public class MyPageOkController implements Execute {
 			}
 			albaName = albaVO.getAlbaName();
 			albaDate = albaVO.getAlbaStartDate();
+			albaNumber = albaVO.getAlbaNumber();
 			programName = programVO.getProgramName();
 			programDate = programVO.getProgramStartDate();
+			programNumber = programVO.getProgramNumber();
+			
 			gradeText = "신청";
 			memberType = "일반 사용자";
 			req.setAttribute("memberType", memberType);
 			req.setAttribute("gradeText", gradeText);
 			req.setAttribute("albaName", albaName);
 			req.setAttribute("albaDate", albaDate);
+			req.setAttribute("albaNumber", albaNumber);
 			req.setAttribute("programName", programName);
 			req.setAttribute("programDate", programDate);
+			req.setAttribute("programNumber", programNumber);
 		}
 			
 		req.setAttribute("albaApply", albaApply);

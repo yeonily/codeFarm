@@ -63,7 +63,8 @@
 	<select id="selectRecentPrograms" parameterType="_int" resultType="programVO">
 		select 
 			program_name,
-			program_start_date 
+			program_start_date,
+			tp.program_number 
 		from tbl_program tp 
 		join tbl_member_program tmp
 		on tp.program_number = tmp.program_number
@@ -76,7 +77,8 @@
 	<select id="selectRecentAlbas" parameterType="_int" resultType="albaVO">
 		select 
 			alba_name,
-			alba_start_date 
+			alba_start_date,
+			ta.alba_number
 		from tbl_alba ta 
 		join tbl_member_alba tma
 		on ta.alba_number = tma.alba_number
@@ -89,7 +91,8 @@
 	<select id="selectFarmerProgram" parameterType="_int" resultType="programVO">
 		select 
 			program_name,
-			program_date
+			program_date,
+			program_number
 		from tbl_program
 		where member_number = #{memberNumber}
 		order by program_date
@@ -100,7 +103,8 @@
 	<select id="selectFarmerAlba" parameterType="_int" resultType="albaVO">
 		select 
 			alba_name,
-			alba_date
+			alba_date,
+			alba_number
 		from tbl_alba
 		where member_number = #{memberNumber}
 		order by alba_date
