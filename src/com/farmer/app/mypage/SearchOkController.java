@@ -10,6 +10,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -34,7 +35,8 @@ public class SearchOkController implements Execute{
 		List<ProgramVO> myProgramVO = null;
 		JSONArray array = new JSONArray();
 		int total;
-				
+		HttpSession session = req.getSession();
+		int memberNumber = (Integer)session.getAttribute("memberNumber");
 		total = mypageDAO.selectProgramCount(2);
 		req.setAttribute("total", total);
 		
@@ -59,7 +61,7 @@ public class SearchOkController implements Execute{
 
 		pageMap.put("startRow", startRow);
 		pageMap.put("rowCount", rowCount);
-		pageMap.put("memberNumber", 2);
+		pageMap.put("memberNumber", memberNumber);
 		
 		req.setAttribute("programs", mypageDAO.selectViewCountProgram(pageMap));
 		req.setAttribute("page", page);

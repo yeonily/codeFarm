@@ -34,6 +34,12 @@ public class MypageDAO {
 		   sqlSession.update("MyPage.updateMyPage", memberVO);
 	   }
 	   
+//	   탈퇴하기위해 입력받은 패스워드 비교
+	   public int selectDeletePw(String memberPassword) {
+		   return sqlSession.selectOne("MyPage.selectDeletePw", memberPassword);
+	   }
+	   
+//	   회원탈퇴
 	   public void deleteMember(String memberPassword) {
 		   sqlSession.delete("MyPage.deleteMember",memberPassword);
 	   }

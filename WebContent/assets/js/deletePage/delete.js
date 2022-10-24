@@ -32,7 +32,6 @@ $("#submitBtn").click(function() {
 });
 
 function deleteMember(){
-	alert("1");
 	let $inputPassword = $("#deletePassword").val();
 	console.log($inputPassword);	
 	$.ajax({
@@ -40,8 +39,18 @@ function deleteMember(){
 		type : "post",
 		data: {inputPassword: $inputPassword},
 		success : function (result) {
-			alert('회원탈퇴 처리 되었습니다');
-			location.href = "${pageContext.request.contextPath}/app/main/index.jsp"
+			console.log(result);
+			if(result == 'false'){
+				alert('비밀번호가 맞지 않습니다');
+				$inputPassword.focus();
+			}else{
+				alert('회원탈퇴 처리 되었습니다');
+				location.href = "/index/main.ix";
+			}
 		}
 	})
 }
+/*
+function send(){
+	deleteForm.submit();
+}*/

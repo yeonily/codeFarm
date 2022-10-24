@@ -35,7 +35,7 @@ public class MypageFrontController extends HttpServlet {
 	    	 
 	      }else if(target.equals("/mypage/LogOut.my")){//로그아웃 클릭 시 메인페이지로 이동
 	    	  result = new Result();
-	    	  result.setPath("/app/main/index.jsp");
+	    	  result.setPath("/index/main.ix");
 	      }
 	      else if(target.equals("/mypage/Update.my")) { //마이페이지에서 수정페이지로 이동
 	    	  result = new Result();
@@ -46,7 +46,7 @@ public class MypageFrontController extends HttpServlet {
 	       }
 	      else if(target.equals("/mypage/UpdateOk.my")) { //마이페이지에서 수정하기(UPDATE)
 	    	  result = new UpdateOkController().execute(req, resp);
-	    	  result.setPath("/app/myPage/myProfile.jsp");
+	    	  result.setPath("/mypage/mypageOk.my");
 	       }else if(target.equals("/mypage/Delete.my")) { //마이페이지에서 탈퇴페이지로 이동
 	    	  result = new Result();
 	    	  result.setPath("/app/myPage/deletePage.jsp");	
@@ -56,13 +56,13 @@ public class MypageFrontController extends HttpServlet {
 	    	   
 	       }else if(target.equals("/mypage/Write.my")) { //마이페이지에서 내가 쓴 글 페이지로 이동
 	    	  result = new Result();
-			  result.setPath("/app/myPage/myWriting.jsp");
+			  result.setPath("/mypage/WriteOk.my");
 	       }else if(target.equals("/mypage/WriteOk.my")) { //마이페이지에서 내가 쓴 글 리스트 보여주기(SELECT)
 	    	   result = new WriteOkController().execute(req, resp);
-	    	   result.setPath("/app/myPage/myWriting.jsp");
+//	    	   result.setPath("/app/myPage/myWriting.jsp");
 	       }else if(target.equals("/mypage/Apply.my")) { //마이페이지에서 내가 신청한 프로그램/알바 페이지로 이동
 	    	   result = new ApplyOkController().execute(req,resp);
-	    	   result.setPath("/app/myPage/myProgramApply.jsp");
+	    	   result.setPath("/mypage/searchOk.my");
 	    	   
 	       }else if(target.equals("/mypage/searchOk.my")) {
 	    	   result = new SearchOkController().execute(req,resp);

@@ -52,6 +52,13 @@
 		where member_password = #{memberpassword}
 	</delete>
 	
+<!--입력받은 패스워드가 DB에 있는지 확인  -->
+	<select id="selectDeletePw" parameterType="String" resultType="_int">
+		select count(member_number)
+		from tbl_member
+		where member_password = #{memberPassword}
+	</select>
+	
 <!--일반 사용자일때 내가 신청한 프로그램 중 가장 최근에 신청한 프로그램 1개 검색-->
 	<select id="selectRecentPrograms" parameterType="_int" resultType="programVO">
 		select 
@@ -123,22 +130,7 @@
 		on tp.program_number = tmp.program_number
 		where tmp.member_number = #{memberNumber} 
 	</select>
-	
-<!-- 	
-	<select id="selectViewCountProgram" parameterType="map" resultType="programVO">
-		select 
-			program_name
-			,program_start_date
-			,program_location
-			,program_apply_start_date
-			,program_apply_end_date
-			,program_view_count 
-		from tbl_program tp 
-		join tbl_member_program tmp on tp.program_number = tmp.program_number
-		where tmp.member_number = #{memberNumber}
-		order by program_view_count desc 
-		limit #{startRow} , #{rowCount};                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
-	</select> -->
+
 	
 <!--내가 신청한 알바 리스트 검색 -->	
 	<select id="selectAlba" parameterType="map" resultType="albaVO">

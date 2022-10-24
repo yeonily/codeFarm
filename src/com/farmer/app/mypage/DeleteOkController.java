@@ -2,19 +2,17 @@ package com.farmer.app.mypage;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Base64;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.catalina.ant.SessionsTask;
+import javax.servlet.http.HttpSession;
 
 import com.farmer.app.Execute;
 import com.farmer.app.Result;
-import com.farmer.app.member.dao.MemberDAO;
 import com.farmer.app.member.vo.MemberVO;
 import com.farmer.app.mypage.dao.MypageDAO;
-import com.mysql.cj.Session;
 
 public class DeleteOkController implements Execute {
 	@Override
@@ -24,12 +22,25 @@ public class DeleteOkController implements Execute {
 		MemberVO memberVO = new MemberVO();
 		MypageDAO mypageDAO = new MypageDAO();
 		PrintWriter out = resp.getWriter();
+		String encryptinputPassword;
+		HttpSession session = req.getSession();
+		boolean check =false;
 		
 		
-		String inputPassword = req.getParameter("inputPassword");
-		mypageDAO.deleteMember(inputPassword);
-		out.print("test");
+		int memberNumber = (Integer)session.getAttribute("memberNumber");
+		String Password = req.getParameter("inputPassword");
+		System.out.println(Password);
+		encryptinputPassword =   new String(Base64.getEncoder().encode(Password.getBytes()));
+		System.out.println(mypageDAO.selectDeletePw(encryptinputPassword));
+		if(mypageDAO.selectDeletePw(encryptinputPassword) == 0) {
+			check = false;
+		}else {
+			mypageDAO.deleteMember(encryptinputPassword);
+			check = true;
+		}
+		System.out.println(check);
+		out.print(check);
 		
-		return result;
+		return null;
 	}
 }

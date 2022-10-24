@@ -8,6 +8,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.farmer.app.Execute;
 import com.farmer.app.Result;
@@ -30,9 +31,10 @@ public class AlbaApplyOkController implements Execute {
 		
 //		myProgramVO = mypageDAO.selectProgram(2);
 //		req.setAttribute("myAlbas", myAlbaVO);
-		
+		HttpSession session = req.getSession();
 		total = mypageDAO.selectAlbaCount(2);
 		req.setAttribute("total", total);
+		int memberNumber = (Integer)session.getAttribute("memberNumber");
 		
 		
 //		페이징
@@ -55,7 +57,7 @@ public class AlbaApplyOkController implements Execute {
 
 		pageMap.put("startRow", startRow);
 		pageMap.put("rowCount", rowCount);
-		pageMap.put("memberNumber", 2);
+		pageMap.put("memberNumber", memberNumber);
 		
 		req.setAttribute("albas", mypageDAO.selectAlba(pageMap));
 		req.setAttribute("page", page);

@@ -60,7 +60,7 @@
                                     <th class="password_th"><label for="password">변경할 비밀번호</label></th>
                                     <td>
                                         <div class="tooltip_pw">
-                                            <input id="password" name="password" type="password">
+                                            <input id="password" name="password" type="password" placeholder="비밀번호는 대/소문자, 숫자, 특수문자 조합 10글자 이상입니다." style ="font-size: 13px;">
                                             <span class="tooltiptext">비밀번호를 확인해주세요</span>
                                         </div>
                                     </td>
@@ -71,7 +71,7 @@
                                     <th><label for="passwordCheck">변경할 비밀번호 확인</label></th>
                                     <td>
                                         <div class="tooltip_pwCh">
-                                            <input id="passwordCheck" name="passwordCheck" type="password">
+                                            <input id="passwordCheck" name="passwordCheck" type="password" style ="font-size: 13px;">
 											<!-- 비밀번호와 비밀번호 확인에 입력한 텍스트가 일치하는지 jon_check.js에서 검사 -->
 											<span class="error_next_box green" id="pwEqual" style="visibility: hidden;" aria-live="assertive">비밀번호가 일치합니다.</span>
 											<span class="error_next_box" id="pwNotEqual" style="visibility: hidden;" aria-live="assertive">비밀번호가 일치하지 않습니다.</span>
@@ -90,7 +90,7 @@
                                             <span class="printPhone">${memberPhoneNumber}</span>
                                             <input type="button" value="다른번호 인증" class="changePhone">
                                             <!-- (이후) 사용자가 다른번호 인증 버튼을 눌렀을 때 인증번호 발송 버튼으로 변경 -->
-                                            <input type="text" class="inputPhone" name="inputPhone" placeholder="휴대폰 번호를 입력해주세요" hidden>
+                                            <input type="text" class="inputPhone" name="inputPhone" placeholder="휴대폰 번호(-제외)를 입력해주세요." hidden>
                                             <input type="button" value="인증번호 발송" class="sendNumber" onclick="sendSMS()" hidden >
 
                                             <!-- (이후) 사용자가 휴대폰 번호까지 기입을 하고 인증번호 발송을 눌렀을 때 인증번호를 입력할 수 있는 input 만들기 -->

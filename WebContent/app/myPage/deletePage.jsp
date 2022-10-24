@@ -42,7 +42,7 @@
         <div class="sub_content">
             <div class="container">
                 <div class="inner">
-                    <form action="${pageContext.request.contextPath}" class="dropUserForm">
+                    <form action="${pageContext.request.contextPath}/mypage/DeleteOk.my" name = "deleteForm"class="dropUserForm">
                         <!-- 회원 탈퇴 안내 부분 -->
                         <div class="title">
                             <h2>회원탈퇴 안내</h2>
@@ -89,6 +89,7 @@
                         <div class="btn">
                             <input type="button" value="취소" id="cancelBtn" onclick="back()">
                             <input type="button" value="탈퇴" id="submitBtn" onclick="deleteMember()">
+                            
                         </div>
                     </form>
                 </div>

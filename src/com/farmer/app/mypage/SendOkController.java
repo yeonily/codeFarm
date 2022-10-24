@@ -29,8 +29,8 @@ public class SendOkController implements Execute {
 		String phoneNumber = req.getParameter("inputPhoneNumber");
 //		System.out.println(phoneNumber);
 		
-		String api_key = "NCS0RY6NHY7FXP4A";
-	    String api_secret = "VMJN50UENO6QN1Y8VAP8QFIGJGJ5OZ6E";
+		String api_key = "NCS3F5ZY1AHQHACO";
+	    String api_secret = "I9IIYDUN1G7N2NTDBHAQQQODLOL884JJ";
 	    Message coolsms = new Message(api_key, api_secret);
 	    Random r = new Random();
 	    String certificationNumber;

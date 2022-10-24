@@ -53,6 +53,53 @@
         });
     });
 
+	/*휴대폰번호 유효성 검사*/
+	$(function(){
+
+    $(".inputPhone").on('keydown', function(e){
+       // 숫자만 입력받기
+        var trans_num = $(this).val().replace(/-/gi,'');
+	var k = e.keyCode;
+				
+	if(trans_num.length >= 11 && ((k >= 48 && k <=126) || (k >= 12592 && k <= 12687 || k==32 || k==229 || (k>=45032 && k<=55203)) ))
+	{
+  	    e.preventDefault();
+	}
+    }).on('blur', function(){ // 포커스를 잃었을때 실행합니다.
+        if($(this).val() == '') return;
+
+        // 기존 번호에서 - 를 삭제합니다.
+        var trans_num = $(this).val().replace(/-/gi,'');
+      
+        // 입력값이 있을때만 실행합니다.
+        if(trans_num != null && trans_num != '')
+        {
+            // 총 핸드폰 자리수는 11글자이거나, 10자여야 합니다.
+            if(trans_num.length==11 || trans_num.length==10) 
+            {   
+                // 유효성 체크
+                var regExp_ctn = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})([0-9]{3,4})([0-9]{4})$/;
+                if(regExp_ctn.test(trans_num))
+                {
+                    // 유효성 체크에 성공하면 하이픈을 넣고 값을 바꿔줍니다.
+                    trans_num = trans_num.replace(/^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?([0-9]{3,4})-?([0-9]{4})$/, "$1-$2-$3");                  
+                    $(this).val(trans_num);
+                }
+                else
+                {alert("유효하지 않은 전화번호 입니다.");
+                 $(this).val("");
+                 $(this).focus();
+                }
+            }
+            else 
+            {alert("유효하지 않은 전화번호 입니다.");
+             $(this).val("");
+             $(this).focus();
+            }
+      }
+  });  
+});
+
 
     /* -------------------------------------------------------------- */
     /* 휴대폰 번호 다른번호 인증 클릭시 */
@@ -221,10 +268,34 @@ function checkSMS(){
 	 let $pw_check = $("#passwordCheck").val();
 	console.log($pw);
 	console.log($pw_check);
-		/*if($isCheck = false){
-			alert('인증번호가 일치하지 않습니다. 다시 진행해주세요');
-			return;
-		}*/
+		
+		/*email 입력 안할 시 focus*/
+		if(!detailForm.email1.value || !detailForm.email2.value){
+     			 detailForm.email1.focus();
+      			return;
+
+    	}
+		/*패스워드 유효성 검사*/
+		if(!pwCheck.test(detailForm.password.value)){
+				alert("비밀번호를 확인해주세요.");
+       	return;
+     	}
+     	if(hangleCheck.test(detailForm.password.value)){
+       		alert("비밀번호를 확인해주세요.");
+       	return;
+     	}
+     	if(wordCheck.test(detailForm.password.value)){
+     	 alert("비밀번호를 확인해주세요.");
+       	return;
+     	}
+     	if(spaceCheck.test(detailForm.password.value)){
+      	alert("비밀번호를 확인해주세요.");
+      	 return;
+     	}
+     	if(detailForm.password.value.length < 10 || detailForm.password.value.length > 20){
+       	alert("비밀번호를 확인해주세요.");
+       		return;
+     	}		
 		
 		console.log("들어옴0");
 		if(!detailForm.password.value){

@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.farmer.app.Execute;
 import com.farmer.app.Result;
@@ -25,9 +26,10 @@ public class WriteOkController implements Execute {
 		MemberVO memberVO = new MemberVO();
 		MypageDAO mypageDAO = new MypageDAO();
 		List<AlbaVO> myAlbaVO = null;
+		HttpSession session = req.getSession();
 		int total;
 		total = mypageDAO.selectWriteCount(2);
-		
+		int memberNumber =(Integer)session.getAttribute("memberNumber");
 		
 //		페이징
 		String temp = req.getParameter("page"); 
@@ -47,9 +49,10 @@ public class WriteOkController implements Execute {
 		endPage = endPage > realEndPage ? realEndPage : endPage;
 		boolean next = endPage != realEndPage;
 
+		
 		pageMap.put("startRow", startRow);
 		pageMap.put("rowCount", rowCount);
-		pageMap.put("memberNumber", 2);
+		pageMap.put("memberNumber", memberNumber);
 		
 		
 		req.setAttribute("total", total);
@@ -60,7 +63,7 @@ public class WriteOkController implements Execute {
 		req.setAttribute("prev", prev);
 		req.setAttribute("next", next);
 		
-		result.setPath("/app/myPage/myAlbaApply.jsp");
+		result.setPath("/app/myPage/myWriting.jsp");
 		return result;
 	}
 
