@@ -32,7 +32,7 @@ public class MyPageOkController implements Execute {
 		String albaName;
 		String albaDate;
 //		임시로 세션 설정, memberNumber 1로 설정
-		session.setAttribute("memberNumber", 2);
+//		session.setAttribute("memberNumber", 2);
 		int memberNumber = (Integer)session.getAttribute("memberNumber");
 		
 //		마이페이지 내 정보칸에 나타낼 값 select
