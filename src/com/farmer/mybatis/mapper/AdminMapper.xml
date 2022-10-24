@@ -239,6 +239,7 @@
 		select reply_number, reply_content, m.member_id, reply_date, community_number
 		from tbl_reply r join tbl_member m
 		on r.member_number = m.member_number
+		order by reply_number desc limit #{startRow}, #{rowCount}
 	</select>
 	
 <!-- 댓글 목록 수 -->
