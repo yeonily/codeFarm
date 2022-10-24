@@ -57,6 +57,12 @@
     margin-left: 10px;
 }
 
+.pop_con .p_con_inner .p_inner_box .memberFindId{
+    padding-top: 15px;
+    text-align: center;
+    font-size: 25px;
+}
+
 
 /* 85 */
 .pop_inner .p_btn01, .pop_inner .pw_change  {

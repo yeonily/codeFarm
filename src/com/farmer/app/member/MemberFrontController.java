@@ -59,8 +59,9 @@ public class MemberFrontController extends HttpServlet {
 	       }else if(target.equals("/member/findId.me")) {//아이디 찾기 실행
 	    	   result = new FindIdController().execute(req, resp);
 	    	   
-	       }else if(target.equals("/member/findPwOk.me")) {//비밀번호 찾기 실행(UPDATE)
-	    	   result = new FindPwOkController().execute(req, resp);
+	       }else if(target.equals("/member/findPw.me")) {//비밀번호 찾기 실행(UPDATE)
+	    	   System.out.println("들어옴?");
+	    	   result = new FindPwController().execute(req, resp);
 	   		
 	       }else if(target.equals("/member/logout.me")) {//로그아웃 (controller 필요)
 	    	   result = new LogoutController().execute(req, resp);

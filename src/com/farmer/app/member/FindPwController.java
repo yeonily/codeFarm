@@ -1,6 +1,8 @@
 package com.farmer.app.member;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Base64;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -18,19 +20,32 @@ public class FindPwController implements Execute {
 		
 		MemberDAO memberDAO = new MemberDAO();
 		MemberVO memberVO = new MemberVO();
-
-		String memberId = req.getParameter("inputId");
-		String memberPhoneNumber = req.getParameter("inputPhoneNumber");
-		String memberPassword = req.getParameter("password");
-				
+		Result result = new Result();
+		PrintWriter out = resp.getWriter();
+		
+		System.out.println("들어옴1");
+		
+		String memberId = req.getParameter("outputId");
+		String memberPhoneNumber = req.getParameter("outputPhoneNumber");
+		String memberPassword = req.getParameter("Password");
+		
 		memberVO.setMemberName(memberId);
 		memberVO.setMemberPhoneNumber(memberPhoneNumber);
+		memberVO.setMemberPhoneNumber(memberPassword);
+		System.out.println("들어옴2");
 		
 		memberDAO.findPassword(memberVO);	
 		
-		memberVO.setMemberPassword(memberPassword);
-				
-				
+		
+		System.out.println(memberId);
+		System.out.println(memberPhoneNumber);
+		
+		System.out.println("들어옴3");
+		out.print(memberPassword);
+		memberPassword = new String(Base64.getEncoder().encode(memberPassword.getBytes()));
+		req.setAttribute("memberPassword", memberPassword);
+		System.out.println(memberPassword);
+		
 		return null;
 	}
 }

@@ -25,6 +25,60 @@ let $smsNumber;
         document.getElementById("fine_id_popup").style.display = "none";
     }
 
+		// 핸드폰번호 유효성 검사
+
+	$(function(){
+
+    $(".findId_phone").on('keydown', function(e){
+       // 숫자만 입력받기
+        var trans_num = $(this).val().replace(/-/gi,'');
+	var k = e.keyCode;
+				
+	if(trans_num.length >= 11 && ((k >= 48 && k <=126) || (k >= 12592 && k <= 12687 || k==32 || k==229 || (k>=45032 && k<=55203)) ))
+	{
+  	    e.preventDefault();
+	}
+    }).on('blur', function(){ // 포커스를 잃었을때 실행합니다.
+        if($(this).val() == '') return;
+
+        // 기존 번호에서 - 를 삭제합니다.
+        var trans_num = $(this).val().replace(/-/gi,'');
+      
+        // 입력값이 있을때만 실행합니다.
+        if(trans_num != null && trans_num != '')
+        {
+            // 총 핸드폰 자리수는 11글자이거나, 10자여야 합니다.
+            if(trans_num.length==11 || trans_num.length==10) 
+            {   
+                // 유효성 체크
+                var regExp_ctn = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})([0-9]{3,4})([0-9]{4})$/;
+                if(regExp_ctn.test(trans_num))
+                {
+                    // 유효성 체크에 성공하면 하이픈을 넣고 값을 바꿔줍니다.
+                    trans_num = trans_num.replace(/^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?([0-9]{3,4})-?([0-9]{4})$/, "$1-$2-$3");                  
+                    $(this).val(trans_num);
+                }
+                else
+                {alert("유효하지 않은 전화번호 입니다.");
+                 $(this).val("");
+                 $(this).focus();
+                }
+            }
+            else 
+            {alert("유효하지 않은 전화번호 입니다.");
+             $(this).val("");
+             $(this).focus();
+            }
+      }
+  });  
+});
+
+
+
+
+
+
+
     /* 휴대폰번호 인증버튼 클릭시 */
   		$(".btn_phone_id").click(function () {
 		$inputPhoneNumber = $("#find_id_phone").val();
@@ -104,11 +158,66 @@ let memberFindId;
     function closePop_save() {
         document.getElementById("fine_pw_popup").style.display = "none";
     }
+	
+	
+	// 핸드폰번호 유효성 검사
+
+$(function(){
+
+    $(".find_pw_phone").on('keydown', function(e){
+       // 숫자만 입력받기
+        var trans_num = $(this).val().replace(/-/gi,'');
+	var k = e.keyCode;
+				
+	if(trans_num.length >= 11 && ((k >= 48 && k <=126) || (k >= 12592 && k <= 12687 || k==32 || k==229 || (k>=45032 && k<=55203)) ))
+	{
+  	    e.preventDefault();
+	}
+    }).on('blur', function(){ // 포커스를 잃었을때 실행합니다.
+        if($(this).val() == '') return;
+
+        // 기존 번호에서 - 를 삭제합니다.
+        var trans_num = $(this).val().replace(/-/gi,'');
+      
+        // 입력값이 있을때만 실행합니다.
+        if(trans_num != null && trans_num != '')
+        {
+            // 총 핸드폰 자리수는 11글자이거나, 10자여야 합니다.
+            if(trans_num.length==11 || trans_num.length==10) 
+            {   
+                // 유효성 체크
+                var regExp_ctn = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})([0-9]{3,4})([0-9]{4})$/;
+                if(regExp_ctn.test(trans_num))
+                {
+                    // 유효성 체크에 성공하면 하이픈을 넣고 값을 바꿔줍니다.
+                    trans_num = trans_num.replace(/^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?([0-9]{3,4})-?([0-9]{4})$/, "$1-$2-$3");                  
+                    $(this).val(trans_num);
+                }
+                else
+                {alert("유효하지 않은 전화번호 입니다.");
+                 $(this).val("");
+                 $(this).focus();
+                }
+            }
+            else 
+            {alert("유효하지 않은 전화번호 입니다.");
+             $(this).val("");
+             $(this).focus();
+            }
+      }
+  });  
+});
+
+
+
+
+
 
     /* 휴대폰번호 인증버튼 클릭시 */
     $(".btn_phone_pw").click(function () {
-		$inputPhoneNumber = $("#find_id_phone").val();
-		$inputId = $("#find_pw_name").val();
+		$outputPhoneNumber = $("#find_pw_phone").val();
+		$outputId = $("#find_pw_name").val();
+		$outputPassword = $("#newPassword").val();
 		
         if(!findPwForm.findPw_name.value){
             findPwForm.findPw_name.focus();
@@ -123,7 +232,7 @@ let memberFindId;
 	$.ajax({
 		url: "/member/send.me",
 		type: "post",
-		data: { inputPhoneNumber: $inputPhoneNumber },
+		data: { outputPhoneNumber: $outputPhoneNumber },
 		success: function(result) {
 			$smsNumber = result;
 		}
@@ -134,7 +243,7 @@ let memberFindId;
 
     // 비밀번호 찾기 핸드폰 인증 후 확인 버튼
     $(".pw_next_step").click(function () {
-	$smsCheckNumber = $("#find_pw_phone_code").val();
+		$smsCheckNumber = $("#find_pw_phone_code").val();
 	
         if ($smsCheckNumber != $smsNumber) {
             alert ("올바른 인증번호를 입력해주세요.");
@@ -142,15 +251,4 @@ let memberFindId;
         }
         $(".pw_step2").show();
         $(".pw_step1").hide();
-
-		$.ajax({
-			url:"/member/findPw.me",
-			type : "post",
-			data: { inputPhoneNumber: $inputPhoneNumber, inputId : $inputId },
-			success: function(result) {
-				console.log(result);
-			}
-		});
-		console.log($inputPhoneNumber);
-		console.log($inputName);
     });
