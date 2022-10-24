@@ -21,6 +21,6 @@ function send() {
 
 // 아이디를 전달받았다면, 아이디 저장을 눌러서 로그인 했다는 뜻.
 let memberId = "${memberId}";
-
 // 위의 상황에 맞게 체크해주기!
-if(memberId){$("input[name='saveId']").prop("checked", true);}
+if (memberId) { $("input[name='saveId']").prop("checked", true); }
+console.log(memberId);
