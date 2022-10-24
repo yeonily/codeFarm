@@ -57,7 +57,7 @@
                                                     <button type="button" class="sort_btn" data-id="viewCnt" onclick="javascript:preparing();">조회순</button>
                                                     <button type="button" class="sort_btn" data-id="asc" onclick="location.href='${pageContext.request.contextPath}/program/applyListOk.pg'">가장최근등록일순</button>
                                                     <button type="button" class="sort_btn" data-id="applEdDt" onclick="javascript:preparing();">가장최근마감일순</button>
-                                                	<c:if test="${-1 == program.getMembergrade()}">
+                                                	<c:if test="${'-1' == memberGrade}">
                                                     <button type="button" class="sort_btn_farmer" data-id="register" onclick="location.href='${pageContext.request.contextPath}/program/programWrite.pg'">
                                                     	글 등록</button>
                                                     </c:if>
