@@ -258,7 +258,7 @@
 								<!-- 내용 -->
 								<div class="lgr_subject"><span>${program.getProgramName()}</span></div>
 								<div class="lgr_datebadge"><span>기간</span></div>
-								<div class="lgr_date">${program.getProgramApplyStartDate()}&nbsp;~&nbsp;${program.getProgramApplyEndDate()}</div>
+								<div class="lgr_date">~&nbsp;${program.getProgramApplyEndDate()}</div>
 								<div class="lgr_more"><p style="display: inline; margin-right: -50px;">더보기</p></div>
 							</li>
 		  				</c:forEach>

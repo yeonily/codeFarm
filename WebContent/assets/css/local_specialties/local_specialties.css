@@ -173,6 +173,7 @@ li.nowMenu a {
     margin-left: 20px;
     position: absolute;
     right: 24px;
+    cursor: pointer;
     
 }
 .grid_topLine{

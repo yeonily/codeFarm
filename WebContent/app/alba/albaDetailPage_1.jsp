@@ -102,7 +102,7 @@
 									</c:if>
 								</c:when>
 								<c:when test="${isApply == 1}">
-									<a href="${pageContext.request.contextPath}/alba/applyDeleteOk.ma?albaNumber=${alba.getAlbaNumber()}" class="apply_on" id="alba_apply"> <span>신청 취소</span></a>
+									<a onclick="javascript:alertCancel();" href="javascript:void(0);" class="apply_on" id="alba_apply"> <span>신청 취소</span></a>
 								</c:when>
 							</c:choose>
 
@@ -189,6 +189,19 @@ function alert(){
         if(result) {
            //yes
             location.href = '/alba/deleteOk.ab?albaNumber=${param.albaNumber}';
+        } else {
+            //no
+        }
+
+}
+/* 신청 삭제 알람 */
+function alertCancel(){
+
+        var result = confirm("정말 신청 취소하시겠습니까?");
+
+        if(result) {
+           //yes
+            location.href = '/alba/applyDeleteOk.ma?albaNumber=${alba.getAlbaNumber()}';
         } else {
             //no
         }

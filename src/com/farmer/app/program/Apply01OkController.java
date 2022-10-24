@@ -29,7 +29,6 @@ public class Apply01OkController implements Execute {
 			
 			int isApply = programDAO.isApply(userMap);
 			
-			System.out.println(isApply);
 			req.setAttribute("isApply", isApply);
 		}
 		
