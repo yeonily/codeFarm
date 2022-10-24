@@ -60,6 +60,11 @@ public class ApplyListOkController implements Execute {
 		req.setAttribute("prev", prev);
 		req.setAttribute("next", next);
 		
+		int memberGrade = (Integer)req.getSession().getAttribute("memberGrade");
+		req.setAttribute("memberGrade", memberGrade);
+		System.out.println(memberGrade);
+
+		
 		result.setPath("/app/program/programApply.jsp");
 		
 		return result;

@@ -135,7 +135,7 @@
                            </tr>
                            <tr>
                                <td><span class="list_icon">수강료</span></td>
-                               <td><span>${program.getProgramFee()} 원</span></td>
+                               <td><span>${program.getProgramFee()}</span></td>
                            </tr>
                            <tr>
                                <td><span class="list_icon">신청 기간</span></td>
@@ -151,10 +151,12 @@
                            </tr>
                        </tbody>
                    </table>
+                 	  <c:if test="${memberNubmer eq program.getMemberNumber()}">
                   		 <div class="btns">
                   		 	<input type="button" class="btn" value="수정" onclick="location.href = '${pageContext.request.contextPath}/program/update.pg?programNumber=${program.getProgramNumber()}'"/>
                   		 	<input type="button" class="btn" value="삭제" onclick="javascript:alert();"/>
                          </div>
+                         </c:if>
                </div>
            </div>
         </div>

@@ -19,14 +19,16 @@ public class Apply01OkController implements Execute {
 		ProgramDAO programDAO = new ProgramDAO();
 		Result result = new Result();
 		int programNumber = Integer.valueOf(req.getParameter("programNumber"));
-//		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber");
-		int memberNumber = 4;
+		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber");
 		
+		System.out.println(programNumber);
+		System.out.println(memberNumber);
 		
 		userMap.put("programNumber", programNumber);
 		userMap.put("memberNumber", memberNumber);	
 		
 		int isApply = programDAO.isApply(userMap);
+		System.out.println(isApply);
 		
 		req.setAttribute("isApply", isApply);
 		
