@@ -78,7 +78,7 @@
             <div class="user_btn">
                 <ul style="padding-left: 20px; padding-right: 20px;">
                     <li>
-                        <a href="http://127.0.0.1:5500/join_agree/join01.html">회원가입</a>
+                        <a style="cursor: pointer;" onclick="location.href='${pageContext.request.contextPath}/member/join01.me'">회원가입</a>
                         <!--회원가입 버튼 클릭시 주소 이동 바꿔야함  -->
                     </li>
                     <li class="lgr_vertical_line"></li>
@@ -87,7 +87,7 @@
                     </li>
                     <li class="lgr_vertical_line"></li>
                     <li>
-                        <a href="javascript:openPop_pw()">비밀번호 찾기</a>
+                        <a href="javascript:openPop_pw()" onclick="alert('서비스를 진행중입니다.')">비밀번호 찾기</a>
                     </li>
                 </ul>
             </div>
@@ -128,7 +128,7 @@
                                 <div class="p_con_inner phoneNum">
                                     <p>휴대폰 번호</p>
                                     <div class="p_inner_box">
-                                        <input type="text" id="find_id_phone" class="findId_phone" placeholder="휴대폰 번호를 입력해주세요." name="memberFindPhoneNumber">
+                                        <input type="text" id="find_id_phone" class="findId_phone" placeholder="휴대폰 번호(-제외)를 입력해주세요." name="memberFindPhoneNumber">
                                         <a href="javascript:void(0);" class="btn_phone btn_phone_id">인증번호 요청</a>
                                     </div>
                                 </div>
@@ -209,7 +209,7 @@
                                 <div class="p_con_inner phoneNum">
                                     <p>휴대폰 번호</p>
                                     <div class="p_inner_box">
-                                        <input type="text" id="find_pw_phone" class= "find_pw_phone" placeholder="휴대폰 번호를 입력해주세요." name="findPw_phone">
+                                        <input type="text" id="find_pw_phone" class= "find_pw_phone" placeholder="휴대폰 번호(-제외)를 입력해주세요." name="findPw_phone">
                                         <a href="javascript:void(0);" class="btn_phone btn_phone_pw">인증번호 요청</a>
                                     </div>
                                 </div>
@@ -282,5 +282,6 @@
 <script src="${pageContext.request.contextPath}/assets/js/login/password.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/login/login_check.js"></script>
 <script>
+console.log(${memberId});
 </script>
 </html>

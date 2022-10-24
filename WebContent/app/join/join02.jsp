@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/join/common.css">
 </head>
 <body>
-  <%-- <jsp:include page="${pageContext.request.contextPath}/app/fix/header.jsp"/> --%>
+  <jsp:include page="${pageContext.request.contextPath}/app/fix/header.jsp"/>
     <div class="sub_title">
         <div class="container">
             <div class="inner">
@@ -186,7 +186,7 @@
         </form>
     </div>
 
- <%--  <jsp:include page="${pageContext.request.contextPath}/app/fix/footer.jsp"/> --%>
+   <jsp:include page="${pageContext.request.contextPath}/app/fix/footer.jsp"/>
 </body>
 <script>var contextPath = "${pageContext.request.contextPath}";</script>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>

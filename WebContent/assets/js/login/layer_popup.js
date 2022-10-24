@@ -139,11 +139,11 @@ let memberFindId;
 
  // ---------------------------------------------------------------------------------
 
-
  // 비밀번호 찾기 팝업 띄우기
-    function openPop_pw() {
+     /* function openPop_pw() {
         document.getElementById("fine_pw_popup").style.display = "block";
-        code_pw_check = false;
+		alert("서비스를 준비중입니다.");
+      code_pw_check = false;
         $("#fine_pw_popup").show();
         $(".pw_step1").show();
         $(".findPw_code").hide();
@@ -214,8 +214,8 @@ $(function(){
 
 
     /* 휴대폰번호 인증버튼 클릭시 */
-    $(".btn_phone_pw").click(function () {
-		$outputPhoneNumber = $("#find_pw_phone").val();
+   /* $(".btn_phone_pw").click(function () {
+		$inputPhoneNumber = $("#find_pw_phone").val();
 		$outputId = $("#find_pw_name").val();
 		$outputPassword = $("#newPassword").val();
 		
@@ -232,7 +232,7 @@ $(function(){
 	$.ajax({
 		url: "/member/send.me",
 		type: "post",
-		data: { outputPhoneNumber: $outputPhoneNumber },
+		data: { inputPhoneNumber: $inputPhoneNumber },
 		success: function(result) {
 			$smsNumber = result;
 		}
@@ -251,4 +251,4 @@ $(function(){
         }
         $(".pw_step2").show();
         $(".pw_step1").hide();
-    });
+    });*/
