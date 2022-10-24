@@ -54,10 +54,10 @@
                                         <div class="sub01_con inner clearfix">
                                             <div>
                                                 <div class="sort_list">
-                                                    <button type="button" class="sort_btn" data-id="viewCnt" onclick="javascript:viewOrder();">조회순</button>
+                                                    <button type="button" class="sort_btn" data-id="viewCnt" onclick="javascript:preparing();">조회순</button>
                                                     <button type="button" class="sort_btn" data-id="asc" onclick="location.href='${pageContext.request.contextPath}/program/applyListOk.pg'">가장최근등록일순</button>
-                                                    <button type="button" class="sort_btn" data-id="applEdDt" onclick="javascript:recentOrder();">가장최근마감일순</button>
-                                                	<c:if test="${membergrade eq program.getMembergrade()}">
+                                                    <button type="button" class="sort_btn" data-id="applEdDt" onclick="javascript:preparing();">가장최근마감일순</button>
+                                                	<c:if test="${-1 == program.getMembergrade()}">
                                                     <button type="button" class="sort_btn_farmer" data-id="register" onclick="location.href='${pageContext.request.contextPath}/program/programWrite.pg'">
                                                     	글 등록</button>
                                                     </c:if>
@@ -144,6 +144,10 @@
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/program/program_apply.js"></script>
 <script>
+function preparing(){
+	alert("서비스를 준비 중입니다.");
+}
+
 let page = 1;
 /* 조회순 정렬 ajax */
 function viewOrder(){
