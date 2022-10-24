@@ -1,6 +1,9 @@
 package com.farmer.app.mypage;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -8,25 +11,32 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import com.farmer.app.Execute;
 import com.farmer.app.Result;
-import com.farmer.app.alba.vo.AlbaVO;
-import com.farmer.app.community.dao.CommunityDAO;
 import com.farmer.app.member.vo.MemberVO;
 import com.farmer.app.mypage.dao.MypageDAO;
+import com.farmer.app.program.vo.ProgramVO;
 
-public class WriteOkController implements Execute {
-
-	@Override
+public class SearchOkController implements Execute{
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setCharacterEncoding("UTF-8");
-		resp.setCharacterEncoding("UTF-8");
+		PrintWriter out = resp.getWriter();
+//		req.setCharacterEncoding("UTF-8");
+//		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("text/html;charset=utf-8");
+		
 		Result result = new Result();
 		MemberVO memberVO = new MemberVO();
+		ProgramVO programVO = new ProgramVO();
 		MypageDAO mypageDAO = new MypageDAO();
-		List<AlbaVO> myAlbaVO = null;
+		List<ProgramVO> myProgramVO = null;
+		JSONArray array = new JSONArray();
 		int total;
-		total = mypageDAO.selectWriteCount(2);
+				
+		total = mypageDAO.selectProgramCount(2);
+		req.setAttribute("total", total);
 		
 		
 //		페이징
@@ -34,7 +44,7 @@ public class WriteOkController implements Execute {
 		HashMap<String, Integer> pageMap = new HashMap<String, Integer>();
 		int page = temp == null ? 1 : Integer.parseInt(temp);
 //		한 페이지에 출력되는 게시글의 개수
-		int rowCount = 10;
+		int rowCount = 12;
 //		한 페이지에서 나오는 페이지 버튼의 개수
 		int pageCount = 10;
 		int startRow = (page - 1) * rowCount;
@@ -51,17 +61,40 @@ public class WriteOkController implements Execute {
 		pageMap.put("rowCount", rowCount);
 		pageMap.put("memberNumber", 2);
 		
-		
-		req.setAttribute("total", total);
-		req.setAttribute("lists", mypageDAO.selectMyWrite(pageMap));
+		req.setAttribute("programs", mypageDAO.selectViewCountProgram(pageMap));
 		req.setAttribute("page", page);
 		req.setAttribute("startPage", startPage);
 		req.setAttribute("endPage", endPage);
 		req.setAttribute("prev", prev);
 		req.setAttribute("next", next);
 		
-		result.setPath("/app/myPage/myAlbaApply.jsp");
-		return result;
+		ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String,Object>>();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		list.add(map);
+		map.put("programs", mypageDAO.selectViewCountProgram(pageMap));
+		map.put("page", page);
+		map.put("startPage", startPage);
+		map.put("endPage", endPage);
+		map.put("prev", prev);
+		map.put("next", next);
+//		System.out.println(map);
+		
+		JSONObject jsonObject = new JSONObject(map);
+		
+		array.put(jsonObject);
+//		
+//		System.out.println(array.toString());
+//		System.out.println(jsonObject);
+		out.print(jsonObject.toString());
+		
+//		mypageDAO.selectViewCountProgram(pageMap).forEach(list -> {JSONObject jsonObject = new JSONObject(list); array.put(jsonObject);});
+		
+		
+		
+		out.print(array);
+		out.close();
+		
+		
+		return null;
 	}
-
 }

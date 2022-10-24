@@ -51,10 +51,10 @@
                                     <th><label for="userGrade">구분</label></th>
                                     <td class="userGrade">
 										<label class="grade" style="margin-right:13px;">
-										   <input type="radio" name="grade" value="user"/> 일반인
+										   <input type="radio" id="user" name="grade" value="${memberGrade}"/> 일반인
 										</label>
 										<label class="grade">
-										   <input type="radio" name="grade" value="farmer"/> 농장주
+										   <input type="radio" id="farmer" name="grade" value="farmer"/> 농장주
 										</label>
                                     </td>
                                     <th class="password_th"><label for="password">변경할 비밀번호</label></th>
@@ -154,8 +154,8 @@
                             </tbody>
                         </table>
                         <div class="btn"> <!-- (이후) 버튼 클릭시 DB 연동 등 작업 필요 -->
-                            <button type="button" class="cancelBtn"><p><img id = "cancelImg" src="${pageContext.request.contextPath}/assets/images/updatePage/cancelImage.png" onclick="location.href = '${pageContext.request.contextPath}/mypage/mypageOk.my'">취소</p></button>
-                            <button type="button" class="updateBtn"><p><img id = "updateImg" src="${pageContext.request.contextPath}/assets/images/updatePage/writeImage.png" onclick="send()">수정</p></button>
+                            <button type="button" class="cancelBtn" onclick="location.href = '${pageContext.request.contextPath}/mypage/mypageOk.my'"><p><img id = "cancelImg" src="${pageContext.request.contextPath}/assets/images/updatePage/cancelImage.png" >취소</p></button>
+                            <button type="button" class="updateBtn" onclick="send()"><p><img id = "updateImg" src="${pageContext.request.contextPath}/assets/images/updatePage/writeImage.png">수정</p></button>
                         </div>
                     </form>
                 </div>

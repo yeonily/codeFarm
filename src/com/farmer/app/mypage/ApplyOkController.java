@@ -1,6 +1,7 @@
 package com.farmer.app.mypage;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 
@@ -10,23 +11,28 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.farmer.app.Execute;
 import com.farmer.app.Result;
-import com.farmer.app.alba.vo.AlbaVO;
-import com.farmer.app.community.dao.CommunityDAO;
 import com.farmer.app.member.vo.MemberVO;
 import com.farmer.app.mypage.dao.MypageDAO;
+import com.farmer.app.program.vo.ProgramVO;
 
-public class WriteOkController implements Execute {
-
+public class ApplyOkController implements Execute {
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setCharacterEncoding("UTF-8");
+//		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 		Result result = new Result();
 		MemberVO memberVO = new MemberVO();
+		ProgramVO programVO = new ProgramVO();
 		MypageDAO mypageDAO = new MypageDAO();
-		List<AlbaVO> myAlbaVO = null;
+		PrintWriter out = resp.getWriter();
+		List<ProgramVO> myProgramVO = null;
 		int total;
-		total = mypageDAO.selectWriteCount(2);
+		
+//		myProgramVO = mypageDAO.selectProgram(2);
+		req.setAttribute("myPrograms", myProgramVO);
+		
+		total = mypageDAO.selectProgramCount(2);
+		req.setAttribute("total", total);
 		
 		
 //		페이징
@@ -34,7 +40,7 @@ public class WriteOkController implements Execute {
 		HashMap<String, Integer> pageMap = new HashMap<String, Integer>();
 		int page = temp == null ? 1 : Integer.parseInt(temp);
 //		한 페이지에 출력되는 게시글의 개수
-		int rowCount = 10;
+		int rowCount = 12;
 //		한 페이지에서 나오는 페이지 버튼의 개수
 		int pageCount = 10;
 		int startRow = (page - 1) * rowCount;
@@ -51,17 +57,16 @@ public class WriteOkController implements Execute {
 		pageMap.put("rowCount", rowCount);
 		pageMap.put("memberNumber", 2);
 		
-		
-		req.setAttribute("total", total);
-		req.setAttribute("lists", mypageDAO.selectMyWrite(pageMap));
+		req.setAttribute("programs", mypageDAO.selectProgram(pageMap));
 		req.setAttribute("page", page);
 		req.setAttribute("startPage", startPage);
 		req.setAttribute("endPage", endPage);
 		req.setAttribute("prev", prev);
 		req.setAttribute("next", next);
 		
-		result.setPath("/app/myPage/myAlbaApply.jsp");
+		result.setPath("/app/myPage/myProgramApply.jsp");
+		
+		
 		return result;
 	}
-
 }
