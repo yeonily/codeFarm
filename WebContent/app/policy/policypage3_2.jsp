@@ -33,18 +33,18 @@
         <div class="page_use">
             <div class="category">
             <ul>
-                <li class="ct1">
-                    <a href="policypage1.jsp">청년후계농 영농정착 지원사업</a>
-                </li>
-                <li class="ct2">
-                    <a href="policypage2.jsp">후계농업 경영인 육성사업</a>
-                </li>
-                <li class="ct3">
-                    <a href="policypage3_1.jsp">귀농귀촌 지원사업</a>
-                </li>
-                <li class="ct4">
-                    <a href="policypage4.jsp">청년농업인 경쟁력 제고사업</a>
-                </li>
+	            <a href="${pageContext.request.contextPath}/policy/policys1.po">
+	            	<li class="ct1">청년후계농 영농정착 지원사업</li>
+	            </a>
+	            <a href="${pageContext.request.contextPath}/policy/policys2.po">
+	                <li class="ct2">후계농업 경영인 육성사업</li>
+	            </a>
+                <a href="${pageContext.request.contextPath}/policy/policys3_1.po">
+	            	<li class="ct3">귀농귀촌 지원사업</li>
+	            </a>
+	            <a href="${pageContext.request.contextPath}/policy/policys4.po">
+	            	<li class="ct4">청년농업인 경쟁력 제고사업</li>
+	            </a>
             </ul>
             <!-- 페이지공통 끝 -->
             
@@ -52,14 +52,16 @@
     </div>
     <div class="tab">
         <span class="tab1">
-            <a href="policypage3_1.jsp" class="check_text">농촌에서 살아보기 사업</a>
+        	<a href="${pageContext.request.contextPath}/policy/policys3_1.po">농촌에서 살아보기 사업</a>
         </span>
         <div class="check_box1"></div>
-        <span class="tab2">귀농닥터</span>
+        <span class="tab2">
+            <a href="${pageContext.request.contextPath}/policy/policys3_2.po" class="check_text">귀농닥터</a>
+        </span>
         <div class="check_box2"></div>
         <span class="tab3">
-            <a href="policypage3_3.jsp" class="check_text">귀농 농업창업 및 주택구입비 사업</a>
-            </span>
+            <a href="${pageContext.request.contextPath}/policy/policys3_3.po" class="check_text">귀농 농업창업 및 주택구입비 사업</a>
+        </span>
         <div class="check_box3"></div>
     </div>
     </div>

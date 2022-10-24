@@ -166,13 +166,14 @@ a{
     margin-top: 50px;
 }
 
-.tab1{
+.tab1 a{
     font-weight: bold;
     color: #8a8a8a;
     font-size: 20px;
     vertical-align: middle;
     margin-right: 0px;
     padding: 18px 10px;
+    color: #333;
 }
 
 .check_box1{
