@@ -14,8 +14,9 @@
 	<select id="isApply" parameterType="map" resultType="_int">
 		select count(member_number) from tbl_member_alba where member_number = #{memberNumber} and alba_number = #{albaNumber}	
 	</select>
+	
    	<!-- 프로그램 신청 삭제 -->
-	<delete id="applyDelete" parameterType="_int">
-		delete from tbl_member_alba where member_number = #{memberNumber} 
+	<delete id="applyDelete" parameterType="map">
+		delete from tbl_member_alba where member_number = #{memberNumber} and alba_number = #{albaNumber}
 	</delete>
 </mapper>

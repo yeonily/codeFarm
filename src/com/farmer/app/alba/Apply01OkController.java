@@ -22,18 +22,20 @@ public class Apply01OkController implements Execute {
 		Result result = new Result();
 		
 		int albaNumber = Integer.valueOf(req.getParameter("albaNumber"));
-		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber");
-		int memberGrade = (Integer)req.getSession().getAttribute("memberGrade");
+		if (req.getSession().getAttribute("memberNumber") != null) {
+			int memberNumber = (Integer)req.getSession().getAttribute("memberNumber");
+			int memberGrade = (Integer)req.getSession().getAttribute("memberGrade");
+			
+			userMap.put("albaNumber", albaNumber);
+			userMap.put("memberNumber", memberNumber);	
+			
+			int isApply = albaDAO.isApply(userMap);
+			
+			req.setAttribute("isApply", isApply);
+		}
 		int countPerson = albaDAO.countApplyPerson(albaNumber);
 
 		countPerson = countPerson > 0 ? countPerson : 0;
-		
-		userMap.put("programNumber", albaNumber);
-		userMap.put("memberNumber", memberNumber);	
-		
-		int isApply = albaDAO.isApply(userMap);
-		
-		req.setAttribute("isApply", isApply);
 		
 		req.setAttribute("alba", albaDAO.select(albaNumber));
 		req.setAttribute("countPerson", countPerson);
