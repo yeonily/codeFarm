@@ -53,7 +53,7 @@
                                 <div class="user_i">
                                     <p>안녕하세요,<span>${memberName}</span>님</p> <!-- (이후) 로그인한 회원의 이름으로 출력 필요 -->
                                     <ul>
-                                        <li><a href="${pageContext.request.contextPath}/mypage/LogOut.my">로그아웃</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/member/logout.me">로그아웃</a></li>
                                         <li><a href="${pageContext.request.contextPath}/mypage/Update.my">정보수정</a></li>
                                         <li><a href="${pageContext.request.contextPath}/mypage/Delete.my">회원탈퇴</a></li>
                                     </ul>

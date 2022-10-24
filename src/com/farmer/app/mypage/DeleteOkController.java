@@ -29,13 +29,15 @@ public class DeleteOkController implements Execute {
 		
 		int memberNumber = (Integer)session.getAttribute("memberNumber");
 		String Password = req.getParameter("inputPassword");
-		System.out.println(Password);
 		encryptinputPassword =   new String(Base64.getEncoder().encode(Password.getBytes()));
-		System.out.println(mypageDAO.selectDeletePw(encryptinputPassword));
+				
+		memberVO.setMemberPassword(encryptinputPassword);
+		memberVO.setMemberNumber(memberNumber);
+		
 		if(mypageDAO.selectDeletePw(encryptinputPassword) == 0) {
 			check = false;
 		}else {
-			mypageDAO.deleteMember(encryptinputPassword);
+			mypageDAO.deleteMember(memberVO);
 			check = true;
 		}
 		System.out.println(check);

@@ -47,9 +47,9 @@
 	</update>
 	
 <!--회원 탈퇴 -->	
-	<delete id="deleteMember" parameterType="String">
+	<delete id="deleteMember" parameterType="memberVO">
 		delete from tbl_member
-		where member_password = #{memberpassword}
+		where member_number = #{memberNumber} and member_password = #{memberPassword}
 	</delete>
 	
 <!--입력받은 패스워드가 DB에 있는지 확인  -->
@@ -69,7 +69,7 @@
 		join tbl_member_program tmp
 		on tp.program_number = tmp.program_number
 		where tmp.member_number = #{memberNumber}
-		order by tp.program_start_date
+		order by tp.program_start_date desc
 		limit 1
 	</select>
 	
@@ -83,7 +83,7 @@
 		join tbl_member_alba tma
 		on ta.alba_number = tma.alba_number
 		where tma.member_number = #{memberNumber}
-		order by ta.alba_start_date
+		order by ta.alba_start_date desc
 		limit 1
 	</select>
 	
@@ -95,7 +95,7 @@
 			program_number
 		from tbl_program
 		where member_number = #{memberNumber}
-		order by program_date
+		order by program_date desc
 		limit 1
 	</select>
 	
@@ -107,7 +107,7 @@
 			alba_number
 		from tbl_alba
 		where member_number = #{memberNumber}
-		order by alba_date
+		order by alba_date desc
 		limit 1
 	</select>
 	
@@ -245,7 +245,7 @@
 		join tbl_member tm
 		on tc.member_number = tm.member_number
 		where tc.member_number = #{memberNumber}
-		order by tc.community_number
+		order by tc.community_number desc
 		limit 2
 	</select>
 	

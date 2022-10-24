@@ -45,7 +45,7 @@ function deleteMember(){
 				$inputPassword.focus();
 			}else{
 				alert('회원탈퇴 처리 되었습니다');
-				location.href = "/index/main.ix";
+				location.href = "/member/logout.me";
 			}
 		}
 	})
