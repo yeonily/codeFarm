@@ -19,7 +19,7 @@ public class ApplyOkController implements Execute {
 		MemberProgramVO memberProgramVO = new MemberProgramVO();
 		Result result = new Result();
 		
-//		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber");
+		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber");
 		String memberName = req.getParameter("userName");
 		String memberGender = req.getParameter("userGender");
 		String memberBirth = req.getParameter("userBirth");
@@ -29,8 +29,7 @@ public class ApplyOkController implements Execute {
 		String memberReason = req.getParameter("userReason");
 		int programNumber = Integer.valueOf(req.getParameter("programNumber"));
 		
-//		memberProgramVO.setMemberNumber(memberNumber);
-		memberProgramVO.setMemberNumber(1);
+		memberProgramVO.setMemberNumber(memberNumber);
 		memberProgramVO.setMemberName(memberName);
 		memberProgramVO.setMemberGender(memberGender);
 		memberProgramVO.setMemberBirth(memberBirth);

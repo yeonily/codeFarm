@@ -18,7 +18,6 @@ public class Apply01OkController implements Execute {
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HashMap<String, Integer> userMap = new HashMap<String, Integer>();
 		AlbaDAO albaDAO = new AlbaDAO();
-		AlbaVO albaVO = new AlbaVO();
 		Result result = new Result();
 		
 		int albaNumber = Integer.valueOf(req.getParameter("albaNumber"));

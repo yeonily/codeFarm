@@ -16,13 +16,11 @@ public class ApplyDeleteOkController implements Execute {
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HashMap<String, Integer> userMap = new HashMap<String, Integer>();
-		
 		MemberProgramDAO mpDAO = new MemberProgramDAO();
 		Result result = new Result();
 		
 		int programNumber = Integer.valueOf(req.getParameter("programNumber"));
-//		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber");
-		int memberNumber = 4;
+		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber");
 		
 		userMap.put("programNumber", programNumber);
 		userMap.put("memberNumber", memberNumber);	
