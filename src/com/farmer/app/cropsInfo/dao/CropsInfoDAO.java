@@ -19,11 +19,9 @@ public class CropsInfoDAO {
 	
 	public List<CropsInfoVO> selectSearch(Map<String, Integer> pageMap){
 		return sqlSession.selectList("cropsInfo.selectSearch", pageMap);
-		
 	}
 	
 	public int selectCount(){
 		return sqlSession.selectOne("cropsInfo.selectCount");
-		
 	}
 }

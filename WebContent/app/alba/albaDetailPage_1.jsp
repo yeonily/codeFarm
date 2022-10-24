@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,12 +26,12 @@
 								<div class="lgr_snb"
 									style="display: inline-block; margin-left: 20px;">
 									<ul class="lgr_ul">
-										<li>
-											<a class=a_tag href="${pageContext.request.contextPath}/program/applyListOk.pg"><span class="checkText">농촌 체험 프로그램</span></a>
-										</li>
-										<li class="nowMenu">
-											<a class=a_tag href="${pageContext.request.contextPath}/alba/applyListOk.ab"><span class="secondMenu">농촌 아르바이트</span></a>
-										</li>
+										<li><a class=a_tag
+											href="${pageContext.request.contextPath}/program/applyListOk.pg"><span
+												class="checkText">농촌 체험 프로그램</span></a></li>
+										<li class="nowMenu"><a class=a_tag
+											href="${pageContext.request.contextPath}/alba/applyListOk.ab"><span
+												class="secondMenu">농촌 아르바이트</span></a></li>
 									</ul>
 								</div>
 							</nav>
@@ -59,8 +59,7 @@
 					<ul class="clearfix">
 						<li>
 							<p class="stepnum" id="firstStep">
-								Step<br>
-								<strong>1</strong>
+								Step<br> <strong>1</strong>
 							</p>
 							<p class="conarea">
 								<strong>아르바이트 상세 내용 안내</strong> <br> 상세 내역 확인 후 <br>
@@ -69,8 +68,7 @@
 						</li>
 						<li>
 							<p class="stepnum" id="secondStep">
-								Step<br>
-								<strong>2</strong>
+								Step<br> <strong>2</strong>
 							</p>
 							<p class="conarea">
 								<strong>지원신청서 작성</strong> <br> 신청서 내역 작성 후 <br> 프로그램
@@ -79,8 +77,7 @@
 						</li>
 						<li style="float: right;">
 							<p class="stepnum" id="lastStep">
-								Step<br>
-								<strong>3</strong>
+								Step<br> <strong>3</strong>
 							</p>
 							<p class="conarea">
 								<strong>신청 완료</strong> <br> 마이페이지에서 <br> 관리자 승인 여부 확인
@@ -95,12 +92,20 @@
 			<form action="">
 				<h3 class="view_tit">${alba.getAlbaName()}</h3>
 				<div class="view_main">
-					<img
-						src="${pageContext.request.contextPath}/assets/images/alba_Apply/${alba.getAlbaImage()}">
+					<img src="${pageContext.request.contextPath}/upload/alba/${alba.getAlbaImage()}" class="albaBanner">
 					<div class="detail_info">
 						<div class="info_apply">
-							<a href="${pageContext.request.contextPath}/alba/apply02.ab?albaNumber=${param.albaNumber}" id="alba_apply" class="apply_on"> <span>아르바이트 신청</span></a>
-							<a href="${pageContext.request.contextPath}/alba/applyListOk.ab" class="apply_on backList"> <span>목록</span></a>
+							<c:choose>
+								<c:when test="${isApply == 0}">
+									<a href="${pageContext.request.contextPath}/alba/apply02.ab?albaNumber=${param.albaNumber}" id="alba_apply" class="apply_on"> <span>아르바이트 신청</span></a>
+								</c:when>
+								<c:otherwise>
+									<a href="${pageContext.request.contextPath}/alba/applydelete.ma?albaNumber=${alba.getAlbaNumber()}" class="apply_on" id="alba_apply"> <span>신청 취소</span></a>
+								</c:otherwise>
+							</c:choose>
+
+							<a href="${pageContext.request.contextPath}/alba/applyListOk.ab" class="apply_on backList">
+								<span>목록</span></a>
 						</div>
 						<table class="info_table">
 							<colgroup>
@@ -114,24 +119,22 @@
 								</tr>
 								<tr>
 									<td><span class="list_icon">아르바이트 날짜</span></td>
-									<td>
-										<span>
-											<c:choose>
-												<c:when test="${alba.getAlbaStartDate() == alba.getAlbaEndDate()}">
-													<c:out value="${alba.getAlbaApplyStartDate()}"/>
+									<td><span> <c:choose>
+												<c:when
+													test="${alba.getAlbaStartDate() == alba.getAlbaEndDate()}">
+													<c:out value="${alba.getAlbaStartDate()}" />
 												</c:when>
 												<c:otherwise>
-													<c:out value="${alba.getAlbaStartDate()} ~ ${alba.getAlbaEndDate()}" />
+													<c:out
+														value="${alba.getAlbaStartDate()} ~ ${alba.getAlbaEndDate()}" />
 												</c:otherwise>
 											</c:choose>
-										</span>
-									</td>
+									</span></td>
 								</tr>
 								<tr>
 									<td><span class="list_icon">아르바이트 시간</span></td>
-									<td><span>
-										${fn:substring(alba.getAlbaStartTime(), 0, 5)} ~ ${fn:substring(alba.getAlbaEndTime(), 0, 5)}
-									</span></td>
+									<td><span> ${fn:substring(alba.getAlbaStartTime(), 0, 5)}
+											~ ${fn:substring(alba.getAlbaEndTime(), 0, 5)} </span></td>
 								</tr>
 								<tr>
 									<td><span class="list_icon">시급</span></td>
@@ -139,37 +142,40 @@
 								</tr>
 								<tr>
 									<td><span class="list_icon">신청 기간</span></td>
-									<td>
-										<span id= "startDate">${alba.getAlbaApplyStartDate()}</span> ~ <span id= "endDate">${alba.getAlbaApplyEndDate()}</span>
-									</td>
+									<td><span id="startDate">${alba.getAlbaApplyStartDate()}</span>
+										~ <span id="endDate">${alba.getAlbaApplyEndDate()}</span></td>
 								</tr>
 								<tr>
 									<td><span class="list_icon">모집 인원</span></td>
-									<td>
-										<span id="countPerson">${countPerson}</span> / 
-										<span id="countTotal">${alba.getAlbaRecruitedTotalCount()}</span> 명
+									<td><span id="countPerson">${countPerson}</span> / <span
+										id="countTotal">${alba.getAlbaRecruitedTotalCount()}</span> 명
 									</td>
 								</tr>
 								<tr>
 									<td><span class="list_icon">문의 전화</span></td>
-									<td><span><c:out value="${alba.getAlbaPhoneNumber()}" /></span></td>
+									<td><span><c:out
+												value="${alba.getAlbaPhoneNumber()}" /></span></td>
 								</tr>
 							</tbody>
 						</table>
-                  		 <div class="btns">
-                  		 	<input type="button" class="btn" value="수정" onclick="location.href = '${pageContext.request.contextPath}/alba/update.ab?albaNumber=${alba.getAlbaNumber()}'"/>
-                  		 	<input type="button" class="btn" value="삭제" onclick="javascript:alert();"/>
-                         </div>
+						<div class="btns">
+							<input type="button" class="btn" value="수정"
+								onclick="location.href = '${pageContext.request.contextPath}/alba/update.ab?albaNumber=${alba.getAlbaNumber()}'" />
+							<input type="button" class="btn" value="삭제"
+								onclick="javascript:alert();" />
+						</div>
 					</div>
 				</div>
 			</form>
 		</div>
 	</div>
 
-	<jsp:include page="${pageContext.request.contextPath}/app/fix/footer.jsp" />
+	<jsp:include
+		page="${pageContext.request.contextPath}/app/fix/footer.jsp" />
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/alba/alba_days.js"></script>
+<script
+	src="${pageContext.request.contextPath}/assets/js/alba/alba_days.js"></script>
 <script>
 /* 삭제 알람 */
 function alert(){

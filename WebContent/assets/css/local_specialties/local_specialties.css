@@ -177,14 +177,13 @@ li.nowMenu a {
 }
 .grid_topLine{
     border-top: 2px solid #7e7e7e;
-    width: 82.353rem;
+    width: 70%;
+    margin: 0 auto;
     text-align: center;
+    font-size: 15px;
 }
 .table_wrap{
     margin-top: 50px;
-    margin: 0 auto;
-    /* border: 1px solid black; */
-    width: 82.353rem;
 }
 tbody{
     display: table-row-group;

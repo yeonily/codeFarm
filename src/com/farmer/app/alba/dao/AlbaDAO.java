@@ -62,5 +62,15 @@ public class AlbaDAO {
 	public int countApplyPerson(int albaNumber) {
 		return sqlSession.selectOne("alba.countApplyPerson", albaNumber);
 	}
+	   
+//	아르바이트 글 삭제
+	public void delete(int albaNumber) {
+		sqlSession.delete("alba.delete", albaNumber);
+	}
+	
+//	아르바이트 글 수정
+	public void update(AlbaVO albaVO) {
+		sqlSession.update("alba.update", albaVO);
+	}
 	
 }

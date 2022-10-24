@@ -95,35 +95,36 @@
             </div>
         </div>
         <div class="sub_guide">
-            <form id="apply_form" action="${pageContext.request.contextPath}/memberAlba/applyOK.mp" name="applyForm" method="post">
+            <form id="apply_form" action="${pageContext.request.contextPath}/memberAlba/applyOK.ma" name="applyForm" method="post">
                 <h3 class="view_tit">아르바이트 신청내역서</h3>
                 <table>
                     <tbody>
                         <tr>
                             <th><label>이름 <p class="red_star">*</p></label></th>
-                            <td><input type="text" id="userName" placeholder="이름을 입력해주세요"></td>
+                            <td><input type="text" name="userName" placeholder="이름을 입력해주세요"></td>
                             <th><label>성별</label></th>
-                            <td><input type="text" id="userName" placeholder="남/여"></td>
+                            <td><input type="text" name="userGender" placeholder="남/여"></td>
                         </tr>
                         <tr>
                             <th><label>생년월일 <p class="red_star">*</p></label></th>
-                            <td><input type="date" id="userName" placeholder="2000-01-01"></td>
+                            <td><input type="date" name="userBirth" placeholder="2000-01-01"></td>
                             <th><label>핸드폰 번호 <p class="red_star">*</p></label></th>
-                            <td><input type="tel" id="userName" placeholder="010-1234-5678"></td>
+                            <td><input type="tel" name="userPhone" placeholder="010-1234-5678"></td>
                         </tr>
                         <tr>
                             <th><label>주소</label></th>
-                            <td><input type="text" id="userName"></td>
+                            <td><input type="text" name="userAddress"></td>
                             <th><label>이메일 <p class="red_star">*</p></label></th>
-                            <td><input type="email" id="userName"></td>
+                            <td><input type="email" name="userEmail"></td>
                         </tr>
                         <tr>
                             <th>아르바이트 신청 동기</th>
-                            <td colspan="3"><input type="text" id="userName"style="height: 100px;"></td>
+                            <td colspan="3"><input type="text" name="userReason"style="height: 100px;"></td>
                         </tr>
                     </tbody>
                 </table>
                 <div class="btns">
+                	<input style="display: none" value="" name="albaNumber">
                     <button id="btn_cancel" type="button" class="checkText" onclick="location.href='${pageContext.request.contextPath}/alba/apply01.ab?albaNumber=${param.albaNumber}'">취소</button>
                     <button id="btn_apply" type="button" class="checkText" onclick="send()">등록</button>
                 </div>
@@ -135,6 +136,6 @@
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/albaApply.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/alba/albaApply.js"></script>
 <jsp:include page="${pageContext.request.contextPath}/app/fix/footer.jsp"/>
 </html>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/local_specialties/local_specialties.css">
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/fix/page.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/fix/page.css"/>
 </head>
 <body>
 <jsp:include page="${pageContext.request.contextPath}/app/fix/header.jsp"/>
@@ -95,7 +97,7 @@
 </div>
 <div class="table_wrap">
     
-    <table class="grid_topLine">
+    <table class="grid_topLine" style="margin-bottom: 60px;">
         <colgroup><col width="20%"><col width="20%"><col width="20%"><col width="20%"><col width="20%"></colgroup>
         <thead>
             <th scope="col">번호</th>
@@ -105,124 +107,52 @@
             <th scope="col">등록일</th>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>
-                    <img src="http://www.nongsaro.go.kr/cms_contents/1015/234413_MF_BIMG_01.JPG" alt="" style="width: 128px; height: 108px;">
-                </td>
-                <td>향토 지키미</td>
-                <td>전라남도 > 여수시</td>
-                <td>2022-01-10</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>
-                    <img src="http://www.nongsaro.go.kr/cms_contents/1015/234412_MF_BIMG_01.JPG" alt="" style="width: 128px; height: 108px;">
-                </td>
-                <td>귀리다움 귀리</td>
-                <td>전라남도 > 여수시</td>
-                <td>2022-01-10</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>
-                    <img src="https://www.imsil.go.kr/images/02_tour/content/sub04/special_img04.jpg" alt="" style="width: 128px; height: 108px;">
-                </td>
-                <td>임실딸기</td>
-                <td>전라북도 > 임실군</td>
-                <td>2022-01-05</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>
-                    <img src="http://www.traveli.co.kr/repository/show/contents/SHOW_CONN201707251744586388232.JPG" alt="" style="width: 128px; height: 108px;">
-                </td>
-                <td>임실토마토</td>
-                <td>전라북도 > 임실군</td>
-                <td>2022-01-05</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>
-                    <img src="http://www.nongsaro.go.kr/cms_contents/1015/229490_MF_BIMG_01.gif" alt="" style="width: 128px; height: 108px;">
-                </td>
-                <td>부추</td>
-                <td>울산광역시</td>
-                <td>2021-06-21</td>
-                
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>
-                    <img src="http://www.nongsaro.go.kr/cms_contents/1015/229405_MF_BIMG_01.JPG" alt="" style="width: 128px; height: 108px;">
-                </td>
-                <td>밤</td>
-                <td>경상남도 > 합천군</td>
-                <td>2021-06-17</td>
-               
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>
-                    <img src="https://health.chosun.com/site/data/img_dir/2019/06/11/2019061102132_0.jpg" alt="" style="width: 128px; height: 108px;">
-                </td>
-                <td>녹차</td>
-                <td>경상남도 > 합천군</td>
-                <td>2021-06-17</td>
-                
-            </tr>
-            <tr>
-                <td>8</td>
-                <td>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Tteokcha_5.png/390px-Tteokcha_5.png" alt="" style="width: 128px; height: 108px;">
-                </td>
-                <td>발효차</td>
-                <td>경상남도 > 합천군</td>
-                <td>2021-06-17</td>
-           
-            </tr>
-            <tr>
-                <td>9</td>
-                <td>
-                    <img src="http://www.nongsaro.go.kr/cms_contents/1015/229402_MF_BIMG_01.JPG" alt="" style="width: 128px; height: 108px;">
-                </td>
-                <td>허굴농차</td>
-                <td>경상남도 > 합천군</td>
-                <td>2021-06-17</td>
-                
-            </tr>
-            <tr>
-                <td>10</td>
-                <td>
-                    <img src="http://www.nongsaro.go.kr/cms_contents/1015/229401_MF_BIMG_01.JPG" alt="" style="width: 128px; height: 108px;">
-                </td>
-                <td>기능성 소금 선물세트</td>
-                <td>경상남도 > 합천군</td>
-                <td>2021-06-17</td>
-            </tr>
+			<c:choose>
+				<c:when test="${localProductLists != null and fn:length(localProductLists) > 0}">
+					<c:forEach var="localProduct" items="${localProductLists}">
+			            <tr>
+			                <td>${localProduct.getSpNumber()}</td>
+			                <td>
+			                    <img src="${pageContext.request.contextPath}/upload/localProduct/${localProduct.getSpImage()}" style="width: 128px; height: 108px;">
+			                </td>
+			                <td>${localProduct.getSpName()}</td>
+			                <td>${localProduct.getSpLocation()}</td>
+			                <td>${localProduct.getSpDate()}</td>
+			            </tr>
+					</c:forEach>
+				</c:when>
+			</c:choose>
         </tbody>
     </table>
 </div>
 
   <!-- 페이징 -->
-                                        <div id="page">
-                                            <div class="page_nation" style="margin-top: 30px; margin-bottom: 30px">
-                                            <a class="page-num arrow pprev" href="#"></a>
-                                            <a class="page-num arrow prev" href="#"></a>
-                                            <a class="page-num active" href="#">1</a>
-                                            <a class="page-num" href="#">2</a>
-                                            <a class="page-num" href="#">3</a>
-                                            <a class="page-num" href="#">4</a>
-                                            <a class="page-num" href="#">5</a>
-                                            <a class="page-num" href="#">6</a>
-                                            <a class="page-num" href="#">7</a>
-                                            <a class="page-num" href="#">8</a>
-                                            <a class="page-num" href="#">9</a>
-                                            <a class="page-num" href="#">10</a>
-                                            <a class="page-num arrow next" href="#"></a>
-                                            <a class="page-num arrow nnext" href="#"></a>
-                                            </div>
-                                        </div>
+  <div id="page" style="margin-bottom: 30px">
+		<div class="page_nation">
+			<c:if test="${prev}">
+				<a href="${pageContext.request.contextPath}/localSpecialty/searchOk.ls?page=1" class="page-num arrow pprev"></a>
+				<a href="${pageContext.request.contextPath}/localSpecialty/searchOk.ls?page=${startPage - 1}" class="page-num arrow prev" ></a>
+			</c:if>
+			<c:forEach var="i" begin="${startPage}" end="${endPage}">
+				<c:choose>
+					<c:when test="${not (i eq page)}">
+						<a href="${pageContext.request.contextPath}/localSpecialty/searchOk.ls?page=${i}" class="page-num" >
+							<c:out value="${i}"/>
+						</a>
+					</c:when>
+					<c:otherwise>
+						<a href="${pageContext.request.contextPath}/localSpecialty/searchOk.ls?page=${i}" class="page-num active" >
+							<c:out value="${i}"/>
+						</a>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+			<c:if test="${next}">
+				<a href="${pageContext.request.contextPath}/localSpecialty/searchOk.ls?page=${endPage + 1}" class="page-num arrow next"></a>
+				<a href="${pageContext.request.contextPath}/localSpecialty/searchOk.ls?page=${realEndPage}" class="page-num arrow nnext"></a>
+			</c:if>
+		</div>
+	</div>
 
 <jsp:include page="${pageContext.request.contextPath}/app/fix/footer.jsp"/>
 </body>

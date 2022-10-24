@@ -46,40 +46,42 @@ public class AlbaFrontController extends HttpServlet {
 			result = new DeadlineOkController().execute(req, resp);
 		}
 		else if(target.equals("/alba/apply02.ab")) {//알바 신청상세페이지2로 이동
-	    	  result = new Result();
-	          result.setPath("/app/alba/albaDetailPage_2.jsp");
+			result = new Result();
+			result.setPath("/app/alba/albaDetailPage_2.jsp");
 		}
 		else if(target.equals("/alba/albaWrite.ab")) { //알바 등록페이지로 이동
-	    	  result = new Result();
-	          result.setPath("/app/alba/albaRegister.jsp");
+			result = new Result();
+			result.setPath("/app/alba/albaRegister.jsp");
 		}
 		else if(target.equals("/alba/albaWriteOk.ab")) { //알바 등록하기(INSERT)
-	    	  result = new AlbaWriteOkController().execute(req, resp);
+			result = new AlbaWriteOkController().execute(req, resp);
 		}
-		else if(target.equals("/program/apply03.pg")) {//프로그램 신청상세페이지3로 이동
-	    	  result = new Result();
-	    	  result.setPath("/app/alba/albaDetailPage_3.jsp");
-	    } /*
-		 * else if(target.equals("/program/deleteOk.pg")) {//프로그램 글 삭제(DELETE) result =
-		 * new DeleteOkController().execute(req, resp);
-		 * 
-		 * }else if(target.equals("/program/update.pg")) {//프로그램 글 수정 페이지로 이동 result =
-		 * new UpdateController().execute(req, resp);
-		 * 
-		 * }else if(target.equals("/program/updateOk.pg")) {//프로그램 글 수정(UPDATE) result =
-		 * new UpdateOkController().execute(req, resp);
-		 * 
-		 * }
-		 */
+		else if(target.equals("/alba/apply03.ab")) {//알바 신청상세페이지3로 이동
+			result = new Result();
+			result.setPath("/app/alba/albaDetailPage_3.jsp");
+		}
+		else if(target.equals("/alba/deleteOk.ab")) {//알바 글 삭제(DELETE)
+			result = new DeleteOkController().execute(req, resp);
 
-	    if(result != null) {
-	         if(result.isRedirect()) {
-	            resp.sendRedirect(result.getPath());
-	         }else {
-	            RequestDispatcher dispatcher = req.getRequestDispatcher(result.getPath());
-	            dispatcher.forward(req, resp);
-	         }
-	    }
-		
+		}
+		else if(target.equals("/alba/update.ab")) {//알바 글 수정 페이지로 이동
+			result = new UpdateController().execute(req, resp);
+
+		}
+		else if(target.equals("/alba/updateOk.ab")) {//알바 글 수정(UPDATE)
+			result = new UpdateOkController().execute(req, resp);
+
+		}
+
+
+		if(result != null) {
+			if(result.isRedirect()) {
+				resp.sendRedirect(result.getPath());
+			}else {
+				RequestDispatcher dispatcher = req.getRequestDispatcher(result.getPath());
+				dispatcher.forward(req, resp);
+			}
+		}
+
 	}
 }
