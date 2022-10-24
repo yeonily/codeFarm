@@ -22,7 +22,7 @@
 	<!-- 상단 이미지 위 요소들 -->
 	<div id="lgr_top" >
 		<div id="lgr_main_logo">
-			<a href="/young/index.do"><img id="lgr_domain_logo" src="${pageContext.request.contextPath}/assets/images/common/logo_black.png" /></a>
+			<a href="${pageContext.request.contextPath}/index/main.ix"><img id="lgr_domain_logo" src="${pageContext.request.contextPath}/assets/images/common/logo_black.png" /></a>
 		</div>
 		<div id="lgr_top_textwrap">
 			<img id="lgr_background_img" src="https://www.rda.go.kr/young/images/site/main/ma_img_background.png" />
@@ -59,7 +59,7 @@
                     </div>
                 </div>
             </div>
-            <div id="lgr_top_btn2" onclick="location.href='/young/custom.do'">
+            <div id="lgr_top_btn2" onclick="location.href='${pageContext.request.contextPath}/cropsInfo/searchOk.ci'">
                 <div class="lgr_top_menubtn">
                     <div class="lgr_top_imgwrap">
                         <img src="https://www.rda.go.kr/young/images/site/main/ma_ico_menu01.png" >
@@ -79,7 +79,7 @@
                     </div>
                 </div>
             </div>
-            <div id="lgr_top_btn3"  onclick="location.href='/young/content/content01.do'">
+            <div id="lgr_top_btn3"  onclick="location.href='${pageContext.request.contextPath}/program/applyListOk.pg'">
                 <div class="lgr_top_menubtn">
                     <div class="lgr_top_imgwrap">
                         <img src="https://www.rda.go.kr/young/images/site/main/ma_ico_menu02.png">
@@ -193,14 +193,24 @@
                 </div>
             </div>
             
-            <div id="lgr_top_join" onclick="location.href='${pageContext.request.contextPath}/member/join01.me'">
+             <c:choose>
+              	<c:when test="${memberNumber != null}"> <!-- 마이 페이지 한 번 확인해봐야 함  -->
+              		<div id="lgr_top_join" onclick="location.href='${pageContext.request.contextPath}/mypage/mypageOk.my'">
+             	</c:when>
+	           	<c:otherwise>
+	           		<div id="lgr_top_join" onclick="location.href='${pageContext.request.contextPath}/member/join01.me'">
+	           	</c:otherwise>
+	          </c:choose>
                 <div class="lgr_top_menubtn">
                     <div class="lgr_top_imgwrap">
                         <img src="${pageContext.request.contextPath}/assets/images/main/user.png">
                         <img src="${pageContext.request.contextPath}/assets/images/main/user_over.png" >
                     </div>
                     <div class="lgr_top_btntext">
-                        <span>회원가입</span>
+                        <c:choose>
+                        	<c:when test="${memberNumber != null}">마이페이지</c:when>
+                        	<c:otherwise>회원가입</c:otherwise>
+                       	</c:choose>
                     </div>
                     <div class="lgr_top_btnbtn">
                         <div>

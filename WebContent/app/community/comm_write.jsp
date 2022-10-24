@@ -154,6 +154,7 @@
 			text.focus();
 			return;
 		}
+		
 		writeForm.submit(); // 위 조건에서 걸리지 않으면 커밋
 	}
 </script>
