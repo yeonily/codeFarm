@@ -63,7 +63,6 @@ function showList(replyList){
 
 /* 댓글 작성 등록 */
 function send(){
-	let replyContent = replyForm.replyContent.value;
 	if(!replyContent){ /* 유효성 검사 */
 		alert("댓글 내용을 작성해주세요.");
 		return;
