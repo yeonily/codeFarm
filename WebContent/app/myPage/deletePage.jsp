@@ -89,7 +89,6 @@
                         <div class="btn">
                             <input type="button" value="취소" id="cancelBtn" onclick="back()">
                             <input type="button" value="탈퇴" id="submitBtn" onclick="deleteMember()">
-                            
                         </div>
                     </form>
                 </div>

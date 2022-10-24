@@ -40,8 +40,8 @@ public class MypageDAO {
 	   }
 	   
 //	   회원탈퇴
-	   public void deleteMember(String memberPassword) {
-		   sqlSession.delete("MyPage.deleteMember",memberPassword);
+	   public void deleteMember(MemberVO memberVO) {
+		   sqlSession.delete("MyPage.deleteMember",memberVO);
 	   }
 	   
 	   public ProgramVO selectRecentPrograms(int memberNumber) {

@@ -302,7 +302,7 @@
 			
 			<!-- 버튼 -->
 			<div id="lgr_middlebtn_group">
-					<div id="lgr_middlebtn1" onclick="location.href='/young/board/board15.do'">
+					<div id="lgr_middlebtn1" onclick="alert('서비스를 준비중입니다.')">
 						<div class="lgr_middlebtn_imgwrap">
 							<img src="https://www.rda.go.kr/young/images/site/main/ma_ico_list03.png">
 						</div>
@@ -310,7 +310,7 @@
 							<span>작물 정보</span>
 						</div>
 					</div>
-				<div id="lgr_middlebtn2" onclick="location.href='/young/board/board17.do'">
+				<div id="lgr_middlebtn2" onclick="alert('서비스를 준비중입니다.')">
 					<div class="lgr_middlebtn_imgwrap">
 						<img src="https://www.rda.go.kr/young/images/site/main/ma_ico_list05.png">
 					</div>
@@ -319,7 +319,7 @@
 					</div>
 				</div>
 				
-				<div id="lgr_middlebtn3" onclick="location.href='/young/content/content05.do'">
+				<div id="lgr_middlebtn3" onclick="alert('서비스를 준비중입니다.')">
 					<div class="lgr_middlebtn_imgwrap">
 						<img src="https://www.rda.go.kr/young/images/site/main/ma_ico_list04.png">
 					</div>
@@ -327,7 +327,7 @@
 						<span>지역별 <br>특산물 정보</span>
 					</div>
 				</div>
-				<div id="lgr_middlebtn4" onclick="location.href='/young/board/board14.do'">
+				<div id="lgr_middlebtn4" onclick="alert('서비스를 준비중입니다.')">
 					<div class="lgr_middlebtn_imgwrap">
 						<img src="https://www.rda.go.kr/young/images/site/main/ma_ico_list02.png">
 					</div>
@@ -336,7 +336,7 @@
 					</div>
 				</div>
 				
-				<div id="lgr_middlebtn5" onclick="location.href='/young/board/board16.do'">
+				<div id="lgr_middlebtn5" onclick="alert('서비스를 준비중입니다.')">
 					<div class="lgr_middlebtn_imgwrap">
 						<img src="https://www.rda.go.kr/young/images/site/main/ma_ico_list07.png">
 					</div>
@@ -345,7 +345,7 @@
 					</div>
 				</div>
 				
-				<div id="lgr_middlebtn6" onclick="location.href='/young/board/board19.do'">
+				<div id="lgr_middlebtn6" onclick="alert('서비스를 준비중입니다.')">
 					<div class="lgr_middlebtn_imgwrap">
 						<img src="${pageContext.request.contextPath}/assets/images/main/spary.png">
 					</div>
@@ -355,7 +355,6 @@
 				</div>
 		</div>
 	</div>
-</div>
 
 
 </section>

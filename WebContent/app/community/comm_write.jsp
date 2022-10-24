@@ -80,7 +80,7 @@
 										<th>첨부파일</th>
 										<td>
 											<div class="fileInfo">
-												<input type="file" id="egovComFileUploader" title="첨부파일" name="file_0">
+												<input type="file" id="egovComFileUploader" title="첨부파일" name="file_0" onchange="fileUpload();">
 											</div>
 											<div id="egovComFileList"></div> <span class="attchtext">
 												첨부파일은 총 1개까지 가능합니다.</span>
@@ -108,6 +108,12 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <script>
+	function fileUpload(){
+		var fileValue = $("#egovComFileUploader").val().split("\\");
+		var fileName = fileValue[fileValue.length-1]; // 파일명
+		$("#egovComFileList").html(fileName);		
+	}
+
 	$(document).ready( function() {
 			$('#summernote').summernote(
 				{
