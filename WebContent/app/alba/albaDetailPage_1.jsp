@@ -96,14 +96,14 @@
 					<div class="detail_info">
 						<div class="info_apply">
 							<c:choose>
-								<c:when test="${isApply eq 0}">
+								<c:when test="${isApply == 0}">
 									<c:if test="${1 eq memberGrade}">
 										<a href="${pageContext.request.contextPath}/alba/apply02.ab?albaNumber=${param.albaNumber}" id="alba_apply" class="apply_on"> <span>아르바이트 신청</span></a>
 									</c:if>
 								</c:when>
-								<c:otherwise>
-									<a href="${pageContext.request.contextPath}/alba/applydelete.ma?albaNumber=${alba.getAlbaNumber()}" class="apply_on" id="alba_apply"> <span>신청 취소</span></a>
-								</c:otherwise>
+								<c:when test="${isApply == 1}">
+									<a href="${pageContext.request.contextPath}/alba/applyDeleteOk.ma?albaNumber=${alba.getAlbaNumber()}" class="apply_on" id="alba_apply"> <span>신청 취소</span></a>
+								</c:when>
 							</c:choose>
 
 							<a href="${pageContext.request.contextPath}/alba/applyListOk.ab" class="apply_on backList">

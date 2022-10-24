@@ -33,6 +33,12 @@ public class ApplyListOkController implements Execute {
 
 		int total = albaDAO.selectCount();
 
+		if (req.getSession().getAttribute("memberNumber") != null) {
+			int memberGrade = (Integer)req.getSession().getAttribute("memberGrade");
+			
+			req.setAttribute("memberGrade", memberGrade);
+		}
+		
 		int page = temp == null ? 1 : Integer.parseInt(temp); // 디폴트는 1페이지
 //		한 페이지에 출력되는 게시글의 개수
 		int rowCount = 12;
@@ -51,7 +57,6 @@ public class ApplyListOkController implements Execute {
 
 		pageMap.put("startRow", startRow);
 		pageMap.put("rowCount", rowCount);	
-		
 		
         // 현재 날짜/시간
         Date today = Calendar.getInstance().getTime();

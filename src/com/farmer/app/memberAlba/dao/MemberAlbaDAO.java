@@ -26,7 +26,7 @@ public class MemberAlbaDAO {
 		}
 
 //		알바 신청 취소
-		public void applyDelete(int memberNumber) {
-			sqlSession.delete("memberProgram.applyDelete", memberNumber);
+		public void applyDelete(Map<String, Integer> userMap) {
+			sqlSession.delete("memberAlba.applyDelete", userMap);
 		}
 }
