@@ -126,7 +126,7 @@
                     <div class="table3_content2">
                         <div class="table3_content2_first">
                             <h4>사업신청</h4>
-                            <a href="www.agrix.go.kr"target="_blank">www.agrix.go.kr</a>
+                            <a href="https://www.agrix.go.kr"target="_blank">www.agrix.go.kr</a>
                         </div>
                         <div class="table3_content2_second">
                             <h4>대표번호</h4>
@@ -134,7 +134,7 @@
                         </div>
                         <div class="table3_content2_third">
                             <h4>사업안내</h4>
-                            <a href="cafe.naver.com/preyoungfarmer">cafe.naver.com/preyoungfarmer</a>
+                            <a href="https://cafe.naver.com/preyoungfarmer">cafe.naver.com/preyoungfarmer</a>
                         </div>
                     </div>
                 </div>

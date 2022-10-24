@@ -119,7 +119,7 @@
                     <div class="table1_content2_sixth">
                         <h4>신청방법 및 안내</h4>
                         <p>지역별 모집일정, 주요 프로그램 등 구체적인 내용은 귀농귀촌종합센터 홈페이지<br>
-                            <span class="line"><a href="www.returnfarm.com" class="none">(www.returnfarm.com)</a>'농촌에서 살아보기'메뉴에서 확인 가능</span><br>
+                            <span class="line"><a href="https://www.returnfarm.com" class="none">(www.returnfarm.com)</a>'농촌에서 살아보기'메뉴에서 확인 가능</span><br>
                         </p>
                     </div>
                 </div>
