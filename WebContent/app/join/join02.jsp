@@ -70,7 +70,7 @@
                     <th class="lgr_border_th">비밀번호
                         <p class="lgr_strong">*</p>
                     </th>
-                    <td><input id="password" name="memberPassword" class="w_full" placeholder="비밀번호는 대/소문자, 숫자, 특수문자 조합 10글자입니다." type="password" value="">
+                    <td><input id="password" name="memberPassword" class="w_full" placeholder="비밀번호는 대/소문자, 숫자, 특수문자 조합 10글자 이상입니다." type="password" value="">
                     <span class="form_error" data-path="password" id="passwordMsg"></span></td>
                 </tr>
                 <tr id="lgr_usernm">

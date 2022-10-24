@@ -9,13 +9,18 @@ $(document).ready(function(){
     });
 });
 
+const $scoreResult = $('div#result li.scoreResult');
+const $resultText = $('div#result li.resultText');
+
+let tempRange = $scoreResult.html();
+let tempResult = $resultText.html();
+
+console.log(tempRange);
+console.log(tempResult);
+
 // 준비도 테스트 점수
 $(document).ready(function(){
     $("input[type=radio].radios-btn").on('change', function(){
-        const $scoreResult = $('div#result li.scoreResult');
-        const $resultText = $('div#result li.resultText');
-        let tempRange = $scoreResult.html();
-        let tempText = $resultText.html();
 
         let step1 = 0;
         let step2 = 0;
@@ -53,20 +58,16 @@ $(document).ready(function(){
         $('td.test-result5').text(step5);
         $('td span.total-result').text(total);
 
-        console.log(step1);
-        console.log(step2);
-        console.log(total);
-
         // 각 점수에 맞는 문구 출력
         if (total > 119) {
             $('li.scoreResult').text('120 ~ 150');
-            $('li.resultText').text(resultText2);
+            $('li.resultText').text(resultText1);
         } else if (total < 75) {
             $scoreResult.text('30 ~ 74');
             $resultText.text(resultText2);
         } else if (total < 120 && total > 74){
             $scoreResult.html(tempRange);
-            $resultText.text(tempText);
+            $resultText.text(tempResult);
         }
         
     });

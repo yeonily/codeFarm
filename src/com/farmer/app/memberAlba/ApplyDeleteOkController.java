@@ -18,18 +18,14 @@ public class ApplyDeleteOkController implements Execute {
 		HashMap<String, Integer> userMap = new HashMap<String, Integer>();
 		MemberAlbaDAO apDAO = new MemberAlbaDAO();
 		Result result = new Result();
+		
 		int albaNumber = Integer.valueOf(req.getParameter("albaNumber"));
-		
-		
-//		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber");
-		int memberNumber = 1;
+		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber");
 		
 		userMap.put("albaNumber", albaNumber);
 		userMap.put("memberNumber", memberNumber);	
 		
-		int isApply = apDAO.isApply(userMap);
-		
-		req.setAttribute("isApply", isApply);
+		apDAO.applyDelete(userMap);
 		
 		result.setRedirect(true);
 		result.setPath(req.getContextPath() + "/alba/applyListOk.ab");

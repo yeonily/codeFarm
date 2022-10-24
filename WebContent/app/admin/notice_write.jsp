@@ -147,6 +147,7 @@ $("#content").html(data.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&g
 	    checkUnload = false;
 	    $("submit").submit();
 	});
+	
 
 </script>
 

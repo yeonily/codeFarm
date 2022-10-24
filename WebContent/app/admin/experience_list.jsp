@@ -115,7 +115,7 @@
 	                    			<td><c:out value="${programList.getProgramLocation()}"/></td>
 	                    			<td><c:out value="${programList.getProgramApplyStartDate()}"/></td>
 	                    			<td><c:out value="${programList.getProgramApplyEndDate()}"/></td>
-	                    			<td><c:out value="${programList.getProgramRecruitedTotalCount()}"/>/<c:out value="${programList.getProgramRecruitedCount()}"/></td>
+	                    			<td><c:out value="${programList.getProgramRecruitedCount()}"/>/<c:out value="${programList.getProgramRecruitedTotalCount()}"/></td>
 	                    			<td><c:out value="${programList.getProgramDate()}"/></td>
 	                    			<td class="delete"><input type="button" value="삭제" onclick="deleteCheck(this); location.href = '${pageContext.request.contextPath}/admin/ProgramListDeleteOk.ad?programNumber=${programList.getProgramNumber()}';"></td>
                     			</tr>

@@ -42,15 +42,18 @@ $(document).ready(function(){
 
 /* 신청이 마감된 아르바이트는 디테일 페이지에서 프로그램 신청 버튼 없애기 */
 if (countDates($("#startDate")) > 0) {
+	console.log("1");
 	$("a").remove("#alba_apply");
+	console.log("1****");
 	
 } else if (dDaysCount($("#endDate")) < 0) {
+	console.log("2");
 	$("a").remove("#alba_apply");
-	
+	console.log("2****");
 }
 
 /* 신청인원이 다 차면 신청 버튼 없애기 */
-if ($countTotal = $countPerson) {
+if ($countTotal == $countPerson) {
 	$("a").remove("#alba_apply");
 }
 

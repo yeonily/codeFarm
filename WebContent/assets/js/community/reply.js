@@ -31,24 +31,25 @@ function show() {
 
 function showList(replyList){
 				
-	
 		if(replyList.length > 0) {
 		let text="";
-		
 		replyList.forEach(reply => {
 			text += `<div id="reply">`;
 				text+= `<div class="re-list">`;
 				text+= `<div class="re-top">`;
 					text+= `<span class="re-writer">`+ reply.memberId +`</span>`;
-					text+= `<span class="re-b-writer">게시글 작성자</span>`;
+					
+					if(memberNumber == reply.memberNumber) { // 게시글 작성자와 댓글 작성자가 일치하는 경우
+						text+= `<span class="re-b-writer">게시글 작성자</span>`;	
+					}
 					text+= `<span class="re-date">`+ reply.replyDate +`</span>`;
 					text+= `<span class="re-btn-group">`;
-						if(loginMemberNumber == reply.memberNumber) { /* 만약 로그인 한 세션이 댓글을 쓴 사람이라면 수정, 삭제 기능 사용 가능 */
-							text+= `<a href="` + reply.replyNumber + `" class="re-modify-ready re-btn">수정</a>`;
-							text+= `<a href="` + reply.replyNumber + `" class="re-delete">삭제</a>`;
-							text+= `<a href="` + reply.replyNumber + `" class="re-modify re-btn">저장</a>`;
-							text+= `<a href="` + reply.replyNumber + `" class="re-cancel">취소</a>`;	
-						}
+					if(loginSession == reply.memberNumber) { // 현재 로그인 한 회원이 작성한 댓글인 경우
+						text+= `<a href="` + reply.replyNumber + `" class="re-modify-ready re-btn">수정</a>`;
+						text+= `<a href="` + reply.replyNumber + `" class="re-delete">삭제</a>`;
+						text+= `<a href="` + reply.replyNumber + `" class="re-modify re-btn">저장</a>`;
+						text+= `<a href="` + reply.replyNumber + `" class="re-cancel">취소</a>`;	
+					}
 					text+= `</span>`;
 				text+= `</div>`;
 				text+= `<div class="re-content">`;
@@ -64,6 +65,7 @@ function showList(replyList){
 /* 댓글 작성 등록 */
 function send(){
 	let replyContent = replyForm.replyContent.value;
+
 	if(!replyContent){ /* 유효성 검사 */
 		alert("댓글 내용을 작성해주세요.");
 		return;
@@ -75,6 +77,7 @@ function send(){
 		data: {replyContent: replyContent, communityNumber: communityNumber, memberNumber: memberNumber},
 		contentType: "application/json; charset=utf-8",
 		success: function(){
+			document.getElementById("replyText").value = ''; /*게시글을 작성한 후에는 기존에 textarea에 입력한 문자열을 초기화함*/
 			show();
 			}
 	});
@@ -84,7 +87,6 @@ function send(){
 /* 댓글 삭제 */
 $("#replyList").on("click", ".re-delete", function(e){
 	e.preventDefault();
-	
 	$.ajax({ /* 작성을 다 한 후에는 show를 콜백함수로 호출하여 다시 댓글목록 조회 */
 		url: "/reply/deleteOk.re",
 		type: "get",

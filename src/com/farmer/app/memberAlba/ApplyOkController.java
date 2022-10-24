@@ -19,7 +19,6 @@ public class ApplyOkController implements Execute {
 		MemberAlbaVO memberAlbaVO = new MemberAlbaVO();
 		Result result = new Result();
 		
-//		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber");
 		String memberName = req.getParameter("userName");
 		String memberGender = req.getParameter("userGender");
 		String memberBirth = req.getParameter("userBirth");

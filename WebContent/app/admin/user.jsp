@@ -115,8 +115,6 @@
 	                    			<td><c:out value="${member.getMemberName()}"/></td>
 	                    			<td><c:out value="${member.getMemberGrade()}"/></td>
 	                    			<td><c:out value="${member.getMemberLocation()}"/></td>
-	                    			<!-- <td></td>
-	                    			<td></td> -->
 	                    			<td class="delete"><input type="button" value="탈퇴" onClick="outCheck(this); location.href = '${pageContext.request.contextPath}/admin/UserDeleteOk.ad?memberNumber=${member.getMemberNumber()}';"></td>
                     			</tr>
                     		</c:forEach>

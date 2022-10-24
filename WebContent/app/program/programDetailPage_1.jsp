@@ -102,13 +102,13 @@
                <div class="detail_info">
                    <div class="info_apply">
                   	<c:choose>
-                  	   <c:when test="${isApply == 0}">
-	                       <a href="${pageContext.request.contextPath}/program/apply02.pg?programNumber=${program.getProgramNumber()}" class="apply_on" id="program_apply">
-	                           <span>프로그램 신청</span></a>
-                       </c:when>
-                       <c:otherwise>
+                  	   <c:when test="${isApply == 1}">
                            <a onclick="javascript:alertCancel();" href="javascript:void(0);" class="apply_on" id="program_apply">
                            <span>신청 취소</span></a>
+                       </c:when>
+                       <c:otherwise>
+	                       <a href="${pageContext.request.contextPath}/program/apply02.pg?programNumber=${program.getProgramNumber()}" class="apply_on" id="program_apply">
+	                           <span>프로그램 신청</span></a>
                        </c:otherwise>
                     </c:choose>
                        <a href="${pageContext.request.contextPath}/program/applyListOk.pg" class="apply_on list" >

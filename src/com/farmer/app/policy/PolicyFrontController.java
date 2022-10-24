@@ -28,9 +28,29 @@ public class PolicyFrontController extends HttpServlet {
 		String target = requestURI.substring(contextPath.length());
 		Result result = null;
 
-		if (target.equals("/policy/policys.po")) { // 경로 적기 *.po(사용)
+		if (target.equals("/policy/policys1.po")) { // 경로 적기 *.po(사용)
 			result = new Result();
 			result.setPath("/app/policy/policypage1.jsp");
+			
+		} else if (target.equals("/policy/policys2.po")) {
+			result = new Result();
+			result.setPath("/app/policy/policypage2.jsp");
+			
+		} else if (target.equals("/policy/policys3_1.po")) {
+			result = new Result();
+			result.setPath("/app/policy/policypage3_1.jsp");
+			
+		} else if (target.equals("/policy/policys3_2.po")) {
+			result = new Result();
+			result.setPath("/app/policy/policypage3_2.jsp");
+			
+		} else if (target.equals("/policy/policys3_3.po")) {
+			result = new Result();
+			result.setPath("/app/policy/policypage3_3.jsp");
+			
+		} else if (target.equals("/policy/policys4.po")) {
+			result = new Result();
+			result.setPath("/app/policy/policypage4.jsp");
 		}
 
 		if (result != null) {

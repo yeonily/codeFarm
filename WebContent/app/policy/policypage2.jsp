@@ -33,18 +33,18 @@
         <div class="page_use">
             <div class="category">
             <ul>
-                <li class="ct1">
-                    <a href="policypage1.jsp">청년후계농 영농정착 지원사업</a>
-                </li>
-                <li class="ct2">
-                    <a href="policypage2.jsp">후계농업 경영인 육성사업</a>
-                </li>
-                <li class="ct3">
-                    <a href="policypage3_1.jsp">귀농귀촌 지원사업</a>
-                </li>
-                <li class="ct4">
-                    <a href="policypage4.jsp">청년농업인 경쟁력 제고사업</a>
-                </li>
+	            <a href="${pageContext.request.contextPath}/policy/policys1.po">
+	            	<li class="ct1">청년후계농 영농정착 지원사업</li>
+	            </a>
+	            <a href="${pageContext.request.contextPath}/policy/policys2.po">
+	                <li class="ct2">후계농업 경영인 육성사업</li>
+	            </a>
+                <a href="${pageContext.request.contextPath}/policy/policys3_1.po">
+	            	<li class="ct3">귀농귀촌 지원사업</li>
+	            </a>
+	            <a href="${pageContext.request.contextPath}/policy/policys4.po">
+	            	<li class="ct4">청년농업인 경쟁력 제고사업</li>
+	            </a>
             </ul>
         </div>
     </div>

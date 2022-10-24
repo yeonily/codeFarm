@@ -30,7 +30,7 @@
             <div class="lgr_normal_link">
                 <ul>
                     <li class="lgr_gnbhead" id="k1"><a href="javascript:void(0);">지원정책</a></li>
-                    <li class="j1"><a href="${pageContext.request.contextPath}/policy/policys.po">청년농 지원정책</a></li>
+                    <li class="j1"><a href="${pageContext.request.contextPath}/policy/policys1.po">청년농 지원정책</a></li>
                 </ul>
                 <ul>
                     <li class="lgr_gnbhead"  id="k2"><a href="javascript:void(0);">농업정보</a></li>

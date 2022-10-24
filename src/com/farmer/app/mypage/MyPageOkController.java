@@ -31,7 +31,7 @@ public class MyPageOkController implements Execute {
 		String programDate;
 		String albaName;
 		String albaDate;
-//		세션 memberNumber 가져오기
+
 		int memberNumber = (Integer)session.getAttribute("memberNumber");
 		
 //		마이페이지 내 정보칸에 나타낼 값 select

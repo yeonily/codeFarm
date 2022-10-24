@@ -31,7 +31,7 @@ public class MemberDAO {
 	   }
 	   
 	   public int loginGrade(MemberVO memberVO) {
-		   return sqlSession.selectOne("Member.login", memberVO);
+		   return sqlSession.selectOne("Member.loginGrade", memberVO);
 	   }
 	   
 	   public String findId(MemberVO memberVO) {
