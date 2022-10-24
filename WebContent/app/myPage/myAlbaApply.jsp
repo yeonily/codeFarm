@@ -33,7 +33,7 @@
                                         </div>
                                         <div class="lgr_sub">
                                             <ul class="lgr_ul">
-                                                <li class="nowMenu"><a href="${pageContext.request.contextPath}/mypage/Apply.my"><span >농촌 체험 프로그램</span></a></li>
+                                                <li class="nowMenu"><a href="${pageContext.request.contextPath}/mypage/ProgramOk.my"><span >농촌 체험 프로그램</span></a></li>
                                                 <li ><a href="${pageContext.request.contextPath}/mypage/AlbaOk.my"><span class="checkText">농촌 아르바이트</span></a></li>
                                             </ul>
                                         </div>
@@ -68,9 +68,8 @@
                                                 <p class="count">총 <span>${total}</span>건 (진행중 <span>${total}</span>건)</p>
                                                 <br>
                                                 <ul>
-                                                    <a href="" class="programDiv">
                                                          <c:forEach var="alba" items="${albas}">
-                                                        <li>
+                                                        <li class="alba" onclick="location.href='${pageContext.request.contextPath}/alba/apply01.ab?albaNumber=${alba.getAlbaNumber()}'">
                                                             <div class="info">
                                                                 <p class="local"><c:out value ="${alba.getAlbaLocation()}"/></p>
                                                                 <!-- 진행사항 -->
@@ -107,7 +106,6 @@
                                                             </div>
                                                         </li>
                                                         </c:forEach>
-                                                    </a>
                                                 </ul>
                                             </div>
 

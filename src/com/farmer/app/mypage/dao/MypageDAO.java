@@ -77,6 +77,22 @@ public class MypageDAO {
 		   return sqlSession.selectOne("MyPage.selectAlbaCount", memberNumber);
 	   }
 	   
+		/* 농장주가 작성한 알바 게시글 관련 */
+	   public List<AlbaVO> selectWriteAlba(Map<String, Integer> pageMap) {
+		   return sqlSession.selectList("MyPage.selectWriteAlba", pageMap);
+	   }
+	   public int selectWriteAlbaCount(int memberNumber) {
+		   return sqlSession.selectOne("MyPage.selectWriteAlbaCount", memberNumber);
+	   }
+	   
+	   /* 농장주가 작성한 프로그램 게시글 관련 */
+	   public List<AlbaVO> selectWriteProgram(Map<String, Integer> pageMap) {
+		   return sqlSession.selectList("MyPage.selectWriteProgram", pageMap);
+	   }
+	   public int selectWriteProgramCount(int memberNumber) {
+		   return sqlSession.selectOne("MyPage.selectWriteProgramCount", memberNumber);
+	   }
+	   
 	   public List<CommunityDTO> selectMyWrite(Map<String, Integer> pageMap) {
 		   return sqlSession.selectList("MyPage.selectMyWrite", pageMap);
 	   }
@@ -88,7 +104,4 @@ public class MypageDAO {
 	   public List<CommunityVO> selectRecentWrite(int memberNumber) {
 		   return sqlSession.selectList("MyPage.selectRecentWrite", memberNumber);
 	   }
-	   
-	   
-	   
 }
