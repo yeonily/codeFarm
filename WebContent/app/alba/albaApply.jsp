@@ -56,7 +56,7 @@
 													<button type="button" class="sort_btn" id="viewCnt" onclick="showByViewCnt()">조회순</button>
 													<button type="button" class="sort_btn" id="applyWrite" onclick="location.href='${pageContext.request.contextPath}/alba/applyListOk.ab'">가장최근등록일순</button>
 													<button type="button" class="sort_btn" id="applyEnd" onclick="showByDeadline()">가장최근마감일순</button>
-													<c:if test="${-1 eq memberGrade}">
+													<c:if test="${-1 eq memberGrade || 0 eq memberGrade}">
 														<button type="button" class="sort_btn alba_write_btn" data-id="writeBtn" onclick="location.href='${pageContext.request.contextPath}/alba/albaWrite.ab'">
 															글 등록</button>
 													</c:if>

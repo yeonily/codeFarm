@@ -155,12 +155,11 @@
 								</tr>
 								<tr>
 									<td><span class="list_icon">문의 전화</span></td>
-									<td><span><c:out
-												value="${alba.getAlbaPhoneNumber()}" /></span></td>
+									<td><span><c:out value="${alba.getAlbaPhoneNumber()}" /></span></td>
 								</tr>
 							</tbody>
 						</table>
-						<c:if test="${memberNumber eq alba.getMemberNumber()}">
+						<c:if test="${memberNumber eq alba.getMemberNumber() || 0 eq memberGrade}">
 							<div class="btns">
 								<input type="button" class="btn" value="수정"
 									onclick="location.href = '${pageContext.request.contextPath}/alba/update.ab?albaNumber=${alba.getAlbaNumber()}'" />

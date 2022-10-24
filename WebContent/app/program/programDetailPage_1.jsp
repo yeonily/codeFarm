@@ -149,7 +149,7 @@
 							</tr>
 						</tbody>
 					</table>
-					<c:if test="${memberNumber eq program.getMemberNumber()}">
+					<c:if test="${memberNumber eq program.getMemberNumber() || 0 eq memberGrade}">
 						<div class="btns">
 							<input type="button" class="btn" value="수정"
 								onclick="location.href = '${pageContext.request.contextPath}/program/update.pg?programNumber=${program.getProgramNumber()}'" />
