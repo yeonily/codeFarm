@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -83,34 +86,53 @@
                         <!-- 메뉴에 따른 더보기(신청 프로그램 내역, 내가 작성한 글) -->
                         <div class="supp_info">
                             <div class="myProgramMore">
-                                <h4>프로그램/알바 내역</h4>
+                                <h4>프로그램/알바 ${gradeText} 내역</h4>
                                 <a href="${pageContext.request.contextPath}/mypage/Apply.my" class="mre">더보기</a>
                                 <div class="myProgram">
                                     <ul class="myProgramList"> <!-- (이후) 신청 프로그램 여부에 따라 리스트 출력 필요 -->
-                                        <div>
+                                        <div class = "programApply" style="display: block">
                                             <a href="#"><li>
                                                 <p>${programName}</p>
-                                                <span>${programStartDate}</span>
+                                                <span>${programDate}</span>
                                             </li></a>
                                         </div>
-                                        <div style ="border-top : 0.118rem dashed #ccc">
+                                        <div class="programNoApply" style="display:none">
+                                        	${gradeText}한 프로그램이 없습니다
+                                        </div>
+                                        <div style ="border-top : 0.118rem dashed #ccc; display: block;" class = "albaApply">
                                             <a href="#"><li>
                                                 <p>${albaName}</p>
-                                                <span>${albaStartDate}</span>
+                                                <span>${albaDate}</span>
                                             </li></a>
+                                        </div>
+                                        <div class = "albaNoApply" style="border-top: 0.118rem dashed #ccc; display: none">
+                                        	${gradeText}한 알바가 없습니다
                                         </div>
                                     </ul>
                                 </div>
                             </div>
                             <div class="myPostMore">
                                 <h4>게시판 활동 내역</h4>
-                                <a href="${pageContext.request.contextPath}/mypage/Write.my" class="mre">더보기</a>
+                                <a href="${pageContext.request.contextPath}/mypage/WriteOk.my" class="mre">더보기</a>
                                 <div class="myPost">
-                                    <ul class="myPostList"> <!-- (이후) 신청 게시글 작성 여부에 따라 리스트 출력 필요 -->
-                                        <div class="myNoticeList">
-                                            작성하신 글을 찾을 수 없습니다.
-                                        </div>
-                                        
+                                     <ul class="myProgramList"><!-- (이후) 신청 게시글 작성 여부에 따라 리스트 출력 필요 -->
+                                       <c:choose>
+                                       <c:when test="${fn:length(recentLists) > 0}">
+                                        <c:forEach var = "list" items ="${recentLists}">
+                                        	<div style ="border-bottom : 0.118rem dashed #ccc">
+                                            	<a href="#"><li>
+                                               	 <p>${list.getCommunityTitle()}</p>
+                                                <span>${list.getCommunityDate()}</span>
+                                           		 </li></a>
+                                       		 </div>
+                                        </c:forEach>
+                                       </c:when>
+                                       <c:otherwise>
+                                       		<div>
+                                       			<p style="text-align: center">작성한 글이 없습니다.</p>
+                                       		</div>
+                                       </c:otherwise>
+                                       </c:choose>
                                     </ul>
                                 </div>
                             </div>
@@ -122,5 +144,8 @@
     </div>
     <jsp:include page="${pageContext.request.contextPath}/app/fix/footer.jsp"/>
 </body>
+<script>var albaApply = ${albaApply};</script>
+<script>var programApply = ${programApply};</script>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/myPage/myPage.js"></script>
 </html>

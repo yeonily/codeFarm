@@ -24,8 +24,14 @@
 
 	/*-------------------------------------------------------------- */
 	/*일반인 농장주 구분 검사*/
+	var grade = $('input[id=user]').val();
+	console.log(grade);
+	if(grade == 1){
+		$("#user").prop("checked" , true);
+	}else{
+		$("#farmer").prop("checked" , true);
+	}
 
-	
 
 
     /* -------------------------------------------------------------- */
@@ -200,9 +206,34 @@ function checkSMS(){
 
 /*완료 버튼 누를 시*/
 	function send(){
-		if($isCheck = true){
-		detailForm.submit();
-		}else{
-		  alert('비밀번호 일치 여부와 휴대폰번호 인증해주세요.');
+	//8자리 이상, 대문자/소문자/숫자/특수문자 모두 포함되어 있는 지 검사
+	var pwCheck = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+	//한글이 포함되었는 지 검사
+	var hangleCheck = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+	//같은 문자 4번 이상
+	var wordCheck = /(\w)\1\1\1/;
+	//공백검사
+	var spaceCheck = /\s/;
+	
+	/*변경할 패스워드*/
+	 let $pw = $("#password").val();
+    //변경할 패스워드 확인
+	 let $pw_check = $("#passwordCheck").val();
+	console.log($pw);
+	console.log($pw_check);
+		/*if($isCheck = false){
+			alert('인증번호가 일치하지 않습니다. 다시 진행해주세요');
+			return;
+		}*/
+		
+		console.log("들어옴0");
+		if(!detailForm.password.value){
+			detailForm.password.focus();
+			console.log("들어옴1")
+			return;
 		}
-	}
+		
+		detailForm.submit();
+}
+		
+	

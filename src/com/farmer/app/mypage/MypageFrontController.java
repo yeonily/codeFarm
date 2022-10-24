@@ -58,12 +58,18 @@ public class MypageFrontController extends HttpServlet {
 	    	  result = new Result();
 			  result.setPath("/app/myPage/myWriting.jsp");
 	       }else if(target.equals("/mypage/WriteOk.my")) { //마이페이지에서 내가 쓴 글 리스트 보여주기(SELECT)
-	    	   
+	    	   result = new WriteOkController().execute(req, resp);
+	    	   result.setPath("/app/myPage/myWriting.jsp");
 	       }else if(target.equals("/mypage/Apply.my")) { //마이페이지에서 내가 신청한 프로그램/알바 페이지로 이동
-	    	   result = new Result();
+	    	   result = new ApplyOkController().execute(req,resp);
 	    	   result.setPath("/app/myPage/myProgramApply.jsp");
-	       }else if(target.equals("/mypage/AlbaOk.my")) { //마이페이지에서 내가 신청한 알바 리스트 보여주기(SELECT)
 	    	   
+	       }else if(target.equals("/mypage/searchOk.my")) {
+	    	   result = new SearchOkController().execute(req,resp);
+	       }
+	       else if(target.equals("/mypage/AlbaOk.my")) { //마이페이지에서 내가 신청한 알바 리스트 보여주기(SELECT)
+	    	   result = new AlbaApplyOkController().execute(req,resp);
+	    	   result.setPath("/app/myPage/myAlbaApply.jsp");
 	       }else if(target.equals("/mypage/ProgramOk.my")) { //마이페이지에서 내가 신청한 프로그램 리스트 보여주기(SELECT)
 	    	   
 		   }

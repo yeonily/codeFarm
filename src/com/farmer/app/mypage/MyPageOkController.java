@@ -24,30 +24,20 @@ public class MyPageOkController implements Execute {
 		AlbaVO albaVO = new AlbaVO();
 		Result result = new Result();
 		HttpSession session = req.getSession();
-		
-		
-//		임시로 세션 설정, memberNumber 2로 설정
+		boolean albaApply = false;
+		boolean programApply = false;
+		String gradeText;
+		String programName;
+		String programDate;
+		String albaName;
+		String albaDate;
+//		임시로 세션 설정, memberNumber 1로 설정
 		session.setAttribute("memberNumber", 2);
 		int memberNumber = (Integer)session.getAttribute("memberNumber");
 		
-		memberVO = mypageDAO.selectMyPage(memberNumber);
-		
-//		내가 신청한 알바,프로그램 신청 최신순 1개 가져오기
-		albaVO = mypageDAO.selectThreeAlba(memberNumber);
-		programVO = mypageDAO.selectThreeProgram(memberNumber);
-		
-		String albaName = albaVO.getAlbaName();
-		String albaStartDate = albaVO.getAlbaStartDate();
-		
-		String programName = programVO.getProgramName();
-		String programStartDate = programVO.getProgramStartDate();
-		
-		req.setAttribute("albaName", albaName);
-		req.setAttribute("albaStartDate", albaStartDate);
-		req.setAttribute("programName", programName);
-		req.setAttribute("programStartDate", programStartDate);	
-		
-		System.out.println(albaStartDate);
+//		마이페이지 내 정보칸에 나타낼 값 select
+		memberVO = mypageDAO.selectMyPage(memberNumber) == null ?  mypageDAO.selectNotMentor(memberNumber) : mypageDAO.selectMyPage(memberNumber);
+
 		
 		String memberId = memberVO.getMemberId();
 		String memberPassword = memberVO.getMemberPassword();
@@ -58,28 +48,78 @@ public class MyPageOkController implements Execute {
 		String memberType;
 		String mentorType;
 		
-		
 		session.setAttribute("memberId",memberId );
 		session.setAttribute("memberPassword", memberPassword);
 		session.setAttribute("memberName", memberName);
 		session.setAttribute("memberPhoneNumber", memberPhoneNumber);
 		session.setAttribute("memberGrade", memberGrade);
+		String Grade = String.valueOf(memberGrade);
+//		resp.set
+//		resp.setAttribute("Grade" , Grade);
+		System.out.println(session.getAttribute("memberId"));
+		System.out.println(session.getAttribute("memberPhoneNumber"));
 		
-//		가입 형태 검사
-		if(memberGrade < 0) {
+//		농장주, 일반사용자 검사
+		if(memberGrade == -1) {
+			if(mypageDAO.selectFarmerAlba(memberNumber) == null) {
+				albaApply = false;
+			}else {
+				albaApply = true;
+				albaVO = mypageDAO.selectFarmerAlba(memberNumber);
+			}
+			if(mypageDAO.selectFarmerProgram(memberNumber) == null) {
+				programApply = false;
+			}else {
+				programApply = true;
+				programVO = mypageDAO.selectFarmerProgram(memberNumber);
+			}
+			albaName = albaVO.getAlbaName();
+			albaDate = albaVO.getAlbaDate();
+			programName = programVO.getProgramName();
+			programDate = programVO.getProgramDate();
+			gradeText = "등록";
 			memberType = "농장주";
 			req.setAttribute("memberType", memberType);
-		}else if(memberGrade == 0) {
-			memberType = "관리자";
-			req.setAttribute("memberType", memberType);
+			req.setAttribute("gradeText", gradeText);
+			req.setAttribute("albaName", albaName);
+			req.setAttribute("albaDate", albaDate);
+			req.setAttribute("programName", programName);
+			req.setAttribute("programDate", programDate);
 		}else if(memberGrade == 1) {
+//			내가 신청한 알바 신청 최신순 1개 가져오기
+			if(mypageDAO.selectRecentAlbas(memberNumber) == null) {
+				albaApply = false;
+			}else {
+				albaApply = true;
+				albaVO = mypageDAO.selectRecentAlbas(memberNumber);
+			}
+			
+//			내가 신청한 프로그램 신청 최신순 1개 가져오기
+			if(mypageDAO.selectRecentPrograms(memberNumber) == null) {
+				programApply = false;
+			}else {
+				programApply = true;
+				programVO = mypageDAO.selectRecentPrograms(memberNumber);
+			}
+			albaName = albaVO.getAlbaName();
+			albaDate = albaVO.getAlbaStartDate();
+			programName = programVO.getProgramName();
+			programDate = programVO.getProgramStartDate();
+			gradeText = "신청";
 			memberType = "일반 사용자";
 			req.setAttribute("memberType", memberType);
-		}else {
-			memberType = "비정상 가입자";
-			req.setAttribute("memberType", memberType);
+			req.setAttribute("gradeText", gradeText);
+			req.setAttribute("albaName", albaName);
+			req.setAttribute("albaDate", albaDate);
+			req.setAttribute("programName", programName);
+			req.setAttribute("programDate", programDate);
 		}
-
+			
+		req.setAttribute("albaApply", albaApply);
+		req.setAttribute("programApply", programApply);
+		req.setAttribute("recentLists", mypageDAO.selectRecentWrite(memberNumber));
+		
+		
 //		멘토링 검사
 		if(memberGrade != -1) {
 			mentorType = "X";

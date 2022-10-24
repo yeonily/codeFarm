@@ -5,10 +5,10 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.farmer.app.Execute;
 import com.farmer.app.Result;
-import com.farmer.app.member.dao.MemberDAO;
 import com.farmer.app.member.vo.MemberVO;
 import com.farmer.app.mypage.dao.MypageDAO;
 
@@ -46,7 +46,14 @@ public class UpdateOkController implements Execute {
 		memberVO.setMemberPassword(memberPassword);
 		memberVO.setMemberEmail(memberEmail);
 		memberVO.setMemberPhoneNumber(memberPhoneNumber);
-		memberVO.setMemberLocation(memberLocation);
+		
+		/*
+		 * if(memberLocation==null) {
+		 * 
+		 * }else {
+		 */
+			memberVO.setMemberLocation(memberLocation);			
+//		}
 		
 		mypageDAO.updateMyPage(memberVO);
 		
