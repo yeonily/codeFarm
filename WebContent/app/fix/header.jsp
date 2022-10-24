@@ -34,9 +34,12 @@
                 </ul>
                 <ul>
                     <li class="lgr_gnbhead"  id="k2"><a href="javascript:void(0);">농업정보</a></li>
-                    <li class="j2"><a href="/young/content/content01.do">작물 정보</a></li>
+                    <li class="j2"><a href="${pageContext.request.contextPath}/cropsInfo/searchOk.ci">작물 정보</a></li>
                     <li class="j2"><a href="${pageContext.request.contextPath}/localSpecialty/searchOk.ls">지역별 특산물 정보</a></li>
                     <li class="j2"><a href="${pageContext.request.contextPath}/season/info.sc">계절별 작물 추천</a></li>
+                    <li class="j2"><a href="javascript:void(0)" onclick="alert('서비스를 준비중입니다.')">작물 시세 확인</a></li>
+                    <li class="j2"><a href="javascript:void(0)" onclick="alert('서비스를 준비중입니다.')">병해충 정보</a></li>
+                    <li class="j2"><a href="javascript:void(0)" onclick="alert('서비스를 준비중입니다.')">농약 정보</a></li>
                 </ul>
                 <ul>
                     <li class="lgr_gnbhead" id="k3" ><a href="javascript:void(0);" >프로그램</a></li>
@@ -45,8 +48,8 @@
                 </ul>
                 <ul>
                     <li class="lgr_gnbhead"  id="k4"><a href="javascript:void(0);" >커뮤니티</a></li>
-                    <li class="j4"><a href="/young/board/board21.do">공지사항</a></li>
-                    <li class="j4"><a href="/young/board/board02.do">멘토 홍보 게시판</a></li>
+                    <li class="j4"><a href="${pageContext.request.contextPath}/notice/detailOK.nt">공지사항</a></li>
+                    <li class="j4"><a href="javascript:void(0)" onclick="alert('서비스를 준비중입니다.')">멘토 홍보 게시판</a></li>
                     <li class="j4"><a href="${pageContext.request.contextPath}/community/listOk.cm">소통공간</a></li>
                 </ul>
                 <ul>
@@ -86,7 +89,7 @@
                                     <span>농업정보</span>
                                 </a>
                                 <ul style="text-align: right;" data-level="2">
-                                    <li><a href="/young/content/content01.do">
+                                    <li><a href="${pageContext.request.contextPath}/cropsInfo/searchOk.ci">
                                             <span>작물정보</span>
                                         </a>
                                     </li>
@@ -96,6 +99,18 @@
                                     </li>
                                     <li><a href="${pageContext.request.contextPath}/localSpecialty/searchOk.ls">
                                             <span>지역별 특산물 정보</span>
+                                        </a>
+                                    </li>
+                                    <li><a href="javascript:void(0)" onclick="alert('서비스를 준비중입니다.')">
+                                            <span>작물 시세 확인</span>
+                                        </a>
+                                    </li>
+                                    <li><a href="javascript:void(0)" onclick="alert('서비스를 준비중입니다.')">
+                                            <span>병해충 정보</span>
+                                        </a>
+                                    </li>
+                                    <li><a href="javascript:void(0)" onclick="alert('서비스를 준비중입니다.')">
+                                            <span>농약 정보</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -118,11 +133,11 @@
                                 <span>커뮤니티</span>
                             </a>
                             <ul style="text-align: right;" data-level="2">
-                                    <li><a href="/young/board/board21.do" >
+                                    <li><a href="${pageContext.request.contextPath}/notice/detailOK.nt" >
                                         <span>공지사항</span>
                                         </a>
                                     </li>
-                                    <li><a href="/young/board/board02.do">
+                                    <li><a href="javascript:void(0)" onclick="alert('서비스를 준비중입니다.')">
                                             <span>멘토 홍보 게시판</span>
                                         </a>
                                     </li>

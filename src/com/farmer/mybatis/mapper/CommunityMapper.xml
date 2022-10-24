@@ -96,7 +96,7 @@
 		join tbl_member tm
 		on tc.member_number = tm.member_number
 		where tm.member_id = #{memberId}
-		order by community_number limit 1, 10;
+		order by community_number limit #{startRow}, #{rowCount};
 	</select>
 	
 	

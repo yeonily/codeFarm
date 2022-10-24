@@ -34,11 +34,11 @@
                             <div class="top" style="display: inline-block">커뮤니티</div>
                             <div class="lgr_snb" style="display: inline-block; margin-left: 20px;">
                                 <ul class="lgr_ul" data-level="1">
-                                    <li ><a href="/young/board/board04.do" class="active">
+                                    <li ><a href="${pageContent.request.contetPath}/notice/detailOK.nt" class="active">
                                         <span>공지사항</span>
                                     </a>
                                 </li>
-                                <li><a href="/young/board/board07.do" class="active">
+                                <li><a href="#" class="active" onclick="alert('서비스를 준비중입니다.')">
                                         <span>멘토 홍보 게시판</span>
                                     </a>
                                 </li>
@@ -131,7 +131,7 @@
 		</tbody>
     </table>
     <div class="te_right mt25">
-        <a href="${pageContext.request.contextPath}/community/write.cm" class="btntype01 advice_btn">등록</a>
+        <a href="javascript:void(0)" class="btntype01 advice_btn" onclick="checkSession();">등록</a>
     </div>
 			<!-- 페이징 -->
 			<div id="page" class="page_height">
@@ -187,9 +187,15 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
 	const search = '${param.searchSelect}';
-
 	if(search) {
 		$('select[name="searchSelect"]').val(search);
+	}
+	function checkSession() {
+		if(${memberNumber eq null}) {
+			alert("로그인 후 작성 가능합니다.");	
+		} else {
+			location.href = "${pageContext.request.contextPath}/community/write.cm";
+		}
 	}
 </script>
 </html>
