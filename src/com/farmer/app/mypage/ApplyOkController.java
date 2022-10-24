@@ -64,7 +64,7 @@ public class ApplyOkController implements Execute {
 		req.setAttribute("prev", prev);
 		req.setAttribute("next", next);
 		
-		result.setPath("/app/myPage/myProgramApply.jsp");
+		result.setPath("/mypage/searchOk.my");
 		
 		
 		return result;

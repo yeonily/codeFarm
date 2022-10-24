@@ -1,6 +1,7 @@
 package com.farmer.app.mypage;
 
 import java.io.IOException;
+import java.util.Base64;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,7 @@ import com.farmer.app.Execute;
 import com.farmer.app.Result;
 import com.farmer.app.member.vo.MemberVO;
 import com.farmer.app.mypage.dao.MypageDAO;
+import com.mysql.cj.Session;
 
 public class UpdateOkController implements Execute {
 	@Override
@@ -19,8 +21,14 @@ public class UpdateOkController implements Execute {
 		Result result = new Result();
 		MypageDAO mypageDAO = new MypageDAO();
 		MemberVO memberVO = new MemberVO();
+		HttpSession session = req.getSession();
 		
 		int memberGrade;
+		int memberNumber;
+		memberGrade = (Integer)session.getAttribute("memberGrade");
+		memberNumber = (Integer)session.getAttribute("memberNumber");
+		System.out.println(memberGrade);
+		
 		String memberType;
 		String mentorType;
 		String gradeType = req.getParameter("grade");
@@ -33,27 +41,31 @@ public class UpdateOkController implements Execute {
 		String memberLocation = location1 + " " +location2;
 		String memberEmail = email1 + "@" + email2;
 		
+//		
+//		패스워드 암호화
+		memberPassword = new String(Base64.getEncoder().encode(memberPassword.getBytes()));
 		
+		System.out.println(gradeType);
 //		정보수정 일반사용자 버튼 클릭 value가 user
-		if(gradeType.equals("user")) {
+		if(gradeType.equals(String.valueOf(1))) {
 			memberGrade = 1;
 		}else {
 			memberGrade = -1;
 		}
+		System.out.println(memberGrade);
 		
-		memberVO.setMemberNumber(2);
+		memberVO.setMemberNumber(memberNumber);
 		memberVO.setMemberGrade(memberGrade);
 		memberVO.setMemberPassword(memberPassword);
 		memberVO.setMemberEmail(memberEmail);
 		memberVO.setMemberPhoneNumber(memberPhoneNumber);
-		
-		/*
-		 * if(memberLocation==null) {
-		 * 
-		 * }else {
-		 */
-			memberVO.setMemberLocation(memberLocation);			
-//		}
+		memberVO.setMemberLocation(memberLocation);	
+		System.out.println(memberNumber);
+		System.out.println(memberGrade);
+		System.out.println(memberPassword);
+		System.out.println(memberEmail);
+		System.out.println(memberPhoneNumber);
+		System.out.println(memberLocation);
 		
 		mypageDAO.updateMyPage(memberVO);
 		
