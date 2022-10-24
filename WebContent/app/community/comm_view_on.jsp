@@ -132,7 +132,7 @@
 							<form method="post" action="#" name="replyForm">
 								<c:choose>
 									<c:when test="${memberNumber != null }"> <!-- 로그인이 되어 있는 경우 -->
-										<li class="common_textarea"><textarea class="comm_textarea" title="댓글입력" name="replyContent" placeholder="비속어를 사용하지 말아주세요."></textarea></li>
+										<li class="common_textarea"><textarea class="comm_textarea" id="replyText"  title="댓글입력" name="replyContent" placeholder="비속어를 사용하지 말아주세요."></textarea></li>
 										<li class="common_btnBox"><button type="button" class="comm_btn" onclick="send()">등록</button></li>
 									</c:when>
 									<c:otherwise> <!-- 로그인이 되어 있지 않은 경우 -->
@@ -157,11 +157,13 @@
 	<jsp:include page="${pageContext.request.contextPath}/app/fix/footer.jsp"/>
 </body>
 <script>
-	sessionStorage.setItem("memberId", ${memberNumber});
-	var loginMemberNumber = sessionStorage.getItem("memberId");
-	let communityNumber = "${board.getCommunityNumber()}";
-	let memberNumber = "${board.getMemberNumber()}";
+	var communityNumber = "${board.getCommunityNumber()}";
+	var memberNumber = "${board.getMemberNumber()}"; // 게시글을 작성한 회원의 번호
 	let memberId = "${board.getMemberId()}";
+	
+	/* 현재 로그인 한 회원의 세션 */
+	 var loginSession = '<%=(Integer)session.getAttribute("memberNumber")%>';
+	
 </script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/community/reply.js"></script>

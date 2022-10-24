@@ -24,7 +24,7 @@
 	
 	<!-- 게시글 상세정보 -->
 	<select id="select" parameterType="_int" resultType="communityDTO">
-		select tc.community_number, tc.community_title, tc.community_date, tm.member_id, tc.community_view_count, tc.community_content
+		select tc.community_number, tc.community_title, tc.community_date, tm.member_id, tm.member_number, tc.community_view_count, tc.community_content
 		from tbl_community tc join tbl_member tm
 		on tc.member_number = tm.member_number
 		where tc.community_number = #{communityNumber}
