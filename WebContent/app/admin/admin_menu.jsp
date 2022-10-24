@@ -15,7 +15,7 @@
 
          <div id='side-menu'>
             <div class="side-menu-contents">
-               <a href='#'><span>사이트 바로가기</span></a>
+               <a href="${pageContext.request.contextPath}/index/main.ix"><span>사이트 바로가기</span></a>
             </div>
             <div class="menu-title">사이트 관리</div>
             <ul>

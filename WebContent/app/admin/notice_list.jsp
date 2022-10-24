@@ -51,7 +51,7 @@
                                 <input type="text" name="programSearch" placeholder="검색어를 입력하세요">
                             </span>
                         </span>
-                        <button type="button" class="">
+                        <button type="button" class="" onclick="ready()">
                             <img src="${pageContext.request.contextPath}/assets/images/common/search.png">
                         </button>
                     </div>
@@ -88,7 +88,7 @@
 	                    			<td><img src="${pageContext.request.contextPath}/assets/images/common/fileImage.png"></td>
 	                    			<td><c:out value="${noticeList.getNoticeDate()}"/></td>
 	                    			<td><c:out value="${noticeList.getNoticeViewCount()}"/></td>
-	                    			<td class="revise"><input type="button" value="수정"></td>
+	                    			<td class="revise"><input type="button" value="수정" onclick="readyUpdate(this)"></td>
 	                    			<td class="delete"><input type="button" value="삭제" onclick="deleteCheck(this); location.href = '${pageContext.request.contextPath}/admin/NoticeListDeleteOk.ad?noticeNumber=${noticeList.getNoticeNumber()}';"></td>
                     			</tr>
                     		</c:forEach>
@@ -145,5 +145,17 @@
     </div>
 
 </body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script>
+	function ready(){
+			alert('검색기능 준비중입니다.');
+	}
+	
+	function readyUpdate(){
+		alert('수정기능 준비중입니다.')
+		
+	}
+	</script>
+
 <script src="${pageContext.request.contextPath}/assets/js/admin/adminNotice.js"></script>
 </html>

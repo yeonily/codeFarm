@@ -74,7 +74,7 @@
                                 <input id="keyword" type="text" name="keyword" placeholder="검색어를 입력하세요">
                             </span>
                         </span>
-                        <button type="button" onclick="showResultBySearch()">
+                        <button type="button" onclick="ready()">
                             <img src="${pageContext.request.contextPath}/assets/images/common/search.png">
                         </button>
                     </div>
@@ -187,6 +187,13 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script>
+	function ready(){
+			alert('검색기능 준비중입니다.');
+	}
+	</script>
+	
+	
+	<script>
 /* function showResultBySearch(type){
 	$.ajax({
 		url: "${pageContext.request.contextPath}/admin/UserSearchOk.ad",
@@ -237,8 +244,8 @@
 		}
 	});
 } */
-	
 </script>
+
 <!-- 차트 -->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/admin/chartAPI.js"></script>
