@@ -8,6 +8,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.farmer.app.Execute;
 import com.farmer.app.Result;
@@ -18,7 +19,6 @@ import com.farmer.app.program.vo.ProgramVO;
 public class ApplyOkController implements Execute {
 	@Override
 	public Result execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 		Result result = new Result();
 		MemberVO memberVO = new MemberVO();
@@ -27,11 +27,13 @@ public class ApplyOkController implements Execute {
 		PrintWriter out = resp.getWriter();
 		List<ProgramVO> myProgramVO = null;
 		int total;
+		HttpSession session = req.getSession();
+		int memberNumber = (Integer)session.getAttribute("memberNumber");
 		
 //		myProgramVO = mypageDAO.selectProgram(2);
 		req.setAttribute("myPrograms", myProgramVO);
 		
-		total = mypageDAO.selectProgramCount(2);
+		total = mypageDAO.selectProgramCount(memberNumber);
 		req.setAttribute("total", total);
 		
 		
@@ -55,7 +57,7 @@ public class ApplyOkController implements Execute {
 
 		pageMap.put("startRow", startRow);
 		pageMap.put("rowCount", rowCount);
-		pageMap.put("memberNumber", 2);
+		pageMap.put("memberNumber", memberNumber);
 		
 		req.setAttribute("programs", mypageDAO.selectProgram(pageMap));
 		req.setAttribute("page", page);
@@ -65,7 +67,6 @@ public class ApplyOkController implements Execute {
 		req.setAttribute("next", next);
 		
 		result.setPath("/mypage/searchOk.my");
-		
 		
 		return result;
 	}

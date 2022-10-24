@@ -71,9 +71,8 @@
                                                 <p class="count">총 <span>${total}</span>건 (진행중 <span>${total}</span>건)</p>
                                                 <br>
                                                 <ul>
-                                                    <a href="" class="programDiv">
                                                         <c:forEach var="program" items="${programs}">
-                                                        <li>
+                                                        <li class="program" onclick="location.href='${pageContext.request.contextPath}/program/apply01Ok.pg?programNumber=${program.getProgramNumber()}'">
                                                             <div class="info">
                                                                 <p class="local"><c:out value ="${program.getProgramLocation()}"/></p>
                                                                 <!-- 진행사항 -->
@@ -110,7 +109,6 @@
                                                             </div>
                                                         </li>
                                                         </c:forEach>
-                                                    </a>
                                                 </ul>
                                             </div>
                                             

@@ -144,7 +144,53 @@
 		from tbl_alba ta
 		join tbl_member_alba tma on ta.alba_number = tma.alba_number
 		where tma.member_number = #{memberNumber} 
-		limit #{startRow} , #{rowCount};                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+		limit #{startRow} , #{rowCount}                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+	</select>
+
+	<!-- 내가 작성한 알바 리스트 조회 -->
+	<select id="selectWriteAlba" parameterType="map" resultType="albaVO">
+		select
+			alba_name,
+			alba_start_date,
+			alba_location,
+			alba_apply_start_date,
+			alba_apply_end_date,
+			alba_view_count,
+			alba_number
+		from tbl_alba ta join tbl_member tm
+		on tm.member_number = #{memberNumber}
+		limit #{startRow} , #{rowCount}
+	</select>
+		
+		<!-- 내가 작성한 알바 리스트 총 개수 -->
+	<select id="selectWriteAlbaCount" parameterType="_int" resultType="_int">
+		select count(tm.member_number)
+		from tbl_member tm join tbl_alba ta
+		on tm.member_number = ta.member_number
+		where tm.member_number = #{memberNumber}
+	</select>
+	
+	<!-- 내가 작성한 프로그램 리스트 조회 -->
+	<select id="selectWriteProgram" parameterType="map" resultType="programVO">
+		select
+			program_name,
+			program_start_date,
+			program_location,
+			program_apply_start_date,
+			program_apply_end_date,
+			program_view_count,
+			program_number
+		from tbl_program tp join tbl_member tm
+		on tm.member_number = #{memberNumber}
+		limit #{startRow} , #{rowCount};
+	</select>
+	
+		<!-- 내가 작성한 프로그램 리스트 총 개수 -->
+	<select id="selectWriteProgramCount" parameterType="_int" resultType="_int">
+		select count(tm.member_number)
+		from tbl_member tm join tbl_program tp
+		on tm.member_number = tp.member_number
+		where tm.member_number = #{memberNumber}
 	</select>
 		
 <!--내가 신청한 알바 총 개수 -->	
