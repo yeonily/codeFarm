@@ -106,7 +106,7 @@
             <!--팝업 컨텐츠 영역-->
             <div class="popup_cont">
                 <!-- 아이디 찾기 step1 -->
-               <form method="post" action="${pageContext.request.contextPath}/member/findId.me" name="findIdForm">
+               <form method="post" action="#" name="findIdForm">
                 <div class="find_id_wrap id_step1">
                     <div class="find_id_close"><span class="close_btn"></span></div>
 
@@ -161,7 +161,7 @@
                         <div class="pop_con">
                             <div class="p_con_inner">
                                 <p>회원님의 아이디</p>
-                                <div class="p_inner_box"><p id="memberFindId"></p></div>
+                                <div class="p_inner_box"><p id="memberFindId" class="memberFindId"></p></div>
                             </div>
 
                             <div class="p_btn01">
@@ -187,6 +187,7 @@
             <!--팝업 컨텐츠 영역-->
             <div class="popup_cont">
                 <!-- 비밀번호 찾기 step1 -->
+               <form name="findPwForm" method="post">
                 <div class="find_pw_wrap pw_step1">
                     <div class="find_pw_close"><span class="close_btn"></span></div>
 
@@ -197,7 +198,6 @@
                             <span>휴대폰번호와 아이디를 입력해주세요.</span>
                         </div>
 
-                        <form action="${pageContext.request.contextPath}/member/findPwOk.me" name="findPwForm" method="post">
                             <div class="pop_con">
                                 <div class="p_con_inner">
                                     <p>아이디</p>
@@ -209,7 +209,7 @@
                                 <div class="p_con_inner phoneNum">
                                     <p>휴대폰 번호</p>
                                     <div class="p_inner_box">
-                                        <input type="text" id="find_pw_phone" placeholder="휴대폰 번호를 입력해주세요." name="findPw_phone">
+                                        <input type="text" id="find_pw_phone" class= "find_pw_phone" placeholder="휴대폰 번호를 입력해주세요." name="findPw_phone">
                                         <a href="javascript:void(0);" class="btn_phone btn_phone_pw">인증번호 요청</a>
                                     </div>
                                 </div>
@@ -224,7 +224,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
 
                         <div class="p_btn01">
                             <a href="javascript:void(0);" class="pw_next_step">확인</a>
@@ -234,7 +233,6 @@
                 </div>
 
                 <!-- 비밀번호 찾기 step2 -->
-                 <form action="#" name="pwChangeForm" method="post">
                 <div class="find_id_wrap pw_step2">
                     <div class="pop_inner">
                         <div class="pop_top">

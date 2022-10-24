@@ -41,6 +41,10 @@ public class MemberDAO {
 	   public void findPassword(MemberVO memberVO) {
 		   sqlSession.update("Member.findPassword", memberVO);
 	   }
+	   public String findpw(MemberVO memberVO) {
+		   return sqlSession.selectOne("Member.findId", memberVO);
+	   }
+
 	   
 	   
 }

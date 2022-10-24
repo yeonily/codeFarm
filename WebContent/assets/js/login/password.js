@@ -20,7 +20,11 @@
 
     // 입력한 비밀번호가 일치한다면 저장하고 닫기
     function pwChange(){
-        console.log('비밀번호 체크')
+	
+		$outputPhoneNumber = $("#find_pw_phone").val();
+		$outputId = $("#find_pw_name").val();
+		$outputPassword = $("#newPassword").val();
+	
         //8자리 이상, 대문자/소문자/숫자/특수문자 모두 포함되어 있는 지 검사
         var pwCheck = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
         //한글이 포함되었는 지 검사
@@ -30,40 +34,56 @@
         //공백검사
         var spaceCheck = /\s/;
 
-        if(!pwChangeForm.password.value){
-            pwChangeForm.password.focus();
+        if(!findPwForm.password.value){
+            findPwForm.password.focus();
             return;
         }
 	
-        if(!pwChangeForm.passwordCheck.value){
-            pwChangeForm.passwordCheck.focus();
+        if(!findPwForm.passwordCheck.value){
+            findPwForm.passwordCheck.focus();
             return;
         }
         
-        if(!pwCheck.test(pwChangeForm.password.value)){
-            pwChangeForm.password.focus();
+        if(!pwCheck.test(findPwForm.password.value)){
+            findPwForm.password.focus();
             return;
         }
     
-        if(hangleCheck.test(pwChangeForm.password.value)){
-            pwChangeForm.password.focus();
+        if(hangleCheck.test(findPwForm.password.value)){
+            findPwForm.password.focus();
             return;
         }
         
-        if(wordCheck.test(pwChangeForm.password.value)){
-            pwChangeForm.password.focus();
+        if(wordCheck.test(findPwForm.password.value)){
+            findPwForm.password.focus();
             return;
         }
     
-        if(spaceCheck.test(pwChangeForm.password.value)){
-            pwChangeForm.password.focus();
+        if(spaceCheck.test(findPwForm.password.value)){
+            findPwForm.password.focus();
             return;
         }
         
-        if(pwChangeForm.password.value.length < 10 || pwChangeForm.password.value.length > 20){
-            pwChangeForm.password.focus();
+        if(findPwForm.password.value.length < 10 || findPwForm.password.value.length > 20){
+            findPwForm.password.focus();
             return;
         }
-        pwChangeForm.submit();
+			
+		$.ajax({
+			url:"/member/findPw.me",
+			type : "post",
+			data: { outputPhoneNumber: $outputPhoneNumber, outputId : $outputId, outputPassword : $outputPassword },
+			success: function(result) {
+				console.log(result);
+				console.log("들어옴")
+			},
+		error: function(target){
+			console.log(target);
+			console.log("오류!!")
+		}
+		});
+
+
+       /* findPwForm.submit();*/
         alert('비밀번호가 변경되었습니다.')
-    }
+		}

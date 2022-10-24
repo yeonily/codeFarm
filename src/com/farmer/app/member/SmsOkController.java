@@ -26,7 +26,7 @@ public class SmsOkController implements Execute {
 		resp.setContentType("text/html;charset=utf-8");
 		
 //		jsp파일 input태그에서 입력받은 값 ajax로 받아오기 
-		String phoneNumber = req.getParameter("inputPhoneNumber");
+		String phoneNumber = req.getParameter("InputPhoneNumber");
 		System.out.println(phoneNumber);
 		
 		String api_key = "NCS3F5ZY1AHQHACO";
