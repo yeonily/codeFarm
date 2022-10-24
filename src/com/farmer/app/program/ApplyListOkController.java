@@ -21,6 +21,7 @@ public class ApplyListOkController implements Execute {
 		ProgramDAO programDAO = new ProgramDAO();
 		Result result = new Result();
 		
+		
 //		페이지
 		String temp = req.getParameter("page");//현재 페이지
 		int page = temp == null ? 1 : Integer.parseInt(temp);//디폴트는 1페이지

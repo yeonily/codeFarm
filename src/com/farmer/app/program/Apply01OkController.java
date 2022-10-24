@@ -22,6 +22,7 @@ public class Apply01OkController implements Execute {
 //		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber");
 		int memberNumber = 4;
 		
+		
 		userMap.put("programNumber", programNumber);
 		userMap.put("memberNumber", memberNumber);	
 		
