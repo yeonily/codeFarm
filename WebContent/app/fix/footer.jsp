@@ -22,7 +22,7 @@
                 </div>
                 <ul class="list_link">
                     <li>
-                        <a class="footer_a" href="admin.jsp" target="_blank">관리자 페이지</a>
+                        <a class="footer_a" href="${pageContext.request.contextPath}/admin/admin.ad" target="_blank">관리자 페이지</a>
                     </li>
                     <li>
                         <a class="footer_a" href="https://www.rda.go.kr/psninfoprot.do" target="_blank">개인정보처리방침</a>

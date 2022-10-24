@@ -103,8 +103,17 @@
 						</table>
 
 						<div class="te_right mt25">
-							<button type="button" class="iron-iconized iron-action return"
-								onclick="location.href = '${pageContext.request.contextPath}/community/listOk.cm'">
+							<c:set var='writeId' value='${board.getMemberId()}'/>
+							<c:set var='memberId' value='${memberId}'/>
+							<c:if test="${writeId == memberId}">
+								<button type="button" class="iron-iconized iron-action return" onclick="location.href = '${pageContext.request.contextPath}/community/update.cm?communityNumber=${board.getCommunityNumber()}'">
+									<span class="val">수정</span>
+								</button>
+								<button type="button" class="iron-iconized iron-action return" onclick="location.href = '${pageContext.request.contextPath}/community/deleteOk.cm?communityNumber=${board.getCommunityNumber()}'">
+									<span class="val">삭제</span>
+								</button>
+							</c:if>
+							<button type="button" class="iron-iconized iron-action return" onclick="location.href = '${pageContext.request.contextPath}/community/listOk.cm'">
 								<span class="val">목록</span>
 							</button>
 						</div>
@@ -121,23 +130,25 @@
 					<li>
 						<ul class="comment_inputBox">
 							<form method="post" action="#" name="replyForm">
-								<li class="common_textarea"><textarea class="comm_textarea"
-										title="댓글입력" name="replyContent"
-										placeholder="비속어를 사용하지 말아주세요."></textarea></li>
-								<li class="common_btnBox">
-									<button type="button" class="comm_btn" onclick="send()">등록</button>
-								</li>
+								<c:choose>
+									<c:when test="${memberNumber != null }"> <!-- 로그인이 되어 있는 경우 -->
+										<li class="common_textarea"><textarea class="comm_textarea" title="댓글입력" name="replyContent" placeholder="비속어를 사용하지 말아주세요."></textarea></li>
+										<li class="common_btnBox"><button type="button" class="comm_btn" onclick="send()">등록</button></li>
+									</c:when>
+									<c:otherwise> <!-- 로그인이 되어 있지 않은 경우 -->
+										<li class="common_textarea"><textarea class="comm_textarea" title="댓글입력" name="replyContent" placeholder="로그인 후에 입력 가능합니다." disabled></textarea></li>
+										<li class="common_btnBox"><button type="button" class="comm_btn">등록</button></li>
+									</c:otherwise>
+								</c:choose>
 							</form>
 						</ul>
-					<li class="comment_text02 showLength">0/1000byte</li>
 					</li>
+					<li class="comment_text02 showLength">0/1000byte</li>
 				</ul>
 				<!-- 댓글 내용 종료 -->
 
 				<!-- 댓글 리스트 -->
-				<!-- 댓글 수 -->
 				<div class="reply">
-					<!-- <div class="reply-count">댓글 <span class="re-count">10</span>개</div> -->
 					<form action="#" id="replyList" name="reModifyForm"></form>
 				</div>
 			</div>
@@ -146,11 +157,13 @@
 	<jsp:include page="${pageContext.request.contextPath}/app/fix/footer.jsp"/>
 </body>
 <script>
+	sessionStorage.setItem("memberId", ${memberNumber});
+	var loginMemberNumber = sessionStorage.getItem("memberId");
+	
 	let communityNumber = "${board.getCommunityNumber()}";
 	let memberNumber = "${board.getMemberNumber()}";
 	let memberId = "${board.getMemberId()}";
 </script>
-
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/community/reply.js"></script>
 </html>

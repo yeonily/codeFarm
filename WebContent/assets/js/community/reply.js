@@ -30,9 +30,11 @@ function show() {
 }
 
 function showList(replyList){
+				
+	
 		if(replyList.length > 0) {
 		let text="";
-	
+		
 		replyList.forEach(reply => {
 			text += `<div id="reply">`;
 				text+= `<div class="re-list">`;
@@ -41,10 +43,12 @@ function showList(replyList){
 					text+= `<span class="re-b-writer">게시글 작성자</span>`;
 					text+= `<span class="re-date">`+ reply.replyDate +`</span>`;
 					text+= `<span class="re-btn-group">`;
-						text+= `<a href="` + reply.replyNumber + `" class="re-modify-ready re-btn">수정</a>`;
-						text+= `<a href="` + reply.replyNumber + `" class="re-delete">삭제</a>`;
-						text+= `<a href="` + reply.replyNumber + `" class="re-modify re-btn">저장</a>`;
-						text+= `<a href="` + reply.replyNumber + `" class="re-cancel">취소</a>`;
+						if(loginMemberNumber == reply.memberNumber) { /* 만약 로그인 한 세션이 댓글을 쓴 사람이라면 수정, 삭제 기능 사용 가능 */
+							text+= `<a href="` + reply.replyNumber + `" class="re-modify-ready re-btn">수정</a>`;
+							text+= `<a href="` + reply.replyNumber + `" class="re-delete">삭제</a>`;
+							text+= `<a href="` + reply.replyNumber + `" class="re-modify re-btn">저장</a>`;
+							text+= `<a href="` + reply.replyNumber + `" class="re-cancel">취소</a>`;	
+						}
 					text+= `</span>`;
 				text+= `</div>`;
 				text+= `<div class="re-content">`;

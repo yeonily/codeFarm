@@ -19,8 +19,10 @@ public class MainUserOkController implements Execute {
 		Result result = new Result();
 		AdminDAO adminDAO = new AdminDAO();
 		
-		req.setAttribute("userList", adminDAO.mainUserSelect(pageMap));
+		int total = adminDAO.selectCount();
 		
+		req.setAttribute("userList", adminDAO.mainUserSelect(pageMap));
+		req.setAttribute("total", total);
 
 		result.setPath("/app/admin/main.jsp");
 		

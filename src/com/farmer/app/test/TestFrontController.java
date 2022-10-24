@@ -1,4 +1,4 @@
-package com.farmer.app.localSpeciality;
+package com.farmer.app.test;
 
 import java.io.IOException;
 
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.farmer.app.Result;
 
-public class LocalSpecialityFrontController extends HttpServlet {
+public class TestFrontController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -28,9 +28,13 @@ public class LocalSpecialityFrontController extends HttpServlet {
 		String target = requestURI.substring(contextPath.length());
 		Result result = null;
 
-		if(target.equals("/localSpecialty/searchOk.ls")) {//특산물정보 조건검색 조회(SELECT)
-			result = new SearchOkController().execute(req, resp);
+		if (target.equals("/test/readyTest.te")) { // 경로 적기 *.te
+			result = new Result();
+			result.setPath("/app/test/preparation.jsp");
 
+		} else if (target.equals("/test/readyCheck.te")) {
+			result = new Result();
+			result.setPath("/app/test/step_check.jsp");
 		}
 
 		if (result != null) {

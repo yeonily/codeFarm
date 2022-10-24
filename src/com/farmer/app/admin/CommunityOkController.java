@@ -24,7 +24,7 @@ public class CommunityOkController implements Execute {
 		
 //		전체 게시글 갯수
 		int total = adminDAO.communityCount();
-		
+		int userTotalCount = adminDAO.selectCount();
 //		행의 갯 수 몇개씩 가져올 것인지.(한페이지에 15개씩 넣을 것이다.) 숫자 늘리고 싶으면 rowCount숫자 바꾸면 됨.
 		int rowCount = 10;
 //		한 화면에 나오는 페이지 수 1~10까지 있음. 
@@ -47,6 +47,7 @@ public class CommunityOkController implements Execute {
 		
 		req.setAttribute("userList", adminDAO.communityList(pageMap));
 		req.setAttribute("total", total);
+		req.setAttribute("userTotalCount", userTotalCount);
 		req.setAttribute("page", page);
 		req.setAttribute("startPage", startPage);
 		req.setAttribute("endPage", endPage);
