@@ -62,11 +62,6 @@ public class ViewCountOkController implements Execute {
 		List<AlbaVO> resultList = albaDAO.selectViewCnt(pageMap);
 //		System.out.println(resultList);
 		
-		for(AlbaVO item : resultList) {
-			System.out.println(String.format("albaId=%d viewCnt=%d", item.getAlbaNumber(), item.getAlbaViewCount()));
-		}
-		System.out.println("------------------");
-		
 //        req.setAttribute("albaLists", albaDAO.selectViewCnt(pageMap));
 		
 		req.setAttribute("page", page);

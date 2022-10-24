@@ -29,8 +29,6 @@ public class ApplyOkController implements Execute {
 		String memberReason = req.getParameter("userReason");
 		int albaNumber = Integer.valueOf(req.getParameter("albaNumber"));
 		
-//		memberAlbaVO.setMemberNumber(memberNumber);
-		memberAlbaVO.setMemberNumber(1);
 		memberAlbaVO.setMemberName(memberName);
 		memberAlbaVO.setMemberGender(memberGender);
 		memberAlbaVO.setMemberBirth(memberBirth);
@@ -39,6 +37,7 @@ public class ApplyOkController implements Execute {
 		memberAlbaVO.setMemberEmail(memberEmail);
 		memberAlbaVO.setMemberReason(memberReason);
 		memberAlbaVO.setAlbaNumber(albaNumber);
+		memberAlbaVO.setMemberNumber((Integer)req.getSession().getAttribute("memberNumber"));
 		
 		memberAlbaDAO.insert(memberAlbaVO);
 	    

@@ -40,7 +40,7 @@
 										</a>
 										</span></li>
 									<li><span class="subMenu">
-										<a href="${pageContext.request.contextPath}/seasonCrops/seasonCrops.sc">
+										<a href="${pageContext.request.contextPath}/season/info.sc">
 											계절별 작물 추천
 										</a>
 									</span></li>
@@ -91,7 +91,7 @@
 						</select>
 					</div>
 				</div>
-				<button onclick="search()" class="search_button"></button>
+				<button type="button" onclick="searchBtn()" class="search_button"></button>
 			</div>
 	</div>
 	<div class="table_wrap">
@@ -172,6 +172,9 @@
 
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script>
+	function searchBtn(){
+		alert("서비스 준비 중입니다.");
+	}
 
      // /* 카테고리 누르면 해당 작물분류 드롭박스로 나오게 하기  */
      function cropsChange(e){

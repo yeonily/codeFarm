@@ -83,5 +83,10 @@
 		where alba_number = #{albaNumber} ;
 	</update>
 	
+   	<!-- 아르바이트 신청여부 확인 -->
+	<select id="isApply" parameterType="map" resultType="_int">
+		select count(member_number) from tbl_member_alba where member_number = #{memberNumber} and alba_number = #{albaNumber}	
+	</select>
+	
 	
 </mapper>

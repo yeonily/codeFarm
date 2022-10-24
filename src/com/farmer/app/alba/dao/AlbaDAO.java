@@ -73,4 +73,9 @@ public class AlbaDAO {
 		sqlSession.update("alba.update", albaVO);
 	}
 	
+//	아르바이트 신청여부 확인
+	public int isApply(Map<String, Integer> userMap) {
+		return sqlSession.selectOne("alba.isApply", userMap);
+	}
+	
 }

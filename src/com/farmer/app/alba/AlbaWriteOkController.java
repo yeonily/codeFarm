@@ -39,7 +39,7 @@ public class AlbaWriteOkController implements Execute {
 	    	
 	    	if(fileOriginalName == null) {continue;}
 	    }
-		
+
 		String title = mr.getParameter("alba_title");
 		String address = mr.getParameter("address");
 		String albaDay = mr.getParameter("aDay_Date");
@@ -52,7 +52,7 @@ public class AlbaWriteOkController implements Execute {
 		String applyEndDate = mr.getParameter("r_endDate");
 		String persons = mr.getParameter("persons");
 		String phone = mr.getParameter("phone");
-		
+
 		albaVO.setAlbaName(title);
 		albaVO.setAlbaLocation(address);
 		if (albaDay.equals("")) {
@@ -70,7 +70,7 @@ public class AlbaWriteOkController implements Execute {
 		albaVO.setAlbaRecruitedTotalCount(persons);
 		albaVO.setAlbaPhoneNumber(phone);
 		albaVO.setAlbaImage(fileSystemName);
-		albaVO.setMemberNumber(1);
+		albaVO.setMemberNumber((Integer)req.getSession().getAttribute("memberNumber"));
 		
 		albaDAO.insertAlba(albaVO);
 

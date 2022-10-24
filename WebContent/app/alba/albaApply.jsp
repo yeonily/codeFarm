@@ -54,10 +54,12 @@
 
 												<div class="sort_list">
 													<button type="button" class="sort_btn" id="viewCnt" onclick="showByViewCnt()">조회순</button>
-													<button type="button" class="sort_btn" id="applyWrite" onclick="showByRecentlyWrite()">가장최근등록일순</button>
+													<button type="button" class="sort_btn" id="applyWrite" onclick="location.href='${pageContext.request.contextPath}/alba/applyListOk.ab'">가장최근등록일순</button>
 													<button type="button" class="sort_btn" id="applyEnd" onclick="showByDeadline()">가장최근마감일순</button>
-													<button type="button" class="sort_btn alba_write_btn" data-id="writeBtn" onclick="location.href='${pageContext.request.contextPath}/alba/albaWrite.ab'">
-														글 등록</button>
+													<c:if test="${-1 eq memberGrade}">
+														<button type="button" class="sort_btn alba_write_btn" data-id="writeBtn" onclick="location.href='${pageContext.request.contextPath}/alba/albaWrite.ab'">
+															글 등록</button>
+													</c:if>
 												</div>
 											</div>
 											<div class="k_result inner clearfix">
@@ -150,6 +152,14 @@
 let page = 1;
 
 function showByViewCnt(){
+	alert("서비스 준비 중입니다.");
+}
+
+function showByDeadline(){
+	alert("서비스 준비 중입니다.");
+}
+
+/* function showByViewCnt(){
 	$.ajax({
 		url: "${pageContext.request.contextPath}/alba/viewCountOk.ab",
 		dataType: "json",
@@ -160,7 +170,7 @@ function showByViewCnt(){
 			console.log("왜 안돼 ㅜㅜ? 	1");
 		}
 	});
-}
+} */
 
 function sortList(albaLists) {
 	console.log("들어옴? 이것은 조회 순 정렬??!!");
@@ -231,48 +241,6 @@ function pageNation() {
 	});
 		console.log("페이징ㅜㅜ : " + page);
 	sortList();
-}
-
-
-function showByDeadline(){
-	$.ajax({
-		url: "${pageContext.request.contextPath}/alba/deadlineOk.ab",
-		dataType: "json",
-		success: function(albaLists){
-			console.log("들어옴? 이것은 마감일 순 정렬??!!");
-			let text = "";
-			
-			albaLists.forEach(alba => {
-				text += `<li class="alba" onclick="location.href='${pageContext.request.contextPath}/alba/apply01.ab?albaNumber=` + alba.albaNumber + `'">`;
-				text += `<div class="info">`;
-				text += `<p class="local"> ` + alba.albaLocation + `</p>`;
-				text += `<p class="progress">진행중</p>`;
-				text += `</div>`;
-				text += `<div class="title">`;
-				text += `<p> ` + alba.albaName + `</p>`;
-				text += `</div>`;
-				text += `<div class="num">`;
-				text += `<p class="prd">`;
-				text += `<span class="endstatus"></span> &nbsp;| &nbsp;`;
-				text += `<span class="end-day">` + alba.albaApplyEndDate + `</span>`;
-				text += `<span style="display: none;">` + alba.albaApplyStartDate + `</span>`;
-				text += `</p>`;
-				text += `<p class="hits">`;
-				text += `<img src="https://www.rda.go.kr/young/images/site/sub/common_ico_view.png">`;
-				text += `<span>` + alba.albaViewCount + `</span>`;
-				text += `</p>`;
-				text += `</div>`;
-				text += `</div>`;
-				text += `</li>`;
-				
-			});
-	
-			$("#albaListsAllUl").html(text);
-			},
-			error : function(request, status, error) {
-			console.log("왜 안돼 ㅜㅜ? 2");
-		}
-	});
 }
 
 
