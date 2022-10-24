@@ -38,7 +38,7 @@
 										</a>
 										</span></li>
 									<li><span class="subMenu">
-										<a href="${pageContext.request.contextPath}/seasonCrops/seasonCrops.sc">
+										<a href="${pageContext.request.contextPath}/season/info.sc">
 											계절별 작물 추천
 										</a>
 									</span></li>
@@ -92,7 +92,7 @@
                 </select>
             </div>
         </div>
-        <button type="submit" class="search_button"></button>
+        <button type="button" class="search_button" onclick="searchBtn()"></button>
     </form>
 </div>
 <div class="table_wrap">
@@ -160,6 +160,10 @@
 
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script>
+	function searchBtn(){
+		alert("서비스 준비 중입니다.");
+	}
+	
     // /* 지역(도,시) 누르면 세부 도시 드롭박스로 나오게 하기  */
     function clickCityChange(e){
         var busan = ["선택하세요", "기장군"];
