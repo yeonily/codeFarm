@@ -45,6 +45,10 @@ public class LoginOkController implements Execute {
 			session.setAttribute("memberId", memberId);
 			session.setAttribute("memberGrade", memberGrade);
 			
+			System.out.println(memberNumber);
+			System.out.println(memberId);
+			System.out.println(memberGrade);
+			
 			// 아이디 저장(쿠키 저장)
 			if(saveId) {
 				Cookie cookie = new Cookie("memberId", memberId);
@@ -64,7 +68,7 @@ public class LoginOkController implements Execute {
 			}
 			
 			result.setRedirect(true);
-			result.setPath(req.getContextPath()+"/app/main"); // 임시 메인페이지 주
+			result.setPath(req.getContextPath()+"/index/main.ix"); // 임시 메인페이지 주
 			
 		} catch (Exception e) {
 			// 로그인 실패

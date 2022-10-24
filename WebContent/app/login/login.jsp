@@ -87,7 +87,7 @@
                     </li>
                     <li class="lgr_vertical_line"></li>
                     <li>
-                        <a href="javascript:openPop_pw()" onclick="alert('서비스를 진행중입니다.')">비밀번호 찾기</a>
+                        <a href="javascript:openPop_pw()" onclick="alert('서비스를 준비중입니다.')">비밀번호 찾기</a>
                     </li>
                 </ul>
             </div>

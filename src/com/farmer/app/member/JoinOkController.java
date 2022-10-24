@@ -47,7 +47,7 @@ public class JoinOkController implements Execute {
 		memberDAO.join(memberVO);
 		
 		result.setRedirect(true);
-		result.setPath(req.getContextPath()+ "/app/main");
+		result.setPath(req.getContextPath()+ "/index/main.ix");
 		
 		return result;
 	}

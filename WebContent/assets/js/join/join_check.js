@@ -271,6 +271,11 @@ let $isCheck = false;
             detailForm.memberEmail.focus();
             return;
         }
+        if(!detailForm.emailDomain.value){
+            detailForm.emailDomain.focus();
+            return;
+        }
+
 
         if(!detailForm.memberPassword.value){
             detailForm.memberPassword.focus();
