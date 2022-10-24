@@ -111,7 +111,7 @@
 	                    			<td><c:out value="${albaList.getAlbaLocation()}"/></td>
 	                    			<td><c:out value="${albaList.getAlbaApplyStartDate()}"/></td>
 	                    			<td><c:out value="${albaList.getAlbaApplyEndDate()}"/></td>
-	                    			<td><c:out value="${albaList.getAlbaRecruitedTotalCount()}"/>/<c:out value="${albaList.getAlbaRecruitedCount()}"/></td>
+	                    			<td><c:out value="${albaList.getAlbaRecruitedCount()}"/>/<c:out value="${albaList.getAlbaRecruitedTotalCount()}"/></td>
 	                    			<td><c:out value="${albaList.getAlbaDate()}"/></td>
 	                    			<td class="delete"><input type="button" value="삭제" onclick="deleteCheck(this); location.href = '${pageContext.request.contextPath}/admin/AlbaListDeleteOk.ad?albaNumber=${albaList.getAlbaNumber()}';"></td>
                     			</tr>
