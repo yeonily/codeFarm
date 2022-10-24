@@ -90,7 +90,7 @@
                                 <a href="${pageContext.request.contextPath}/mypage/Apply.my" class="mre">더보기</a>
                                 <div class="myProgram">
                                     <ul class="myProgramList"> <!-- (이후) 신청 프로그램 여부에 따라 리스트 출력 필요 -->
-                                        <div class = "programApply" style="display: block">
+                                        <div class = "programApply" style="display: block" onclick="location.href='${pageContext.request.contextPath}/program/apply01Ok.pg?programNumber=${programNumber}'">
                                             <a href="#"><li>
                                                 <p>${programName}</p>
                                                 <span>${programDate}</span>
@@ -99,7 +99,7 @@
                                         <div class="programNoApply" style="display:none">
                                         	${gradeText}한 프로그램이 없습니다
                                         </div>
-                                        <div style ="border-top : 0.118rem dashed #ccc; display: block;" class = "albaApply">
+                                        <div style ="border-top : 0.118rem dashed #ccc; display: block;" class = "albaApply" onclick="location.href='${pageContext.request.contextPath}/alba/apply01.ab?albaNumber=${albaNumber}'">
                                             <a href="#"><li>
                                                 <p>${albaName}</p>
                                                 <span>${albaDate}</span>
