@@ -53,7 +53,7 @@
                                 <input type="text" name="programSearch" placeholder="검색어를 입력하세요">
                             </span>
                         </span>
-                        <button type="button" class="">
+                        <button type="button" class="" onclick="ready()">
                             <img src="${pageContext.request.contextPath}/assets/images/common/search.png">
                         </button>
                     </div>
@@ -150,5 +150,11 @@
     </div>
 
 </body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script>
+	function ready(){
+			alert('검색기능 준비중입니다.');
+	}
+	</script>
 <script src="${pageContext.request.contextPath}/assets/js/admin/mentor.js"></script>
 </html>

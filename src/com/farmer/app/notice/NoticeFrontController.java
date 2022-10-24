@@ -27,19 +27,15 @@ public class NoticeFrontController extends HttpServlet {
 		String requestURI = req.getRequestURI();
 	    String contextPath = req.getContextPath();
 	    String target = requestURI.substring(contextPath.length());
-	    Result result = null;
+	    Result result = new DetailOkController().execute(req, resp);	//if문에 안들어가서 우선 이렇게 ..
 	    
-	    	if(target.equals("/notice/searchOk.nt")) {//공지사항 검색 실행(SELECT)
-	          
-	       }else if(target.equals("/notice/detailOk.nt")) {//공지사항 상세내용 보여주기(SELECT)
-	      
+	    	if(target.equals("/notice/detailOk.nt")) {//공지사항 상세내용 보여주기(SELECT)
+	    		result = new DetailOkController().execute(req, resp);
+	    		
+	    	}else if(target.equals("/notice/searchOk.nt")) {//공지사항 검색 실행(SELECT)
+	    	   
 	       }
 
-
-
-
-
-	
 	    if(result != null) {
 	         if(result.isRedirect()) {
 	            resp.sendRedirect(result.getPath());

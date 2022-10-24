@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
+   		<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +16,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/fix/page.css"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/notice/notice_list.css"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/notice/subheader.css"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/page.css"/>
 </head>
 <body>
 <jsp:include page="${pageContext.request.contextPath}/app/fix/header.jsp"/>
@@ -31,11 +34,11 @@
                                         <span>공지사항</span>
                                     </a>
                                 </li>
-                                <li><a href="/young/board/board07.do" class="active">
+                                <li><a href="" class="active" onclick="readyMentor()">
                                         <span>멘토 홍보 게시판</span>
                                     </a>
                                 </li>
-                                <li><a href="/young/board/board08.do" class="active">
+                                <li><a href="${pageContext.request.contextPath} /community/listOk.cm" class="active">
                                         <span>소통공간</span>
                                     </a>
                                 </li>
@@ -71,14 +74,14 @@
                     <input type="text" name="programSearch" placeholder="검색어를 입력하세요">
                 </span>
             </span>
-            <button type="button" class="">
+            <button type="button" class="" onclick="ready()">
                 <img src="${pageContext.request.contextPath}/assets/images/common/search.png">
             </button>
         </div>
     </form>
 
     <span class="list-count">총
-        <span>2476</span>건
+        <span><c:out value="${total}"/></span>건
     </span>
 
     <table>
@@ -94,48 +97,70 @@
         </thead>
         <!-- ↓ 데이터 출력 -->
         <tbody>
-            <tr>
-                <td class="number"><span class="noti">공지</span></td>
-                <td class="title"><a href="">★ 2022년 청년귀농 장기교육 운영기관별 교육생 모집 안내 </a> </td>
-                <td class="file">
-                    <img src="${pageContext.request.contextPath}/assets/images/common/fileImage.png" alt="">
-                </td>
-                <td class="registrant">관리자</td>
-                <td class="regist-date">2022-09-01</td>
-                <td class="viewcount">105</td>
-            </tr>
-            <tr>
+            <c:choose>
+                    	<c:when test="${userList != null and fn:length(userList) > 0}">
+                    		<c:forEach var="noticeList" items="${userList}">
+                   				 <tr>
+	                    			<td><c:out value="${noticeList.getNoticeNumber()}"/></td>
+	                    			<td><c:out value="${noticeList.getNoticeTitle()}"/></td>
+	                    			<td><img src="${pageContext.request.contextPath}/assets/images/common/fileImage.png"></td>
+	                    			<td class="registrant">관리자</td>
+	                    			<td><c:out value="${noticeList.getNoticeDate()}"/></td>
+	                    			<td><c:out value="${noticeList.getNoticeViewCount()}"/></td>
+                    			</tr>
+                    		</c:forEach>
+                    	</c:when>
+                   </c:choose>
+            <!-- <tr>
                 <td class="number">2</td>
                 <td class="title"><a href="">[전라남도] 2022 전라남도 귀농산어촌 고향사람 박람회 </a> </td>
                 <td class="file">-</td>
                 <td class="registrant">관리자</td>
                 <td class="regist-date">2022-10-02</td>
                 <td class="viewcount">51</td>
-            </tr>
+            </tr> -->
         </tbody>
     </table>
 
       <!-- 페이징 -->
       <div id="page">
-        <div class="page_nation">
-           <a class="page-num arrow pprev" href="#"></a>
-           <a class="page-num arrow prev" href="#"></a>
-           <a class="page-num active" href="#">1</a>
-           <a class="page-num" href="#">2</a>
-           <a class="page-num" href="#">3</a>
-           <a class="page-num" href="#">4</a>
-           <a class="page-num" href="#">5</a>
-           <a class="page-num" href="#">6</a>
-           <a class="page-num" href="#">7</a>
-           <a class="page-num" href="#">8</a>
-           <a class="page-num" href="#">9</a>
-           <a class="page-num" href="#">10</a>
-           <a class="page-num arrow next" href="#"></a>
-           <a class="page-num arrow nnext" href="#"></a>
+           <div class="page_nation">
+                <c:if test="${prev}">
+		                <a class="page-num arrow pprev" href="${pageContext.request.contextPath}/notice/detailOk.nt?page=1"></a>
+		                <a class="page-num arrow prev" href="${pageContext.request.contextPath}/notice/detailOk.nt?page=${startPage -1}"></a>
+		        </c:if>
+                        <c:forEach var="i" begin="${startPage}" end="${endPage}" >
+                         <c:choose>
+                        	<c:when test="${not (i eq page)}">
+		                        <a href="${pageContext.request.contextPath}/notice/detailOk.nt?page=${i}" class="page-num">
+		                        <c:out value="${i}"/>
+		                        </a>
+                        	</c:when>
+                        	<c:otherwise> 
+                        		<a href="${pageContext.request.contextPath}/notice/detailOk.nt?page=${i}" class="active">
+		                       	 <c:out value="${i}"/>
+		                        </a>
+                        	</c:otherwise>
+                        	</c:choose>
+                        </c:forEach>
+		                	   <c:if test="${next}">
+		                        <a class="page-num arrow next" href="${pageContext.request.contextPath}/notice/detailOk.nt?page=${endPage +1}"></a>
+		                        <a class="page-num arrow nnext" href="${pageContext.request.contextPath}/notice/detailOk.nt?page=${realEndPage}"></a>
+		                        </c:if>
         </div>
     </div>
 </div>
 </div>
 <jsp:include page="${pageContext.request.contextPath}/app/fix/footer.jsp"/>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script>
+	function ready(){
+			alert('검색기능 준비중입니다.');
+	}
+	
+	function readyMentor(){
+		alert('멘토 홍보 게시판은 준비중인 서비스입니다.');
+	}
+	</script>
 </html>
