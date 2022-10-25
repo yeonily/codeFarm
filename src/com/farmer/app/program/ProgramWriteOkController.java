@@ -41,8 +41,7 @@ public class ProgramWriteOkController implements Execute {
 	    }
 		
 		
-//		int programNumber = (Integer)req.getSession().getAttribute("programNumber");
-//		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber");
+		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber");
 		String title = mr.getParameter("pro_title");
 		String address = mr.getParameter("address");
 		String startProgramDate = mr.getParameter("s_startDate");
@@ -57,7 +56,6 @@ public class ProgramWriteOkController implements Execute {
 		
 		money = (money != null ? money : "0");
 		
-		programVO.setProgramNumber(1);
 		programVO.setProgramName(title);
 		programVO.setProgramLocation(address);
 		programVO.setProgramStartDate(startProgramDate);
@@ -70,7 +68,7 @@ public class ProgramWriteOkController implements Execute {
 		programVO.setProgramRecruitedTotalCount(persons);
 		programVO.setProgramPhoneNumber(phone);
 		programVO.setProgramImage(fileSystemName);
-		programVO.setMemberNumber(1);
+		programVO.setMemberNumber(memberNumber);
 		
 		
 		programDAO.insert(programVO);
