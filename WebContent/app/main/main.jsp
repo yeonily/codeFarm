@@ -39,7 +39,7 @@
 		</div> 
 		<!-- 버튼 그룹 -->
         <div id="lgr_right">
-            <div id="lgr_top_btn_season" onclick="location.href='${pageContext.request.contextPath}/policy/policys.po'">
+            <div id="lgr_top_btn_season" onclick="location.href='${pageContext.request.contextPath}/policy/policys1.po'">
                 <div class="lgr_top_menubtn">
                     <div class="lgr_top_imgwrap">
                         <img src="https://www.rda.go.kr/young/images/site/main/ma_ico_seasonmarket.png">
