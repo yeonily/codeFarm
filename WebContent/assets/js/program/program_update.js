@@ -3,7 +3,7 @@
  */
 
 //기존 수강료 내용 반영
-if ( $('input[name="money_input"]').val() == '0' ){
+if ( $('input[name="money_input"]').val() == '무료' ){
 	$('#tuition_default').prop("checked", true);
         $('.tuition-div').hide();
 }else{
@@ -11,7 +11,6 @@ if ( $('input[name="money_input"]').val() == '0' ){
         $('.tuition-div').show();
 	
 }
-
 // 수강료
 $('input[name="money"]').change(function(){
 	console.log("들어오니?")

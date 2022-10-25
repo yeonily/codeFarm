@@ -45,7 +45,7 @@ public class SendOkController implements Execute {
 //	    회원정보 수정에서 새로 입력한 번호
 	    params.put("to", phoneNumber);
 //	    내 번호
-	    params.put("from", "01050115345");
+	    params.put("from", "01024020324");
 	    params.put("type", "SMS");
 	    params.put("text",certificationNumber);
 	    params.put("app_version", "test app 1.2"); // application name and version

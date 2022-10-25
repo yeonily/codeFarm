@@ -5,7 +5,7 @@
 	<select id="selectRegistration" parameterType="map" resultType="albaVo">
 		select alba_number, alba_name, alba_location, alba_apply_start_date, alba_apply_end_date, alba_date, alba_view_count
 		from tbl_alba
-		order by alba_date desc
+		order by alba_number desc
 		limit #{startRow}, #{rowCount}
 	</select>
 

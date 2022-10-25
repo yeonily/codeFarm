@@ -114,6 +114,7 @@
 <!--내가 신청한 프로그램 리스트 검색 -->	
 	<select id="selectProgram" parameterType="map" resultType="programVO">
 		select 
+			tmp.program_number,
 			program_name,
 			program_start_date,
 			program_location,
@@ -139,6 +140,7 @@
 <!--내가 신청한 알바 리스트 검색 -->	
 	<select id="selectAlba" parameterType="map" resultType="albaVO">
 		select 
+		tma.alba_number,
 			alba_name,
 			alba_start_date,
 			alba_location,

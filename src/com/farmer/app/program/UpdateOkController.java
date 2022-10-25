@@ -66,13 +66,20 @@ public class UpdateOkController implements Execute {
 		String endProgramDate = mr.getParameter("s_endDate");
 		String startTime = mr.getParameter("s_startTime");
 		String endTime = mr.getParameter("s_endTime");
+		String moneySelect = mr.getParameter("money");
 		String money = mr.getParameter("money_input");
 		String applyStartDate = mr.getParameter("r_startDate");
 		String applyEndDate = mr.getParameter("r_endDate");
 		String persons = mr.getParameter("persons");
 		String phone = mr.getParameter("phone");
 		
-		money = (money != null ? money : "0");
+
+		if (moneySelect.equals("free")) {
+			programVO.setProgramFee("무료");
+		} else {
+			programVO.setProgramFee(money);
+		}
+		System.out.println(money);
 		
 		programVO.setProgramName(title);
 		programVO.setProgramLocation(address);
@@ -80,13 +87,11 @@ public class UpdateOkController implements Execute {
 		programVO.setProgramEndDate(endProgramDate);
 		programVO.setProgramStartTime(startTime);
 		programVO.setProgramEndTime(endTime);
-		programVO.setProgramFee(money);
 		programVO.setProgramApplyStartDate(applyStartDate);
 		programVO.setProgramApplyEndDate(applyEndDate);
 		programVO.setProgramRecruitedTotalCount(persons);
 		programVO.setProgramPhoneNumber(phone);
 		programVO.setProgramImage(fileSystemName);
-		programVO.setMemberNumber(1);
 		
 		
 		programDAO.update(programVO);
