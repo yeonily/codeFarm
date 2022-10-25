@@ -6,12 +6,12 @@
 <meta charset="UTF-8">
  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/font.css"/>
    <!-- 글 작성 폼 -->
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/notice_write.css"/>
    <!-- 썸머노트 API -->
+	<script type="text/javascript" src="/assets/js/summernote-lite.min.js"></script>
+   <link rel="stylesheet" type="text/css" href="/assets/css/summernote-lite.min.css" />
    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-   <link rel="stylesheet" type="text/css" href="/assets/css/summernote-lite.min.css" />
-	<script type="text/javascript" src="/assets/js/summernote-lite.min.js"></script>
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/notice_write.css"/>
    <title>관리자-공지 글 작성</title>
 </head>
 
@@ -129,16 +129,17 @@ function doInsert() {
 	
 	if(!writeForm.nttSj.value) {
 		alert("제목을 입력해주세요.");
+		writeForm.nttSj.focus();
 		return;
 	}
 	if(!text) {
 		alert("내용을 입력해주세요.");
+		text.focus();
 		return;
 	}
 	writeForm.submit(); // 위 조건에서 걸리지 않으면 커밋
 }
 
-$("#content").html(data.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g,'"').replace(/&#40;/g,'(').replace(/&#41;/g,')').replace(/&#35;/g,'#'));
 	
 </script>
 <script type="text/javascript">
