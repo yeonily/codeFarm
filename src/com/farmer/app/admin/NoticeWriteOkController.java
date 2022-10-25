@@ -28,7 +28,7 @@ public class NoticeWriteOkController implements Execute {
 		NoticeFileDAO noticeFileDAO = new NoticeFileDAO();
 		Result result = new Result();
 		int currentSequence = 0;
-
+		
 ////		int memberNumber = (Integer)req.getSession().getAttribute("memberNumber"); // Session 로그인 번호
 		
 //		--------------------------------------------------------------------------------------------
@@ -46,10 +46,10 @@ public class NoticeWriteOkController implements Execute {
 //		화면에서 구현된 input 타입이 file인 태그 전부 가져옴
 //		--------------------------------------------------------------------------------------------
 //		
-		
+		String changeText = multipartRequest.getParameter("summernote").replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", "");
 		
 		noticeVO.setNoticeTitle(multipartRequest.getParameter("nttSj"));
-		noticeVO.setNoticeContent(multipartRequest.getParameter("summernote"));
+		noticeVO.setNoticeContent(changeText);
 //		noticeVO.setMemberNumber(memberNumber); // session은 multipartRequest 필요 x
 		noticeVO.setMemberNumber(2); // 이후에 session에 저장된 회원번호로 변경해야함
 		

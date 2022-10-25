@@ -221,6 +221,7 @@
 		select community_number, community_title, community_content, m.member_id, community_date,  community_view_count
 		from tbl_community c join tbl_member m
 		on c.member_number = m.member_number
+		order by community_number desc limit #{startRow}, #{rowCount}
 	</select>
 	
 <!-- 소통공간 글 목록 수 -->
