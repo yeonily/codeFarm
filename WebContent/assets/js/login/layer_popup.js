@@ -123,11 +123,16 @@ let memberFindId;
 			type : "post",
 			data: { inputPhoneNumber: $inputPhoneNumber, inputName : $inputName },
 			success: function(result) {
-				console.log(result);
 				memberFindId = result;
 				console.log(memberFindId);
-				$("#memberFindId").text(memberFindId);
+				if(memberFindId=="null"){
+				$("#memberFindId").text("가입된 정보가 없습니다.");
 				console.log(memberFindId);
+				return;
+				}else{
+				$("#memberFindId").text(memberFindId);
+				return;
+				}
 			}
 		});
 		
